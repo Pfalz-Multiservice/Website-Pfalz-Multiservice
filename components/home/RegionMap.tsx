@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
+import { BgImage } from "../BgImage";
 
 /**
  * Einzugsgebiet als animierte Karte: Worms als Basis, Rhein und Neckar zeichnen sich, Radar-Sweep,
@@ -135,9 +136,11 @@ export function RegionMap({ heading }: { heading: ReactNode }) {
 
   return (
     <div ref={root} className="rm">
-      <div className="rm-panel">
-        {heading}
-        <div className="rm-facts">
+      <div className="rm-hero">
+        <BgImage className="rm-hero__img" src="/images/dom-worms-gold.jpg" sizes="(max-width: 1240px) 100vw, 1160px" />
+        <div className="rm-hero__text">{heading}</div>
+      </div>
+      <div className="rm-facts">
         <ul className="rm-list">
           {CITIES.map((c, i) => <li key={c.n} className={`rm-li-${i}`}>{c.n}<b>0 km</b></li>)}
         </ul>
@@ -145,7 +148,6 @@ export function RegionMap({ heading }: { heading: ReactNode }) {
           <div><strong className="rm-s1">0</strong><span>Orte regional vor Ort</span></div>
           <div><strong className="rm-s2">0 km</strong><span>Umkreis</span></div>
           <div><strong>Bundesweit</strong><span>Online verfügbar</span></div>
-        </div>
         </div>
       </div>
       <div className="rm-map" role="img" aria-label="Karte des Einzugsgebiets: Worms als Basis mit Frankenthal, Grünstadt, Alzey, Bensheim, Mannheim, Ludwigshafen, Eich und Bad Dürkheim">
