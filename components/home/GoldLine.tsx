@@ -45,8 +45,7 @@ export function GoldLine({ children }: { children: ReactNode }) {
 
       // Ziel: Worms auf der Karte
       const hq = root.querySelector<SVGGraphicsElement>(".rm-hqdot");
-      const map = root.querySelector<HTMLElement>(".rm-map");
-      let d = `M ${X} 0`;
+            let d = `M ${X} 0`;
       let y0 = 0;
       // sanftes Pendeln zwischen den Knoten, damit es nicht wie ein Lineal wirkt
       ys.forEach((y, i) => {
@@ -56,16 +55,14 @@ export function GoldLine({ children }: { children: ReactNode }) {
         y0 = y;
       });
       let endX = X, endY = H - 2;
-      if (hq && map) {
-        const hr = hq.getBoundingClientRect(), mr = map.getBoundingClientRect();
+      if (hq) {
+        const hr = hq.getBoundingClientRect();
         endX = hr.left + hr.width / 2 - r.left;
         endY = hr.top + hr.height / 2 + scrollY - top;
-        const mapTop = mr.top + scrollY - top;
-        const turnY = mapTop + 24;
-        // senkrecht bis zur Karte, dann in einem weiten Bogen nach Worms
-        d += ` L ${X} ${Math.max(y0, turnY - 80)}`;
-        d += ` C ${X} ${turnY + 40}, ${X + 40} ${turnY + 40}, ${(X + endX) / 2} ${turnY + 40}`;
-        d += ` S ${endX} ${turnY + 40}, ${endX} ${endY}`;
+        // senkrecht im Rand bis auf Höhe von Worms, dann von links waagerecht hinein (westlich von Worms liegt kein Fluss)
+        d += ` L ${X} ${Math.max(y0, endY - 70)}`;
+        d += ` Q ${X} ${endY}, ${X + 70} ${endY}`;
+        d += ` L ${endX} ${endY}`;
       } else {
         d += ` L ${X} ${endY}`;
       }

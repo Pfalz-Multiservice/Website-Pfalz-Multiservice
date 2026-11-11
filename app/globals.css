@@ -2297,8 +2297,8 @@ html.pm-motion .tk__sparks i:nth-child(3) { animation-delay: calc(var(--tk-d) + 
 /* Goldene Linie (GoldLine): läuft links im Rand durch die Startseite und endet in Worms auf der Karte */
 .gl-wrap { position: relative; }
 .gl { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; overflow: visible; }
-.gl__track { stroke: rgba(217,177,58,.12); stroke-width: 1; }
-.gl__line { stroke: var(--brand-accent); stroke-width: 1.6; stroke-linecap: round; }
+.gl__track { stroke: rgba(217,177,58,.16); stroke-width: 1; }
+.gl__line { stroke: var(--brand-accent); stroke-width: 2; stroke-linecap: round; }
 .gl__node { fill: #0a0a0a; stroke: rgba(217,177,58,.35); stroke-width: 1.2; transition: fill .5s var(--ease-out), stroke .5s var(--ease-out); }
 .gl__node.is-on { fill: var(--brand-accent); stroke: #EFD994; }
 .gl__tip { transition: opacity .3s; }
