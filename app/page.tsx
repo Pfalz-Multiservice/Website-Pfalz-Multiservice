@@ -2,7 +2,6 @@ import { Hero } from "@/components/home/Hero";
 import { Process } from "@/components/home/Process";
 import { About, CtaBand, Region, Services } from "@/components/home/HomeSections";
 import { Stats } from "@/components/home/Stats";
-import { GoldLine } from "@/components/home/GoldLine";
 import { HOME_FAQ, IMG } from "@/lib/data";
 import { Faq } from "@/components/Faq";
 import { JsonLd, faqPage } from "@/lib/schema";
@@ -14,14 +13,12 @@ export default function HomePage() {
     <>
       <JsonLd data={faqPage(HOME_FAQ)} />
       <Hero />
-      <GoldLine>
-        <Stats />
-        <Services />
-        <About />
-        <Process />
-        <WebTeaser alt />
-        <Region />
-      </GoldLine>
+      <Stats />
+      <Services />
+      <About />
+      <Process />
+      <WebTeaser alt />
+      <Region />
       <PartnerTiles />
       <Faq items={HOME_FAQ} alt />
       <CtaBand
