@@ -562,7 +562,7 @@ export const PARTNERS: Partner[] = tidyDeep([
     url: withUtm("https://www.multimedia-service-schaffner.de"),
     logo: "/images/partner/schaffner/logo.png",
     photo: "/images/partner/schaffner/p1.jpg",
-    header: "/images/partner/schaffner/hero.jpg",
+    header: "/images/partner/schaffner/hero-4k.jpg",
     since: "Partner aus Worms",
     short: "Computer, WLAN, Smart Home, TV und HiFi: eingerichtet, repariert und erklärt, direkt bei den Kunden zu Hause in Worms und Umgebung.",
     text: "Multimedia Service Schaffner und Pfalz Multiservice ergänzen sich. Wenn bei unseren Kunden Computer, WLAN, Fernseher oder Smart Home nicht mehr wollen, ist das Team von Mirco Schaffner zur Stelle. Umgekehrt sind wir da, wenn es um Webdesign, die Wartung der Website und alles Weitere rund um den Auftritt im Netz geht.",

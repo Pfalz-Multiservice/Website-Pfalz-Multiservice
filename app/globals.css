@@ -1646,6 +1646,10 @@ html.pm-motion .tk__sparks i:nth-child(3) { animation-delay: calc(var(--tk-d) + 
 /* Text rechts: am normalen Inhaltsrand ausgerichtet, etwas schmaler, damit links mehr vom Bild frei bleibt */
 @media (min-width: 901px) {
   .pt-hero--rev .pt-hero__copy { max-width: 600px; }
+  /* Text rechts: rechtsbündig, Spiegelbild zum linken Abschnitt */
+  .pt-hero--rev .pt-hero__copy { align-items: flex-end; text-align: right; }
+  .pt-hero--rev .pt-facts > div { padding-left: 0; border-left: 0; padding-right: 16px; border-right: 2px solid var(--brand-accent); }
+  .pt-hero--rev .pt-awards { justify-content: flex-end; }
   /* Schaffner: Bild breiter gezogen und nach links verschoben, damit der Techniker im linken Viertel steht */
   #multimedia-service-schaffner .pt-hero__img { width: 140% !important; max-width: none !important; left: -38% !important; right: auto !important; object-position: 50% 8%; }
 }
