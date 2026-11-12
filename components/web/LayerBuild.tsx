@@ -31,9 +31,9 @@ const LINKS: [string, number][] = [["Leistungen", 5.4], ["Konfigurator", 6.2], [
 const PIN_CORNERS: [string, string][] = [["0%", "0%"], ["100%", "0%"], ["0%", "100%"], ["100%", "100%"]];
 
 /**
- * „Schicht für Schicht“: Titel und Bühne bleiben stehen, beim Scrollen wechseln die Schritte; vier Ebenen in 3D klappen
- * am Ende zur fertigen Website (Musterdesign Fliesen Reuter) zusammen. Die Choreografie läuft als eine einzige, an den Scroll
- * gekoppelte GSAP-Zeitleiste (weich in beide Richtungen); ohne Bewegung greifen die CSS-Zustände je Schritt.
+ * „Schicht für Schicht“: Die Schritte laufen automatisch ab, sobald der Abschnitt ins Bild kommt (kein Scrollen nötig);
+ * vier Ebenen in 3D klappen am Ende zur fertigen Website (Musterdesign Fliesen Reuter) zusammen. Eine GSAP-Zeitleiste,
+ * Schritt folgt der Zeit. Bei reduzierter Bewegung steht direkt das Ergebnis da.
  */
 export function LayerBuild() {
   const ref = useRef<HTMLElement>(null);
@@ -44,12 +44,9 @@ export function LayerBuild() {
     const track = root.querySelector<HTMLElement>(".lay-track")!;
     const scene = root.querySelector<HTMLElement>(".l3-scene")!;
     const stack = root.querySelector<HTMLElement>(".l3-stack")!;
-    // Ein einziger Trigger über die ganze Strecke: Schritt aus dem Fortschritt (auch bei schnellem Scrollen stabil)
-    const st = ScrollTrigger.create({
-      trigger: track, start: "top top", end: "bottom bottom",
-      onUpdate: (self) => setStep(Math.min(N, Math.floor(self.progress * N) + 1)),
-    });
     const mm = gsap.matchMedia();
+    // Ohne Bewegung: direkt das fertige Ergebnis zeigen
+    mm.add("(prefers-reduced-motion: reduce)", () => { setStep(N); });
 
     mm.add(MOTION_OK, () => {
       root.classList.add("lay--gsap");
@@ -67,18 +64,22 @@ export function LayerBuild() {
       const mob = () => window.matchMedia("(max-width: 1080px)").matches;
       const pose = () => (mob() ? { ty: "1%", rx: 34, rz: -14, s: 0.82 } : { ty: "4%", rx: 46, rz: -22, s: 0.92 });
 
-      // Während des Scrollens als eigene GPU-Ebene, danach frei → Chrome rastert die Ebenen wieder gestochen scharf
-      let idle = 0;
-      const moving = () => {
-        stack.classList.add("is-moving");
-        window.clearTimeout(idle);
-        idle = window.setTimeout(() => stack.classList.remove("is-moving"), 220);
-      };
-
+      // Während der Animation als eigene GPU-Ebene, danach frei → Chrome rastert die Ebenen wieder gestochen scharf
+      // Läuft automatisch ab, sobald der Abschnitt zur Hälfte sichtbar ist (einmalig, ohne Scrollen); ca. 2,2 s pro Schritt
       const tl = gsap.timeline({
+        paused: true,
         defaults: { ease: "power3.out", duration: 0.6 },
-        scrollTrigger: { trigger: track, start: "top top", end: "bottom bottom", scrub: 0.8, invalidateOnRefresh: true, onUpdate: moving },
+        onStart: () => stack.classList.add("is-moving"),
+        onUpdate: () => setStep(Math.min(N, Math.floor(tl.time()) + 1)),
+        onComplete: () => stack.classList.remove("is-moving"),
       });
+      tl.timeScale(0.45);
+      ScrollTrigger.create({ trigger: track, start: "top 55%", once: true, onEnter: () => tl.play() });
+      // Klick aufs Bild: Animation startet von vorn
+      const stage = root.querySelector<HTMLElement>(".lay-stage")!;
+      const replay = () => { stack.classList.add("is-moving"); tl.restart(); };
+      stage.classList.add("is-replay");
+      stage.addEventListener("click", replay);
       const click = (at: number) => {
         tl.to(cursor, { scale: 0.86, duration: 0.06, ease: "power2.in" }, at)
           .to(cursor, { scale: 1, duration: 0.14, ease: "back.out(3)" }, at + 0.06)
@@ -131,9 +132,9 @@ export function LayerBuild() {
         .to(cursor, { opacity: 0, duration: 0.15, ease: "none" }, 4.85);
       click(1.85); click(2.3); click(3.3); click(4.68);
 
-      return () => { root.classList.remove("lay--gsap"); window.clearTimeout(idle); };
+      return () => { root.classList.remove("lay--gsap"); stage.removeEventListener("click", replay); stage.classList.remove("is-replay"); };
     });
-    return () => { st.kill(); mm.revert(); };
+    return () => { mm.revert(); };
   }, { scope: ref });
 
   const cls = Array.from({ length: step }, (_, i) => `s${i + 1}`).join(" ");

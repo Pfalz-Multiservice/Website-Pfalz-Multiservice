@@ -18,7 +18,8 @@ export type IconName =
   | "clapperboard" | "camera" | "pen-tool" | "languages"
   | "key-round" | "lock-keyhole" | "folder-code" | "copyright" | "search-check" | "clipboard-list" | "gauge" | "pencil-line"
   | "search" | "sliders-horizontal" | "calendar-days" | "ticket" | "sparkles" | "smartphone" | "gift" | "package-check"
-  | "blinds" | "circle-plus" | "refresh-cw" | "shield-check" | "thermometer" | "network";
+  | "blinds" | "circle-plus" | "refresh-cw" | "shield-check" | "thermometer" | "network"
+  | "phone-off" | "search-x" | "receipt" | "user-x";
 
 export type Service = {
   id: string;
@@ -372,11 +373,17 @@ export const SHOP_EXAMPLE: ShopExample = tidyDeep({
 });
 
 /** Webdesign-Seite: Pakete, Ablauf, FAQ */
-export const WEB_PROBLEMS: [string, string][] = tidyDeep([
-  ["Veraltete Website", "Langsam, in die Jahre gekommen und am Smartphone kaum zu bedienen."],
-  ["Kaum Anfragen", "Besucher finden nicht schnell, was Sie anbieten und wie man Sie erreicht."],
-  ["Baukasten-Look", "Eine Vorlage von der Stange, die aussieht wie tausend andere."],
-  ["Keine Zeit", "Im Tagesgeschäft bleibt die Pflege der Website einfach liegen."],
+/** Problem-Karten Webdesign: aus Recherche zu Auslösern und Ängsten kleiner Betriebe (Bitkom/ZDH 2025, HWK-Warnungen, Analyse 500 Handwerker-Seiten 2025) */
+export type WebProblem = { icon: IconName; title: string; text: string; tags: string[]; fix: string };
+export const WEB_PROBLEMS: WebProblem[] = tidyDeep([
+  { icon: "phone-off", title: "Keine Anfragen", text: "Die Seite ist online, doch das Telefon bleibt still. Besucher klicken weg, statt anzufragen.",
+    tags: ["Keine Anrufe", "Keine Preise", "Kein Gesicht"], fix: "Echte Fotos, klare Preise und ein Anruf-Knopf, der mit einem Tipp verbindet." },
+  { icon: "search-x", title: "Bei Google unsichtbar", text: "Wer in Worms nach Ihrer Leistung sucht, landet beim Mitbewerber und nicht bei Ihnen.",
+    tags: ["Google", "Maps", "Handy"], fix: "Saubere Technik, lokale Suchbegriffe und Anbindung an Ihr Google-Unternehmensprofil." },
+  { icon: "receipt", title: "Teure Verträge", text: "Monatliche Raten, lange Laufzeit, Kleingedrucktes. Und Sie zahlen jahrelang weiter.",
+    tags: ["Abo-Falle", "Mindestlaufzeit", "Kleingedrucktes"], fix: "Festpreis ab 99 €, kein Abo. Den Preis kennen Sie, bevor wir beginnen." },
+  { icon: "user-x", title: "Webdesigner weg", text: "Domain und Zugänge laufen auf den Anbieter. Ist er nicht mehr erreichbar, kommen Sie nicht ran.",
+    tags: ["Domain", "Zugangsdaten", "Quellcode"], fix: "Sie bekommen 100 % aller Projektdaten: Quellcode, Zugänge, Domain auf Ihren Namen. Nichts wird verschwiegen, alles ist transparent." },
 ]);
 
 export type WebPackage = { name: string; price: string; unit?: string; note: string; items: string[]; badge?: string; tagline?: string; regular?: string;
