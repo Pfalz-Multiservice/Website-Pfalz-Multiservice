@@ -75,6 +75,11 @@ export function LayerBuild() {
       });
       tl.timeScale(0.45);
       ScrollTrigger.create({ trigger: track, start: "top 55%", once: true, onEnter: () => tl.play() });
+      // Klick aufs Bild: Animation startet von vorn
+      const stage = root.querySelector<HTMLElement>(".lay-stage")!;
+      const replay = () => { stack.classList.add("is-moving"); tl.restart(); };
+      stage.classList.add("is-replay");
+      stage.addEventListener("click", replay);
       const click = (at: number) => {
         tl.to(cursor, { scale: 0.86, duration: 0.06, ease: "power2.in" }, at)
           .to(cursor, { scale: 1, duration: 0.14, ease: "back.out(3)" }, at + 0.06)
@@ -127,7 +132,7 @@ export function LayerBuild() {
         .to(cursor, { opacity: 0, duration: 0.15, ease: "none" }, 4.85);
       click(1.85); click(2.3); click(3.3); click(4.68);
 
-      return () => { root.classList.remove("lay--gsap"); };
+      return () => { root.classList.remove("lay--gsap"); stage.removeEventListener("click", replay); stage.classList.remove("is-replay"); };
     });
     return () => { mm.revert(); };
   }, { scope: ref });

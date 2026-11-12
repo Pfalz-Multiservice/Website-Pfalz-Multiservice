@@ -1429,6 +1429,7 @@ a .contact-row__value { color: var(--brand-accent); }
 .lay--gsap .lay-stage.s5 .pl { border-color: transparent; box-shadow: none; }
 .lay--gsap .b-photo { clip-path: none; }
 .lay--gsap .b-shutter, .lay--gsap .lay-cursor { display: block; }
+.lay-stage.is-replay { cursor: pointer; }
 .lay--gsap .lay-stage.s3 .pl-cols i { opacity: 1; }
 
 /* ---------- Tablet & Handy: Titel, Bühne und Text untereinander, alles klebt ---------- */
