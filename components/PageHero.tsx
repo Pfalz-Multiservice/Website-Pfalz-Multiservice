@@ -4,9 +4,9 @@ import { gsap, useGSAP, MOTION_OK, introDelay, splitHeading } from "@/lib/gsap";
 import { BgImage } from "./BgImage";
 import { SectionHeading } from "./SectionHeading";
 
-type Props = { eyebrow: string; title: React.ReactNode; highlight: string; /** Überschrift mobil so weit verkleinern, dass jede Zeile am Stück passt */ fitTitle?: boolean; intro: string; image: string; crumbs?: { label: string; href?: string }[]; children?: React.ReactNode };
+type Props = { eyebrow: string; title: React.ReactNode; highlight: string; /** Überschrift mobil so weit verkleinern, dass jede Zeile am Stück passt */ fitTitle?: boolean; /** Breiter Kopf: Hervorhebung bleibt in einer Zeile, Einleitung läuft auf voller Breite */ wide?: boolean; intro: string; image: string; crumbs?: { label: string; href?: string }[]; children?: React.ReactNode };
 
-export function PageHero({ eyebrow, title, highlight, intro, image, children, fitTitle }: Props) {
+export function PageHero({ eyebrow, title, highlight, intro, image, children, fitTitle, wide }: Props) {
   const ref = useRef<HTMLElement>(null);
 
   useGSAP(() => {
@@ -34,11 +34,11 @@ export function PageHero({ eyebrow, title, highlight, intro, image, children, fi
   }, { scope: ref });
 
   return (
-    <section ref={ref} className={`page-hero ${fitTitle ? "page-hero--fit" : ""}`}>
+    <section ref={ref} className={`page-hero ${fitTitle ? "page-hero--fit" : ""} ${wide ? "page-hero--wide" : ""}`}>
       <div className="page-hero__bg"><BgImage className="page-hero__img" src={image} eager /></div>
       <div className="hero__scrim" />
       <div className="container" style={{ position: "relative" }}>
-        <SectionHeading dark level={1} size="h1" motion="intro" maxWidth={720} eyebrow={eyebrow} title={title} highlight={highlight} intro={intro} />
+        <SectionHeading dark level={1} size="h1" motion="intro" maxWidth={wide ? 1160 : 720} eyebrow={eyebrow} title={title} highlight={highlight} intro={intro} />
         {children && <div className="page-hero__extra">{children}</div>}
       </div>
     </section>

@@ -2341,3 +2341,7 @@ a.web-local__row:hover, a.web-local__row:focus-visible { color: var(--brand-acce
 .web-local__teaser > svg { flex: none; color: var(--brand-accent); transition: transform var(--dur-base) var(--ease-out); }
 .web-local__teaser:hover, .web-local__teaser:focus-visible { border-color: rgba(221,187,77,.35); }
 .web-local__teaser:hover > svg { transform: translateX(4px); }
+/* Breiter Seitenkopf (z. B. /webdesign-worms): goldene Zeile ohne Umbruch, Schrift schrumpft auf kleinen Bildschirmen mit */
+.page-hero--wide .sh__hl { white-space: nowrap; }
+@media (max-width: 1100px) { .page-hero--wide .sh__title { font-size: min(var(--fs-h1), 5.6vw); } }
+@media (max-width: 900px) { .page-hero--wide.page-hero--fit .sh__title { font-size: 5.6vw; } }

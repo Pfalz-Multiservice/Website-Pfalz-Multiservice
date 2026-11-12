@@ -57,6 +57,7 @@ export default function WebdesignWormsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([serviceLd, faqPage(FAQ), breadcrumb([{ name: "Webdesign", path: "/webdesign" }, { name: "Webdesign Worms", path: "/webdesign-worms" }])]) }} />
       <PageHero
         fitTitle
+        wide
         eyebrow="Pfalz Multiservice · Worms"
         title={<span className="sh__line">Webdesign in Worms</span>}
         highlight="für Betriebe aus der Region"
