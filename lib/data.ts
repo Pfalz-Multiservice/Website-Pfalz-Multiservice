@@ -566,7 +566,7 @@ export const PARTNERS: Partner[] = tidyDeep([
     since: "Partner aus Worms",
     short: "Computer, WLAN, Smart Home, TV und HiFi: eingerichtet, repariert und erklärt, direkt bei den Kunden zu Hause in Worms und Umgebung.",
     text: "Multimedia Service Schaffner und Pfalz Multiservice ergänzen sich. Wenn bei unseren Kunden Computer, WLAN, Fernseher oder Smart Home nicht mehr wollen, ist das Team von Mirco Schaffner zur Stelle. Umgekehrt sind wir da, wenn es um Webdesign, die Wartung der Website und alles Weitere rund um den Auftritt im Netz geht.",
-    facts: [["10+", "Jahre Erfahrung vor Ort"], ["5", "Köpfe im Team"], ["seit 2023", "eigener Betrieb in Worms"]],
+    facts: [["10+", "Jahre Erfahrung vor Ort"], ["5", "Köpfe im Team"], ["2023", "gegründet in Worms"]],
     awards: ["FRITZ! Premium Partner 2026", "Starlink-zertifiziert", "Reolink-Partner"],
   },
 ]);
