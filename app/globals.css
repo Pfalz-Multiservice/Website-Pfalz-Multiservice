@@ -1639,9 +1639,9 @@ html.pm-motion .tk__sparks i:nth-child(3) { animation-delay: calc(var(--tk-d) + 
 /* Partnerabschnitte am Rechner niedriger: volle Breite bleibt, weniger Höhe, Bilder wirken schärfer */
 @media (min-width: 901px) {
   .pt-hero { min-height: clamp(480px, 64vh, 620px); }
-  .pt-hero__in { padding-block: clamp(40px, 5vw, 64px); }
+  .pt-hero .pt-hero__in { padding-block: clamp(40px, 5vw, 64px); }
   .pt-hero .pt-hero__name { font-size: clamp(2rem, 3.4vw, 3.1rem); }
-  .pt-hero__copy { gap: 16px; }
+  .pt-hero .pt-hero__copy { gap: 16px; }
 }
 /* Text rechts: am normalen Inhaltsrand ausgerichtet, etwas schmaler, damit links mehr vom Bild frei bleibt */
 @media (min-width: 901px) {
