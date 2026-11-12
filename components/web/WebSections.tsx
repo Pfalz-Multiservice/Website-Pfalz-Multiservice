@@ -13,6 +13,7 @@ import { Icon } from "../Icon";
 import { ClassicList } from "../ClassicShowcase";
 import { ShowcaseList } from "../Showcase";
 import { DeliverHandover } from "./DeliverHandover";
+import { ProblemStack } from "./ProblemStack";
 
 const CHECK_TEXT = "Hallo, bitte prüfen Sie kostenlos meine Website: ";
 export const WHATSAPP_CHECK = `${CONTACT.whatsapp}?text=${encodeURIComponent(CHECK_TEXT)}`;
@@ -43,23 +44,17 @@ export function WebTrust() {
 
 export function WebProblem() {
   return (
-    <section className="section">
-      <div className="container">
-        <SectionHeading eyebrow="Kennen Sie das?" title="Gute Arbeit," highlight="online unsichtbar?"
-          intro="Die meisten Kunden suchen zuerst im Internet. Wenn Ihre Website dort nicht überzeugt, landen sie beim Mitbewerber." style={{ marginBottom: 48 }} />
-        <div className="prob-grid pm-reveal" data-reveal="stagger">
-          {WEB_PROBLEMS.map(([t, x], i) => (
-            <div key={t} className="prob">
-              <span className="prob__num" aria-hidden="true" data-n={String(i + 1).padStart(2, "0")} />
-              <h3 className="prob__title">{t}</h3>
-              <p className="prob__text">{x}</p>
-            </div>
-          ))}
+    <section className="section pst-sec">
+      <div className="container pst">
+        <div className="pst__intro">
+          <SectionHeading eyebrow="Die Realität" title="Warum Websites" highlight="keine Kunden bringen"
+            intro="Fast jeder Betrieb hat längst eine Website. Nur bringt sie oft nichts. Meist liegt es an einem dieser vier Punkte." />
+          <div className="pst__cta pm-reveal" data-reveal="up">
+            <Button variant="accent" icon="arrow-right" href="#website-check">Kostenloser Website-Check</Button>
+            <span>Wir sehen uns Ihre Seite an und sagen ehrlich, was fehlt.</span>
+          </div>
         </div>
-        <div className="prob-solve pm-reveal" data-reveal="up">
-          <p><strong>Wir übernehmen das.</strong> Sie kümmern sich um Ihre Kunden.</p>
-          <Button variant="outline" icon="arrow-right" href="#website-check">Kostenloser Website-Check</Button>
-        </div>
+        <ProblemStack items={WEB_PROBLEMS} />
       </div>
     </section>
   );
