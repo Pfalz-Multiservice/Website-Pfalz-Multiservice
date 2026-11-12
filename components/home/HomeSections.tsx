@@ -79,8 +79,8 @@ export function About() {
             </div>
           </div>
         </div>
-        <div className="media-frame pm-reveal" data-reveal="clip" style={{ aspectRatio: "4/3.4" }}>
-          <BgImage className="media-frame__img" data-clip-img="" data-parallax="8" src={IMG + "lager-ware.png"} sizes="(max-width: 900px) 100vw, 50vw" />
+        <div className="media-frame pm-reveal" data-reveal="clip" style={{ aspectRatio: "4/5" }}>
+          <BgImage className="media-frame__img" data-clip-img="" data-parallax="8" src={IMG + "bruecken-turm-gold.jpg"} sizes="(max-width: 900px) 100vw, 50vw" />
           <span className="media-frame__corner media-frame__corner--tl" />
           <span className="media-frame__corner media-frame__corner--br" />
         </div>
