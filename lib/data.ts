@@ -554,6 +554,21 @@ export const PARTNERS: Partner[] = tidyDeep([
     facts: [["4", "Unterkünfte in Worms"], ["bis 9", "Personen pro Unterkunft"], ["4,8", "Sterne aus 200 Bewertungen"]],
     awards: ["Airbnb Superhost seit 2024", "Booking.com Traveller Review Award", "Vrbo Premium-Gastgeber"],
   },
+  {
+    slug: "multimedia-service-schaffner",
+    name: "Multimedia Service Schaffner",
+    branch: "Computer- und Technikservice in Worms",
+    host: "multimedia-service-schaffner.de",
+    url: withUtm("https://www.multimedia-service-schaffner.de"),
+    logo: "/images/partner/schaffner/logo.png",
+    photo: "/images/partner/schaffner/p1.jpg",
+    header: "/images/partner/schaffner/hero-4k.jpg",
+    since: "Partner aus Worms",
+    short: "Computer, WLAN, Smart Home, TV und HiFi: eingerichtet, repariert und erklärt, direkt bei den Kunden zu Hause in Worms und Umgebung.",
+    text: "Multimedia Service Schaffner und Pfalz Multiservice ergänzen sich. Wenn bei unseren Kunden Computer, WLAN, Fernseher oder Smart Home nicht mehr wollen, ist das Team von Mirco Schaffner zur Stelle. Umgekehrt sind wir da, wenn es um Webdesign, die Wartung der Website und alles Weitere rund um den Auftritt im Netz geht.",
+    facts: [["10+", "Jahre Erfahrung vor Ort"], ["5", "Köpfe im Team"], ["5,0", "Sterne bei Google"]],
+    awards: ["FRITZ! Premium Partner 2026", "Starlink-zertifiziert", "Reolink-Partner"],
+  },
 ]);
 
 /** Unterkunftstipp auf Leistungsseiten: Verve Apartments, Bereich für Projektteams */

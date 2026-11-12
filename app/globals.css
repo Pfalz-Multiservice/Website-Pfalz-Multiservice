@@ -1636,6 +1636,23 @@ html.pm-motion .tk__sparks i:nth-child(3) { animation-delay: calc(var(--tk-d) + 
 .pt-hero--rev .pt-hero__scrim { background: linear-gradient(270deg, rgba(0,0,0,.88) 0%, rgba(0,0,0,.72) 42%, rgba(0,0,0,.25) 78%, rgba(0,0,0,.1) 100%), linear-gradient(0deg, rgba(0,0,0,.45), rgba(0,0,0,0) 35%); }
 .pt-hero__in { position: relative; width: 100%; padding-block: clamp(56px, 8vw, 96px); display: flex; }
 .pt-hero--rev .pt-hero__in { justify-content: flex-end; }
+/* Partnerabschnitte am Rechner niedriger: volle Breite bleibt, weniger Höhe, Bilder wirken schärfer */
+@media (min-width: 901px) {
+  .pt-hero { min-height: clamp(480px, 64vh, 620px); }
+  .pt-hero .pt-hero__in { padding-block: clamp(40px, 5vw, 64px); }
+  .pt-hero .pt-hero__name { font-size: clamp(2rem, 3.4vw, 3.1rem); }
+  .pt-hero .pt-hero__copy { gap: 16px; }
+}
+/* Text rechts: am normalen Inhaltsrand ausgerichtet, etwas schmaler, damit links mehr vom Bild frei bleibt */
+@media (min-width: 901px) {
+  .pt-hero--rev .pt-hero__copy { max-width: 600px; }
+  /* Text rechts: rechtsbündig, Spiegelbild zum linken Abschnitt */
+  .pt-hero--rev .pt-hero__copy { align-items: flex-end; text-align: right; }
+  .pt-hero--rev .pt-facts > div { padding-left: 0; border-left: 0; padding-right: 16px; border-right: 2px solid var(--brand-accent); }
+  .pt-hero--rev .pt-awards { justify-content: flex-end; }
+  /* Schaffner: Bild breiter gezogen und nach links verschoben, damit der Techniker im linken Viertel steht */
+  #multimedia-service-schaffner .pt-hero__img { width: 140% !important; max-width: none !important; left: -38% !important; right: auto !important; object-position: 50% 8%; }
+}
 .pt-hero__copy { width: 100%; max-width: 720px; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
 .pt-hero__eyebrow { font: 600 var(--fs-eyebrow) var(--font-display); letter-spacing: var(--ls-eyebrow); text-transform: uppercase; color: var(--brand-accent); }
 .pt-hero__name { margin: -6px 0 0; font: 800 clamp(2.2rem, 5.4vw, 4.25rem)/1 var(--font-display); text-transform: uppercase; letter-spacing: var(--ls-display); color: var(--text-strong); text-wrap: balance; }
