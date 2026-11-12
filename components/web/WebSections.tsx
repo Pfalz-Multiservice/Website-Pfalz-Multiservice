@@ -53,6 +53,10 @@ export function WebProblem() {
             <Button variant="accent" icon="arrow-right" href="#website-check">Kostenloser Website-Check</Button>
             <span>Wir sehen uns Ihre Seite an und sagen ehrlich, was fehlt.</span>
           </div>
+          <p className="pst__promise pm-reveal" data-reveal="up">
+            <Icon name="shield-check" size={20} />
+            <span><b>100 % transparent:</b> Bei uns erhalten Sie alle Projektdaten. Quellcode, Zugänge, Domain, Bilder und Texte. Nichts wird verschwiegen.</span>
+          </p>
         </div>
         <ProblemStack items={WEB_PROBLEMS} />
       </div>

@@ -383,7 +383,7 @@ export const WEB_PROBLEMS: WebProblem[] = tidyDeep([
   { icon: "receipt", title: "Teure Verträge", text: "Monatliche Raten, lange Laufzeit, Kleingedrucktes. Und Sie zahlen jahrelang weiter.",
     tags: ["Abo-Falle", "Mindestlaufzeit", "Kleingedrucktes"], fix: "Festpreis ab 99 €, kein Abo. Den Preis kennen Sie, bevor wir beginnen." },
   { icon: "user-x", title: "Webdesigner weg", text: "Domain und Zugänge laufen auf den Anbieter. Ist er nicht mehr erreichbar, kommen Sie nicht ran.",
-    tags: ["Domain", "Zugangsdaten", "Erreichbarkeit"], fix: "Domain und Zugänge auf Ihren Namen, Ihr Ansprechpartner sitzt in Worms." },
+    tags: ["Domain", "Zugangsdaten", "Quellcode"], fix: "Sie bekommen 100 % aller Projektdaten: Quellcode, Zugänge, Domain auf Ihren Namen. Nichts wird verschwiegen, alles ist transparent." },
 ]);
 
 export type WebPackage = { name: string; price: string; unit?: string; note: string; items: string[]; badge?: string; tagline?: string; regular?: string;

@@ -501,6 +501,10 @@ a .contact-row__value { color: var(--brand-accent); }
 .pst__intro { position: sticky; top: calc(var(--header-h) + 56px); display: flex; flex-direction: column; gap: 32px; }
 .pst__cta { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
 .pst__cta > span { font: 400 14px/1.5 var(--font-body); color: var(--text-subtle); }
+.pst__promise { display: flex; align-items: flex-start; gap: 12px; margin: 0; max-width: 46ch; padding: 18px 20px; border-radius: 12px;
+  border: 1px solid rgba(221,187,77,.28); background: rgba(221,187,77,.06); font: 400 15px/1.55 var(--font-body); color: var(--text-body); }
+.pst__promise svg { flex: none; margin-top: 1px; color: var(--brand-accent); }
+.pst__promise b { color: var(--text-highlight); font-weight: 600; }
 .pst__cards { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 40px; }
 .pst-card { --top: calc(var(--header-h) + 40px + var(--i) * 26px); position: sticky; top: var(--top); overflow: hidden; isolation: isolate;
   padding: clamp(28px, 3.4vw, 44px); border-radius: 14px; transform-origin: 50% 0;
