@@ -105,7 +105,7 @@ export function RegionMap({ heading }: { heading: ReactNode }) {
         op(c.lbl, seg(t, s + 0.8, s + 1.2)); op(c.kmt, seg(t, s + 0.9, s + 1.3));
         const k = Math.round(c.km * ease(seg(t, s + 0.8, s + 1.6)));
         c.kmt.textContent = `${k} KM`; c.lik.textContent = `${k} km`;
-        c.li.classList.toggle("is-on", a > 0);
+        c.li.classList.toggle("is-on", a >= 0.6); // erst rechts zeigen, wenn der Ort auf der Karte aufleuchtet
         if (a > 0) { count++; maxkm = Math.max(maxkm, k); }
       });
       s1.textContent = `${count}`; s2.textContent = `${maxkm} km`;
