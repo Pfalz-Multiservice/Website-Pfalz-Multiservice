@@ -2277,7 +2277,7 @@ html.pm-motion .tk__sparks i:nth-child(3) { animation-delay: calc(var(--tk-d) + 
 .rm-facts { display: flex; flex-direction: column; gap: 32px; }
 .rm-list { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 24px; margin: 0; padding: 0; list-style: none; }
 .rm-list li { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border-subtle); color: #fff; font-size: .9375rem;
-  opacity: .18; transform: translateX(-8px); transition: opacity .5s var(--ease-out), transform .5s var(--ease-out), border-color .5s; }
+  opacity: 0; transform: translateX(-12px); transition: opacity .5s var(--ease-out), transform .5s var(--ease-out), border-color .5s; }
 .rm-list li b { color: var(--text-highlight); font-weight: 500; font-variant-numeric: tabular-nums; }
 .rm-list li.is-on { opacity: 1; transform: none; border-color: var(--border-strong); }
 .rm-stats { display: flex; gap: clamp(20px, 4vw, 36px); flex-wrap: wrap; }

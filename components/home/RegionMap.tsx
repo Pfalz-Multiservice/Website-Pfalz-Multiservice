@@ -20,7 +20,7 @@ const CITIES = [
   { n: "Ludwigshafen", x: 316, y: 428, km: 22, dx: -14, end: true, dy: 14 },
   { n: "Eich", x: 292, y: 149, km: 15, dx: -12, end: true, dy: 0 },
   { n: "Bad Dürkheim", x: 142, y: 439, km: 28, dx: -12, end: true, dy: 0 },
-];
+].sort((a, b) => a.km - b.km); // nächste Orte zuerst, dann weiter weg
 const RHINE = "M311 600 C318 540 334 500 330 470 S326 425 324 410 S312 360 305 340 S282 295 279 270 S286 225 292 200 S340 165 350 140 S312 80 305 50 S262 20 246 0";
 const NECKAR = "M337 410 C360 418 380 428 389 430 S450 480 480 490 S560 495 600 500";
 const arcPath = (c: (typeof CITIES)[number]) => {
@@ -105,7 +105,7 @@ export function RegionMap({ heading }: { heading: ReactNode }) {
         op(c.lbl, seg(t, s + 0.8, s + 1.2)); op(c.kmt, seg(t, s + 0.9, s + 1.3));
         const k = Math.round(c.km * ease(seg(t, s + 0.8, s + 1.6)));
         c.kmt.textContent = `${k} KM`; c.lik.textContent = `${k} km`;
-        c.li.classList.toggle("is-on", a > 0);
+        c.li.classList.toggle("is-on", a >= 0.6); // erst rechts zeigen, wenn der Ort auf der Karte aufleuchtet
         if (a > 0) { count++; maxkm = Math.max(maxkm, k); }
       });
       s1.textContent = `${count}`; s2.textContent = `${maxkm} km`;
