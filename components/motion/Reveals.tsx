@@ -60,7 +60,8 @@ export function Reveals() {
           once: true,
           onEnter: (batch) => {
             gsap.to(batch, { y: 0, opacity: 1, duration: 1.3, stagger: 0.12, ease: "expo.out" });
-            gsap.to(batch.map((b) => b.querySelector(".card__parallax")), { scale: 1, duration: 1.8, stagger: 0.12, ease: "expo.out" });
+            const par = batch.map((b) => b.querySelector(".card__parallax")).filter(Boolean);
+            if (par.length) gsap.to(par, { scale: 1, duration: 1.8, stagger: 0.12, ease: "expo.out" });
           },
         });
       });

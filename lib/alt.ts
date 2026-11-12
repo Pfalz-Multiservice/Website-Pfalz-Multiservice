@@ -4,6 +4,7 @@
  * Wird in `BgImage` automatisch nachgeschlagen, wenn kein `alt` übergeben wird.
  */
 export const ALT: Record<string, string> = {
+  "/images/dom-worms-gold.jpg": "Türme des Wormser Doms im goldenen Abendlicht vor dunklem Himmel",
   "/images/transporter-halle.png": "Transporter von Pfalz Multiservice in der Lagerhalle in Worms",
   "/images/transporter-verladung.png": "Beladung des Transporters bei einer Räumung in Worms",
   "/images/storage-unit.png": "Abschließbare Lagerbox mit eingelagerten Kartons und Regalen",
