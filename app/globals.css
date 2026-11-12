@@ -1642,6 +1642,7 @@ html.pm-motion .tk__sparks i:nth-child(3) { animation-delay: calc(var(--tk-d) + 
     min-height: clamp(520px, 72vh, 680px); border: 1px solid var(--border-subtle); border-radius: var(--radius-card); }
   .pt-hero--first { padding-top: 0; margin-top: calc(var(--header-h) + clamp(24px, 4vw, 48px)); }
   .pt-hero__in { padding-inline: clamp(32px, 4vw, 56px); }
+  .pt-hero__name { font-size: clamp(2rem, 3.9vw, 3.5rem); }
 }
 /* Text rechts: am normalen Inhaltsrand ausgerichtet, etwas schmaler, damit links mehr vom Bild frei bleibt */
 @media (min-width: 901px) {
