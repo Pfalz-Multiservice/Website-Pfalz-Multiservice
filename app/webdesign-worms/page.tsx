@@ -8,7 +8,7 @@ import { PageHero } from "@/components/PageHero";
 import { Button } from "@/components/Button";
 import { Faq } from "@/components/Faq";
 import { CtaBand } from "@/components/home/HomeSections";
-import { WebPackages, WebTrust } from "@/components/web/WebSections";
+import { WebExamples, WebPackages, WebTrust } from "@/components/web/WebSections";
 import { WebLocal, WORMS_DISTRICTS, WORMS_NEARBY } from "@/components/web/WebLocal";
 
 /** Lokale Landingpage für „Webdesign Worms“. Die allgemeine Übersicht mit Beispielen und Ablauf liegt unter /webdesign. */
@@ -65,12 +65,13 @@ export default function WebdesignWormsPage() {
         image={IMG + "dom-worms-gold.jpg"}
       >
         <Button variant="accent" size="lg" icon="arrow-right" href="/kontakt?leistung=web">Kostenloses Angebot</Button>
-        <Button variant="outline-light" size="lg" href="/webdesign#beispiele">Beispiele ansehen</Button>
+        <Button variant="outline-light" size="lg" href="#beispiele">Beispiele ansehen</Button>
       </PageHero>
       <WebTrust />
-      <WebLocal />
+      <WebLocal alt={false} />
+      <WebExamples />
       <WebPackages />
-      <Faq items={FAQ} />
+      <Faq items={FAQ} alt />
       <CtaBand
         image={IMG + "lagergang.png"}
         intro={<>Erzählen Sie uns kurz von Ihrem Betrieb in Worms.<br />Wir melden uns mit einem Vorschlag und einem Festpreis, unverbindlich.</>}

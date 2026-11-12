@@ -14,14 +14,14 @@ export const WORMS_NEARBY = ["Osthofen", "Alzey"];
  * Lokaler Abschnitt der Webdesign-Seite: Worms im Fließtext, dazu Name, Ort und Telefon
  * exakt wie im Google-Unternehmensprofil (Einzugsgebiet, daher ohne Straße).
  */
-export function WebLocal() {
+export function WebLocal({ alt = true }: { alt?: boolean }) {
   const points = [
     { title: "Ansprechpartner in Worms", text: "Sie sprechen direkt mit uns, nicht mit einer Hotline oder einer Agentur am anderen Ende des Landes." },
     { title: "Für Kunden aus der Region", text: "Texte und Seitenaufbau so, dass Ihre Kunden in Worms und Umgebung Sie bei Google finden." },
     { title: "Festpreis ab 199 €", text: "Einmalig, ohne Abo. Sie kennen den Preis, bevor wir beginnen." },
   ];
   return (
-    <section className="section section--alt" id="worms">
+    <section className={`section${alt ? " section--alt" : ""}`} id="worms">
       <div className="container split web-local">
         <div>
           <SectionHeading eyebrow="Webdesign aus Worms" title="Ihr Webdesigner" highlight="in Worms" />
