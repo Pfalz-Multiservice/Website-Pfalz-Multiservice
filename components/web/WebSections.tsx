@@ -20,7 +20,7 @@ export const WHATSAPP_CHECK = `${CONTACT.whatsapp}?text=${encodeURIComponent(CHE
 
 export function WebTrust() {
   const items: [string, string][] = [
-    ["Festpreis ab 99 €", "Sie kennen den Preis,\nbevor wir beginnen."],
+    ["Festpreis ab 199 €", "Sie kennen den Preis,\nbevor wir beginnen."],
     ["Kein Abo, kein Zwang", "Die Website gehört Ihnen."],
     ["Freigabe vor Livegang", "Nichts geht ohne Ihr OK online."],
     ["Persönlich aus Worms", "Ein fester Ansprechpartner\nstatt Hotline."],
@@ -286,7 +286,7 @@ export function WebTeaser({ alt = false }: { alt?: boolean }) {
     <section className={`section ${alt ? "section--alt" : ""}`} id="webdesign">
       <div className="container">
         <div className="teaser-head">
-          <SectionHeading eyebrow="Webdesign · ab 99 €" title="Websites, die" highlight="wirken"
+          <SectionHeading eyebrow="Webdesign · ab 199 €" title="Websites, die" highlight="wirken"
             intro="Individuell gestaltet, zum Festpreis, persönlich betreut. Kein Abo, kein Zwang. Hier eine Auswahl unserer Musterdesigns." />
           <div className="pm-reveal" data-reveal="up">
             <Button variant="accent" icon="arrow-right" href="/webdesign">Zur Webdesign-Seite</Button>

@@ -12,15 +12,18 @@ import { CtaBand } from "@/components/home/HomeSections";
 import { WebBriefingTeaser, WebExamples, WebFaqCheck, WebPackages, WebProblem, WebTrust } from "@/components/web/WebSections";
 import { ShopShowcase } from "@/components/web/ShopShowcase";
 import { LayerBuild } from "@/components/web/LayerBuild";
+import { WormsTeaser } from "@/components/web/WebLocal";
 
+// Allgemeine Übersicht – „Webdesign Worms“ hat eine eigene Seite (/webdesign-worms), damit sich beide nicht Konkurrenz machen
+const title = "Website erstellen lassen ab 199 €";
 const description =
-  "Website erstellen lassen in Worms und der Pfalz: individuelles Webdesign zum Festpreis ab 99 €, ohne Abo. Beispiele ansehen, kostenloser Website-Check.";
+  "Website erstellen lassen: individuelles Webdesign zum Festpreis ab 199 €, ohne Abo. Musterdesigns, Pakete, Ablauf und Wartung im Überblick.";
 
 export const metadata: Metadata = {
-  title: "Webdesign Worms: Website ab 99 €",
+  title,
   description,
   alternates: { canonical: "/webdesign" },
-  ...social({ path: "/webdesign", title: "Webdesign Worms: Website ab 99 € · Pfalz Multiservice", description, image: "/og/webdesign.jpg", alt: "Webdesign von Pfalz Multiservice" }),
+  ...social({ path: "/webdesign", title: `${title} · Pfalz Multiservice`, description, image: "/og/webdesign.jpg", alt: "Webdesign von Pfalz Multiservice" }),
 };
 
 const faqLd = faqPage(WEB_FAQ);
@@ -30,11 +33,11 @@ const serviceLd = {
   name: "Webdesign & Website-Erstellung",
   serviceType: "Webdesign",
   provider: { "@id": `${SITE}/#business` },
-  areaServed: ["Worms", "Pfalz"],
+  areaServed: ["Worms", "Rheinhessen", "Pfalz", "Mannheim"],
   offers: [
-    { "@type": "Offer", name: "Start: OnePager, bis 5 Abschnitte", price: "99", priceCurrency: "EUR", description: "Einmaliger Festpreis im Angebot, Normalpreis 199 €" },
+    { "@type": "Offer", name: "Start: OnePager, bis 5 Abschnitte", price: "199", priceCurrency: "EUR", description: "Einmaliger Festpreis" },
     { "@type": "Offer", name: "Business: OnePager oder mehrseitige Website, bis 8 Seiten", price: "299", priceCurrency: "EUR", description: "Einmaliger Festpreis" },
-    ...[["Wartung", "19", "Bis 1 Std. Änderungen pro Monat"], ["Wartung Pro", "29", "Bis 2 Std. Änderungen pro Monat"], ["Wartung Premium", "69", "Bis 6 Std. Änderungen pro Monat"]].map(([name, price, description]) => ({
+    ...[["Wartung", "19", "Bis 1 Std. Änderungen pro Monat"], ["Wartung Pro", "29", "Bis 2 Std. Änderungen pro Monat"], ["Wartung Premium", "99", "Bis 6 Std. Änderungen pro Monat"]].map(([name, price, description]) => ({
       "@type": "Offer", name, priceCurrency: "EUR", description: `${description}, monatlich kündbar`,
       priceSpecification: { "@type": "UnitPriceSpecification", price, priceCurrency: "EUR", unitText: "Monat" },
     })),
@@ -70,6 +73,7 @@ export default function WebdesignPage() {
       <WebBriefingTeaser />
       <Process steps={WEB_STEPS} eyebrow="So läuft’s ab" title="In 5 Schritten zur" highlight="Website" />
       <WebFaqCheck />
+      <WormsTeaser />
       <CtaBand
         image={IMG + "lagergang.png"}
         intro={<>Erzählen Sie uns kurz von Ihrem Betrieb.<br />Wir melden uns mit einem Vorschlag und einem Festpreis, unverbindlich.</>}

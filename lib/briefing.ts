@@ -17,7 +17,7 @@ export const BRIEFING_INTRO = {
   facts: [
     ["Dauer", "ca. 15–20 Minuten"],
     ["Ausfüllen", "am Handy, PC oder Tablet"],
-    ["Investition", "Websites ab 99 €"],
+    ["Investition", "Websites ab 199 €"],
   ] as [string, string][],
   steps: [
     ["01", "Fragebogen", "Sie füllen aus, was Sie wissen. Alles andere klären wir gemeinsam."],

@@ -50,7 +50,7 @@ export const GUIDES: Guide[] = [
       {
         h: "Was eine Website bei uns kostet",
         l: [
-          "Start: 99 € statt 199 € im aktuellen Angebot, einmalig. Eine Seite mit bis zu fünf Abschnitten, ideal für einen schnellen, starken Auftritt.",
+          "Start: 199 €, einmalig. Eine Seite mit bis zu fünf Abschnitten, ideal für einen schnellen, starken Auftritt.",
           "Business: 299 €, einmalig. Eine Seite oder eine Website mit Menü und bis zu acht Unterseiten.",
           "Shop oder Premium: individuell nach Angebot. Online-Shops und größere Projekte mit bis zu 20 Seiten oder besonderen Funktionen.",
           "In jedem Paket enthalten: individuelles Design, Darstellung für Smartphone und PC, Ladezeit-Optimierung, Umsetzung ohne Tracking-Cookies, Impressum und Datenschutz eingebunden, Bildlizenzen und ein Übergabe-Paket mit allen Zugangsdaten.",
