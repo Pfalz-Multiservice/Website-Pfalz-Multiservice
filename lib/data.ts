@@ -261,6 +261,11 @@ export type Example = {
   branch: string;
   text: string;
   tags: string[];
+  /** Echte Kundenprojekte: eigene Domain statt Beispiel-Server; url null = noch nicht online, dann ohne Link */
+  host?: string;
+  url?: string | null;
+  /** false = kein Handy-Mockup (kein brauchbarer Handy-Screenshot) */
+  phone?: boolean;
 };
 
 // Reihenfolge = Raster auf /webdesign: oben links, oben rechts, unten links, unten rechts
@@ -298,9 +303,6 @@ export const EXAMPLES: Example[] = tidyDeep([
 /** Klassische Musterdesigns mit Menü – Unterseiten für den Seiten-Umschalter */
 export type ClassicExample = Example & {
   pages: { key: string; label: string; path: string }[];
-  /** Echte Kundenprojekte: eigene Domain statt Beispiel-Server; url null = noch nicht online, dann ohne Link */
-  host?: string;
-  url?: string | null;
 };
 
 /** Echte Kundenprojekte, stehen auf /webdesign ganz oben */
@@ -327,6 +329,7 @@ export const CLASSIC_EXAMPLES: ClassicExample[] = tidyDeep([
   {
     slug: "seifenmanufaktur",
     name: "Honigstück",
+    phone: false,
     branch: "Seifenmanufaktur · Online-Shop",
     text: "Ruhiger, warmer Online-Shop: Produktfilter, Warenkorb, Geschenkideen und eine Karte, woher die Zutaten kommen.",
     tags: ["6 Seiten", "Produktfilter", "Warenkorb"],
