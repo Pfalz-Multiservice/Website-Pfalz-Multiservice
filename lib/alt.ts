@@ -19,6 +19,7 @@ export const ALT: Record<string, string> = {
   "/images/clearance-raeumung.jpg": "Transporter mit offenen Hecktüren in einer halb geräumten Halle, beladen mit Kartons und Möbeln, daneben Besen und Regalteile – Räumung und Entrümpelung in Worms",
   "/images/reselling-wareneingang.jpg": "Wareneingang mit angekauften Restposten: Jacken werden aus einem Karton genommen, geprüft und gestapelt, daneben Scanner und Prüfliste – Reselling aus Worms",
   "/images/smarthome-knx-verteiler.jpg": "Techniker programmiert am offenen Verteilerschrank mit KNX-Busanlage per Laptop – KNX-Anlagen ändern und erweitern in Worms",
+  "/images/webdesign-hero.jpg": "Büroarbeitsplatz mit zwei Bildschirmen, auf denen eine fertige Handwerker-Website zu sehen ist, daneben das Angebot auf Papier",
   "/images/webdesign-buero.jpg": "Arbeitsplatz mit zwei Bildschirmen, auf denen eine Website gestaltet wird – Webdesign aus Worms",
   "/images/webseite-laptop.png": "Website auf einem Laptop – Webdesign und Website-Betreuung aus Worms",
   "/images/wartung-technik.png": "Technische Betreuung und Wartung vor Ort beim Kunden",
