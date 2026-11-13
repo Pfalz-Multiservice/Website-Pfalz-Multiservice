@@ -151,10 +151,7 @@ export function WebPackages() {
           </div>
         </div>
 
-        <div className="pk-free pm-reveal" data-reveal="up">
-          <Icon name="file-check" size={26} />
-          <p><strong>Kein Abo, kein Zwang.</strong> Einmaliger Festpreis, keine versteckten Kosten, die Website gehört Ihnen. Laufende Kosten entstehen nur für Hosting und Domain: Die zahlen Sie direkt beim Anbieter Ihrer Wahl, den Betrag weisen wir im Angebot getrennt aus. In Wartung Pro und Premium ist Premium-Hosting auf EU-Servern bei uns enthalten, die Einrichtung übernehmen wir.</p>
-        </div>
+        <p className="pk-plain pm-reveal" data-reveal="up"><strong>Kein Abo, kein Zwang.</strong> Einmaliger Festpreis, keine versteckten Kosten, die Website gehört Ihnen. Laufende Kosten entstehen nur für Hosting und Domain: Die zahlen Sie direkt beim Anbieter Ihrer Wahl, den Betrag weisen wir im Angebot getrennt aus. In Wartung Pro und Premium ist Premium-Hosting auf EU-Servern bei uns enthalten, die Einrichtung übernehmen wir.</p>
 
         <DeliverHandover />
 

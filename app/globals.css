@@ -787,6 +787,8 @@ a .contact-row__value { color: var(--brand-accent); }
 @media (prefers-reduced-motion: reduce) { .platin::after, .platin__title { animation: none; } .platin::after { display: none; } }
 .care__fine { margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 4px 24px; font: 400 13px/1.5 var(--font-body); color: var(--text-subtle); }
 .care__fine b { color: var(--text-body); font-weight: 600; }
+.pk-plain { margin: 24px 0 0; max-width: 980px; font: 400 14px/1.6 var(--font-body); color: var(--text-subtle); }
+.pk-plain strong { color: #fff; font-weight: 700; }
 .care__single b { color: #fff; font-weight: 700; margin-right: 6px; }
 .care__single strong { flex: none; font: 800 24px var(--font-display); color: var(--brand-accent); }
 .pk-box--handover { margin-top: 20px; }
