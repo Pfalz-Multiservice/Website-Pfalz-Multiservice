@@ -61,7 +61,7 @@ export function WebExamples() {
     <section className="section section--alt" id="beispiele">
       <div className="container">
         <SectionHeading eyebrow="Designs" title="Unsere" highlight="Referenzen"
-          intro="Ein Kundenprojekt und sechs Musterdesigns, klassisch mit Menü oder als One-Pager." />
+          intro="Aktuelle Kundenprojekte und Referenzen." />
 
         <div className="sc-group">
           <h3 className="sc-group__title">Kundenprojekte <span>bald online</span></h3>
