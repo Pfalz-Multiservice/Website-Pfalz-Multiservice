@@ -323,6 +323,16 @@ export const REFERENCES: ClassicExample[] = tidyDeep([
       { key: "kontakt", label: "Kontakt", path: "/kontakt/" },
     ],
   },
+  {
+    slug: "hasch",
+    name: "Doggen vom Nordpfälzer Land",
+    branch: "Doggenzucht · Rockenhausen",
+    text: "",
+    tags: [],
+    host: "doggen-npl.de",
+    url: null, // unter der Domain läuft noch die alte Seite; erst nach dem Umzug verlinken
+    pages: [{ key: "start", label: "Start", path: "/" }],
+  },
 ]);
 
 export const CLASSIC_EXAMPLES: ClassicExample[] = tidyDeep([
