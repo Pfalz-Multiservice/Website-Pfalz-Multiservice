@@ -34,9 +34,9 @@ export function ExampleReel() {
     const mm = gsap.matchMedia();
     mm.add(MOTION_OK, () => {
       setMotion(true);
-      // Handy: erst loslaufen, wenn die Bühne drei Viertel des Bildschirms nach oben gewandert ist
+      // Handy: erst loslaufen, wenn die Bühne die Bildschirmmitte erreicht hat
       const touch = window.matchMedia("(hover: none), (pointer: coarse)").matches;
-      const st = ScrollTrigger.create({ trigger: el, start: touch ? "top 25%" : "top 80%", end: "bottom 20%", onToggle: (s) => { inView.current = s.isActive; sync(); } });
+      const st = ScrollTrigger.create({ trigger: el, start: touch ? "top 50%" : "top 80%", end: "bottom 20%", onToggle: (s) => { inView.current = s.isActive; sync(); } });
       return () => { st.kill(); setMotion(false); };
     });
     return () => mm.revert();
