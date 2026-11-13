@@ -135,24 +135,6 @@ export function WebPackages() {
           {WEB_PACKAGES.map((p) => <PackageCard key={p.name} p={p} />)}
         </div>
         <p className="care__swipe" aria-hidden="true">← wischen für weitere Pakete →</p>
-          <div className="platin pm-reveal" data-reveal="up">
-            <div className="platin__head">
-              <span className="platin__eyebrow">Wartung Platin · Die Rundum-Lösung</span>
-              <h3 className="platin__title">Platin</h3>
-              <p className="platin__text">Für Portale, Blogs und Plattformen mit laufend neuen Inhalten. Alle Premium-Leistungen, dazu Extras, die wir genau auf Ihr Projekt zuschneiden.</p>
-            </div>
-            <ul className="platin__list">
-              <li>Alle Premium-Leistungen</li>
-              <li>Stunden &amp; Umfang nach Bedarf</li>
-              <li>Extras individuell zugeschnitten</li>
-              <li>Vorrangige Bearbeitung</li>
-            </ul>
-            <div className="platin__price">
-              <strong>Auf Anfrage</strong>
-              <span>Individuelles Angebot</span>
-              <Link href="/kontakt?leistung=web" className="platin__btn" data-cursor>Platin anfragen</Link>
-            </div>
-          </div>
 
         <div className="pk-incl">
           <div className="pk-box pk-box--incl pm-reveal" data-reveal="up" id="inklusive">
@@ -181,6 +163,24 @@ export function WebPackages() {
             intro="Freiwillig: Sie melden Ihre Änderungen, wir setzen sie um. Monatlich kündbar." style={{ marginBottom: 40 }} />
           <CarePricing />
           <p className="care__swipe" aria-hidden="true">← wischen für weitere Pakete →</p>
+          <div className="platin pm-reveal" data-reveal="up">
+            <div className="platin__head">
+              <span className="platin__eyebrow">Wartung Platin · Die Rundum-Lösung</span>
+              <h3 className="platin__title">Platin</h3>
+              <p className="platin__text">Für Portale, Blogs und Plattformen mit laufend neuen Inhalten. Alle Premium-Leistungen, dazu Extras, die wir genau auf Ihr Projekt zuschneiden.</p>
+            </div>
+            <ul className="platin__list">
+              <li>Alle Premium-Leistungen</li>
+              <li>Stunden &amp; Umfang nach Bedarf</li>
+              <li>Extras individuell zugeschnitten</li>
+              <li>Vorrangige Bearbeitung</li>
+            </ul>
+            <div className="platin__price">
+              <strong>Auf Anfrage</strong>
+              <span>Individuelles Angebot</span>
+              <Link href="/kontakt?leistung=web" className="platin__btn" data-cursor>Platin anfragen</Link>
+            </div>
+          </div>
           <ul className="care__notes pm-reveal" data-reveal="stagger">
             {WEB_CARE_NOTES.map((n) => (
               <li key={n.title} className="care__note"><b>{n.title}</b><span>{n.text}</span></li>

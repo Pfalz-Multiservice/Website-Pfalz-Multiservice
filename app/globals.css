@@ -763,7 +763,7 @@ a .contact-row__value { color: var(--brand-accent); }
 .platin > * { position: relative; z-index: 1; }
 .platin__eyebrow { display: block; font: 600 var(--fs-eyebrow) var(--font-display); letter-spacing: var(--ls-eyebrow); text-transform: uppercase; color: var(--pt-mid); }
 .platin__title { margin: 6px 0 8px; font: 800 clamp(2rem, 3vw, 2.6rem)/1 var(--font-display); text-transform: uppercase; letter-spacing: .06em;
-  background: linear-gradient(100deg, var(--pt-lo) 0%, var(--pt-hi) 25%, #ffffff 40%, var(--pt-mid) 55%, var(--pt-hi) 75%, var(--pt-lo) 100%);
+  background: linear-gradient(100deg, var(--pt-mid) 0%, var(--pt-hi) 25%, #ffffff 40%, #cfd4da 55%, var(--pt-hi) 75%, var(--pt-mid) 100%);
   background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 10px rgba(225,232,240,.25)); animation: platin-text 6s ease-in-out infinite; }
 @keyframes platin-text { 0% { background-position: 100% 0; } 45%, 100% { background-position: 0% 0; } }
