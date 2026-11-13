@@ -69,7 +69,7 @@ export function WebExamples() {
         <ShowcaseList grid items={REFERENCES} />
 
         <div className="sc-group sc-group--later">
-          <h3 className="sc-group__title">Musterdesigns <span>sechs Beispiele, laufen von selbst durch</span></h3>
+          <h3 className="sc-group__title">Musterdesigns</h3>
         </div>
         <ExampleReel />
 

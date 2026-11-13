@@ -91,7 +91,10 @@ export function ExampleReel() {
         <div key={cur} className="reel-copy__in">
           <span className="sc-branch">{ex.branch}</span>
           <h4 className="reel-title">{ex.name}</h4>
-          <span className="reel-kind">{ex.kind}</span>
+          <ul className="reel-tags" aria-label="Art und Funktionen">
+            <li className="reel-kind reel-kind--on">{ex.kind}</li>
+            {ex.tags.filter((t) => !/^\d+ Seiten$/.test(t)).map((t) => <li key={t} className="reel-kind">{t}</li>)}
+          </ul>
         </div>
         <a className="reel-live" href={href} target="_blank" rel="noopener" data-cursor>
           Live ansehen <Icon name="external-link" size={15} />
