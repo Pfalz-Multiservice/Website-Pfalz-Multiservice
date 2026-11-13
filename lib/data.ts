@@ -298,7 +298,30 @@ export const EXAMPLES: Example[] = tidyDeep([
 /** Klassische Musterdesigns mit Menü – Unterseiten für den Seiten-Umschalter */
 export type ClassicExample = Example & {
   pages: { key: string; label: string; path: string }[];
+  /** Echte Kundenprojekte: eigene Domain statt Beispiel-Server; url null = noch nicht online, dann ohne Link */
+  host?: string;
+  url?: string | null;
 };
+
+/** Echte Kundenprojekte, stehen auf /webdesign ganz oben */
+export const REFERENCES: ClassicExample[] = tidyDeep([
+  {
+    slug: "schaffner",
+    name: "Multimedia Service Schaffner",
+    branch: "Computerservice · Worms",
+    text: "",
+    tags: [],
+    host: "multimedia-service-schaffner.de",
+    url: null, // nach dem Livegang: "https://www.multimedia-service-schaffner.de"
+    pages: [
+      { key: "start", label: "Start", path: "/" },
+      { key: "leistungen", label: "Leistungen", path: "/leistungen/" },
+      { key: "preise", label: "Preise", path: "/preise/" },
+      { key: "ueber-uns", label: "Über uns", path: "/ueber-uns/" },
+      { key: "kontakt", label: "Kontakt", path: "/kontakt/" },
+    ],
+  },
+]);
 
 export const CLASSIC_EXAMPLES: ClassicExample[] = tidyDeep([
   {
@@ -516,7 +539,7 @@ export const WEB_FAQ: [string, string][] = tidyDeep([
   ["Kümmern Sie sich auch nach dem Livegang um die Website?", "Ja, wenn Sie möchten. Sie melden Ihre Änderungen, wir setzen sie um: mit Wartung (39 € im Monat, bis 1 Std.), Wartung Pro (59 € im Monat, bis 2 Std.) oder Wartung Premium (99 € im Monat, bis 3 Std.), jeweils monatlich kündbar. Einzelne Änderungen ohne Paket kosten 39 € pro Stunde. In Wartung Pro und Premium ist Premium-Hosting auf EU-Servern enthalten, sonst zahlen Sie Hosting und Domain direkt beim Anbieter Ihrer Wahl."],
   ["Ich habe schon eine Website. Können Sie die übernehmen?", "Ja. Wir überarbeiten auch bestehende Websites und übernehmen alte Inhalte. Schicken Sie uns zuerst den Link für den kostenlosen Website-Check."],
   ["Für wen ist das Angebot?", "Unser Webdesign- und Wartungsangebot richtet sich ausschließlich an Unternehmer im Sinne von § 14 BGB, also Gewerbetreibende, Selbstständige und Betriebe. Verträge mit Verbrauchern schließen wir hierüber nicht."],
-  ["Sind die Beispiele echte Kunden?", "Nein. Die Beispiele sind Musterdesigns für erfundene Betriebe. Sie zeigen, was möglich ist. Ihre Website gestalten wir individuell für Ihren Betrieb."],
+  ["Sind die Beispiele echte Kunden?", "Teilweise. Multimedia Service Schaffner aus Worms ist ein echtes Kundenprojekt. Die übrigen Beispiele sind Musterdesigns für erfundene Betriebe und zeigen, was möglich ist. Ihre Website gestalten wir individuell für Ihren Betrieb."],
 ]);
 
 /** Partner aus der Region (Freigabe für Name, Logo und Fotos liegt vor). Weitere Partner einfach unten anhängen. */

@@ -4,7 +4,7 @@ import { BriefingPreview } from "./BriefingPreview";
 import { CarePricing } from "./CarePricing";
 import Link from "next/link";
 import Image from "next/image";
-import { CLASSIC_EXAMPLES, CONTACT, EXAMPLES, SHOP_EXAMPLE, WEB_ADDONS, WEB_BASE_ITEMS, WEB_FAQ, WEB_CARE_NOTES, WEB_INCLUDED, WEB_PACKAGES, WEB_PROBLEMS, type WebPackage } from "@/lib/data";
+import { CLASSIC_EXAMPLES, CONTACT, REFERENCES, EXAMPLES, SHOP_EXAMPLE, WEB_ADDONS, WEB_BASE_ITEMS, WEB_FAQ, WEB_CARE_NOTES, WEB_INCLUDED, WEB_PACKAGES, WEB_PROBLEMS, type WebPackage } from "@/lib/data";
 import { EXAMPLES_URL } from "@/lib/site";
 import { ExpandText } from "../ExpandText";
 import { SectionHeading } from "../SectionHeading";
@@ -64,6 +64,11 @@ export function WebExamples() {
           intro="Klassisch mit Menü oder als One-Pager mit Animation." />
 
         <div className="sc-group">
+          <h3 className="sc-group__title">Kundenprojekte <span>bald online</span></h3>
+        </div>
+        <ClassicList grid items={REFERENCES} />
+
+        <div className="sc-group sc-group--later">
           <h3 className="sc-group__title">Klassische Websites <span>mit Menü und Unterseiten</span></h3>
         </div>
         <ClassicList grid />
@@ -78,8 +83,8 @@ export function WebExamples() {
         </div>
 
         {tidyNode(<p className="showcase-note" style={{ margin: "40px auto 0", textAlign: "center" }}>
-          <span className="line">Alle gezeigten Betriebe, Personen und Angebote sind frei erfunden.</span>
-          <span className="line">Die Seiten sind Musterdesigns von Pfalz Multiservice.</span>
+          <span className="line">Klassische Websites und One-Pager sind Musterdesigns von Pfalz Multiservice.</span>
+          <span className="line">Die dort gezeigten Betriebe, Personen und Angebote sind frei erfunden.</span>
         </p>)}
       </div>
     </section>
@@ -121,7 +126,7 @@ export function WebPackages() {
   return tidyNode(
     <section className="section" id="pakete">
       <div className="container">
-        <SectionHeading align="center" eyebrow="Pakete & Preise" title="Was kostet" highlight="eine Website?"
+        <SectionHeading eyebrow="Pakete & Preise" title="Was kostet" highlight="eine Website?"
           intro={"Einmaliger Festpreis, von der kompakten Visitenkarte bis zum Online-Shop.\nSie wissen von Anfang an, woran Sie sind."} style={{ marginBottom: 48 }} />
         <div className="pk-grid pm-reveal" data-reveal="stagger">
           {WEB_PACKAGES.map((p) => <PackageCard key={p.name} p={p} />)}
@@ -148,7 +153,7 @@ export function WebPackages() {
         <DeliverHandover />
 
         <div className="care" id="wartung">
-          <SectionHeading align="center" eyebrow="Betreuung nach dem Livegang" title="Ihre Website bleibt" highlight="aktuell"
+          <SectionHeading eyebrow="Betreuung nach dem Livegang" title="Ihre Website bleibt" highlight="aktuell"
             intro="Freiwillig: Sie melden Ihre Änderungen, wir setzen sie um. Monatlich kündbar." style={{ marginBottom: 40 }} />
           <CarePricing />
           <p className="care__swipe" aria-hidden="true">← wischen für weitere Pakete →</p>
