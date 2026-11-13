@@ -438,7 +438,7 @@ export const WEB_INCLUDED = tidyDeep([
   "Kuratierte Bildauswahl,\nBildlizenzen inklusive", "SEO: Suchbegriffe und Meta-Texte", "Vorbereitet für Google- und KI-Suche",
   "Online-Terminbuchung", "Google-Bewertungen einbinden", "Vorher-Nachher-Galerie", "Klickbare Telefonnummer", "XML-Sitemap für Google",
   "Strukturierte Daten für Google", "Vorschaubild für WhatsApp und Social Media", "Favicon mit Ihrem Logo", "Eigene Fehlerseite (404)",
-  "SSL-Verschlüsselung (HTTPS)", "Barrierearme Gestaltung", "Öffnungszeiten gut sichtbar", "Dezente Scroll-Effekte", "Datenschutzfreundliche Karten und Videos",
+  "Sprechende Seitenadressen", "Barrierearme Gestaltung", "Öffnungszeiten gut sichtbar", "Dezente Scroll-Effekte", "Datenschutzfreundliche Karten und Videos",
 ]);
 
 /** „Was bekomme ich?“ – der Leistungsumfang jeder Website, klar benannt */
