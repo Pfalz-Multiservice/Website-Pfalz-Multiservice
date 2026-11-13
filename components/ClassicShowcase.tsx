@@ -8,10 +8,10 @@ import { EXAMPLES_URL, EXAMPLES_HOST } from "@/lib/site";
 const AUTOPLAY_MS = 2400; // muss zur Dauer von .cl-tab__prog in globals.css passen
 
 /** Klassische Websites mit Menü: Browser-Mockup mit Seiten-Umschalter */
-export function ClassicList({ grid = false }: { grid?: boolean }) {
+export function ClassicList({ grid = false, items = CLASSIC_EXAMPLES }: { grid?: boolean; items?: ClassicExample[] }) {
   return (
     <div className={`showcase${grid ? " showcase--grid" : ""}`}>
-      {CLASSIC_EXAMPLES.map((e, i) => (
+      {items.map((e, i) => (
         <ClassicItem key={e.slug} ex={e} index={i} />
       ))}
     </div>
@@ -24,7 +24,10 @@ function ClassicItem({ ex, index }: { ex: ClassicExample; index: number }) {
   const [auto, setAuto] = useState(false);
   const [visible, setVisible] = useState(false);
   const page = ex.pages[cur];
-  const href = `${EXAMPLES_URL}/${ex.slug}${page.path}`;
+  // Kundenprojekte laufen auf eigener Domain, Musterdesigns auf dem Beispiel-Server
+  const base = ex.host ? (ex.url ?? null) : `${EXAMPLES_URL}/${ex.slug}`;
+  const shown = ex.host ? `${ex.host}${page.path === "/" ? "" : page.path}` : `${EXAMPLES_HOST}/${ex.slug}${page.path}`;
+  const href = base ? base + (ex.host && page.path === "/" ? "" : page.path) : null;
   const playing = auto && visible;
 
   // Automatisch durch die Unterseiten blättern, solange sichtbar und noch nicht angeklickt.
@@ -57,15 +60,24 @@ function ClassicItem({ ex, index }: { ex: ClassicExample; index: number }) {
         <div className="sc-browser pm-reveal">
           <div className="sc-browser__bar" aria-hidden="true">
             <span className="sc-browser__dots"><i /><i /><i /></span>
-            <span className="sc-browser__url">{EXAMPLES_HOST}/{ex.slug}{page.path}</span>
+            <span className="sc-browser__url">{shown}</span>
           </div>
-          <a className="cl-view" href={href} target="_blank" rel="noopener" data-cursor
-            aria-label={`${ex.name}, Seite ${page.label} live ansehen (öffnet in neuem Tab)`}>
-            {ex.pages.map((p, i) => (
+          {href ? (
+            <a className="cl-view" href={href} target="_blank" rel="noopener" data-cursor
+              aria-label={`${ex.name}, Seite ${page.label} live ansehen (öffnet in neuem Tab)`}>
+              {ex.pages.map((p, i) => (
               <Image key={p.key} className={`cl-shot ${i === cur ? "is-on" : ""}`} src={`/images/beispiele/${ex.slug}-${p.key}.png`}
                 alt={i === cur ? `Vorschau ${ex.name}, Seite ${p.label}` : ""} fill sizes="(max-width: 900px) 100vw, 800px" />
             ))}
-          </a>
+            </a>
+          ) : (
+            <div className="cl-view">
+              {ex.pages.map((p, i) => (
+              <Image key={p.key} className={`cl-shot ${i === cur ? "is-on" : ""}`} src={`/images/beispiele/${ex.slug}-${p.key}.png`}
+                alt={i === cur ? `Vorschau ${ex.name}, Seite ${p.label}` : ""} fill sizes="(max-width: 900px) 100vw, 800px" />
+            ))}
+            </div>
+          )}
         </div>
       </div>
 
