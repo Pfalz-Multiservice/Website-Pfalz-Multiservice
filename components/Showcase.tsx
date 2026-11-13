@@ -7,10 +7,10 @@ import { EXAMPLES_URL, EXAMPLES_HOST } from "@/lib/site";
 
 
 /** Webdesign-Musterdesigns: Browser- und Smartphone-Mockup, Scroll-Vorschau, 3D-Tilt */
-export function ShowcaseList({ offset = 0, grid = false }: { offset?: number; grid?: boolean }) {
+export function ShowcaseList({ offset = 0, grid = false, items = EXAMPLES }: { offset?: number; grid?: boolean; items?: Example[] }) {
   return (
     <div className={`showcase${grid ? " showcase--grid" : ""}`}>
-      {EXAMPLES.map((e, i) => (
+      {items.map((e, i) => (
         <ShowcaseItem key={e.slug} ex={e} index={i + offset} />
       ))}
     </div>
@@ -19,7 +19,10 @@ export function ShowcaseList({ offset = 0, grid = false }: { offset?: number; gr
 
 function ShowcaseItem({ ex, index }: { ex: Example; index: number }) {
   const ref = useRef<HTMLElement>(null);
-  const href = `${EXAMPLES_URL}/${ex.slug}`;
+  // Kundenprojekte laufen auf eigener Domain (ohne Link, solange noch nicht online), Musterdesigns auf dem Beispiel-Server
+  const href = ex.host ? (ex.url ?? null) : `${EXAMPLES_URL}/${ex.slug}`;
+  const shown = ex.host ?? `${EXAMPLES_HOST}/${ex.slug}`;
+
 
   useGSAP(() => {
     const root = ref.current!;
@@ -106,13 +109,12 @@ function ShowcaseItem({ ex, index }: { ex: Example; index: number }) {
     return () => { mm.revert(); shot.removeEventListener("load", refresh); };
   }, { scope: ref });
 
-  return (
-    <article ref={ref} className={`sc-item ${index % 2 ? "sc-item--rev" : ""}`}>
-      <a className="sc-stage" href={href} target="_blank" rel="noopener" aria-label={`${ex.name} live ansehen (öffnet in neuem Tab)`} data-cursor>
+  const stage = (
+    <>
         <div className="sc-browser pm-reveal">
           <div className="sc-browser__bar" aria-hidden="true">
             <span className="sc-browser__dots"><i /><i /><i /></span>
-            <span className="sc-browser__url">{EXAMPLES_HOST}/{ex.slug}</span>
+            <span className="sc-browser__url">{shown}</span>
           </div>
           <div className="sc-browser__view">
             <Image className="sc-browser__shot" src={`/images/beispiele/${ex.slug}-scroll.png`} alt={`Vorschau der Website ${ex.name}`}
@@ -120,10 +122,21 @@ function ShowcaseItem({ ex, index }: { ex: Example; index: number }) {
           </div>
           <div className="sc-spot" aria-hidden="true" />
         </div>
-        <div className="sc-phone pm-reveal" aria-hidden="true">
-          <Image src={`/images/beispiele/${ex.slug}-mobile.png`} alt="" width={390} height={844} sizes="(max-width: 900px) 30vw, 220px" />
-        </div>
-      </a>
+        {ex.phone !== false && (
+          <div className="sc-phone pm-reveal" aria-hidden="true">
+            <Image src={`/images/beispiele/${ex.slug}-mobile.png`} alt="" width={390} height={844} sizes="(max-width: 900px) 30vw, 220px" />
+          </div>
+        )}
+    </>
+  );
+
+  return (
+    <article ref={ref} className={`sc-item ${index % 2 ? "sc-item--rev" : ""}`}>
+      {href ? (
+        <a className="sc-stage" href={href} target="_blank" rel="noopener" aria-label={`${ex.name} live ansehen (öffnet in neuem Tab)`} data-cursor>{stage}</a>
+      ) : (
+        <div className="sc-stage">{stage}</div>
+      )}
 
       <div className="sc-copy">
         <span className="sc-branch pm-reveal">{ex.branch}</span>

@@ -10,7 +10,6 @@ import { ExpandText } from "../ExpandText";
 import { SectionHeading } from "../SectionHeading";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
-import { ClassicList } from "../ClassicShowcase";
 import { ShowcaseList } from "../Showcase";
 import { DeliverHandover } from "./DeliverHandover";
 import { ProblemStack } from "./ProblemStack";
@@ -66,17 +65,17 @@ export function WebExamples() {
         <div className="sc-group">
           <h3 className="sc-group__title">Kundenprojekte <span>bald online</span></h3>
         </div>
-        <ClassicList grid items={REFERENCES} />
+        <ShowcaseList grid items={REFERENCES} />
 
         <div className="sc-group sc-group--later">
           <h3 className="sc-group__title">Klassische Websites <span>mit Menü und Unterseiten</span></h3>
         </div>
-        <ClassicList grid />
+        <ShowcaseList grid items={CLASSIC_EXAMPLES} offset={REFERENCES.length} />
 
         <div className="sc-group sc-group--later">
           <h3 className="sc-group__title">One-Pager <span>alles auf einer Seite, mit Animationen</span></h3>
         </div>
-        <ShowcaseList offset={CLASSIC_EXAMPLES.length} grid />
+        <ShowcaseList offset={REFERENCES.length + CLASSIC_EXAMPLES.length} grid />
 
         <div style={{ marginTop: 64, textAlign: "center" }}>
           <Button variant="outline-light" size="lg" href={EXAMPLES_URL}>Alle Musterdesigns in der Übersicht</Button>
