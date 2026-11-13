@@ -1809,6 +1809,8 @@ html.pm-motion .tk__sparks i:nth-child(3) { animation-delay: calc(var(--tk-d) + 
 .core-tile__body { display: flex; flex-direction: column; justify-content: flex-end; gap: 18px; width: 100%; padding: clamp(28px, 3.2vw, 44px); }
 .core-tile .core__text { color: #E6E6E6; max-width: 52ch; }
 .core-tile__cta { margin-top: 6px; }
+/* ganze Kachel klickbar: unsichtbarer Link über der Fläche, gleiches Ziel wie der Button */
+.core-tile__link { position: absolute; inset: 0; z-index: 2; cursor: pointer; }
 @media (max-width: 900px) {
   .core-tiles { grid-template-columns: minmax(0, 1fr); }
   .core-tile { min-height: 0; }

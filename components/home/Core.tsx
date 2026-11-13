@@ -1,4 +1,5 @@
 import { CORE, SERVICES, serviceHref } from "@/lib/data";
+import Link from "next/link";
 import { BgImage } from "../BgImage";
 import { Eyebrow } from "../Eyebrow";
 import { CheckList } from "../CheckList";
@@ -32,6 +33,7 @@ export function Core() {
                   <Button variant="outline" href={serviceHref(s)} icon="arrow-right">{c.link}</Button>
                 </div>
               </div>
+              <Link href={serviceHref(s)} className="core-tile__link" aria-hidden="true" tabIndex={-1} data-cursor />
             </article>
           );
         })}
