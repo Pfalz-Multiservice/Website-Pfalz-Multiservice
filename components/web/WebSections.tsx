@@ -181,15 +181,11 @@ export function WebPackages() {
               <Link href="/kontakt?leistung=web" className="platin__btn" data-cursor>Platin anfragen</Link>
             </div>
           </div>
-          <ul className="care__notes pm-reveal" data-reveal="stagger">
-            {WEB_CARE_NOTES.map((n) => (
-              <li key={n.title} className="care__note"><b>{n.title}</b><span>{n.text}</span></li>
-            ))}
-          </ul>
           <div className="care__single pm-reveal" data-reveal="up">
             <span><b>Änderungen ohne Paket</b> einmalig 1 Std., reicht in der Regel für die meisten Änderungen</span>
             <strong>39 €</strong>
           </div>
+          <p className="care__fine">{WEB_CARE_NOTES.map((n) => <span key={n.title}><b>{n.title}:</b> {n.text}</span>)}</p>
         </div>
 
         <div className="cta__btns pm-reveal" data-reveal="stagger" style={{ marginTop: 48 }}>

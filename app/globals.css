@@ -748,8 +748,8 @@ a .contact-row__value { color: var(--brand-accent); }
   background: var(--surface-card); border: 1px solid var(--border-subtle); font: 400 15px/1.5 var(--font-body); color: var(--text-body); }
 /* Wartung Platin: flache Luxus-Kachel in Silber/Platin mit Lichtlauf */
 .platin { --pt-hi: #f4f6f8; --pt-mid: #b9bfc6; --pt-lo: #6f757c;
-  position: relative; overflow: hidden; margin-top: 24px; padding: 30px 36px;
-  display: grid; grid-template-columns: minmax(0,1.35fr) minmax(0,1fr) auto; gap: 24px 48px; align-items: center;
+  position: relative; overflow: hidden; margin-top: 20px; padding: 18px 32px;
+  display: grid; grid-template-columns: minmax(0,1.35fr) minmax(0,1fr) auto; gap: 16px 40px; align-items: center;
   border: 1px solid transparent;
   background:
     radial-gradient(120% 140% at 0% 0%, rgba(230,234,240,.10), transparent 55%) padding-box,
@@ -762,29 +762,31 @@ a .contact-row__value { color: var(--brand-accent); }
 @keyframes platin-sweep { 0% { background-position: 130% 0; } 45%, 100% { background-position: -30% 0; } }
 .platin > * { position: relative; z-index: 1; }
 .platin__eyebrow { display: block; font: 600 var(--fs-eyebrow) var(--font-display); letter-spacing: var(--ls-eyebrow); text-transform: uppercase; color: var(--pt-mid); }
-.platin__title { margin: 6px 0 8px; font: 800 clamp(2rem, 3vw, 2.6rem)/1 var(--font-display); text-transform: uppercase; letter-spacing: .06em;
+.platin__title { margin: 4px 0 6px; font: 800 clamp(1.6rem, 2.2vw, 2rem)/1 var(--font-display); text-transform: uppercase; letter-spacing: .06em;
   background: linear-gradient(100deg, var(--pt-mid) 0%, var(--pt-hi) 25%, #ffffff 40%, #cfd4da 55%, var(--pt-hi) 75%, var(--pt-mid) 100%);
   background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 10px rgba(225,232,240,.25)); animation: platin-text 6s ease-in-out infinite; }
 @keyframes platin-text { 0% { background-position: 100% 0; } 45%, 100% { background-position: 0% 0; } }
-.platin__text { margin: 0; max-width: 46ch; font: 400 15px/1.6 var(--font-body); color: var(--text-body); }
-.platin__list { list-style: none; margin: 0; padding: 0 0 0 32px; border-left: 1px solid rgba(220,226,232,.18); display: grid; gap: 10px; }
-.platin__list li { display: flex; gap: 12px; align-items: center; font: 400 15px/1.4 var(--font-body); color: #e9ecef; }
+.platin__text { margin: 0; max-width: 52ch; font: 400 14px/1.5 var(--font-body); color: var(--text-body); }
+.platin__list { list-style: none; margin: 0; padding: 0 0 0 32px; border-left: 1px solid rgba(220,226,232,.18); display: grid; gap: 7px; }
+.platin__list li { display: flex; gap: 12px; align-items: center; font: 400 14px/1.35 var(--font-body); color: #e9ecef; }
 .platin__list li::before { content: ""; flex: none; width: 7px; height: 7px; transform: rotate(45deg);
   background: linear-gradient(135deg, var(--pt-hi), var(--pt-lo)); box-shadow: 0 0 8px rgba(230,236,242,.45); }
 .platin__price { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; text-align: right; }
-.platin__price strong { font: 800 26px/1.1 var(--font-display); text-transform: uppercase; letter-spacing: .04em; color: var(--pt-hi); }
+.platin__price strong { font: 800 22px/1.1 var(--font-display); text-transform: uppercase; letter-spacing: .04em; color: var(--pt-hi); }
 .platin__price span { font: 400 13px var(--font-body); color: var(--text-subtle); }
-.platin__btn { margin-top: 12px; padding: 12px 22px; border: 1px solid var(--pt-mid); color: var(--pt-hi); text-decoration: none;
+.platin__btn { margin-top: 10px; padding: 10px 20px; border: 1px solid var(--pt-mid); color: var(--pt-hi); text-decoration: none;
   font: 600 13px var(--font-display); letter-spacing: .12em; text-transform: uppercase; white-space: nowrap;
   background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,0)); transition: background-color .25s, color .25s, box-shadow .25s; }
 .platin__btn:hover, .platin__btn:focus-visible { background: var(--pt-hi); color: #0b0b0c; box-shadow: 0 0 24px rgba(230,236,242,.35); }
 @media (max-width: 900px) {
-  .platin { grid-template-columns: minmax(0,1fr); padding: 26px 22px; gap: 20px; }
+  .platin { grid-template-columns: minmax(0,1fr); padding: 22px 20px; gap: 16px; }
   .platin__list { padding: 18px 0 0; border-left: 0; border-top: 1px solid rgba(220,226,232,.18); }
   .platin__price { align-items: flex-start; text-align: left; }
 }
 @media (prefers-reduced-motion: reduce) { .platin::after, .platin__title { animation: none; } .platin::after { display: none; } }
+.care__fine { margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 4px 24px; font: 400 13px/1.5 var(--font-body); color: var(--text-subtle); }
+.care__fine b { color: var(--text-body); font-weight: 600; }
 .care__single b { color: #fff; font-weight: 700; margin-right: 6px; }
 .care__single strong { flex: none; font: 800 24px var(--font-display); color: var(--brand-accent); }
 .pk-box--handover { margin-top: 20px; }
