@@ -78,8 +78,7 @@ export function WebExamples() {
         </div>
 
         {tidyNode(<p className="showcase-note" style={{ margin: "24px 0 0" }}>
-          <span className="line">Die Musterdesigns stammen von Pfalz Multiservice.</span>
-          <span className="line">Die dort gezeigten Betriebe, Personen und Angebote sind frei erfunden.</span>
+          <span className="line">Die in den Musterdesigns gezeigten Betriebe, Personen und Angebote sind frei erfunden.</span>
         </p>)}
       </div>
     </section>

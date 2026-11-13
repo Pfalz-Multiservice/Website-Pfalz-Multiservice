@@ -97,8 +97,9 @@ function ShowcaseItem({ ex, index }: { ex: Example; index: number }) {
     mm.add("(hover: none), (pointer: coarse)", () => {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       gsap.fromTo(shot, { y: 0 }, {
-        y: () => -maxScroll() * 0.45, ease: "none",
-        scrollTrigger: { trigger: view, start: "top 85%", end: "bottom 15%", scrub: 0.6, invalidateOnRefresh: true },
+        y: () => -maxScroll() * 0.6, ease: "none",
+        // startet erst, wenn die Vorschau drei Viertel des Bildschirms nach oben gewandert ist (Oberkante bei 25 %)
+        scrollTrigger: { trigger: view, start: "top 25%", end: "bottom top", scrub: 0.6, invalidateOnRefresh: true },
       });
     });
 

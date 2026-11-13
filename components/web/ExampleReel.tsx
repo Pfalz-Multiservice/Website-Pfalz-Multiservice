@@ -34,7 +34,9 @@ export function ExampleReel() {
     const mm = gsap.matchMedia();
     mm.add(MOTION_OK, () => {
       setMotion(true);
-      const st = ScrollTrigger.create({ trigger: el, start: "top 80%", end: "bottom 20%", onToggle: (s) => { inView.current = s.isActive; sync(); } });
+      // Handy: erst loslaufen, wenn die Bühne drei Viertel des Bildschirms nach oben gewandert ist
+      const touch = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+      const st = ScrollTrigger.create({ trigger: el, start: touch ? "top 25%" : "top 80%", end: "bottom 20%", onToggle: (s) => { inView.current = s.isActive; sync(); } });
       return () => { st.kill(); setMotion(false); };
     });
     return () => mm.revert();
