@@ -49,14 +49,6 @@ export function WebProblem() {
         <div className="pst__intro">
           <SectionHeading eyebrow="Die Realität" title="Warum Websites" highlight="keine Kunden bringen"
             intro="Fast jeder Betrieb hat längst eine Website. Nur bringt sie oft nichts. Meist liegt es an einem dieser vier Punkte." />
-          <div className="pst__cta pm-reveal" data-reveal="up">
-            <Button variant="accent" icon="arrow-right" href="#website-check">Kostenloser Website-Check</Button>
-            <span>Wir sehen uns Ihre Seite an und sagen ehrlich, was fehlt.</span>
-          </div>
-          <p className="pst__promise pm-reveal" data-reveal="up">
-            <Icon name="shield-check" size={20} />
-            <span><b>100 % transparent:</b> Bei uns erhalten Sie alle Projektdaten. Quellcode, Zugänge, Domain, Bilder und Texte. Nichts wird verschwiegen.</span>
-          </p>
         </div>
         <ProblemStack items={WEB_PROBLEMS} />
       </div>
@@ -68,7 +60,7 @@ export function WebExamples() {
   return (
     <section className="section section--alt" id="beispiele">
       <div className="container">
-        <SectionHeading eyebrow="Designs" title="Unsere" highlight="Beispiele"
+        <SectionHeading eyebrow="Designs" title="Unsere" highlight="Referenzen"
           intro="Klassisch mit Menü oder als One-Pager mit Animation." />
 
         <div className="sc-group">

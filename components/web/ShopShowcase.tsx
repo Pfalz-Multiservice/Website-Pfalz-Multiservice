@@ -4,10 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger, useGSAP, MOTION_OK } from "@/lib/gsap";
 import { SHOP_EXAMPLE as ex } from "@/lib/data";
 import { EXAMPLES_URL, EXAMPLES_HOST } from "@/lib/site";
-import { ExpandText } from "../ExpandText";
 import { tidy } from "@/lib/typo";
 import { SectionHeading } from "../SectionHeading";
-import { Button } from "../Button";
 import { Icon } from "../Icon";
 
 const AUTOPLAY_MS = 3600;
@@ -44,8 +42,6 @@ export function ShopShowcase() {
     return () => mm.revert();
   }, { scope: ref });
 
-  const select = (i: number) => { setAuto(false); setCur(i); };
-
   // Funktions-Spotlight: blättert automatisch, solange sichtbar und nicht angefasst
   const spotRef = useRef<HTMLDivElement>(null);
   const [feat, setFeat] = useState(0);
@@ -72,7 +68,7 @@ export function ShopShowcase() {
       <div className="shopf__glow" aria-hidden="true" />
       <div className="container">
         <div className="shopf-head">
-          <SectionHeading eyebrow="Neu · Shop-Design" title="Online-Shops, die man" highlight="erleben will" intro={ex.claim} />
+          <SectionHeading eyebrow="Neu · Shop-Design" title="Online-Shops, die man" highlight="erleben will" />
           <span className="shopf-badge pm-reveal" data-reveal="pop" aria-hidden="true">Neu</span>
         </div>
 
@@ -94,29 +90,11 @@ export function ShopShowcase() {
             <div className="shopf-phone" aria-hidden="true">
               <Image src={`/images/beispiele/${ex.slug}-mobile.png`} alt="" fill sizes="200px" />
             </div>
-            <div className="cl-tabs" role="tablist" aria-label={`Ansichten von ${ex.name}`}>
-              {ex.pages.map((p, i) => (
-                <button key={p.key} type="button" role="tab" aria-selected={i === cur} className="cl-tab" onClick={() => select(i)} data-cursor>
-                  {p.label}
-                  {i === cur && playing && <span key={cur} className="cl-tab__prog" aria-hidden="true" />}
-                </button>
-              ))}
-            </div>
           </div>
 
           <div className="shopf-copy">
             <span className="sc-branch">{ex.branch}</span>
             <h3 className="sc-title" id="shopf-title">{ex.name}</h3>
-            <ExpandText className="sc-text" text={tidy(ex.text)} />
-            <dl className="shopf-stats">
-              {ex.stats.map(([n, l]) => (<div key={l}><dt>{n}</dt><dd>{l}</dd></div>))}
-            </dl>
-            <div className="shopf-actions">
-              <a className="btn btn--lg" href={BASE} target="_blank" rel="noopener" data-cursor>
-                <span className="btn__fill" aria-hidden="true" />
-                <span className="btn__label">Shop live ansehen <Icon name="external-link" size={18} className="btn__icon btn__icon--right" /></span>
-              </a>
-            </div>
           </div>
         </div>
 
@@ -145,11 +123,6 @@ export function ShopShowcase() {
             </div>
             <p className="shopf-card__hint">Alles im Muster ist echt bedienbar.</p>
           </div>
-        </div>
-
-        <div className="shopf-cta pm-reveal" data-reveal="up">
-          <p><strong>Sie verkaufen etwas Besonderes?</strong> Wir bauen Ihren Shop genauso individuell: vom ruhigen Manufaktur-Shop bis zum Erlebnis-Shop. Paket „Shop / Premium“, Preis nach Angebot.</p>
-          <Button variant="accent" icon="arrow-right" href="/kontakt?leistung=web">Kostenloses Angebot</Button>
         </div>
       </div>
     </section>
