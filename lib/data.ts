@@ -436,7 +436,8 @@ export const WEB_INCLUDED = tidyDeep([
   "Design für Smartphone und Desktop", "Menü und Navigation", "FAQ-Bereich", "Kontaktformular", "WhatsApp-Button",
   "Anfahrt mit Link zu Google Maps", "Social-Media-Links", "Texte erstellen oder\nalte Inhalte übernehmen",
   "Kuratierte Bildauswahl,\nBildlizenzen inklusive", "SEO: Suchbegriffe und Meta-Texte", "Vorbereitet für Google- und KI-Suche",
-  "Online-Terminbuchung", "Google-Bewertungen einbinden", "Vorher-Nachher-Galerie",
+  "Online-Terminbuchung", "Google-Bewertungen einbinden", "Vorher-Nachher-Galerie", "Klickbare Telefonnummer", "XML-Sitemap für Google",
+  "Strukturierte Daten für Google", "Vorschaubild für WhatsApp und Social Media", "Favicon mit Ihrem Logo", "Eigene Fehlerseite (404)",
 ]);
 
 /** „Was bekomme ich?“ – der Leistungsumfang jeder Website, klar benannt */

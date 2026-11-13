@@ -96,8 +96,8 @@ export function WebExamples() {
 
 /** Ohne Aufpreis: zwei gegenläufige Laufbänder statt langer Liste (bei reduzierter Bewegung statisch umbrechend) */
 function IncludedMarquee() {
-  const n = Math.ceil(WEB_INCLUDED.length / 3);
-  const rows = [0, 1, 2].map((r) => WEB_INCLUDED.slice(r * n, r * n + n));
+  const n = Math.ceil(WEB_INCLUDED.length / 4);
+  const rows = [0, 1, 2, 3].map((r) => WEB_INCLUDED.slice(r * n, r * n + n));
   return (
     <div className="marq">
       <ul className="sr-only">{WEB_INCLUDED.map((x) => <li key={x}>{x.replace(/\n/g, " ")}</li>)}</ul>
