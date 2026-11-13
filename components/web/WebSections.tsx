@@ -11,6 +11,7 @@ import { SectionHeading } from "../SectionHeading";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
 import { ShowcaseList } from "../Showcase";
+import { ExampleReel } from "./ExampleReel";
 import { DeliverHandover } from "./DeliverHandover";
 import { ProblemStack } from "./ProblemStack";
 
@@ -60,7 +61,7 @@ export function WebExamples() {
     <section className="section section--alt" id="beispiele">
       <div className="container">
         <SectionHeading eyebrow="Designs" title="Unsere" highlight="Referenzen"
-          intro="Klassisch mit Menü oder als One-Pager mit Animation." />
+          intro="Ein Kundenprojekt und sechs Musterdesigns, klassisch mit Menü oder als One-Pager." />
 
         <div className="sc-group">
           <h3 className="sc-group__title">Kundenprojekte <span>bald online</span></h3>
@@ -68,21 +69,16 @@ export function WebExamples() {
         <ShowcaseList grid items={REFERENCES} />
 
         <div className="sc-group sc-group--later">
-          <h3 className="sc-group__title">Klassische Websites <span>mit Menü und Unterseiten</span></h3>
+          <h3 className="sc-group__title">Musterdesigns <span>sechs Beispiele, laufen von selbst durch</span></h3>
         </div>
-        <ShowcaseList grid items={CLASSIC_EXAMPLES} offset={REFERENCES.length} />
+        <ExampleReel />
 
-        <div className="sc-group sc-group--later">
-          <h3 className="sc-group__title">One-Pager <span>alles auf einer Seite, mit Animationen</span></h3>
-        </div>
-        <ShowcaseList offset={REFERENCES.length + CLASSIC_EXAMPLES.length} grid />
-
-        <div style={{ marginTop: 64, textAlign: "center" }}>
+        <div style={{ marginTop: 40 }}>
           <Button variant="outline-light" size="lg" href={EXAMPLES_URL}>Alle Musterdesigns in der Übersicht</Button>
         </div>
 
-        {tidyNode(<p className="showcase-note" style={{ margin: "40px auto 0", textAlign: "center" }}>
-          <span className="line">Klassische Websites und One-Pager sind Musterdesigns von Pfalz Multiservice.</span>
+        {tidyNode(<p className="showcase-note" style={{ margin: "24px 0 0" }}>
+          <span className="line">Die Musterdesigns stammen von Pfalz Multiservice.</span>
           <span className="line">Die dort gezeigten Betriebe, Personen und Angebote sind frei erfunden.</span>
         </p>)}
       </div>
