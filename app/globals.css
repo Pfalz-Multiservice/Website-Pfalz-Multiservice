@@ -1844,6 +1844,7 @@ html.pm-motion .tk__sparks i:nth-child(3) { animation-delay: calc(var(--tk-d) + 
 }
 /* Webdesign-Foto: Ausschnitt höher setzen, damit mehr Bildschirm und weniger Tisch zu sehen ist (Startseite und Webdesign-Seite) */
 .core-tile--web .core-tile__img .pm-img__el, img[src*="webdesign-buero"] { object-position: center 12%; }
+img[src*="webdesign-hero"] { object-position: center 30%; }
 
 /* ===================== KNX-Leistungsseite (components/knx/KnxSections) ===================== */
 .knx-title { margin: 14px 0 0; font: 400 clamp(2rem, 4.4vw, 3.6rem)/1.06 var(--font-display); text-transform: uppercase; letter-spacing: -.01em; color: var(--text-strong); text-wrap: balance; }
