@@ -4,7 +4,6 @@ import { useRef } from "react";
 import { gsap, ScrollTrigger, useGSAP, MOTION_OK } from "@/lib/gsap";
 import { EXAMPLES, type Example } from "@/lib/data";
 import { EXAMPLES_URL, EXAMPLES_HOST } from "@/lib/site";
-import { ExpandText } from "./ExpandText";
 
 
 /** Webdesign-Musterdesigns: Browser- und Smartphone-Mockup, Scroll-Vorschau, 3D-Tilt */
@@ -129,10 +128,6 @@ function ShowcaseItem({ ex, index }: { ex: Example; index: number }) {
       <div className="sc-copy">
         <span className="sc-branch pm-reveal">{ex.branch}</span>
         <h3 className="sc-title pm-reveal">{ex.name}</h3>
-        <ExpandText className="sc-text" wrapClassName="pm-reveal" text={ex.text} />
-        <ul className="sc-tags pm-reveal">
-          {ex.tags.map((t) => <li key={t} className="chip">{t}</li>)}
-        </ul>
       </div>
     </article>
   );

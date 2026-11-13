@@ -57,7 +57,7 @@ export default function WebdesignPage() {
         image={IMG + "webdesign-hero.jpg"}
       >
         <Button variant="accent" size="lg" icon="arrow-right" href="/kontakt?leistung=web">Kostenloses Angebot</Button>
-        <Button variant="outline-light" size="lg" href="#beispiele">Beispiele ansehen</Button>
+        <Button variant="outline-light" size="lg" href="#beispiele">Referenzen ansehen</Button>
         <Link href="/briefing" className="hero-brief" data-cursor>
           <Icon name="clipboard-list" size={18} />
           <span>Schon entschieden? <b>Direkt zum Website-Briefing</b></span>

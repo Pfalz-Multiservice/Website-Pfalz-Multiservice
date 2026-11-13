@@ -65,7 +65,7 @@ export default function WebdesignWormsPage() {
         image={IMG + "dom-worms-gold.jpg"}
       >
         <Button variant="accent" size="lg" icon="arrow-right" href="/kontakt?leistung=web">Kostenloses Angebot</Button>
-        <Button variant="outline-light" size="lg" href="#beispiele">Beispiele ansehen</Button>
+        <Button variant="outline-light" size="lg" href="#beispiele">Referenzen ansehen</Button>
       </PageHero>
       <WebTrust />
       <WebLocal alt={false} />

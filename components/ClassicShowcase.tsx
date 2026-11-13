@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger, useGSAP, MOTION_OK } from "@/lib/gsap";
 import { CLASSIC_EXAMPLES, type ClassicExample } from "@/lib/data";
 import { EXAMPLES_URL, EXAMPLES_HOST } from "@/lib/site";
-import { ExpandText } from "./ExpandText";
 
 const AUTOPLAY_MS = 2400; // muss zur Dauer von .cl-tab__prog in globals.css passen
 
@@ -52,8 +51,6 @@ function ClassicItem({ ex, index }: { ex: ClassicExample; index: number }) {
     return () => mm.revert();
   }, { scope: ref });
 
-  const select = (i: number) => { setAuto(false); setCur(i); };
-
   return (
     <article ref={ref} className={`sc-item ${index % 2 ? "sc-item--rev" : ""}`}>
       <div className="cl-stage">
@@ -70,23 +67,11 @@ function ClassicItem({ ex, index }: { ex: ClassicExample; index: number }) {
             ))}
           </a>
         </div>
-        <div className="cl-tabs" role="tablist" aria-label={`Unterseiten von ${ex.name}`}>
-          {ex.pages.map((p, i) => (
-            <button key={p.key} type="button" role="tab" aria-selected={i === cur} className="cl-tab" onClick={() => select(i)} data-cursor>
-              {p.label}
-              {i === cur && playing && <span key={cur} className="cl-tab__prog" aria-hidden="true" />}
-            </button>
-          ))}
-        </div>
       </div>
 
       <div className="sc-copy">
         <span className="sc-branch pm-reveal">{ex.branch}</span>
         <h3 className="sc-title pm-reveal">{ex.name}</h3>
-        <ExpandText className="sc-text" wrapClassName="pm-reveal" text={ex.text} />
-        <ul className="sc-tags pm-reveal">
-          {ex.tags.map((t) => <li key={t} className="chip">{t}</li>)}
-        </ul>
       </div>
     </article>
   );
