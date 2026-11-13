@@ -62,7 +62,7 @@ const PRICE_FAQ = (what: string): Faq => [
 export const SERVICES: Service[] = tidyDeep([
   {
     id: "web",
-    seo: "Webdesign und Website-Wartung aus Worms: individuelle Websites ab 199 €, Betreuung ab 19 € im Monat. Persönlich, ohne Baukasten.",
+    seo: "Webdesign und Website-Wartung aus Worms: individuelle Websites ab 199 €, Betreuung ab 39 € im Monat. Persönlich, ohne Baukasten.",
     href: "/webdesign",
     icon: "monitor-cog",
     title: "Web Maintenance & Management",
@@ -412,23 +412,23 @@ export const WEB_PACKAGES: WebPackage[] = tidyDeep([
 /** Betreuung nach dem Livegang */
 export const WEB_CARE: WebPackage[] = tidyDeep([
   {
-    name: "Wartung", price: "19 €", unit: "/ Monat", priceYear: "190 €", unitYear: "/ Jahr", priceYearMonthly: "15,83 €", note: "Die Basis-Betreuung",
+    name: "Wartung", price: "39 €", unit: "/ Monat", priceYear: "390 €", unitYear: "/ Jahr", priceYearMonthly: "32,50 €", note: "Die Basis-Betreuung",
     items: ["Bis 1 Std. Änderungen pro Monat", "Domain- und E-Mail-Einrichtung"],
   },
   {
-    name: "Wartung Pro", price: "29 €", unit: "/ Monat", priceYear: "290 €", unitYear: "/ Jahr", priceYearMonthly: "24,17 €", note: "Für aktive Unternehmens-Websites",
-    items: ["Bis 2 Std. Änderungen pro Monat", "KI-Fotos & 3D-Motion-Clips\nMenge nach Bedarf", "Google-Unternehmensprofil einrichten, optimieren & pflegen", "Einrichtung von Domain, E-Mail und Hosting"],
+    name: "Wartung Pro", price: "59 €", unit: "/ Monat", priceYear: "590 €", unitYear: "/ Jahr", priceYearMonthly: "49,17 €", note: "Für aktive Unternehmens-Websites",
+    items: ["Bis 2 Std. Änderungen pro Monat", "Premium-Hosting auf EU-Servern inklusive", "Tägliche Backups", "Google-Unternehmensprofil einrichten, optimieren & pflegen", "Einrichtung von Domain, E-Mail und Hosting"],
   },
   {
     name: "Wartung Premium", price: "99 €", unit: "/ Monat", priceYear: "990 €", unitYear: "/ Jahr", priceYearMonthly: "82,50 €", note: "Für große Projekte mit viel Content",
-    items: ["Bis 6 Std. Änderungen pro Monat", "Neue Inhalte mehrmals pro Woche: Blogs, Community, Suchportale", "KI-Fotos & 3D-Motion-Clips im erweiterten Umfang", "Google-Unternehmensprofil einrichten, optimieren & pflegen", "Premium-Hosting auf EU-Servern inklusive", "Backups 30 Tage gespeichert, Uptime-Monitoring", "Antwort innerhalb von 24 Std. (werktags)"],
+    items: ["Bis 3 Std. Änderungen pro Monat", "Neue Inhalte mehrmals pro Monat, z. B. Blogs", "KI-Fotos & 3D-Motion-Clips", "Google-Unternehmensprofil einrichten, optimieren & pflegen", "Premium-Hosting inklusive, 99,9 % Uptime-Garantie", "Antwort innerhalb von 24 Std. (werktags)"],
   },
 ]);
 
 /** Gut zu wissen zum Wartungsprogramm (Preisliste 2026) */
 export const WEB_CARE_NOTES: { title: string; text: string }[] = tidyDeep([
   { title: "Reaktionszeit", text: "Premium 24 Std., Wartung und Pro 48 Std. (werktags). 100 % Erreichbarkeit kann niemand garantieren." },
-  { title: "Nicht enthalten", text: "Redesign, Neuentwicklung, Hack-Behebung und vom Kunden verursachte Fehler: 29 € pro Stunde." },
+  { title: "Nicht enthalten", text: "Redesign, Neuentwicklung, Hack-Behebung und vom Kunden verursachte Fehler: 39 € pro Stunde." },
 ]);
 
 /** In allen Paketen inklusive – ohne Aufpreis */
@@ -507,11 +507,11 @@ export const WEB_FAQ: [string, string][] = tidyDeep([
   ["Welchen Hoster empfehlen Sie?", "Wir arbeiten mit einigen Hosting-Anbietern zusammen. Gerne beraten wir Sie, welcher zu Ihrem Vorhaben passt. Sie können aber auch jeden anderen Anbieter wählen oder Ihr bestehendes Paket behalten."],
   ["Muss ich mich selbst um Domain, Hosting und E-Mail kümmern?", "Nein. Auf Wunsch begleiten wir Sie durch den kompletten Ablauf: Domain sichern, Hosting und E-Mail-Postfach einrichten, Kontaktformular anbinden, Website veröffentlichen und das Google-Unternehmensprofil anlegen. Die Einrichtung von Domain, E-Mail und Hosting ist in Wartung Pro und Premium enthalten."],
   ["Gehört mir die Website am Ende?", "Ja, vollständig, und das in jedem Paket. Nach vollständiger Bezahlung erhalten Sie alle Nutzungsrechte und Zugangsdaten. Domain und Hosting laufen auf Ihren Namen, alle Zugangsdaten gehören Ihnen und Sie erhalten den Quellcode als ZIP oder Git-Repository. Texte und Bilder, die wir erstellen, dürfen Sie unbefristet nutzen. Dazu bekommen Sie ein Übergabeblatt, eine SEO- und KI-Dokumentation als PDF und eine PageSpeed-Messung zum Livegang. Kleine Korrekturen in den ersten 30 Tagen nach dem Livegang sind kostenlos."],
-  ["Gibt es ein Abo oder eine Vertragsbindung?", "Nein. Kein Abo, kein Zwang. Die Website kostet einmalig und gehört Ihnen. Wartung können Sie auf Wunsch ab 19 € im Monat dazubuchen, monatlich kündbar, müssen es aber nicht."],
+  ["Gibt es ein Abo oder eine Vertragsbindung?", "Nein. Kein Abo, kein Zwang. Die Website kostet einmalig und gehört Ihnen. Wartung können Sie auf Wunsch ab 39 € im Monat dazubuchen, monatlich kündbar, müssen es aber nicht."],
   ["Wie schnell antworten Sie auf meine Anfrage?", "Innerhalb von 24 Stunden an Werktagen, ob per Formular, Briefing, E-Mail oder WhatsApp. Bei Wartung Premium gilt dieselbe Reaktionszeit von 24 Stunden für Ihre Änderungswünsche."],
   ["Wie lange dauert es, bis meine Website online ist?", "Das hängt vom Umfang ab. Den Zeitplan legen wir vorab gemeinsam fest, damit Sie vor dem Start wissen, wann Ihre Seite online geht."],
   ["Was brauchen Sie von mir?", "Ihr Logo, ein paar Fotos und Stichpunkte zu Ihren Leistungen reichen für den Anfang. Texte erstellen wir auf Wunsch, eine kuratierte Bildauswahl ist inklusive. Alles Weitere besprechen wir im Gespräch."],
-  ["Kümmern Sie sich auch nach dem Livegang um die Website?", "Ja, wenn Sie möchten. Sie melden Ihre Änderungen, wir setzen sie um: mit Wartung (19 € im Monat, bis 1 Std.), Wartung Pro (29 € im Monat, bis 2 Std.) oder Wartung Premium (99 € im Monat, bis 6 Std.), jeweils monatlich kündbar. Einzelne Änderungen ohne Paket kosten 29 € pro Stunde. Die laufenden Kosten für Hosting und Domain zahlen Sie direkt beim Anbieter Ihrer Wahl."],
+  ["Kümmern Sie sich auch nach dem Livegang um die Website?", "Ja, wenn Sie möchten. Sie melden Ihre Änderungen, wir setzen sie um: mit Wartung (39 € im Monat, bis 1 Std.), Wartung Pro (59 € im Monat, bis 2 Std.) oder Wartung Premium (99 € im Monat, bis 3 Std.), jeweils monatlich kündbar. Einzelne Änderungen ohne Paket kosten 39 € pro Stunde. In Wartung Pro und Premium ist Premium-Hosting auf EU-Servern enthalten, sonst zahlen Sie Hosting und Domain direkt beim Anbieter Ihrer Wahl."],
   ["Ich habe schon eine Website. Können Sie die übernehmen?", "Ja. Wir überarbeiten auch bestehende Websites und übernehmen alte Inhalte. Schicken Sie uns zuerst den Link für den kostenlosen Website-Check."],
   ["Für wen ist das Angebot?", "Unser Webdesign- und Wartungsangebot richtet sich ausschließlich an Unternehmer im Sinne von § 14 BGB, also Gewerbetreibende, Selbstständige und Betriebe. Verträge mit Verbrauchern schließen wir hierüber nicht."],
   ["Sind die Beispiele echte Kunden?", "Nein. Die Beispiele sind Musterdesigns für erfundene Betriebe. Sie zeigen, was möglich ist. Ihre Website gestalten wir individuell für Ihren Betrieb."],

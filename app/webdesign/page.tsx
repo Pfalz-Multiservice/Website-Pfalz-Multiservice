@@ -37,7 +37,7 @@ const serviceLd = {
   offers: [
     { "@type": "Offer", name: "Start: OnePager, bis 5 Abschnitte", price: "199", priceCurrency: "EUR", description: "Einmaliger Festpreis" },
     { "@type": "Offer", name: "Business: OnePager oder mehrseitige Website, bis 8 Seiten", price: "299", priceCurrency: "EUR", description: "Einmaliger Festpreis" },
-    ...[["Wartung", "19", "Bis 1 Std. Änderungen pro Monat"], ["Wartung Pro", "29", "Bis 2 Std. Änderungen pro Monat"], ["Wartung Premium", "99", "Bis 6 Std. Änderungen pro Monat"]].map(([name, price, description]) => ({
+    ...[["Wartung", "39", "Bis 1 Std. Änderungen pro Monat"], ["Wartung Pro", "59", "Bis 2 Std. Änderungen pro Monat"], ["Wartung Premium", "99", "Bis 3 Std. Änderungen pro Monat"]].map(([name, price, description]) => ({
       "@type": "Offer", name, priceCurrency: "EUR", description: `${description}, monatlich kündbar`,
       priceSpecification: { "@type": "UnitPriceSpecification", price, priceCurrency: "EUR", unitText: "Monat" },
     })),

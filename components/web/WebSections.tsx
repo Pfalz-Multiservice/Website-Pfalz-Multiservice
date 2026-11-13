@@ -153,7 +153,7 @@ export function WebPackages() {
 
         <div className="pk-free pm-reveal" data-reveal="up">
           <Icon name="file-check" size={26} />
-          <p><strong>Kein Abo, kein Zwang.</strong> Einmaliger Festpreis, keine versteckten Kosten, die Website gehört Ihnen. Laufende Kosten entstehen nur für Hosting und Domain: Die zahlen Sie direkt beim Anbieter Ihrer Wahl, den Betrag weisen wir im Angebot getrennt aus. Die Einrichtung übernehmen wir in Wartung Pro und Premium; in Premium ist das Hosting bei uns enthalten.</p>
+          <p><strong>Kein Abo, kein Zwang.</strong> Einmaliger Festpreis, keine versteckten Kosten, die Website gehört Ihnen. Laufende Kosten entstehen nur für Hosting und Domain: Die zahlen Sie direkt beim Anbieter Ihrer Wahl, den Betrag weisen wir im Angebot getrennt aus. In Wartung Pro und Premium ist Premium-Hosting auf EU-Servern bei uns enthalten, die Einrichtung übernehmen wir.</p>
         </div>
 
         <DeliverHandover />
@@ -170,7 +170,7 @@ export function WebPackages() {
           </ul>
           <div className="care__single pm-reveal" data-reveal="up">
             <span><b>Änderungen ohne Paket</b> einmalig 1 Std., reicht in der Regel für die meisten Änderungen</span>
-            <strong>29 €</strong>
+            <strong>39 €</strong>
           </div>
         </div>
 
