@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { tidyNode } from "@/lib/typo";
 import { COMPANY, CTA, CONTACT, IMG, USPS, homeSubServices, serviceHref } from "@/lib/data";
 import { Core } from "./Core";
@@ -97,7 +98,7 @@ export function Region() {
           heading={
             <SectionHeading
               eyebrow="Region Worms" title="Unser" highlight="Einzugsgebiet"
-              intro="Regional vor Ort in Worms und rund 30 Kilometern Umkreis. Bundesweit online verfügbar: Webdesign, Website-Betreuung und E-Commerce erledigen wir standortunabhängig."
+              intro={<>Regional vor Ort in Worms und rund 30 Kilometern Umkreis. Bundesweit online verfügbar: <Link href="/webdesign-worms">Webdesign</Link>, Website-Betreuung und E-Commerce erledigen wir standortunabhängig.</>}
             />
           }
         />
