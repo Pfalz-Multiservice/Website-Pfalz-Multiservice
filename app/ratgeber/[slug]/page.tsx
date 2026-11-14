@@ -32,6 +32,9 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
   const g = GUIDES.find((x) => x.slug === slug);
   if (!g) notFound();
 
+  const idx = GUIDES.findIndex((x) => x.slug === slug);
+  const related = [GUIDES[(idx + 1) % GUIDES.length], GUIDES[(idx + 2) % GUIDES.length]].filter((r) => r.slug !== slug);
+
   const articleLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -81,6 +84,12 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
                 Fragen zu Ihrer Website? Schreiben Sie uns über das <Link href="/kontakt">Kontaktformular</Link>, per E-Mail an{" "}
                 <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> oder rufen Sie an: <a href={CONTACT.phoneHref}>{CONTACT.phone}</a>.
                 Wir antworten innerhalb von 24 Stunden (werktags).
+              </p>
+              <p>
+                Mehr dazu: <Link href="/webdesign">Webdesign und Website-Betreuung</Link>
+                {related.map((r) => (
+                  <span key={r.slug}> · <Link href={guideHref(r.slug)}>{r.title}</Link></span>
+                ))}
               </p>
               <p><Link href="/ratgeber">Alle Ratgeber</Link></p>
             </div>

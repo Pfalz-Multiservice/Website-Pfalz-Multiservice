@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import { gsap, useGSAP, MOTION_OK } from "@/lib/gsap";
 import { getLenis } from "@/lib/lenis";
-import { CONTACT } from "@/lib/data";
+import { CONTACT, SERVICES, serviceHref } from "@/lib/data";
 import { Icon } from "./Icon";
 import { Logo } from "./Logo";
 
@@ -52,11 +52,21 @@ export function Footer() {
       <div className="footer__bottom-wrap">
         <div className="footer__bottom">
           <div className="stack" style={{ gap: 4 }}>
-            <span>Copyright © 2021 - 2026, Pfalz Loadout. Alle Rechte vorbehalten</span>
+            <span>Copyright © 2021 - 2026, Pfalz Multiservice. Alle Rechte vorbehalten</span>
+            <nav className="footer__legal" aria-label="Leistungen">
+              {SERVICES.map((s, i) => (
+                <span key={s.id} style={{ display: "inline-flex", gap: 4 }}>
+                  {i > 0 && <span>|</span>}
+                  <Link href={serviceHref(s)}>{s.title}</Link>
+                </span>
+              ))}
+            </nav>
             <span className="footer__legal">
               <Link href="/impressum">Impressum</Link>
               <span>|</span>
               <Link href="/datenschutz">Datenschutz</Link>
+              <span>|</span>
+              <Link href="/webdesign-worms">Webdesign Worms</Link>
               <span>|</span>
               <Link href="/ratgeber">Ratgeber</Link>
               <span>|</span>
