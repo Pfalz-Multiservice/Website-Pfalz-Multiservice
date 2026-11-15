@@ -76,6 +76,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="de" className={poppins.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: motionScript }} />
+        {/* Eigene Besuchsstatistik ohne Cookies und ohne IP-Speicherung (Dashboard auf Hostinger) */}
+        <script defer src="https://dashboard.pfalz-multiservice.de/t.js" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body>
