@@ -60,7 +60,7 @@ function ClassicItem({ ex, index }: { ex: ClassicExample; index: number }) {
         <div className="sc-browser pm-reveal">
           <div className="sc-browser__bar" aria-hidden="true">
             <span className="sc-browser__dots"><i /><i /><i /></span>
-            <span className="sc-browser__url">{shown}</span>
+            <span className="sc-browser__url">{ex.host && ex.url ? shown : ""}</span>
           </div>
           {href ? (
             <a className="cl-view" href={href} target="_blank" rel="noopener" data-cursor
