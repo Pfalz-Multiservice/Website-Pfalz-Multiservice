@@ -73,10 +73,7 @@ export function WebExamples() {
         </div>
         <div className="sc-three"><ShowcaseList grid items={REFERENCES.slice(1)} /></div>
 
-        <div className="sc-group sc-group--later">
-          <h3 className="sc-group__title">Musterdesigns</h3>
-        </div>
-        <ExampleReel />
+        <div style={{ marginTop: "clamp(72px, 9vw, 112px)" }}><ExampleReel /></div>
 
         <div style={{ marginTop: 40 }}>
           <Button variant="outline-light" size="lg" href={EXAMPLES_URL}>Alle Designs in der Übersicht</Button>
