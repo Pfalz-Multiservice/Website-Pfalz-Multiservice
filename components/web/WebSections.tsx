@@ -64,9 +64,14 @@ export function WebExamples() {
           intro="Aktuelle Kundenprojekte und Referenzen." />
 
         <div className="sc-group">
-          <h3 className="sc-group__title">Kundenprojekte <span>bald online</span></h3>
+          <h3 className="sc-group__title">Neueste Referenz</h3>
         </div>
-        <ShowcaseList grid items={REFERENCES} />
+        <ShowcaseList items={REFERENCES.slice(0, 1)} />
+
+        <div className="sc-group sc-group--later">
+          <h3 className="sc-group__title">Aktuelle Projekte <span>in Arbeit</span></h3>
+        </div>
+        <div className="sc-three"><ShowcaseList grid items={REFERENCES.slice(1)} /></div>
 
         <div className="sc-group sc-group--later">
           <h3 className="sc-group__title">Musterdesigns</h3>

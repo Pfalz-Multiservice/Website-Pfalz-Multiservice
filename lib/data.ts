@@ -305,7 +305,7 @@ export type ClassicExample = Example & {
   pages: { key: string; label: string; path: string }[];
 };
 
-/** Echte Kundenprojekte, stehen auf /webdesign ganz oben */
+/** Echte Kundenprojekte, stehen auf /webdesign ganz oben: zuerst die neueste Referenz (live), dann aktuelle Projekte */
 export const REFERENCES: ClassicExample[] = tidyDeep([
   {
     slug: "schaffner",
@@ -314,7 +314,7 @@ export const REFERENCES: ClassicExample[] = tidyDeep([
     text: "",
     tags: [],
     host: "multimedia-service-schaffner.de",
-    url: null, // nach dem Livegang: "https://www.multimedia-service-schaffner.de"
+    url: "https://www.multimedia-service-schaffner.de",
     pages: [
       { key: "start", label: "Start", path: "/" },
       { key: "leistungen", label: "Leistungen", path: "/leistungen/" },
@@ -331,6 +331,26 @@ export const REFERENCES: ClassicExample[] = tidyDeep([
     tags: [],
     host: "doggen-npl.de",
     url: null, // unter der Domain läuft noch die alte Seite; erst nach dem Umzug verlinken
+    pages: [{ key: "start", label: "Start", path: "/" }],
+  },
+  {
+    slug: "may",
+    name: "Metzgerei & Partyservice May",
+    branch: "Partyservice · Worms-Horchheim",
+    text: "",
+    tags: [],
+    host: "metzgerei-may.de",
+    url: null, // noch in Arbeit; nach dem Livegang verlinken
+    pages: [{ key: "start", label: "Start", path: "/" }],
+  },
+  {
+    slug: "pfalz-loadout",
+    name: "Pfalz Loadout",
+    branch: "Onlineshop · Taktische Ausrüstung",
+    text: "",
+    tags: [],
+    host: "pfalz-loadout.de",
+    url: null, // Shop noch nicht live; Screenshot ohne Rucksack-Abschnitt
     pages: [{ key: "start", label: "Start", path: "/" }],
   },
 ]);

@@ -483,6 +483,7 @@ a .contact-row__value { color: var(--brand-accent); }
 .showcase--grid .sc-title { font-size: clamp(1.35rem, 2vw, 1.75rem); }
 .showcase--grid .sc-text { font-size: 16px; max-width: none; }
 .showcase--grid .cl-tab { height: 36px; padding: 0 12px; }
+@media (min-width: 901px) { .sc-three .showcase--grid { grid-template-columns: repeat(3, minmax(0,1fr)); } .sc-three .sc-title { font-size: clamp(1.2rem, 1.6vw, 1.45rem); } }
 .showcase-foot { margin-top: clamp(80px, 10vw, 128px); display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
 .showcase-note { margin: 0; max-width: 620px; font: 400 14px/1.6 var(--font-body); color: var(--text-subtle); }
 @media (max-width: 900px) {

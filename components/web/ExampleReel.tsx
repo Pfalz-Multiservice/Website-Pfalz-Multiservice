@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger, useGSAP, MOTION_OK } from "@/lib/gsap";
 import { CLASSIC_EXAMPLES, EXAMPLES } from "@/lib/data";
-import { EXAMPLES_URL, EXAMPLES_HOST } from "@/lib/site";
+import { EXAMPLES_URL } from "@/lib/site";
 import { Icon } from "../Icon";
 
 const ITEMS = [
@@ -78,7 +78,7 @@ export function ExampleReel() {
         onPointerEnter={(e) => e.pointerType === "mouse" && hold(true)} onPointerLeave={() => hold(false)}>
         <div className="sc-browser__bar" aria-hidden="true">
           <span className="sc-browser__dots"><i /><i /><i /></span>
-          <span className="sc-browser__url">{EXAMPLES_HOST}/{ex.slug}</span>
+          <span className="sc-browser__url" />
         </div>
         <div className="reel-view">
           {ITEMS.map((e, i) => (

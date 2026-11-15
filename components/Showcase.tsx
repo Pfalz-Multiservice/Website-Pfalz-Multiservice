@@ -115,7 +115,7 @@ function ShowcaseItem({ ex, index }: { ex: Example; index: number }) {
         <div className="sc-browser pm-reveal">
           <div className="sc-browser__bar" aria-hidden="true">
             <span className="sc-browser__dots"><i /><i /><i /></span>
-            <span className="sc-browser__url">{shown}</span>
+            <span className="sc-browser__url">{ex.host && ex.url ? shown : ""}</span>
           </div>
           <div className="sc-browser__view">
             <Image className="sc-browser__shot" src={`/images/beispiele/${ex.slug}-scroll.png`} alt={`Vorschau der Website ${ex.name}`}

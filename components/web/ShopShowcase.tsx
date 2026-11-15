@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger, useGSAP, MOTION_OK } from "@/lib/gsap";
 import { SHOP_EXAMPLE as ex } from "@/lib/data";
-import { EXAMPLES_URL, EXAMPLES_HOST } from "@/lib/site";
+import { EXAMPLES_URL } from "@/lib/site";
 import { tidy } from "@/lib/typo";
 import { SectionHeading } from "../SectionHeading";
 import { Icon } from "../Icon";
@@ -11,7 +11,6 @@ import { Icon } from "../Icon";
 const AUTOPLAY_MS = 3600;
 const FEAT_MS = 2800;
 const BASE = `${EXAMPLES_URL}/${ex.slug}`;
-const BASE_SHOWN = `${EXAMPLES_HOST}/${ex.slug}`;
 
 /** Neues Shop-Design: eigene Bühne auf der Webdesign-Seite, getrennt vom Beispiel-Raster */
 export function ShopShowcase() {
@@ -77,7 +76,7 @@ export function ShopShowcase() {
             <div className="sc-browser">
               <div className="sc-browser__bar" aria-hidden="true">
                 <span className="sc-browser__dots"><i /><i /><i /></span>
-                <span className="sc-browser__url">{BASE_SHOWN}{page.path}</span>
+                <span className="sc-browser__url" />
               </div>
               <a className="cl-view" href={BASE + page.path} target="_blank" rel="noopener" data-cursor
                 aria-label={`${ex.name}, Ansicht ${page.label} live ansehen (öffnet in neuem Tab)`}>
