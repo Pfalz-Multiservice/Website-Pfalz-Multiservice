@@ -79,12 +79,8 @@ export function WebExamples() {
         <ExampleReel />
 
         <div style={{ marginTop: 40 }}>
-          <Button variant="outline-light" size="lg" href={EXAMPLES_URL}>Alle Musterdesigns in der Übersicht</Button>
+          <Button variant="outline-light" size="lg" href={EXAMPLES_URL}>Alle Designs in der Übersicht</Button>
         </div>
-
-        {tidyNode(<p className="showcase-note" style={{ margin: "24px 0 0" }}>
-          <span className="line">Die in den Musterdesigns gezeigten Betriebe, Personen und Angebote sind frei erfunden.</span>
-        </p>)}
       </div>
     </section>
   );

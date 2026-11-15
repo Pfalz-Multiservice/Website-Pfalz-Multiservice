@@ -6,10 +6,13 @@ import { CLASSIC_EXAMPLES, EXAMPLES } from "@/lib/data";
 import { EXAMPLES_URL } from "@/lib/site";
 import { Icon } from "../Icon";
 
-const ITEMS = [
+// Reihenfolge im Filmstreifen, per Slug festgelegt
+const ORDER = ["fliesenleger", "beratungsbuero", "seifenmanufaktur", "elektriker", "weingut", "restaurant"];
+const ALL = [
   ...CLASSIC_EXAMPLES.map((e) => ({ ...e, kind: "Mit Unterseiten" })),
   ...EXAMPLES.map((e) => ({ ...e, kind: "One-Pager" })),
 ];
+const ITEMS = ORDER.map((slug) => ALL.find((e) => e.slug === slug)).filter((e): e is (typeof ALL)[number] => !!e);
 const nn = (i: number) => String(i).padStart(2, "0");
 
 /**
