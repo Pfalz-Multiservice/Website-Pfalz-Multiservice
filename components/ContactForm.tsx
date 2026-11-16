@@ -81,7 +81,8 @@ export function ContactForm({ initial }: { initial?: string }) {
           <Button variant="outline" iconLeft="message-circle" href={CONTACT.whatsapp}>WhatsApp</Button>
         </div>
       ) : (
-        <form className="form-grid" onSubmit={submit} noValidate>
+        <form className="form-grid" onSubmit={submit} noValidate
+          {...{ toolname: "kontakt_anfrage", tooldescription: "Anfrage an Pfalz Multiservice vorbereiten: Name, E-Mail und Nachricht ausfüllen. Absenden bestätigt die Person selbst." }}>
           <Field label="Name" name="name" required error={errors.name} autoComplete="name" />
           <Field label="Unternehmen" name="company" autoComplete="organization" />
           <Field label="E-Mail" name="email" type="email" required error={errors.email} autoComplete="email" />

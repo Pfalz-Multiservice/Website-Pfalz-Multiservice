@@ -62,9 +62,15 @@ export function Footer() {
               ))}
             </nav>
             <span className="footer__legal">
+              <Link href="/ueber-uns" rel="author">Über uns</Link>
+              <span>|</span>
+              <Link href="/kontakt">Kontakt</Link>
+              <span>|</span>
+              <Link href="/preise">Preise</Link>
+              <span>|</span>
               <Link href="/impressum">Impressum</Link>
               <span>|</span>
-              <Link href="/datenschutz">Datenschutz</Link>
+              <Link href="/datenschutz" rel="privacy-policy">Datenschutz</Link>
               <span>|</span>
               <Link href="/webdesign-worms">Webdesign Worms</Link>
               <span>|</span>

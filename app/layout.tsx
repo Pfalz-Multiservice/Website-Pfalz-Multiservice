@@ -9,6 +9,7 @@ import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { CopyGuard } from "@/components/CopyGuard";
 import { ScrollProgress } from "@/components/motion/ScrollProgress";
 import { Cursor } from "@/components/motion/Cursor";
+import { WebMcpTools } from "@/components/WebMcpTools";
 import { SITE, SITE_NAME, TITLE, DESC, OG_IMAGE } from "@/lib/site";
 import { AREA, COMPANY, CONTACT, SERVICES, WEB_CARE, WEB_PACKAGES, serviceHref } from "@/lib/data";
 
@@ -38,6 +39,13 @@ const jsonLd = {
       name: SITE_NAME,
       inLanguage: "de-DE",
       publisher: { "@id": `${SITE}/#business` },
+      hasPart: [
+        { "@type": "AboutPage", url: `${SITE}/ueber-uns`, name: "Über uns" },
+        { "@type": "ContactPage", url: `${SITE}/kontakt`, name: "Kontakt" },
+        { "@type": "WebPage", url: `${SITE}/preise`, name: "Preise" },
+        { "@type": "WebPage", url: `${SITE}/impressum`, name: "Impressum" },
+        { "@type": "WebPage", url: `${SITE}/datenschutz`, name: "Datenschutz" },
+      ],
     },
     {
       "@type": ["LocalBusiness", "ProfessionalService"],
@@ -106,6 +114,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Eigene Besuchsstatistik ohne Cookies und ohne IP-Speicherung (Dashboard auf Hostinger) */}
         <script defer src="https://dashboard.pfalz-multiservice.de/t.js" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        {/* Wegweiser für KI-Agenten: Unternehmensseiten, Markdown-Fassung, MCP-Server */}
+        <link rel="author" href="/ueber-uns" />
+        <link rel="privacy-policy" href="/datenschutz" />
+        <link rel="alternate" type="text/markdown" href="/index.md" />
+        <link rel="mcp-server-card" type="application/json" href="/.well-known/mcp/server-card.json" />
       </head>
       <body>
         <SmoothScroll />
@@ -116,6 +129,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <ContactBar />
         <Cursor />
+        <WebMcpTools />
       </body>
     </html>
   );
