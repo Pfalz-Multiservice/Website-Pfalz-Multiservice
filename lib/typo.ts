@@ -58,11 +58,16 @@ export function tidy(text: string): string {
 /**
  * Gewünschter Zeilenumbruch: „\n“ im Text wird am Desktop zum Umbruch,
  * auf dem Handy fließt der Text normal weiter (CSS-Klasse .br-d).
+ * „ “ (Zeilentrenner) bricht immer um, auch auf dem Handy.
  */
 export function lines(text: string): ReactNode {
-  if (!text.includes("\n")) return text;
-  const parts = text.split("\n");
-  return parts.flatMap((p, i) => (i === 0 ? [p] : [createElement("br", { key: i, className: "br-d" }), " ", p.replace(/^\s+/, "")]));
+  if (!/[\n ]/.test(text)) return text;
+  const parts = text.split(/(\n| )/);
+  const out: ReactNode[] = [parts[0]];
+  for (let i = 1; i < parts.length; i += 2) {
+    out.push(createElement("br", { key: i, className: parts[i] === "\n" ? "br-d" : undefined }), " ", parts[i + 1].replace(/^\s+/, ""));
+  }
+  return out;
 }
 
 /** Wie tidy(), behandelt den Text aber als Satzanfang (z. B. nach einem fetten Vorspann) */
