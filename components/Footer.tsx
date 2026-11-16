@@ -54,6 +54,7 @@ export function Footer() {
             <Link className="footer__gold" href="/ueber-uns" rel="author" data-cursor><Icon name="info" size={16} />Über uns</Link>
             <Link className="footer__gold" href="/kontakt" data-cursor><Icon name="message-circle" size={16} />Kontakt</Link>
             <Link className="footer__gold" href="/preise" data-cursor><Icon name="tag" size={16} />Preise</Link>
+            <Link className="footer__gold" href="/fakten" data-cursor><Icon name="file-check" size={16} />Fakten</Link>
             <Link className="footer__gold" href="/ratgeber" data-cursor><Icon name="book-open" size={16} />Ratgeber</Link>
             <Link className="footer__gold" href="/webdesign-worms" data-cursor><Icon name="map-pin" size={16} />Webdesign Worms</Link>
           </div>

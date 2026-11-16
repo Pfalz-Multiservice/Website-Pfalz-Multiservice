@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { JsonLd, breadcrumb } from "@/lib/schema";
 import { GUIDES, guideHref } from "@/lib/ratgeber";
 
-const DESC = "Kurze Ratgeber rund um Website, Wartung, Domain und Hosting von Pfalz Multiservice aus Worms.";
+const DESC = "Kurze Ratgeber von Pfalz Multiservice aus Worms: Website, Wartung und Hosting, Restposten verkaufen, Räumungen und KNX-Anlagen.";
 
 export const metadata: Metadata = {
   title: "Ratgeber",

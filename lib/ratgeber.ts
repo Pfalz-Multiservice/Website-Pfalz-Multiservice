@@ -1,7 +1,10 @@
 /** Ratgeber: wenige, sachliche Artikel für Suchanfragen, bewusst ohne Bilder und ohne Platz auf Start- und Leistungsseiten */
 export type GuideSection = { h: string; p?: string[]; l?: string[] };
+export type GuideTopic = "web" | "reselling" | "clearance" | "smarthome";
 export type Guide = {
   slug: string;
+  /** Leistung, zu der der Artikel gehört (steuert Verweise und Kontaktzeile); ohne Angabe: Webdesign */
+  topic?: GuideTopic;
   title: string;
   /** Kurzer Titel für <title> und Vorschau (max. ~60 Zeichen, ohne Markenzusatz); die H1 bleibt `title` */
   seoTitle?: string;
@@ -10,6 +13,8 @@ export type Guide = {
   date: string;
   /** Anzeige, z. B. „3. November 2026“ */
   dateLabel: string;
+  /** ISO-Datum der letzten inhaltlichen Änderung, falls später als `date` */
+  updated?: string;
   sections: GuideSection[];
   faq?: [string, string][];
 };
@@ -396,6 +401,208 @@ export const GUIDES: Guide[] = [
       ["Kann ich später von HTML auf Node.js wechseln?", "Ja. Design und Inhalte lassen sich übernehmen, die Funktionen kommen schrittweise dazu."],
     ],
   },
+  {
+    slug: "restposten-verkaufen",
+    topic: "reselling",
+    title: "Restposten und Überbestände verkaufen: Wege, Vorbereitung und wovon der Preis abhängt",
+    seoTitle: "Restposten verkaufen: Wege, Preis & Vorbereitung",
+    teaser: "Welche Wege es für Überbestände, Restposten und Retouren gibt, was den Ankaufspreis bestimmt und was Sie für ein Angebot brauchen.",
+    date: "2026-11-16",
+    dateLabel: "16. November 2026",
+    sections: [
+      {
+        h: "Kurz gesagt",
+        p: [
+          "Ware, die sich nicht mehr verkauft, kostet jeden Monat Geld: Sie bindet Kapital und belegt Lagerfläche. Sie können sie selbst abverkaufen, an einen Aufkäufer abgeben oder entsorgen. Der Verkauf an einen Aufkäufer bringt weniger als der Einzelverkauf, dafür ist der gesamte Posten auf einmal weg und das Geld sofort wieder verfügbar.",
+          "Wir kaufen Überbestände, Restposten und Retourenware an. Für ein Angebot brauchen wir drei Angaben: Art der Ware, Menge und Zustand, am besten mit ein paar Fotos.",
+        ],
+      },
+      {
+        h: "Welche Wege es gibt",
+        l: [
+          "Selbst abverkaufen: mit Rabatt im eigenen Geschäft oder über Online-Marktplätze. Bringt pro Stück am meisten, kostet aber Zeit für Fotos, Beschreibungen, Versand und Rückfragen.",
+          "An einen Aufkäufer abgeben: Der gesamte Posten geht in einem Schritt weg. Der Preis pro Stück ist niedriger, dafür entfallen Aufwand, Lagerkosten und das Risiko, auf einem Rest sitzen zu bleiben.",
+          "Spenden: sinnvoll für Ware, die brauchbar ist, sich aber nicht mehr verkaufen lässt. Klären Sie die steuerliche Seite vorher mit Ihrer Steuerberatung.",
+          "Entsorgen: der letzte Ausweg. Er kostet Geld und vernichtet Ware, die oft noch jemand gebrauchen könnte.",
+        ],
+      },
+      {
+        h: "Wovon der Ankaufspreis abhängt",
+        l: [
+          "Art der Ware: Gängige Artikel mit bekannter Marke lassen sich leichter weiterverkaufen als Spezialware.",
+          "Menge: Ein großer, einheitlicher Posten ist anders zu bewerten als viele verschiedene Einzelstücke.",
+          "Zustand: Neuware in Originalverpackung, Ware mit beschädigter Verpackung und geprüfte oder ungeprüfte Retouren sind drei verschiedene Preisklassen.",
+          "Vollständigkeit: Fehlen Zubehör, Anleitung oder Etiketten, sinkt der Wert.",
+          "Saison und Aktualität: Winterjacken im Frühjahr oder ein Vorgängermodell brauchen länger bis zum Verkauf.",
+          "Vorgaben des Herstellers: Manche Marken schränken ein, wo und wie ihre Ware weiterverkauft werden darf. Sagen Sie uns das gleich dazu.",
+        ],
+      },
+      {
+        h: "Was Sie für ein Angebot vorbereiten",
+        l: [
+          "Eine Liste mit Artikel, Menge und Zustand. Eine einfache Tabelle reicht.",
+          "Ein paar Fotos: die Ware selbst, die Verpackung und wie sie gelagert ist (Paletten, Kartons, Regale).",
+          "Wo die Ware steht und bis wann sie weg sein soll.",
+          "Hinweise auf Mängel, fehlende Teile oder Vorgaben des Herstellers.",
+        ],
+        p: ["Je genauer diese Angaben sind, desto schneller bekommen Sie ein Angebot, das am Ende auch hält."],
+      },
+      {
+        h: "So läuft der Ankauf bei uns ab",
+        l: [
+          "Sie schildern uns Art, Menge und Zustand der Ware, per Formular, Telefon oder WhatsApp.",
+          "Wir melden uns innerhalb von 24 Stunden an Werktagen mit einer Einschätzung oder mit Rückfragen.",
+          "Sie erhalten ein verbindliches Angebot. Abholung oder Anlieferung stimmen wir darin mit Ihnen ab.",
+          "Wir bereiten die Ware auf und bringen sie über unsere eigenen Vertriebskanäle zurück in den Markt, statt sie zu entsorgen.",
+        ],
+      },
+    ],
+    faq: [
+      ["Welche Ware kaufen Sie an?", "Überbestände, Restposten und Retourenware. Schildern Sie uns kurz Art, Menge und Zustand, am besten mit ein paar Fotos."],
+      ["Kaufen Sie auch kleine Mengen?", "Das hängt von der Ware ab. Fragen Sie einfach an, wir sagen Ihnen ehrlich, ob sich ein Ankauf für beide Seiten lohnt."],
+      ["Was passiert mit der Ware nach dem Ankauf?", "Wir bereiten sie auf und verkaufen sie über unsere eigenen Vertriebskanäle weiter. Die Ware wird weiter genutzt statt vernichtet."],
+      ["Wie schnell bekomme ich ein Angebot?", "Auf Anfragen antworten wir innerhalb von 24 Stunden an Werktagen. Wie schnell das Angebot steht, hängt davon ab, wie vollständig Ihre Angaben sind."],
+    ],
+  },
+  {
+    slug: "garage-lager-halle-raeumen-lassen",
+    topic: "clearance",
+    title: "Garage, Lager oder Halle räumen lassen: Ablauf, Kosten und Vorbereitung",
+    seoTitle: "Lager oder Halle räumen lassen: Ablauf & Kosten",
+    teaser: "Wie eine Räumung abläuft, wovon der Preis abhängt, woran Sie ein seriöses Angebot erkennen und was Sie vorher erledigen sollten.",
+    date: "2026-11-16",
+    dateLabel: "16. November 2026",
+    sections: [
+      {
+        h: "Kurz gesagt",
+        p: [
+          "Eine Räumung besteht aus vier Schritten: Besichtigung, Angebot, Durchführung und Übergabe. Was sie kostet, hängt vor allem von der Menge, vom Zugang und davon ab, was entsorgt werden muss. Einen verlässlichen Preis gibt es deshalb erst nach einer Besichtigung.",
+          "Wir räumen Garagen, Lager, Hallen und Gewerbeflächen in Worms und der Pfalz. Sie erhalten nach der Bestandsaufnahme ein verbindliches Festpreis-Angebot und bekommen die Fläche besenrein zurück.",
+        ],
+      },
+      {
+        h: "Wovon der Preis abhängt",
+        l: [
+          "Menge: Wie viel steht auf der Fläche, und wie dicht ist sie gestellt?",
+          "Zugang: Ebenerdig mit Zufahrt bis ans Tor ist einfacher als ein Keller, ein Obergeschoss oder ein enger Hof.",
+          "Art des Räumguts: Möbel, Kartons und Regale sind unkompliziert. Reifen, Farben, Öle, Elektrogeräte oder Baustoffe müssen getrennt und gesondert entsorgt werden.",
+          "Verwertbares: Brauchbare Ware und Bestände können den Preis senken, weil sie weiterverkauft statt entsorgt werden.",
+          "Zeitrahmen: Ein fester Termin kurz vor einer Übergabe braucht mehr Leute als eine Räumung ohne Zeitdruck.",
+        ],
+      },
+      {
+        h: "So läuft eine Räumung bei uns ab",
+        l: [
+          "Bestandsaufnahme vor Ort: Wir sehen uns die Fläche an und klären, was bleibt und was wegkommt.",
+          "Verbindliches Festpreis-Angebot: Sie kennen den Preis, bevor wir beginnen.",
+          "Durchführung zum vereinbarten Termin.",
+          "Besenreine Übergabe. Verwertbare Bestände führen wir in den Wirtschaftskreislauf zurück, alles Weitere wird fachgerecht entsorgt.",
+        ],
+      },
+      {
+        h: "Was Sie vorher erledigen sollten",
+        l: [
+          "Alles heraussuchen oder markieren, was bleiben soll: Unterlagen, Werkzeug, Erinnerungsstücke.",
+          "Zugang klären: Schlüssel, Tor, Zufahrt und eine Stelle, an der ein Transporter halten kann.",
+          "Fristen nennen: Übergabe an den Vermieter, Verkauf, Nachmieter.",
+          "Auf Besonderes hinweisen: Gefahrstoffe, sehr schwere Teile, fest verbaute Regale oder Maschinen.",
+          "Bei gemieteten Flächen: mit dem Vermieter klären, in welchem Zustand die Fläche zurückgegeben werden muss.",
+        ],
+      },
+      {
+        h: "Woran Sie ein seriöses Angebot erkennen",
+        l: [
+          "Es gibt eine Besichtigung oder zumindest aussagekräftige Fotos, bevor ein Preis genannt wird.",
+          "Der Preis ist ein schriftlicher Festpreis und kein grober Stundensatz.",
+          "Entsorgung und Anfahrt sind enthalten oder klar einzeln ausgewiesen.",
+          "Es steht fest, in welchem Zustand die Fläche übergeben wird, zum Beispiel besenrein.",
+          "Sie erhalten eine ordentliche Rechnung.",
+        ],
+      },
+    ],
+    faq: [
+      ["Welche Flächen räumen Sie?", "Garagen, Lager, Hallen und Gewerbeflächen in Worms und der Pfalz, vollständig bis zur besenreinen Übergabe."],
+      ["Was kostet eine Räumung?", "Das hängt von Menge, Zugang und Art des Räumguts ab. Nach der Bestandsaufnahme vor Ort erhalten Sie ein verbindliches Festpreis-Angebot."],
+      ["Was passiert mit den Sachen?", "Verwertbare Bestände führen wir in den Wirtschaftskreislauf zurück, alles Weitere wird fachgerecht entsorgt."],
+      ["Wie schnell bekomme ich einen Termin?", "Schildern Sie uns Ihr Anliegen und Ihre Frist. Wir antworten innerhalb von 24 Stunden an Werktagen und stimmen Besichtigung und Termin mit Ihnen ab."],
+    ],
+  },
+  {
+    slug: "knx-anlage-aendern-lassen",
+    topic: "smarthome",
+    title: "KNX-Anlage ändern lassen: Was möglich ist, was Sie brauchen und was es kostet",
+    seoTitle: "KNX-Anlage ändern lassen: Möglichkeiten & Kosten",
+    teaser: "Welche Änderungen an einer bestehenden KNX-Anlage reine Programmierung sind, warum die Projektdatei so wichtig ist und womit Sie preislich rechnen können.",
+    date: "2026-11-16",
+    dateLabel: "16. November 2026",
+    sections: [
+      {
+        h: "Kurz gesagt",
+        p: [
+          "Viele Wünsche an eine bestehende KNX-Anlage lassen sich ohne neue Leitungen erfüllen: Die Geräte sind schon verbunden, es ändert sich nur, was sie tun sollen. Das ist Programmierung und keine Elektroinstallation.",
+          "Wichtig ist die Projektdatei Ihrer Anlage. Liegt sie vor, sind die meisten Änderungen schnell gemacht. Bei uns beginnen Änderungen bei 59 €, den Festpreis erfahren Sie nach einer kurzen Einschätzung vorab.",
+        ],
+      },
+      {
+        h: "Was sich per Programmierung ändern lässt",
+        l: [
+          "Lichtszenen, Zeitschaltungen und Automatisierungen anpassen oder neu anlegen.",
+          "Die Steuerung von Jalousien und Beschattung ändern.",
+          "Tastern eine andere Funktion geben.",
+          "Neue Geräte in die bestehende Anlage einbinden.",
+          "Funktionen umprogrammieren, die nicht mehr wie gewünscht laufen.",
+          "Fehler suchen, wenn die Anlage nicht mehr richtig reagiert.",
+        ],
+      },
+      {
+        h: "Warum die Projektdatei so wichtig ist",
+        p: [
+          "Eine KNX-Anlage wird mit der Software ETS eingerichtet. Dabei entsteht eine Projektdatei, in der alle Geräte, ihre Einstellungen und ihre Verknüpfungen stehen. Wer die Anlage später ändern will, arbeitet in dieser Datei weiter.",
+          "Fragen Sie den Elektrobetrieb, der die Anlage eingerichtet hat, oder Ihren Bauträger nach der Datei. Sie gehört zu Ihrer Anlage wie der Schaltplan. Bewahren Sie eine Kopie an einem sicheren Ort auf und lassen Sie sie nach jeder Änderung aktualisieren.",
+        ],
+      },
+      {
+        h: "Wenn die Projektdatei fehlt",
+        p: [
+          "Das kommt häufig vor: Der Betrieb von damals ist nicht mehr erreichbar, oder die Datei wurde nie übergeben. Die Einstellungen lassen sich aus den Geräten nicht einfach vollständig zurücklesen. Je nach Anlage muss ein Teil neu erfasst oder neu programmiert werden, und das bedeutet mehr Aufwand.",
+          "Schildern Sie uns Ihre Anlage, auch ohne Datei. Wir sagen Ihnen ehrlich, was möglich ist und was es kostet, bevor Sie etwas beauftragen.",
+        ],
+      },
+      {
+        h: "Was nicht dazugehört",
+        l: [
+          "Elektroinstallation: neue Leitungen, Arbeiten im Verteiler oder der Anschluss von Geräten an das Stromnetz gehören in die Hand eines Elektrofachbetriebs.",
+          "Die Planung neuer Anlagen.",
+        ],
+        p: ["Wir programmieren und ändern bestehende KNX-Anlagen. Braucht Ihr Vorhaben zusätzlich eine Elektrofachkraft, sagen wir Ihnen das vorab."],
+      },
+      {
+        h: "Ablauf und Kosten",
+        l: [
+          "Sie schildern uns Ihr Anliegen: was die Anlage heute tut und was sie künftig tun soll.",
+          "Wir geben Ihnen eine ehrliche Einschätzung.",
+          "Sie erhalten vorab einen Festpreis. Änderungen gibt es ab 59 €.",
+          "Wir setzen um, testen mit Ihnen und übergeben. Auf Wunsch sichern wir Ihre Projektdatei.",
+        ],
+        p: ["KNX ist eine eingetragene Marke der KNX Association."],
+      },
+    ],
+    faq: [
+      ["Was kostet eine Änderung an meiner KNX-Anlage?", "Änderungen gibt es ab 59 €. Nach einer kurzen, ehrlichen Einschätzung erhalten Sie vorab einen Festpreis."],
+      ["Brauche ich für jede Änderung einen Elektriker?", "Nein. Solange nur geändert wird, was vorhandene Geräte tun sollen, ist das Programmierung. Einen Elektrofachbetrieb brauchen Sie, sobald Leitungen gelegt oder Geräte an das Stromnetz angeschlossen werden."],
+      ["Ich habe keine Projektdatei mehr. Geht das trotzdem?", "Oft ja, aber mit mehr Aufwand. Schildern Sie uns kurz Ihre Anlage, dann sagen wir Ihnen ehrlich, was möglich ist."],
+      ["Planen oder installieren Sie auch neue Anlagen?", "Nein. Wir programmieren und ändern bestehende KNX-Anlagen. Elektroinstallation und die Planung neuer Anlagen gehören nicht zu unserem Angebot."],
+    ],
+  },
 ];
 
 export const guideHref = (slug: string) => `/ratgeber/${slug}`;
+
+/** Je Thema: Zielseite der Leistung und Einleitung der Kontaktzeile unter dem Artikel */
+export const GUIDE_TOPICS: Record<GuideTopic, { href: string; label: string; question: string }> = {
+  web: { href: "/webdesign", label: "Webdesign und Website-Betreuung", question: "Fragen zu Ihrer Website?" },
+  reselling: { href: "/leistungen/reselling", label: "Reselling & Asset Recovery", question: "Sie möchten Ware anbieten?" },
+  clearance: { href: "/leistungen/clearance", label: "Clearance Services: Räumung und Entrümpelung", question: "Sie möchten eine Fläche räumen lassen?" },
+  smarthome: { href: "/leistungen/smarthome", label: "Smart Home & KNX", question: "Fragen zu Ihrer KNX-Anlage?" },
+};
+export const guideTopic = (g: Guide): GuideTopic => g.topic ?? "web";

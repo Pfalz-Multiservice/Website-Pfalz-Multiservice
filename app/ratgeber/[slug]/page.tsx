@@ -5,8 +5,8 @@ import { social } from "@/lib/social";
 import { tidyNode } from "@/lib/typo";
 import { SectionHeading } from "@/components/SectionHeading";
 import { JsonLd, breadcrumb, faqPage } from "@/lib/schema";
-import { GUIDES, guideHref } from "@/lib/ratgeber";
-import { CONTACT } from "@/lib/data";
+import { GUIDES, GUIDE_TOPICS, guideHref, guideTopic } from "@/lib/ratgeber";
+import { COMPANY, CONTACT } from "@/lib/data";
 import { SITE, SITE_NAME } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: g.seoTitle ? { absolute: g.seoTitle } : g.title,
     description: g.teaser,
     alternates: { canonical: guideHref(g.slug) },
+    authors: [{ name: COMPANY.owner, url: `${SITE}/ueber-uns` }],
     ...social({ path: guideHref(g.slug), title: g.seoTitle ?? `${g.title} · ${SITE_NAME}`, description: g.teaser }),
     robots: { index: true, follow: true },
   };
@@ -32,8 +33,10 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
   const g = GUIDES.find((x) => x.slug === slug);
   if (!g) notFound();
 
-  const idx = GUIDES.findIndex((x) => x.slug === slug);
-  const related = [GUIDES[(idx + 1) % GUIDES.length], GUIDES[(idx + 2) % GUIDES.length]].filter((r) => r.slug !== slug);
+  // Weiterlesen: zuerst Artikel zum selben Thema, dann die übrigen
+  const topic = GUIDE_TOPICS[guideTopic(g)];
+  const others = GUIDES.filter((x) => x.slug !== slug);
+  const related = [...others.filter((x) => guideTopic(x) === guideTopic(g)), ...others.filter((x) => guideTopic(x) !== guideTopic(g))].slice(0, 2);
 
   const articleLd = {
     "@context": "https://schema.org",
@@ -41,11 +44,13 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
     headline: g.title,
     description: g.teaser,
     datePublished: g.date,
-    dateModified: g.date,
+    dateModified: g.updated ?? g.date,
     inLanguage: "de-DE",
     mainEntityOfPage: `${SITE}${guideHref(g.slug)}`,
-    author: { "@type": "Organization", name: SITE_NAME, url: SITE },
+    // Verantwortliche Person statt nur Firmenname: so ordnen Suchmaschinen und KI-Dienste den Text einer Person zu
+    author: { "@type": "Person", "@id": `${SITE}/#inhaber`, name: COMPANY.owner, jobTitle: COMPANY.role, url: `${SITE}/ueber-uns`, worksFor: { "@id": `${SITE}/#business` } },
     publisher: { "@id": `${SITE}/#business` },
+    about: { "@type": "Service", name: topic.label, url: `${SITE}${topic.href}` },
   };
 
   return (
@@ -60,7 +65,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           <div className="stack" style={{ gap: 12 }}>
             <SectionHeading level={1} size="h2" eyebrow="Ratgeber" title={g.title} />
             <span className="legal__date">
-              <time dateTime={g.date}>{g.dateLabel}</time> · {SITE_NAME}
+              <time dateTime={g.date}>{g.dateLabel}</time> · <Link href="/ueber-uns" rel="author">{COMPANY.owner}</Link>, {COMPANY.role} {SITE_NAME}
             </span>
           </div>
           {tidyNode(<>
@@ -81,17 +86,17 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
             )}
             <div className="legal__block">
               <p>
-                Fragen zu Ihrer Website? Schreiben Sie uns über das <Link href="/kontakt">Kontaktformular</Link>, per E-Mail an{" "}
+                {topic.question} Schreiben Sie uns über das <Link href="/kontakt">Kontaktformular</Link>, per E-Mail an{" "}
                 <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> oder rufen Sie an: <a href={CONTACT.phoneHref}>{CONTACT.phone}</a>.
                 Wir antworten innerhalb von 24 Stunden (werktags).
               </p>
               <p>
-                Mehr dazu: <Link href="/webdesign">Webdesign und Website-Betreuung</Link>
+                Mehr dazu: <Link href={topic.href}>{topic.label}</Link>
                 {related.map((r) => (
                   <span key={r.slug}> · <Link href={guideHref(r.slug)}>{r.title}</Link></span>
                 ))}
               </p>
-              <p><Link href="/ratgeber">Alle Ratgeber</Link></p>
+              <p><Link href="/ratgeber">Alle Ratgeber</Link> · <Link href="/preise">Preise</Link> · <Link href="/fakten">Fakten zum Unternehmen</Link></p>
             </div>
           </>)}
         </div>

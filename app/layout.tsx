@@ -41,6 +41,7 @@ const jsonLd = {
       publisher: { "@id": `${SITE}/#business` },
       hasPart: [
         { "@type": "AboutPage", url: `${SITE}/ueber-uns`, name: "Über uns" },
+        { "@type": "AboutPage", url: `${SITE}/fakten`, name: "Fakten auf einen Blick" },
         { "@type": "ContactPage", url: `${SITE}/kontakt`, name: "Kontakt" },
         { "@type": "WebPage", url: `${SITE}/preise`, name: "Preise" },
         { "@type": "WebPage", url: `${SITE}/impressum`, name: "Impressum" },
@@ -52,10 +53,7 @@ const jsonLd = {
       "@id": `${SITE}/#business`,
       priceRange: "ab 199 €",
       // Externe Profile, damit KI-Dienste und Google den Betrieb eindeutig zuordnen
-      sameAs: [
-        "https://www.google.com/search?kgmid=/g/11z_fsn8yl",
-        "https://www.linkedin.com/in/pfalz-multiservice/",
-      ],
+      sameAs: COMPANY.profiles.map((p) => p.url),
       name: SITE_NAME,
       url: SITE,
       logo: `${SITE}/logo-white.png`,
@@ -68,7 +66,7 @@ const jsonLd = {
       areaServed: AREA.map((name) => ({ "@type": "City", name })),
       foundingDate: COMPANY.founded,
       vatID: "DE444410908",
-      founder: { "@type": "Person", name: COMPANY.owner },
+      founder: { "@type": "Person", "@id": `${SITE}/#inhaber`, name: COMPANY.owner, jobTitle: COMPANY.role, url: `${SITE}/ueber-uns`, worksFor: { "@id": `${SITE}/#business` } },
       contactPoint: { "@type": "ContactPoint", contactType: "customer service", telephone: CONTACT.phone, email: CONTACT.email, availableLanguage: "de", areaServed: "DE" },
       knowsAbout: SERVICES.map((s) => s.title),
       hasOfferCatalog: {

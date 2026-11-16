@@ -2483,6 +2483,16 @@ a.web-local__row:hover, a.web-local__row:focus-visible { color: var(--brand-acce
 .legal ul { margin: 0; padding-left: 1.2em; font: var(--type-body); color: var(--text-body); }
 .legal ul a { text-decoration: underline; text-underline-offset: 3px; }
 
+/* Verweise auf die Stadtseiten (Webdesign in der Region) */
+.city-links { display: flex; flex-direction: column; gap: 16px; }
+.city-links__label { font: 700 14px/1.3 var(--font-display); text-transform: uppercase; letter-spacing: .08em; color: var(--text-subtle); }
+.city-links__list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.city-links__list a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 16px; border: 1px solid var(--border-strong); color: var(--text-body); text-decoration: none; font: 500 15px/1.3 var(--font-body); transition: border-color var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out); }
+.city-links__list a:hover, .city-links__list a:focus-visible { border-color: rgba(221,187,77,.6); color: var(--brand-accent); }
+/* Faktenseite: Tabelle mit Bezeichnung links und frei umbrechendem Wert */
+.fact-table th { width: 34%; }
+.fact-table td { white-space: normal; text-align: left; }
+@media (max-width: 600px) { .fact-table th, .fact-table td { display: block; width: auto; } .fact-table th { border-bottom: 0; padding-bottom: 2px; } .fact-table td { padding-top: 0; } }
 /* Footer: Spalte Leistungen neben Kontakt, gleicher Stil wie Kontakt */
 @media (min-width: 901px) { .footer__grid { grid-template-columns: minmax(0,1fr) auto minmax(0,.8fr) minmax(0,1.1fr); gap: 40px; } }
 .footer__col--pages .footer__h { text-align: left; }

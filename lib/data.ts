@@ -48,6 +48,12 @@ export type Faq = [question: string, answer: string];
 /** Angaben zum Unternehmen für „Über uns“, Footer und strukturierte Daten */
 export const COMPANY = {
   owner: "Jasmin Beer",
+  role: "Inhaberin",
+  /** Offizielle Profile: sichtbar auf /fakten, als sameAs im Schema */
+  profiles: [
+    { name: "Google-Unternehmensprofil", label: "Pfalz Multiservice bei Google", url: "https://www.google.com/search?kgmid=/g/11z_fsn8yl" },
+    { name: "LinkedIn", label: "linkedin.com/in/pfalz-multiservice", url: "https://www.linkedin.com/in/pfalz-multiservice/" },
+  ],
   founded: "2021",
   hours: "Termine nach Vereinbarung",
   /** Ortsmitte Worms (bewusst ohne Straße) */

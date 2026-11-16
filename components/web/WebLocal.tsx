@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CONTACT } from "@/lib/data";
 import { SITE_NAME } from "@/lib/site";
+import { ORTE, ortHref, type Ort } from "@/lib/orte";
 import { tidy } from "@/lib/typo";
 import { SectionHeading } from "../SectionHeading";
 import { CheckList } from "../CheckList";
@@ -59,6 +60,46 @@ export function WormsTeaser() {
           </span>
           <Icon name="arrow-right" size={20} />
         </Link>
+      </div>
+    </section>
+  );
+}
+
+/** Lokaler Abschnitt einer Stadtseite (/webdesign/<ort>): eigene Texte je Stadt, Kontaktkarte mit dem Sitz in Worms */
+export function WebCity({ ort }: { ort: Ort }) {
+  return (
+    <section className="section" id="ort">
+      <div className="container split web-local">
+        <div>
+          <SectionHeading eyebrow={`Webdesign für ${ort.name}`} title="Ihr Webdesigner" highlight={`für ${ort.name}`} />
+          {ort.text.map((t) => <p key={t} className="web-local__text pm-reveal" data-reveal="up">{t}</p>)}
+          <div className="pm-reveal" data-reveal="up"><CheckList items={ort.points} /></div>
+        </div>
+        <address className="web-local__card pm-reveal" data-reveal="up">
+          <span className="web-local__name">{SITE_NAME}</span>
+          <span className="web-local__row"><Icon name="map-pin" size={18} />{CONTACT.city}</span>
+          <a className="web-local__row" href={CONTACT.phoneHref}><Icon name="phone" size={18} />{CONTACT.phone}</a>
+          <a className="web-local__row" href={CONTACT.whatsapp}><Icon name="message-circle" size={18} />WhatsApp schreiben</a>
+          <a className="web-local__row" href={`mailto:${CONTACT.email}`}><Icon name="mail" size={18} />{CONTACT.email}</a>
+          <span className="web-local__note">{tidy(`Sitz in Worms. Termine in ${ort.name} nach Vereinbarung.`)}</span>
+        </address>
+      </div>
+    </section>
+  );
+}
+
+/** Verweise auf alle Stadtseiten – verbindet /webdesign, /webdesign-worms und die Stadtseiten untereinander */
+export function CityLinks({ current }: { current?: string }) {
+  const links = [{ href: "/webdesign-worms", name: "Worms", slug: "worms" }, ...ORTE.map((o) => ({ href: ortHref(o.slug), name: o.name, slug: o.slug }))].filter((l) => l.slug !== current);
+  return (
+    <section className="section section--tight">
+      <div className="container">
+        <nav className="city-links pm-reveal" data-reveal="up" aria-label="Webdesign in der Region">
+          <span className="city-links__label">Webdesign in der Region</span>
+          <ul className="city-links__list">
+            {links.map((l) => <li key={l.slug}><Link href={l.href} data-cursor>Webdesign {l.name}</Link></li>)}
+          </ul>
+        </nav>
       </div>
     </section>
   );
