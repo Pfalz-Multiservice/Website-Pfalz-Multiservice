@@ -53,7 +53,7 @@ export default function UeberUnsPage() {
             </div>
             <div>
               <h2>Kontakt</h2>
-              <p>Telefon und WhatsApp: <a href={CONTACT.phoneHref}>{CONTACT.phone}</a><br />E-Mail: <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a><br /><Link href="/kontakt">Zum Kontaktformular</Link> · <Link href="/impressum">Impressum</Link></p>
+              <p>Telefon und WhatsApp: <a href={CONTACT.phoneHref} style={{ whiteSpace: "nowrap" }}>{CONTACT.phone}</a><br />E-Mail: <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a><br /><Link href="/kontakt">Zum Kontaktformular</Link> · <Link href="/impressum">Impressum</Link></p>
             </div>
           </div>)}
         </div>
