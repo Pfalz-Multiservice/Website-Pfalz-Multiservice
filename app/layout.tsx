@@ -43,6 +43,11 @@ const jsonLd = {
       "@type": ["LocalBusiness", "ProfessionalService"],
       "@id": `${SITE}/#business`,
       priceRange: "ab 199 €",
+      // Externe Profile, damit KI-Dienste und Google den Betrieb eindeutig zuordnen
+      sameAs: [
+        "https://www.google.com/search?kgmid=/g/11z_fsn8yl",
+        "https://www.linkedin.com/in/pfalz-multiservice/",
+      ],
       name: SITE_NAME,
       url: SITE,
       logo: `${SITE}/logo-white.png`,
