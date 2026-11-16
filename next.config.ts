@@ -43,7 +43,12 @@ const nextConfig: NextConfig = {
       { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
       { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
     ];
-    return [{ source: "/:path*", headers: security }];
+    // Startseite verweist KI-Agenten auf die Markdown-Fassung und llms.txt (RFC 8288)
+    const agentLinks = [
+      { key: "Link", value: '</index.md>; rel="alternate"; type="text/markdown", </llms.txt>; rel="describedby"; type="text/plain", </sitemap.xml>; rel="sitemap"' },
+      { key: "Vary", value: "Accept" },
+    ];
+    return [{ source: "/:path*", headers: security }, { source: "/", headers: agentLinks }];
   },
 };
 

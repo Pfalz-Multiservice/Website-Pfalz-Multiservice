@@ -10,7 +10,10 @@ import { CopyGuard } from "@/components/CopyGuard";
 import { ScrollProgress } from "@/components/motion/ScrollProgress";
 import { Cursor } from "@/components/motion/Cursor";
 import { SITE, SITE_NAME, TITLE, DESC, OG_IMAGE } from "@/lib/site";
-import { AREA, COMPANY, CONTACT, SERVICES, serviceHref } from "@/lib/data";
+import { AREA, COMPANY, CONTACT, SERVICES, WEB_CARE, WEB_PACKAGES, serviceHref } from "@/lib/data";
+
+/** "199 €" / "59 €" → 199 / 59; "individuell" → null */
+const euro = (s: string) => { const m = s.replace(/\s/g, "").match(/^(\d+(?:,\d+)?)€/); return m ? Number(m[1].replace(",", ".")) : null; };
 
 // Schrift über next/font: wird mitgeliefert, vorab geladen, und die Ersatzschrift hat passende Maße (kein Layout-Sprung)
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], display: "swap", variable: "--font-poppins" });
@@ -37,8 +40,14 @@ const jsonLd = {
       publisher: { "@id": `${SITE}/#business` },
     },
     {
-      "@type": "ProfessionalService",
+      "@type": ["LocalBusiness", "ProfessionalService"],
       "@id": `${SITE}/#business`,
+      priceRange: "ab 199 €",
+      // Externe Profile, damit KI-Dienste und Google den Betrieb eindeutig zuordnen
+      sameAs: [
+        "https://www.google.com/search?kgmid=/g/11z_fsn8yl",
+        "https://www.linkedin.com/in/pfalz-multiservice/",
+      ],
       name: SITE_NAME,
       url: SITE,
       logo: `${SITE}/logo-white.png`,
@@ -57,10 +66,28 @@ const jsonLd = {
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Leistungen",
-        itemListElement: SERVICES.map((s) => ({
-          "@type": "Offer",
-          itemOffered: { "@type": "Service", name: s.title, description: s.short, url: `${SITE}${serviceHref(s)}` },
-        })),
+        itemListElement: [
+          ...SERVICES.map((s) => ({
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: s.title, description: s.short, url: `${SITE}${serviceHref(s)}` },
+          })),
+          // Feste Preise aus der Preisliste: Website-Pakete (einmalig) und Wartung (monatlich)
+          ...WEB_PACKAGES.filter((p) => euro(p.price) !== null).map((p) => ({
+            "@type": "Offer",
+            name: `Website ${p.name}`,
+            price: euro(p.price), priceCurrency: "EUR",
+            url: `${SITE}/webdesign#pakete`,
+            itemOffered: { "@type": "Service", name: `Website-Paket ${p.name}`, description: p.note },
+          })),
+          ...WEB_CARE.filter((p) => euro(p.price) !== null).map((p) => ({
+            "@type": "Offer",
+            name: p.name,
+            price: euro(p.price), priceCurrency: "EUR",
+            priceSpecification: { "@type": "UnitPriceSpecification", price: euro(p.price), priceCurrency: "EUR", unitCode: "MON", referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "MON" } },
+            url: `${SITE}/webdesign#wartung`,
+            itemOffered: { "@type": "Service", name: `Website-Betreuung ${p.name}`, description: p.note },
+          })),
+        ],
       },
     },
   ],
