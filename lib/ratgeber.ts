@@ -65,7 +65,7 @@ export const GUIDES: Guide[] = [
       {
         h: "Was nach dem Livegang kostet",
         l: [
-          "Domain und Hosting zahlen Sie direkt beim Anbieter Ihrer Wahl, nicht über uns. Den Betrag weisen wir in Ihrem Angebot getrennt aus. In Wartung Pro und Premium ist Premium-Hosting auf EU-Servern bereits enthalten.",
+          "Domain und Hosting zahlen Sie direkt beim Anbieter Ihrer Wahl, nicht über uns. Den Betrag weisen wir in Ihrem Angebot getrennt aus. In Wartung Pro und Premium ist Premium-Hosting auf deutschen Servern bereits enthalten.",
           "Betreuung ist freiwillig und monatlich kündbar: Wartung für 39 € im Monat (bis 1 Stunde Änderungen), Wartung Pro für 59 € (bis 2 Stunden) und Wartung Premium für 99 € (bis 3 Stunden).",
           "Bei jährlicher Zahlung nutzen Sie die Betreuung zwölf Monate und zahlen zehn: 390 €, 590 € oder 990 € im Jahr.",
           "Einzelne Änderungen ohne Paket kosten 39 € pro Stunde.",
