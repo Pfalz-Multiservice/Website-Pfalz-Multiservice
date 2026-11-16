@@ -479,7 +479,7 @@ export const WEB_CARE: WebPackage[] = tidyDeep([
   },
   {
     name: "Wartung Pro", price: "59 €", unit: "/ Monat", priceYear: "590 €", unitYear: "/ Jahr", priceYearMonthly: "49,17 €", note: "Für aktive Unternehmens-Websites",
-    items: ["Bis 2 Std. Änderungen pro Monat", "Premium-Hosting auf EU-Servern inklusive", "Tägliche Backups", "Google-Unternehmensprofil einrichten, optimieren & pflegen", "Einrichtung von Domain, E-Mail und Hosting", "Eigenes Statistik-Dashboard für Ihre Website"],
+    items: ["Bis 2 Std. Änderungen pro Monat", "Premium-Hosting auf deutschen Servern inklusive", "Tägliche Backups", "Google-Unternehmensprofil einrichten, optimieren & pflegen", "Einrichtung von Domain, E-Mail und Hosting", "Eigenes Statistik-Dashboard für Ihre Website"],
   },
   {
     name: "Wartung Premium", price: "99 €", unit: "/ Monat", priceYear: "990 €", unitYear: "/ Jahr", priceYearMonthly: "82,50 €", note: "Für große Projekte mit viel Content",
@@ -575,7 +575,7 @@ export const WEB_FAQ: [string, string][] = tidyDeep([
   ["Wie schnell antworten Sie auf meine Anfrage?", "Innerhalb von 24 Stunden an Werktagen, ob per Formular, Briefing, E-Mail oder WhatsApp. Bei Wartung Premium gilt dieselbe Reaktionszeit von 24 Stunden für Ihre Änderungswünsche."],
   ["Wie lange dauert es, bis meine Website online ist?", "Das hängt vom Umfang ab. Den Zeitplan legen wir vorab gemeinsam fest, damit Sie vor dem Start wissen, wann Ihre Seite online geht."],
   ["Was brauchen Sie von mir?", "Ihr Logo, ein paar Fotos und Stichpunkte zu Ihren Leistungen reichen für den Anfang. Texte erstellen wir auf Wunsch, eine kuratierte Bildauswahl ist inklusive. Alles Weitere besprechen wir im Gespräch."],
-  ["Kümmern Sie sich auch nach dem Livegang um die Website?", "Ja, wenn Sie möchten. Sie melden Ihre Änderungen, wir setzen sie um: mit Wartung (39 € im Monat, bis 1 Std.), Wartung Pro (59 € im Monat, bis 2 Std.) oder Wartung Premium (99 € im Monat, bis 3 Std.), jeweils monatlich kündbar. Einzelne Änderungen ohne Paket kosten 39 € pro Stunde. In Wartung Pro und Premium ist Premium-Hosting auf EU-Servern enthalten, sonst zahlen Sie Hosting und Domain direkt beim Anbieter Ihrer Wahl."],
+  ["Kümmern Sie sich auch nach dem Livegang um die Website?", "Ja, wenn Sie möchten. Sie melden Ihre Änderungen, wir setzen sie um: mit Wartung (39 € im Monat, bis 1 Std.), Wartung Pro (59 € im Monat, bis 2 Std.) oder Wartung Premium (99 € im Monat, bis 3 Std.), jeweils monatlich kündbar. Einzelne Änderungen ohne Paket kosten 39 € pro Stunde. In Wartung Pro und Premium ist Premium-Hosting auf deutschen Servern enthalten, sonst zahlen Sie Hosting und Domain direkt beim Anbieter Ihrer Wahl."],
   ["Ich habe schon eine Website. Können Sie die übernehmen?", "Ja. Wir überarbeiten auch bestehende Websites und übernehmen alte Inhalte. Schicken Sie uns zuerst den Link für den kostenlosen Website-Check."],
   ["Für wen ist das Angebot?", "Unser Webdesign- und Wartungsangebot richtet sich ausschließlich an Unternehmer im Sinne von § 14 BGB, also Gewerbetreibende, Selbstständige und Betriebe. Verträge mit Verbrauchern schließen wir hierüber nicht."],
   ["Sind die Beispiele echte Kunden?", "Teilweise. Multimedia Service Schaffner aus Worms ist ein echtes Kundenprojekt. Die übrigen Beispiele sind Musterdesigns für erfundene Betriebe und zeigen, was möglich ist. Ihre Website gestalten wir individuell für Ihren Betrieb."],
