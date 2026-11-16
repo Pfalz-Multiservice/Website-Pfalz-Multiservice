@@ -48,33 +48,33 @@ export function Footer() {
             <a className="footer__gold" href={`mailto:${CONTACT.email}`} data-cursor><Icon name="mail" size={16} />{CONTACT.email}</a>
           </div>
         </div>
+        <nav className="footer__col footer__col--pages pm-reveal" aria-label="Unternehmen">
+          <h2 className="footer__h">Unternehmen</h2>
+          <div className="footer__contact footer__pages">
+            <Link className="footer__gold" href="/ueber-uns" rel="author" data-cursor><Icon name="info" size={16} />Über uns</Link>
+            <Link className="footer__gold" href="/kontakt" data-cursor><Icon name="message-circle" size={16} />Kontakt</Link>
+            <Link className="footer__gold" href="/preise" data-cursor><Icon name="tag" size={16} />Preise</Link>
+            <Link className="footer__gold" href="/ratgeber" data-cursor><Icon name="book-open" size={16} />Ratgeber</Link>
+            <Link className="footer__gold" href="/webdesign-worms" data-cursor><Icon name="map-pin" size={16} />Webdesign Worms</Link>
+          </div>
+        </nav>
+        <nav className="footer__col footer__col--pages pm-reveal" aria-label="Leistungen">
+          <h2 className="footer__h">Leistungen</h2>
+          <div className="footer__contact footer__pages">
+            {SERVICES.map((s) => (
+              <Link key={s.id} className="footer__gold" href={serviceHref(s)} data-cursor><Icon name={s.icon} size={16} />{s.title}</Link>
+            ))}
+          </div>
+        </nav>
       </div>
       <div className="footer__bottom-wrap">
         <div className="footer__bottom">
           <div className="stack" style={{ gap: 4 }}>
             <span>Copyright © 2021 - 2026, Pfalz Multiservice. Alle Rechte vorbehalten</span>
-            <nav className="footer__legal" aria-label="Leistungen">
-              {SERVICES.map((s, i) => (
-                <span key={s.id} style={{ display: "inline-flex", gap: 4 }}>
-                  {i > 0 && <span>|</span>}
-                  <Link href={serviceHref(s)}>{s.title}</Link>
-                </span>
-              ))}
-            </nav>
             <span className="footer__legal">
-              <Link href="/ueber-uns" rel="author">Über uns</Link>
-              <span>|</span>
-              <Link href="/kontakt">Kontakt</Link>
-              <span>|</span>
-              <Link href="/preise">Preise</Link>
-              <span>|</span>
               <Link href="/impressum">Impressum</Link>
               <span>|</span>
               <Link href="/datenschutz" rel="privacy-policy">Datenschutz</Link>
-              <span>|</span>
-              <Link href="/webdesign-worms">Webdesign Worms</Link>
-              <span>|</span>
-              <Link href="/ratgeber">Ratgeber</Link>
               <span>|</span>
               <Link href="/partner">Partner</Link>
               <span>|</span>

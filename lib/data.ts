@@ -19,7 +19,7 @@ export type IconName =
   | "key-round" | "lock-keyhole" | "folder-code" | "copyright" | "search-check" | "clipboard-list" | "gauge" | "pencil-line"
   | "search" | "sliders-horizontal" | "calendar-days" | "ticket" | "sparkles" | "smartphone" | "gift" | "package-check"
   | "blinds" | "circle-plus" | "refresh-cw" | "shield-check" | "thermometer" | "network"
-  | "phone-off" | "search-x" | "receipt" | "user-x";
+  | "phone-off" | "search-x" | "receipt" | "user-x" | "info" | "book-open" | "tag";
 
 export type Service = {
   id: string;
