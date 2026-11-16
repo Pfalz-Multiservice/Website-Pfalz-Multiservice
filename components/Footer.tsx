@@ -47,6 +47,11 @@ export function Footer() {
             <a className="footer__gold" href={CONTACT.phoneHref} data-cursor><Icon name="phone" size={16} />{CONTACT.phone}</a>
             <a className="footer__gold" href={`mailto:${CONTACT.email}`} data-cursor><Icon name="mail" size={16} />{CONTACT.email}</a>
           </div>
+          <nav className="footer__pages" aria-label="Unternehmen">
+            <Link href="/ueber-uns" rel="author">Über uns</Link>
+            <Link href="/kontakt">Kontakt</Link>
+            <Link href="/preise">Preise</Link>
+          </nav>
         </div>
       </div>
       <div className="footer__bottom-wrap">
@@ -62,12 +67,6 @@ export function Footer() {
               ))}
             </nav>
             <span className="footer__legal">
-              <Link href="/ueber-uns" rel="author">Über uns</Link>
-              <span>|</span>
-              <Link href="/kontakt">Kontakt</Link>
-              <span>|</span>
-              <Link href="/preise">Preise</Link>
-              <span>|</span>
               <Link href="/impressum">Impressum</Link>
               <span>|</span>
               <Link href="/datenschutz" rel="privacy-policy">Datenschutz</Link>
