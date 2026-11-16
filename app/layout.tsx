@@ -71,7 +71,7 @@ const jsonLd = {
             "@type": "Offer",
             name: `Website ${p.name}`,
             price: euro(p.price), priceCurrency: "EUR",
-            url: `${SITE}/webdesign#preise`,
+            url: `${SITE}/webdesign#pakete`,
             itemOffered: { "@type": "Service", name: `Website-Paket ${p.name}`, description: p.note },
           })),
           ...WEB_CARE.filter((p) => euro(p.price) !== null).map((p) => ({
@@ -79,7 +79,7 @@ const jsonLd = {
             name: p.name,
             price: euro(p.price), priceCurrency: "EUR",
             priceSpecification: { "@type": "UnitPriceSpecification", price: euro(p.price), priceCurrency: "EUR", unitCode: "MON", referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "MON" } },
-            url: `${SITE}/webdesign#preise`,
+            url: `${SITE}/webdesign#wartung`,
             itemOffered: { "@type": "Service", name: `Website-Betreuung ${p.name}`, description: p.note },
           })),
         ],
