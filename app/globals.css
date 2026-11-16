@@ -2482,3 +2482,12 @@ a.web-local__row:hover, a.web-local__row:focus-visible { color: var(--brand-acce
 .price-table small { font-size: 13px; font-weight: 400; color: var(--text-subtle); }
 .legal ul { margin: 0; padding-left: 1.2em; font: var(--type-body); color: var(--text-body); }
 .legal ul a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Footer: Spalte Leistungen neben Kontakt, gleicher Stil wie Kontakt */
+@media (min-width: 901px) { .footer__grid { grid-template-columns: minmax(0,1.1fr) minmax(0,1fr) minmax(0,1fr); } }
+.footer__col--pages .footer__h { text-align: left; }
+.footer__pages { gap: 18px; }
+@media (min-width: 901px) {
+  .footer__col--pages .footer__contact { align-items: flex-start; }
+  .footer__col--pages a.footer__gold:hover::after { transform-origin: left; }
+}

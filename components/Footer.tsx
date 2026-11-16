@@ -40,6 +40,14 @@ export function Footer() {
           <Logo height={120} />
           <p className="footer__text"><br /><br />Pfalz Multiservice bündelt Dienstleistungen für Unternehmen und Privatkunden in der Region Worms.</p>
         </div>
+        <nav className="footer__col footer__col--pages pm-reveal" aria-label="Leistungen">
+          <h2 className="footer__h">Leistungen</h2>
+          <div className="footer__contact footer__pages">
+            {SERVICES.map((s) => (
+              <Link key={s.id} className="footer__gold" href={serviceHref(s)} data-cursor><Icon name={s.icon} size={16} />{s.title}</Link>
+            ))}
+          </div>
+        </nav>
         <div className="footer__col pm-reveal">
           <h2 className="footer__h">Kontakt</h2>
           <div className="footer__contact">
@@ -53,14 +61,6 @@ export function Footer() {
         <div className="footer__bottom">
           <div className="stack" style={{ gap: 4 }}>
             <span>Copyright © 2021 - 2026, Pfalz Multiservice. Alle Rechte vorbehalten</span>
-            <nav className="footer__legal" aria-label="Leistungen">
-              {SERVICES.map((s, i) => (
-                <span key={s.id} style={{ display: "inline-flex", gap: 4 }}>
-                  {i > 0 && <span>|</span>}
-                  <Link href={serviceHref(s)}>{s.title}</Link>
-                </span>
-              ))}
-            </nav>
             <span className="footer__legal">
               <Link href="/ueber-uns" rel="author">Über uns</Link>
               <span>|</span>
