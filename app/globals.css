@@ -2493,3 +2493,23 @@ a.web-local__row:hover, a.web-local__row:focus-visible { color: var(--brand-acce
 .fact-table th { width: 34%; }
 .fact-table td { white-space: normal; text-align: left; }
 @media (max-width: 600px) { .fact-table th, .fact-table td { display: block; width: auto; } .fact-table th { border-bottom: 0; padding-bottom: 2px; } .fact-table td { padding-top: 0; } }
+/* Footer: Spalte Leistungen neben Kontakt, gleicher Stil wie Kontakt */
+@media (min-width: 901px) { .footer__grid { grid-template-columns: minmax(0,1fr) auto minmax(0,.8fr) minmax(0,1.1fr); gap: 40px; } }
+.footer__col--pages .footer__h { text-align: left; }
+.footer__pages { gap: 18px; }
+@media (min-width: 901px) {
+  .footer__col--pages .footer__contact { align-items: flex-start; }
+  .footer__col--pages a.footer__gold:hover::after { transform-origin: left; }
+}
+
+/* Footer: Kontakt links, alle Spalten linksbündig, Links etwas kleiner */
+@media (min-width: 901px) {
+  .footer__grid > .footer__col:last-child { align-items: flex-start; text-align: left; }
+  .footer__grid > .footer__col:last-child .footer__h { text-align: left; }
+  .footer__contact { align-items: flex-start; }
+  a.footer__gold:hover::after { transform-origin: left; }
+}
+.footer__col .footer__h { text-align: left; }
+.footer__grid .footer__gold { font-size: 14px; }
+.footer__contact .footer__gold { white-space: nowrap; }
+.footer__pages .footer__gold { white-space: normal; }
