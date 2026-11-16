@@ -35,7 +35,7 @@ export function tidy(text: string): string {
 
   for (let k = 0; k < words.length - 1; k++) {
     // Satzende (auch nach Doppelpunkt) – Abkürzungen wie „z. B.“ oder „Abs.“ ausnehmen
-    if (/[.!?:]["“”)]?$/.test(words[k]) && !/^(z|B|bzw|ca|Nr|Abs|Art|lit|ggf|inkl|zzgl|u|v|d|S|s)\.$/.test(words[k])) mark(k + 1, 3);
+    if (/[.!?:]["“”)]?$/.test(words[k]) && !/^(z|B|bzw|ca|Nr|Abs|Art|lit|ggf|inkl|zzgl|u|a|v|d|S|s)\.$/.test(words[k])) mark(k + 1, 3);
   }
   // Textstück nach fettem Vorspann o. Ä. („<b>Titel:</b> Sie kennen …“) beginnt einen neuen Satz
   if (words[0] === "" && words.length > 3) mark(1, 3);
