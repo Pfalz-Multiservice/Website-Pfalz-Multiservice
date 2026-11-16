@@ -58,11 +58,11 @@ export function tidy(text: string): string {
 /**
  * Gewünschter Zeilenumbruch: „\n“ im Text wird am Desktop zum Umbruch,
  * auf dem Handy fließt der Text normal weiter (CSS-Klasse .br-d).
- * „ “ (Zeilentrenner) bricht immer um, auch auf dem Handy.
+ * „\u2028“ (Zeilentrenner) bricht immer um, auch auf dem Handy.
  */
 export function lines(text: string): ReactNode {
-  if (!/[\n ]/.test(text)) return text;
-  const parts = text.split(/(\n| )/);
+  if (!/[\n\u2028]/.test(text)) return text;
+  const parts = text.split(/(\n|\u2028)/);
   const out: ReactNode[] = [parts[0]];
   for (let i = 1; i < parts.length; i += 2) {
     out.push(createElement("br", { key: i, className: parts[i] === "\n" ? "br-d" : undefined }), " ", parts[i + 1].replace(/^\s+/, ""));
