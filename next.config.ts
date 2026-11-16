@@ -12,8 +12,8 @@ const nextConfig: NextConfig = {
   },
 
   // CSS direkt im HTML ausliefern: spart die blockierende Stylesheet-Anfrage (PageSpeed „Rendering blockiert“)
-  // inlineCss ist aus: eingebettetes CSS stand doppelt im HTML (Style-Tag + RSC-Daten, ca. 370 KB) und machte die Seite für KI-Agenten zu groß
-
+  // Für KI-Agenten wird das HTML dadurch größer (CSS steht doppelt drin); sie bekommen stattdessen /index.md und /llms.txt
+  experimental: { inlineCss: true },
 
   // PNG-Originale bleiben im Repo; ausgeliefert werden passende AVIF/WebP-Größen
   images: { formats: ["image/avif", "image/webp"], qualities: [75], minimumCacheTTL: 2678400 },
