@@ -24,7 +24,7 @@ export function signatureHtml(site: string, logoSrc = `${site}/email/logo.png`) 
 <tr><td style="${lbl}">WEB</td><td><a style="${link}" href="${site}">www.pfalz-multiservice.de</a></td></tr>
 <tr><td style="${lbl}" valign="top">ORT</td><td>67551 Worms</td></tr>
 </table></td></tr>
-<tr><td style="padding:0 0 14px;font-size:11px;letter-spacing:0.6px;color:${MUTED};">Web Maintenance &amp; Management · Asset Recovery Reselling ·<br>E-Commerce · Lagerung · Räumung</td></tr>
+<tr><td style="padding:0 0 14px;font-size:11px;letter-spacing:0.6px;color:${MUTED};">Webdesign &amp; Wartung · Asset Recovery Reselling ·<br>E-Commerce · Lagerung · Räumung</td></tr>
 <tr><td style="padding:0 0 14px;"><table role="presentation" border="0" cellspacing="0" cellpadding="0"><tr>
 <td style="background-color:${NAVY};border-radius:4px;" bgcolor="${NAVY}"><a style="display:inline-block;padding:10px 18px;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;letter-spacing:0.6px;color:#ffffff;text-decoration:none;" href="${site}/kontakt">Unverbindlich anfragen →</a></td>
 <td width="8">&nbsp;</td>
@@ -43,7 +43,7 @@ Mail: kontakt@pfalz-multiservice.de
 Web: www.pfalz-multiservice.de
 Ort: 67551 Worms
 
-Web Maintenance & Management · Asset Recovery Reselling · E-Commerce · Lagerung · Räumung
+Webdesign & Wartung · Asset Recovery Reselling · E-Commerce · Lagerung · Räumung
 Pfalz Loadout · Inhaberin: Jasmin Beer · USt-IdNr. DE444410908`;
 
 /** Bestätigungs-Mail an den Kunden */

@@ -71,7 +71,7 @@ export const SERVICES: Service[] = tidyDeep([
     seo: "Webdesign und Website-Wartung aus Worms: individuelle Websites ab 199 €, Betreuung ab 39 € im Monat. Persönlich, ohne Baukasten.",
     href: "/webdesign",
     icon: "monitor-cog",
-    title: "Web Maintenance & Management",
+    title: "Webdesign & Wartung",
     short: "Webdesign, Aufbau & Betreuung",
     text: "Laufende technische Betreuung von Websites und Online-Shops: Updates, Sicherheitsüberwachung, Pflege der Inhalte und Systemverwaltung. Aus dem Betrieb eigener Online-Shops bringen wir praktische Erfahrung mit.",
     image: IMG + "webdesign-hero.jpg",
@@ -210,7 +210,7 @@ export const STATS: { value: string; label: string }[] = tidyDeep([
 export const CORE: { id: string; kicker: string; title: string; text: string; items: string[]; link: string; image?: string }[] = tidyDeep([
   {
     id: "web",
-    kicker: "Web Maintenance & Management",
+    kicker: "Webdesign & Wartung",
     title: "Websites mit Wirkung",
     text: "Wir entwickeln moderne Websites mit eigener Handschrift: vom klaren One-Pager bis zum Auftritt mit 3D-Effekten und Scroll-Animationen. Technisch sauber umgesetzt und nach dem Start persönlich betreut.",
     items: ["One-Pager und mehrseitige Auftritte", "3D-Effekte und Animationen", "Betreuung, Updates und Sicherheit"],
