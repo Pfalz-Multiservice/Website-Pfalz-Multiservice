@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { upload } from "@vercel/blob/client";
 import { BRIEFING, UPLOAD_ACCEPT, UPLOAD_MAX_FILES, UPLOAD_MAX_MB, UPLOAD_TYPES, type BriefingField } from "@/lib/briefing";
 import { CONTACT } from "@/lib/data";
 import { Button } from "../Button";
@@ -10,7 +9,18 @@ import { Icon } from "../Icon";
 type Values = Record<string, string | string[]>;
 type Files = Record<string, File[]>;
 type Phase = { kind: "edit" } | { kind: "sending"; text: string; pct: number } | { kind: "sent"; rejected: { name: string; reason: string }[] };
-const ACCESS = process.env.NEXT_PUBLIC_BLOB_ACCESS === "public" ? "public" : "private";
+/** Eine Datei an unseren Server schicken (mit Fortschritt) */
+function sendFile(path: string, file: File, onProgress: (loaded: number) => void) {
+  return new Promise<void>((resolve, reject) => {
+    const x = new XMLHttpRequest();
+    x.open("POST", "/api/briefing/upload?p=" + encodeURIComponent(path));
+    x.setRequestHeader("Content-Type", "application/octet-stream");
+    x.upload.onprogress = (e) => onProgress(e.loaded);
+    x.onload = () => (x.status >= 200 && x.status < 300 ? resolve() : reject(new Error(x.statusText || "Upload fehlgeschlagen")));
+    x.onerror = () => reject(new Error("Netzwerkfehler"));
+    x.send(file);
+  });
+}
 const newId = () => Array.from(crypto.getRandomValues(new Uint8Array(16)), (b) => b.toString(16).padStart(2, "0")).join("");
 /** Dateiname für den Speicher: nur sichere Zeichen */
 function storeName(name: string) {
@@ -137,11 +147,8 @@ export function BriefingForm() {
       const label = `Datei ${i + 1} von ${all.length} wird hochgeladen …`;
       setPhase({ kind: "sending", text: label, pct: Math.round((done / total) * 90) });
       try {
-        await upload(`briefing/${sid.current}/${field}/${storeName(file.name)}`, file, {
-          access: ACCESS, handleUploadUrl: "/api/briefing/upload", multipart: file.size > 8 * 1024 * 1024,
-          contentType: file.type || "application/octet-stream",
-          onUploadProgress: (p) => setPhase({ kind: "sending", text: label, pct: Math.round(((done + (p.loaded || 0)) / total) * 90) }),
-        });
+        await sendFile(`briefing/${sid.current}/${field}/${storeName(file.name)}`, file,
+          (loaded) => setPhase({ kind: "sending", text: label, pct: Math.round(((done + loaded) / total) * 90) }));
       } catch {
         failed.push(file.name);
       }

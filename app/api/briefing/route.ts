@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { del, put } from "@vercel/blob";
+import { putText, remove } from "@/lib/briefing-store";
 import { BRIEFING, type BriefingField } from "@/lib/briefing";
-import { ACCESS, FILE_TTL_DAYS, ID_RE, filesOf, inspect, ipOf, limited, parsePath, sameOrigin, sign } from "@/lib/briefing-server";
+import { FILE_TTL_DAYS, ID_RE, filesOf, inspect, ipOf, limited, parsePath, sameOrigin, sign } from "@/lib/briefing-server";
 import { SITE } from "@/lib/site";
 import { customerMail } from "@/lib/briefing-mail";
 import { EMAIL_LOGO_PNG_BASE64 } from "@/lib/email-logo";
@@ -54,15 +54,15 @@ export async function POST(req: Request) {
   /* ---------- Dateien prüfen ---------- */
   type Checked = { field: string; name: string; size: number; link?: string; rejected?: string };
   const files: Checked[] = [];
-  if (ID_RE.test(id) && process.env.BLOB_READ_WRITE_TOKEN) {
+  if (ID_RE.test(id)) {
     const stored = (await filesOf(id).catch(() => [])).filter((b) => !b.pathname.endsWith("_abgeschickt.json"));
     for (const b of stored) {
       const p = parsePath(b.pathname);
       const name = b.pathname.split("/").pop() || "datei";
-      if (!p) { await del(b.pathname).catch(() => {}); continue; }
+      if (!p) { await remove(b.pathname).catch(() => {}); continue; }
       const reason = await inspect(b.pathname, p.ext, b.size);
       if (reason) {
-        await del(b.pathname).catch(() => {});
+        await remove(b.pathname).catch(() => {});
         files.push({ field: p.field, name, size: b.size, rejected: reason });
       } else {
         files.push({ field: p.field, name, size: b.size, link: `${base}/api/briefing/file?p=${encodeURIComponent(b.pathname)}&s=${sign(b.pathname)}` });
@@ -135,8 +135,8 @@ ${sections.map((sec) => `<h3 style="margin:24px 0 8px;border-bottom:1px solid #d
   }
 
   // Markierung: Einsendung abgeschlossen (Dateien bleiben 30 Tage, nicht abgeschickte werden nach 2 Tagen gelöscht)
-  if (ID_RE.test(id) && process.env.BLOB_READ_WRITE_TOKEN) {
-    await put(`briefing/${id}/_abgeschickt.json`, JSON.stringify({ at: now.toISOString() }), { access: ACCESS, addRandomSuffix: false, allowOverwrite: true, contentType: "application/json" }).catch(() => {});
+  if (ID_RE.test(id)) {
+    await putText(`briefing/${id}/_abgeschickt.json`, JSON.stringify({ at: now.toISOString() })).catch(() => {});
   }
 
   // Bestätigung an den Kunden (ohne Dateilinks, mit Signatur)
