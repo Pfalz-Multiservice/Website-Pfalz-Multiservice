@@ -12,7 +12,7 @@ import { CtaBand } from "@/components/home/HomeSections";
 import { WebBriefingTeaser, WebExamples, WebFaqCheck, WebPackages, WebProblem, WebTrust } from "@/components/web/WebSections";
 import { ShopShowcase } from "@/components/web/ShopShowcase";
 import { LayerBuild } from "@/components/web/LayerBuild";
-import { WormsTeaser } from "@/components/web/WebLocal";
+import { CityLinks, WormsTeaser } from "@/components/web/WebLocal";
 
 // Allgemeine Übersicht – „Webdesign Worms“ hat eine eigene Seite (/webdesign-worms), damit sich beide nicht Konkurrenz machen
 const title = "Website erstellen lassen ab 199 €";
@@ -74,6 +74,7 @@ export default function WebdesignPage() {
       <Process steps={WEB_STEPS} eyebrow="So läuft’s ab" title="In 5 Schritten zur" highlight="Website" />
       <WebFaqCheck />
       <WormsTeaser />
+      <CityLinks current="worms" />
       <CtaBand
         image={IMG + "lagergang.png"}
         intro={<>Erzählen Sie uns kurz von Ihrem Betrieb.<br />Wir melden uns mit einem Vorschlag und einem Festpreis, unverbindlich.</>}

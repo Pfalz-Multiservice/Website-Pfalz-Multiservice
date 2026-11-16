@@ -68,6 +68,8 @@ export function Footer() {
               <span>|</span>
               <Link href="/preise">Preise</Link>
               <span>|</span>
+              <Link href="/fakten">Fakten</Link>
+              <span>|</span>
               <Link href="/impressum">Impressum</Link>
               <span>|</span>
               <Link href="/datenschutz" rel="privacy-policy">Datenschutz</Link>

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SERVICES } from "@/lib/data";
 import { GUIDES, guideHref } from "@/lib/ratgeber";
+import { ORTE, ortHref } from "@/lib/orte";
 import { SITE, UPDATED_ISO } from "@/lib/site";
 
 const BUILD = new Date(UPDATED_ISO);
@@ -12,15 +13,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...SERVICES.filter((s) => !s.href).map((s) => ({ path: `/leistungen/${s.id}`, priority: 0.8 })),
     { path: "/webdesign", priority: 0.9 },
     { path: "/webdesign-worms", priority: 0.9 },
+    ...ORTE.map((o) => ({ path: ortHref(o.slug), priority: 0.7 })),
     { path: "/partner", priority: 0.6 },
     { path: "/kontakt", priority: 0.7 },
     { path: "/preise", priority: 0.7 },
     { path: "/ueber-uns", priority: 0.5 },
+    { path: "/fakten", priority: 0.5 },
     { path: "/impressum", priority: 0.2 },
     { path: "/datenschutz", priority: 0.2 },
     { path: "/ratgeber", priority: 0.4 },
     { path: "/inhalte-melden", priority: 0.1 },
-    ...GUIDES.map((g) => ({ path: guideHref(g.slug), priority: 0.4, modified: new Date(g.date) })),
+    ...GUIDES.map((g) => ({ path: guideHref(g.slug), priority: 0.4, modified: new Date(g.updated ?? g.date) })),
   ];
   return pages.map(({ path, priority, modified }) => ({ url: SITE + path, lastModified: modified ?? BUILD, changeFrequency: "monthly", priority }));
 }

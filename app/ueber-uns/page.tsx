@@ -45,7 +45,7 @@ export default function UeberUnsPage() {
             </div>
             <div>
               <h2>Wie wir arbeiten</h2>
-              <p>Sie bekommen vor dem Start ein verbindliches Angebot und kennen den Preis, bevor wir beginnen. Auf Anfragen antworten wir innerhalb von 24 Stunden an Werktagen. Termine nach Vereinbarung. Alle aktuellen Preise stehen auf der Seite <Link href="/preise">Preise</Link>.</p>
+              <p>Sie bekommen vor dem Start ein verbindliches Angebot und kennen den Preis, bevor wir beginnen. Auf Anfragen antworten wir innerhalb von 24 Stunden an Werktagen. Termine nach Vereinbarung. Alle aktuellen Preise stehen auf der Seite <Link href="/preise">Preise</Link>, die wichtigsten Angaben zum Unternehmen unter <Link href="/fakten">Fakten auf einen Blick</Link>.</p>
             </div>
             <div>
               <h2>Einsatzgebiet</h2>

@@ -14,6 +14,8 @@ import { Faq } from "@/components/Faq";
 import { SITE } from "@/lib/site";
 import { PartnerStayTip } from "@/components/partner/Partners";
 import { KnxSections } from "@/components/knx/KnxSections";
+import Link from "next/link";
+import { GUIDES, guideHref } from "@/lib/ratgeber";
 
 export function generateStaticParams() {
   return SERVICES.filter((s) => !s.href).map((s) => ({ id: s.id }));
@@ -40,6 +42,7 @@ export default async function ServicePage({ params }: { params: Promise<{ id: st
   if (!s) notFound();
   const words = s.title.split(" ");
   const others = SERVICES.filter((x) => x.id !== s.id);
+  const guides = GUIDES.filter((g) => g.topic === s.id);
 
   const serviceLd = {
     "@context": "https://schema.org",
@@ -90,6 +93,22 @@ export default async function ServicePage({ params }: { params: Promise<{ id: st
       )}
       {["facility", "storage", "clearance"].includes(s.id) && <PartnerStayTip />}
       {s.faq && <Faq items={s.faq} alt />}
+      {guides.length > 0 && (
+        <section className="section section--tight">
+          <div className="container stack" style={{ gap: 16 }}>
+            {guides.map((g) => (
+              <Link key={g.slug} href={guideHref(g.slug)} className="bstrip web-local__teaser pm-reveal" data-reveal="up" data-cursor>
+                <span className="bstrip__icon"><Icon name="file-check" size={24} /></span>
+                <span className="bstrip__txt">
+                  <b>Ratgeber: {g.seoTitle ?? g.title}</b>
+                  <span>{g.teaser}</span>
+                </span>
+                <Icon name="arrow-right" size={20} />
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
       <section className="section">
         <div className="container">
           <SectionHeading eyebrow="Kombinierbar" title="Weitere" highlight="Leistungen" style={{ marginBottom: 48 }} />
