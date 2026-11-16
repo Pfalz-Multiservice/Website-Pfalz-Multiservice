@@ -1,14 +1,12 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
-import { get, list } from "@vercel/blob";
+import { listFiles, readHead } from "./briefing-store";
 import { BRIEFING, UPLOAD_MAX_MB, UPLOAD_TYPES } from "./briefing";
 import { checkBytes } from "./filesig";
 
-/** Ordner im Blob-Speicher: briefing/<id>/<feld>/<dateiname> */
+/** Ordner im Dateispeicher: briefing/<id>/<feld>/<dateiname> */
 export const ID_RE = /^[a-f0-9]{32}$/;
 export const FIELD_IDS = BRIEFING.flatMap((s) => s.fields.filter((f) => f.kind === "files").map((f) => f.id));
 export const FILE_TTL_DAYS = 30;
-export type Access = "private" | "public";
-export const ACCESS: Access = (process.env.BLOB_ACCESS || process.env.NEXT_PUBLIC_BLOB_ACCESS) === "public" ? "public" : "private";
 
 /** Dateiname bereinigen: nur Buchstaben, Ziffern, Punkt, Bindestrich, Unterstrich */
 export function safeName(name: string) {
@@ -19,7 +17,7 @@ export function safeName(name: string) {
   return { base, ext };
 }
 
-/** Prüft einen Blob-Pfad: richtiger Ordner, bekanntes Feld, erlaubte Endung */
+/** Prüft einen Speicherpfad: richtiger Ordner, bekanntes Feld, erlaubte Endung */
 export function parsePath(pathname: string) {
   const m = /^briefing\/([a-f0-9]{32})\/([a-z_]+)\/([A-Za-z0-9_.-]+)$/.exec(pathname);
   if (!m || !FIELD_IDS.includes(m[2])) return null;
@@ -30,7 +28,7 @@ export function parsePath(pathname: string) {
 
 /* ---------- Signierte Download-Links (gültig, solange die Datei existiert) ---------- */
 function key() {
-  const k = process.env.BRIEFING_SECRET || process.env.BLOB_READ_WRITE_TOKEN;
+  const k = process.env.BRIEFING_SECRET || process.env.BLOB_READ_WRITE_TOKEN || process.env.CRON_SECRET;
   if (!k) throw new Error("Kein Schlüssel für Download-Links konfiguriert");
   return k;
 }
@@ -43,21 +41,6 @@ export function verify(pathname: string, sig: string) {
 }
 
 /* ---------- Inhaltsprüfung: passt der Dateiinhalt zur Endung? ---------- */
-async function readHead(pathname: string, bytes: number): Promise<Buffer | null> {
-  const r = await get(pathname, { access: ACCESS }).catch(() => null);
-  if (!r?.stream) return null;
-  const reader = r.stream.getReader();
-  const chunks: Uint8Array[] = [];
-  let n = 0;
-  while (n < bytes) {
-    const { done, value } = await reader.read();
-    if (done || !value) break;
-    chunks.push(value); n += value.length;
-  }
-  await reader.cancel().catch(() => {});
-  return Buffer.concat(chunks).subarray(0, bytes);
-}
-
 /** Gibt einen Grund zurück, wenn die Datei abgelehnt wird – sonst null */
 export async function inspect(pathname: string, ext: string, size: number): Promise<string | null> {
   if (size > UPLOAD_MAX_MB * 1024 * 1024) return "größer als erlaubt";
@@ -69,14 +52,7 @@ export async function inspect(pathname: string, ext: string, size: number): Prom
 
 /** Alle hochgeladenen Dateien einer Einsendung (aus dem Speicher, nicht aus Angaben des Browsers) */
 export async function filesOf(id: string) {
-  const out: { pathname: string; size: number; uploadedAt: Date }[] = [];
-  let cursor: string | undefined;
-  do {
-    const r = await list({ prefix: `briefing/${id}/`, cursor, limit: 100 });
-    out.push(...r.blobs.map((b) => ({ pathname: b.pathname, size: b.size, uploadedAt: b.uploadedAt })));
-    cursor = r.hasMore ? r.cursor : undefined;
-  } while (cursor);
-  return out;
+  return (await listFiles(`briefing/${id}`)).filter((f) => !f.pathname.endsWith(".part"));
 }
 
 /* ---------- Einfacher Schutz gegen Massen-Anfragen (je Server-Instanz) ---------- */
