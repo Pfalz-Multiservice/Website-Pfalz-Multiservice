@@ -2514,5 +2514,5 @@ a.web-local__row:hover, a.web-local__row:focus-visible { color: var(--brand-acce
 .footer__contact .footer__gold { white-space: nowrap; }
 .footer__pages .footer__gold { white-space: normal; }
 
-/* Paketkarten am Handy: normaler Umbruch statt „pretty“ (sonst einzelne Wörter in eigener Zeile) */
-@media (max-width: 900px) { .pk__list li span { text-wrap: wrap; } }
+/* Paketkarten am Handy: normaler Umbruch statt „pretty“ und etwas weniger Innenabstand (sonst einzelne Wörter in eigener Zeile) */
+@media (max-width: 900px) { .pk__list li span { text-wrap: wrap; } .pk { padding-left: 20px; padding-right: 20px; } }
