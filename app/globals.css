@@ -2473,3 +2473,12 @@ a.web-local__row:hover, a.web-local__row:focus-visible { color: var(--brand-acce
   .reel-strip li { flex: 0 0 132px; scroll-snap-align: start; }
 }
 @media (prefers-reduced-motion: reduce) { .reel-copy__in { animation: none; } .reel-shot { transition: none; } }
+
+/* Preisübersicht (/preise) */
+.price-table { width: 100%; border-collapse: collapse; }
+.price-table th, .price-table td { padding: 14px 0; border-bottom: 1px solid var(--border-strong); text-align: left; vertical-align: top; font: var(--type-body); color: var(--text-body); }
+.price-table th { font-weight: 600; color: #fff; padding-right: 16px; }
+.price-table td { white-space: nowrap; text-align: right; }
+.price-table small { font-size: 13px; font-weight: 400; color: var(--text-subtle); }
+.legal ul { margin: 0; padding-left: 1.2em; font: var(--type-body); color: var(--text-body); }
+.legal ul a { text-decoration: underline; text-underline-offset: 3px; }

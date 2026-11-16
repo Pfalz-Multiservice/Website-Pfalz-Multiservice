@@ -14,6 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/webdesign-worms", priority: 0.9 },
     { path: "/partner", priority: 0.6 },
     { path: "/kontakt", priority: 0.7 },
+    { path: "/preise", priority: 0.7 },
+    { path: "/ueber-uns", priority: 0.5 },
     { path: "/impressum", priority: 0.2 },
     { path: "/datenschutz", priority: 0.2 },
     { path: "/ratgeber", priority: 0.4 },
