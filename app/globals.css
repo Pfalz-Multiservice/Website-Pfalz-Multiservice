@@ -2484,10 +2484,11 @@ a.web-local__row:hover, a.web-local__row:focus-visible { color: var(--brand-acce
 .legal ul a { text-decoration: underline; text-underline-offset: 3px; }
 
 /* Footer: Spalte Leistungen neben Kontakt, gleicher Stil wie Kontakt */
-@media (min-width: 901px) { .footer__grid { grid-template-columns: minmax(0,1fr) minmax(0,1.15fr) minmax(0,.85fr) minmax(0,1.1fr); gap: 32px; } }
+@media (min-width: 901px) { .footer__grid { grid-template-columns: minmax(0,.9fr) minmax(0,1.15fr) minmax(0,.8fr) auto; gap: 32px; } }
 .footer__col--pages .footer__h { text-align: left; }
 .footer__pages { gap: 18px; }
 @media (min-width: 901px) {
   .footer__col--pages .footer__contact { align-items: flex-start; }
   .footer__col--pages a.footer__gold:hover::after { transform-origin: left; }
 }
+.footer__grid > .footer__col:last-child .footer__gold { white-space: nowrap; }
