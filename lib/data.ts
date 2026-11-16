@@ -479,11 +479,11 @@ export const WEB_CARE: WebPackage[] = tidyDeep([
   },
   {
     name: "Wartung Pro", price: "59 €", unit: "/ Monat", priceYear: "590 €", unitYear: "/ Jahr", priceYearMonthly: "49,17 €", note: "Für aktive Unternehmens-Websites",
-    items: ["Bis 2 Std. Änderungen pro Monat", "Premium-Hosting auf deutschen Servern inklusive", "Tägliche Backups", "Google-Unternehmensprofil einrichten, optimieren & pflegen", "Einrichtung von Domain, E-Mail und Hosting", "Eigenes Statistik-Dashboard für Ihre Website"],
+    items: ["Bis 2 Std. Änderungen pro Monat", "Premium-Hosting auf deutschen Servern inklusive", "Tägliche Backups", "Google Search Console, Bing Places u. a. einrichten, optimieren & pflegen", "Einrichtung von Domain, E-Mail und Hosting", "Eigenes Statistik-Dashboard für Ihre Website"],
   },
   {
     name: "Wartung Premium", price: "99 €", unit: "/ Monat", priceYear: "990 €", unitYear: "/ Jahr", priceYearMonthly: "82,50 €", note: "Für große Projekte mit viel Content",
-    items: ["Bis 3 Std. Änderungen pro Monat", "Neue Inhalte mehrmals pro Monat, z. B. Blogs", "KI-Fotos & 3D-Motion-Clips", "Google-Unternehmensprofil einrichten, optimieren & pflegen", "Premium-Hosting inklusive, 99,9 % Uptime-Garantie", "Antwort innerhalb von 24 Std. (werktags)", "Eigenes Statistik-Dashboard für Ihre Website"],
+    items: ["Bis 3 Std. Änderungen pro Monat", "Neue Inhalte mehrmals pro Monat, z. B. Blogs", "KI-Fotos & 3D-Motion-Clips", "Google Search Console, Bing Places u. a. einrichten, optimieren & pflegen", "Premium-Hosting inklusive, 99,9 % Uptime-Garantie", "Antwort innerhalb von 24 Std. (werktags)", "Eigenes Statistik-Dashboard für Ihre Website"],
   },
 ]);
 
