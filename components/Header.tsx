@@ -186,7 +186,7 @@ export function Header() {
                   onClick={() => (pathname === "/" ? scrollToHash("#leistungen") : router.push("/#leistungen"))}
                   data-cursor
                 >
-                  Leistungen <Icon name="chevron-down" size={15} className="nav__chev" />
+                  Multiservice <Icon name="chevron-down" size={15} className="nav__chev" />
                 </button>
               )}
               <div className="dropdown" role="menu">
@@ -222,10 +222,10 @@ export function Header() {
             ) : (
               <>
                 <div className="nav__item">
-                  <Link href="/#ueber" className="nav__link" onClick={goUeber} data-cursor>Über uns</Link>
+                  <Link href="/webdesign" className={`nav__link shine ${active === "webdesign" ? "nav__link--active" : ""}`} data-cursor>Webdesign</Link>
                 </div>
                 <div className="nav__item">
-                  <Link href="/webdesign" className={`nav__link shine ${active === "webdesign" ? "nav__link--active" : ""}`} data-cursor>Webdesign</Link>
+                  <Link href="/#ueber" className="nav__link" onClick={goUeber} data-cursor>Über uns</Link>
                 </div>
               </>
             )}
@@ -267,7 +267,7 @@ export function Header() {
         <Link href={contactHref} className="mobile-nav__link">Kontakt</Link>
 
         <button type="button" className="mobile-nav__toggle" aria-expanded={mobLs} aria-controls="mobile-nav-ls" onClick={() => setMobLs((v) => !v)}>
-          {sections ? "Multiservice" : "Leistungen"}
+          Multiservice
           <Icon name="chevron-down" size={18} className="mobile-nav__chev" />
         </button>
         <div id="mobile-nav-ls" className={`mobile-nav__ls ${mobLs ? "is-open" : ""}`} inert={!mobLs}>

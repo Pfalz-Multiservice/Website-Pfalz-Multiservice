@@ -485,7 +485,7 @@ a .contact-row__value { color: var(--brand-accent); }
   background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 50%), rgba(221,187,77,.10), transparent 60%); }
 .sc-stage:hover .sc-spot { opacity: 1; }
 .sc-item--rev .sc-browser__hint { left: auto; right: 14px; }
-.sc-phone { position: absolute; right: 0; bottom: 0; width: 25%; aspect-ratio: 390/844; border-radius: clamp(16px, 2.4vw, 30px); overflow: hidden;
+.sc-phone { position: absolute; right: 0; bottom: 0; width: 25%; aspect-ratio: 390/844; border-radius: 19% / 8.8%; /* mit der Handybreite mitwachsend, damit kleine Handys nicht runder wirken */ overflow: hidden;
   background: #000; border: clamp(4px, .55vw, 7px) solid #161616; box-shadow: 0 30px 70px -20px rgba(0,0,0,.95), 0 0 0 1px #2e2e2e;
   will-change: transform; z-index: 3; }
 .sc-item--rev .sc-phone { right: auto; left: 0; }
@@ -500,7 +500,7 @@ a .contact-row__value { color: var(--brand-accent); }
 .showcase--grid .sc-item, .showcase--grid .sc-item--rev { grid-template-columns: minmax(0,1fr); gap: 22px; align-items: start; }
 .showcase--grid .sc-item--rev .sc-stage, .showcase--grid .sc-item--rev .cl-stage { order: 0; }
 .showcase--grid .sc-stage, .showcase--grid .sc-item--rev .sc-stage { padding: 0 0 7% 0; }
-.showcase--grid .sc-phone, .showcase--grid .sc-item--rev .sc-phone { right: 0; left: auto; width: 21%; }
+.showcase--grid .sc-phone, .showcase--grid .sc-item--rev .sc-phone { right: 0; left: auto; width: 21%; border-width: clamp(3px, .45vw, 6px); }
 .showcase--grid .sc-item--rev .sc-browser__hint { left: 14px; right: auto; }
 .showcase--grid .sc-copy { gap: 12px; }
 .showcase--grid .sc-title { font-size: clamp(1.35rem, 2vw, 1.75rem); }
@@ -2590,3 +2590,6 @@ a.web-local__row:hover, a.web-local__row:focus-visible { color: var(--brand-acce
 
 /* zwei schmale Link-Zeilen direkt untereinander (Branchen + Städte, Worms-Hinweis + Städte) */
 .section--tight + .section--tight { padding-top: 0; }
+
+/* Startseite: Best of mit Referenzen-Vorschau (Bildschirm + Handy) statt einfacher Browserfenster */
+.bestof__stage--sc { display: block; }

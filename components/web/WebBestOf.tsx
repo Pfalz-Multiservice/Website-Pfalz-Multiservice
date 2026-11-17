@@ -1,10 +1,9 @@
-import Image from "next/image";
 import type { CSSProperties } from "react";
-import { REFERENCES } from "@/lib/data";
-import { EXAMPLES_URL } from "@/lib/site";
+import { EXAMPLES, REFERENCES, type Example } from "@/lib/data";
 import { brancheHref } from "@/lib/branchen";
 import { tidy } from "@/lib/typo";
 import { InView } from "../motion/InView";
+import { ShowcaseList } from "../Showcase";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
 
@@ -18,9 +17,11 @@ const POINTS: [title: string, text: string][] = [
 ];
 
 const schaffner = REFERENCES.find((r) => r.slug === "schaffner")!;
-const SHOTS = [
-  { key: "schaffner", name: schaffner.name, label: "Referenz · live", href: schaffner.url ?? `https://${schaffner.host}`, img: "/images/beispiele/schaffner-scroll.png" },
-  { key: "fliesen", name: "Fliesen Reuter", label: "Musterdesign", href: `${EXAMPLES_URL}/fliesenleger`, img: "/images/beispiele/fliesenleger-scroll.png" },
+const fliesen = EXAMPLES.find((e) => e.slug === "fliesenleger")!;
+// Zeile über dem Namen: Referenz (echter Kunde) und Musterdesign (fiktiver Betrieb) klar unterscheiden
+const SHOWCASE: Example[] = [
+  { ...schaffner, branch: "Referenz · Computerservice Worms" },
+  { ...fliesen, branch: "Musterdesign · Fliesenleger" },
 ];
 
 const i = (n: number) => ({ "--i": n }) as CSSProperties;
@@ -50,18 +51,9 @@ export function WebBestOf() {
         </div>
       </div>
 
-      <div className="bestof__stage">
-        {SHOTS.map((s, n) => (
-          <a key={s.key} className={`bestof__shot bestof__shot--${s.key}`} href={s.href} target="_blank" rel="noopener" data-cursor
-            aria-label={`${s.name} ansehen (öffnet in neuem Tab)`} style={i(n)}>
-            <span className="sc-browser__bar" aria-hidden="true"><span className="sc-browser__dots"><i /><i /><i /></span></span>
-            <span className="bestof__view">
-              <Image className="bestof__img" src={s.img} alt={`Vorschau ${s.name}`} width={1000} height={3750}
-                sizes="(max-width: 900px) 80vw, 480px" />
-            </span>
-            <span className="bestof__cap"><span className="bestof__name">{s.name}</span>{s.label}<Icon name="external-link" size={14} /></span>
-          </a>
-        ))}
+      {/* Vorschau wie bei den Referenzen: Bildschirm mit Handy daneben (components/Showcase) */}
+      <div className="bestof__stage bestof__stage--sc">
+        <ShowcaseList grid items={SHOWCASE} />
       </div>
     </InView>
   );
