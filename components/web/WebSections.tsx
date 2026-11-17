@@ -4,7 +4,7 @@ import { BriefingPreview } from "./BriefingPreview";
 import { CarePricing } from "./CarePricing";
 import Link from "next/link";
 import Image from "next/image";
-import { CLASSIC_EXAMPLES, CONTACT, REFERENCES, EXAMPLES, WEB_ADDONS, WEB_FAQ, WEB_CARE_NOTES, WEB_PACKAGES, WEB_PROBLEMS, type WebPackage } from "@/lib/data";
+import { CONTACT, REFERENCES, WEB_ADDONS, WEB_FAQ, WEB_CARE_NOTES, WEB_PACKAGES, WEB_PROBLEMS, type WebPackage } from "@/lib/data";
 import { EXAMPLES_URL } from "@/lib/site";
 import { BRANCHEN, brancheHref } from "@/lib/branchen";
 import { SectionHeading } from "../SectionHeading";
@@ -244,22 +244,14 @@ export function WebFaqCheck() {
   );
 }
 
-/** Kompakter Teaser für Startseite und Leistungsseite: Referenz-Wand mit allen Beispielen */
+/** Kompakter Teaser für die Startseite: Branchen-Links und das Wichtigste der Handwerk-Seite mit zwei Vorschauen */
 export function WebTeaser({ alt = false }: { alt?: boolean }) {
-  const all: { slug: string; name: string; branch: string; href: string; img: string }[] = [
-    ...CLASSIC_EXAMPLES.map((e) => ({ slug: e.slug, name: e.name, branch: e.branch, href: `${EXAMPLES_URL}/${e.slug}${e.pages[0].path}`, img: `/images/beispiele/${e.slug}-${e.pages[0].key}.png` })),
-    ...EXAMPLES.map((e) => ({ slug: e.slug, name: e.name, branch: e.branch, href: `${EXAMPLES_URL}/${e.slug}`, img: `/images/beispiele/${e.slug}-scroll.png` })),
-  ];
-  // Feste Reihenfolge auf der Startseite: Fliesenleger, Elektriker, Weingut, Umraum, Restaurant, Honigstück
-  const order = ["fliesenleger", "elektriker", "weingut", "beratungsbuero", "restaurant", "seifenmanufaktur"];
-  const rank = (slug: string) => { const i = order.indexOf(slug); return i < 0 ? order.length : i; };
-  const shots = [...all].sort((a, b) => rank(a.slug) - rank(b.slug));
   return (
     <section className={`section ${alt ? "section--alt" : ""}`} id="webdesign">
       <div className="container">
         <div className="teaser-head">
           <SectionHeading eyebrow="Webdesign · ab 199 €" title="Websites, die" highlight="wirken"
-            intro="Individuell gestaltet, zum Festpreis, persönlich betreut. Kein Abo, kein Zwang. Hier eine Auswahl unserer Musterdesigns." />
+            intro="Individuell gestaltet, zum Festpreis, persönlich betreut. Kein Abo, kein Zwang." />
           <div className="pm-reveal" data-reveal="up">
             <Button variant="accent" icon="arrow-right" href="/webdesign">Zur Webdesign-Seite</Button>
           </div>
@@ -271,18 +263,7 @@ export function WebTeaser({ alt = false }: { alt?: boolean }) {
           </ul>
         </nav>
         <WebBestOf />
-        <div className="wall pm-reveal" data-reveal="cards">
-          {shots.map((s) => (
-            <a key={s.href} className="wall__item pm-card" href={s.href} target="_blank" rel="noopener" data-cursor aria-label={`${s.name} live ansehen (öffnet in neuem Tab)`}>
-              <div className="wall__frame">
-                <div className="sc-browser__bar" aria-hidden="true"><span className="sc-browser__dots"><i /><i /><i /></span></div>
-                <div className="wall__view"><div className="card__parallax"><Image src={s.img} alt="" fill sizes="(max-width: 640px) 100vw, (max-width: 1080px) 50vw, 560px" /></div></div>
-              </div>
-              <span className="wall__meta"><b>{s.name}</b>{s.branch}<Icon name="external-link" size={15} /></span>
-            </a>
-          ))}
-        </div>
-        <p className="showcase-note" style={{ marginTop: 28 }}>Musterdesigns für erfundene Betriebe. <Link href="/webdesign#beispiele" style={{ color: "var(--brand-accent)" }}>Alle{"\u00A0"}Beispiele im{"\u00A0"}Detail</Link></p>
+        <p className="showcase-note" style={{ marginTop: 28 }}>Weitere Referenzen und Musterdesigns: <Link href="/webdesign#beispiele" style={{ color: "var(--brand-accent)" }}>Alle{"\u00A0"}Beispiele im{"\u00A0"}Detail</Link></p>
       </div>
     </section>
   );
