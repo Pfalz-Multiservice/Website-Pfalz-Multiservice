@@ -10,7 +10,7 @@ export function scrollToHash(hash: string, immediate = false) {
   const el = document.querySelector(hash) as HTMLElement | null;
   if (!el) return false;
   const offset = -(parseInt(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) || 84) + 1;
-  if (instance) instance.scrollTo(el, { offset, immediate, duration: 1.4 });
+  if (instance) instance.scrollTo(el, { offset, immediate, duration: 1.4, force: true });
   else window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY + offset, behavior: immediate ? "auto" : "smooth" });
   return true;
 }

@@ -122,8 +122,13 @@ export function Header() {
 
   const goSection = (id: string) => (e: React.MouseEvent) => {
     e.preventDefault();
-    if (mobile) { setMobile(false); setTimeout(() => scrollToHash("#" + id), 80); }
-    else scrollToHash("#" + id);
+    if (mobile) {
+      // Menü schließen und Scrollen sofort freigeben, sonst ignoriert Lenis den Sprung
+      document.documentElement.classList.remove("pm-menu-open");
+      getLenis()?.start();
+      setMobile(false);
+    }
+    scrollToHash("#" + id);
     history.replaceState(null, "", "#" + id);
   };
   const goLeistungen = (e: React.MouseEvent) => {
