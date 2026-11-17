@@ -19,6 +19,8 @@ export function Header() {
   const [solid, setSolid] = useState(false);
   const [ddOpen, setDdOpen] = useState(false);
   const [mobile, setMobile] = useState(false);
+  // Handy-Menü: Liste der Leistungen ist eingeklappt
+  const [mobLs, setMobLs] = useState(false);
   const ddTl = useRef<gsap.core.Timeline | null>(null);
   const mobTl = useRef<gsap.core.Timeline | null>(null);
 
@@ -92,7 +94,8 @@ export function Header() {
     }
   }, [mobile]);
 
-  useEffect(() => { setMobile(false); setDdOpen(false); }, [pathname]);
+  useEffect(() => { setMobile(false); setDdOpen(false); setMobLs(false); }, [pathname]);
+  useEffect(() => { if (!mobile) setMobLs(false); }, [mobile]);
 
   // Aktiven Abschnitt beim Scrollen markieren (letzter Abschnitt, dessen Oberkante die obere Bildschirmhälfte erreicht hat)
   useEffect(() => {
@@ -217,26 +220,40 @@ export function Header() {
         </div>
       </header>
 
+      {/* Handy-Menü: zuerst die Hauptziele (bzw. die Abschnitte dieser Seite) und Kontakt, die Leistungen klein und eingeklappt darunter */}
       <div className="mobile-nav" aria-hidden={!mobile}>
-        {sections && (
+        {sections ? (
           <>
             <span className="mobile-nav__label">Auf dieser Seite</span>
             {sections.map((sec) => (
               <a key={sec.id} href={"#" + sec.id} onClick={goSection(sec.id)}
                 className={`mobile-nav__link ${current === sec.id ? "mobile-nav__link--active" : ""}`}>{sec.label}</a>
             ))}
-            <span className="mobile-nav__label mobile-nav__label--gap">Andere Leistungen</span>
+          </>
+        ) : (
+          <>
+            <Link href="/webdesign" className="mobile-nav__link shine">Webdesign</Link>
+            <Link href="/#ueber" className="mobile-nav__link" onClick={goUeber}>Über uns</Link>
           </>
         )}
-        <Link href="/#leistungen" className={`mobile-nav__link ${sections ? "mobile-nav__link--small" : ""}`} onClick={goLeistungen}>{sections ? "Alle Leistungen" : "Leistungen"}</Link>
-        {MENU_SERVICES.filter((s) => serviceHref(s) !== pathname).map((s) => (
-          <Link key={s.id} href={serviceHref(s)} className="mobile-nav__link mobile-nav__link--sub">
-            <Icon name={s.icon} size={18} /> {s.title}
-          </Link>
-        ))}
-        <Link href="/#ueber" className="mobile-nav__link" onClick={goUeber}>Über uns</Link>
-        <Link href="/webdesign" className="mobile-nav__link shine">Webdesign</Link>
         <Link href="/kontakt" className="mobile-nav__link">Kontakt</Link>
+
+        <button type="button" className="mobile-nav__toggle" aria-expanded={mobLs} aria-controls="mobile-nav-ls" onClick={() => setMobLs((v) => !v)}>
+          {sections ? "Alle Leistungen" : "Leistungen"}
+          <Icon name="chevron-down" size={18} className="mobile-nav__chev" />
+        </button>
+        <div id="mobile-nav-ls" className={`mobile-nav__ls ${mobLs ? "is-open" : ""}`} inert={!mobLs}>
+          <div className="mobile-nav__ls-in">
+            {MENU_SERVICES.filter((s) => serviceHref(s) !== pathname).map((s) => (
+              <Link key={s.id} href={serviceHref(s)} className="mobile-nav__link mobile-nav__link--sub">
+                <Icon name={s.icon} size={18} /> {s.title}
+              </Link>
+            ))}
+            <Link href="/#leistungen" className="mobile-nav__link mobile-nav__link--sub mobile-nav__all" onClick={goLeistungen}>
+              <Icon name="arrow-right" size={18} /> Alle Leistungen im Überblick
+            </Link>
+          </div>
+        </div>
       </div>
     </>
   );
