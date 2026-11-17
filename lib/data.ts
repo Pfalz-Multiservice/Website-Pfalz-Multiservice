@@ -211,9 +211,9 @@ export const CORE: { id: string; kicker: string; title: string; text: string; it
   {
     id: "web",
     kicker: "Webdesign & Wartung",
-    title: "Websites mit Wirkung",
-    text: "Wir entwickeln moderne Websites mit eigener Handschrift: vom klaren One-Pager bis zum Auftritt mit 3D-Effekten und Scroll-Animationen. Technisch sauber umgesetzt und nach dem Start persönlich betreut.",
-    items: ["One-Pager und mehrseitige Auftritte", "3D-Effekte und Animationen", "Betreuung, Updates und Sicherheit"],
+    title: "Websites, die Anfragen bringen",
+    text: "Ihre Website soll gefunden werden und aus Besuchern Anfragen machen. Wir gestalten sie individuell, ohne Baukasten, und betreuen sie auf Wunsch weiter. So sehen Sie, was sie Ihnen bringt.",
+    items: ["Festpreis ab 199 €, ohne Abo", "Für Handwerker und Dienstleister", "Besucher und Anfragen auf Wunsch messbar"],
     link: "Zum Webdesign",
   },
   {

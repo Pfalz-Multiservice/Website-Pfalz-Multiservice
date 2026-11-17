@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { CLASSIC_EXAMPLES, CONTACT, REFERENCES, EXAMPLES, SHOP_EXAMPLE, WEB_ADDONS, WEB_FAQ, WEB_CARE_NOTES, WEB_PACKAGES, WEB_PROBLEMS, type WebPackage } from "@/lib/data";
 import { EXAMPLES_URL } from "@/lib/site";
+import { BRANCHEN, brancheHref } from "@/lib/branchen";
 import { ExpandText } from "../ExpandText";
 import { SectionHeading } from "../SectionHeading";
 import { Button } from "../Button";
@@ -21,8 +22,8 @@ export const WHATSAPP_CHECK = `${CONTACT.whatsapp}?text=${encodeURIComponent(CHE
 export function WebTrust() {
   const items: [string, string][] = [
     ["Festpreis ab 199 €", "Sie kennen den Preis,\nbevor wir beginnen."],
-    ["Kein Abo, kein Zwang", "Die Website gehört Ihnen."],
-    ["Freigabe vor Livegang", "Nichts geht ohne Ihr OK online."],
+    ["Kein Abo, kein Zwang", "Domain, Zugänge und Quellcode gehören Ihnen."],
+    ["Messbar statt gefühlt", "Auf Wunsch zählen wir Besucher und Anfragen, ohne Cookies."],
     ["Persönlich aus Worms", "Ein fester Ansprechpartner\nstatt Hotline."],
   ];
   return (
@@ -263,6 +264,12 @@ export function WebTeaser({ alt = false }: { alt?: boolean }) {
             <Button variant="accent" icon="arrow-right" href="/webdesign">Zur Webdesign-Seite</Button>
           </div>
         </div>
+        <nav className="city-links teaser-ziel pm-reveal" data-reveal="up" aria-label="Websites nach Zielgruppe">
+          <span className="city-links__label">Websites für Ihre Branche</span>
+          <ul className="city-links__list">
+            {BRANCHEN.map((b) => <li key={b.slug}><Link href={brancheHref(b.slug)} data-cursor>Für {b.name}</Link></li>)}
+          </ul>
+        </nav>
         <div className="wall-feature pm-reveal" data-reveal="up">
           <a className="wall-feature__img" href={`${EXAMPLES_URL}/${SHOP_EXAMPLE.slug}`} target="_blank" rel="noopener" data-cursor aria-label={`${SHOP_EXAMPLE.name} live ansehen (öffnet in neuem Tab)`}>
             <div className="sc-browser__bar" aria-hidden="true"><span className="sc-browser__dots"><i /><i /><i /></span></div>

@@ -2520,3 +2520,6 @@ a.web-local__row:hover, a.web-local__row:focus-visible { color: var(--brand-acce
 .gewerk__text { margin: 0; font: 400 15px/1.6 var(--font-body); color: var(--text-body); }
 @media (max-width: 1000px) { .gewerke { grid-template-columns: repeat(2, minmax(0,1fr)); } }
 @media (max-width: 640px) { .gewerke { grid-template-columns: minmax(0,1fr); } }
+
+/* Startseite: Verweise auf die Zielgruppenseiten im Webdesign-Abschnitt */
+.teaser-ziel { margin: 0 0 40px; }

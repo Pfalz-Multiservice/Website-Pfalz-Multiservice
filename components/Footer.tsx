@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { gsap, useGSAP, MOTION_OK } from "@/lib/gsap";
 import { getLenis } from "@/lib/lenis";
 import { CONTACT, SERVICES, serviceHref } from "@/lib/data";
+import { BRANCHEN, brancheHref } from "@/lib/branchen";
 import { Icon } from "./Icon";
 import { Logo } from "./Logo";
 
@@ -64,6 +65,9 @@ export function Footer() {
           <div className="footer__contact footer__pages">
             {SERVICES.map((s) => (
               <Link key={s.id} className="footer__gold" href={serviceHref(s)} data-cursor><Icon name={s.icon} size={16} />{s.title}</Link>
+            ))}
+            {BRANCHEN.map((b) => (
+              <Link key={b.slug} className="footer__gold" href={brancheHref(b.slug)} data-cursor><Icon name="layout-template" size={16} />Website für {b.name}</Link>
             ))}
           </div>
         </nav>

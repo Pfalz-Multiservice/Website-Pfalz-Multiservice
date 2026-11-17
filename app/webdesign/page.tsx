@@ -66,9 +66,9 @@ export default function WebdesignPage() {
         </Link>
       </PageHero>
       <WebTrust />
+      <WebBranchen alt />
       <WebProblem />
       <WebStufen />
-      <WebBranchen />
       <LayerBuild />
       <ShopShowcase />
       <WebExamples />
