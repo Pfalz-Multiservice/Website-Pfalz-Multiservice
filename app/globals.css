@@ -2462,3 +2462,61 @@ a.web-local__row:hover, a.web-local__row:focus-visible { color: var(--brand-acce
 
 /* Paketkarten am Handy: normaler Umbruch statt „pretty“ und etwas weniger Innenabstand (sonst einzelne Wörter in eigener Zeile) */
 @media (max-width: 900px) { .pk__list li span { text-wrap: wrap; } .pk { padding-left: 20px; padding-right: 20px; } }
+
+/* Webdesign: drei Stufen nach Ergebnis (Sichtbar, Messbar, Mehr Anfragen) */
+.stufen { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; }
+.stufe { display: flex; flex-direction: column; gap: 12px; padding: 32px 28px; background: var(--surface-card); border: 1px solid var(--border-subtle); border-top: 2px solid var(--brand-accent); border-radius: var(--radius-card); }
+.stufe__step { font: 600 13px/1 var(--font-display); letter-spacing: .2em; color: var(--brand-accent); font-variant-numeric: tabular-nums; }
+.stufe__name { margin: 0; font: 800 clamp(1.4rem, 2.2vw, 1.75rem)/1.15 var(--font-display); text-transform: uppercase; letter-spacing: -.01em; color: var(--text-strong); }
+.stufe__text { margin: 0; flex: 1; font: var(--type-body); color: var(--text-body); }
+.stufe__price { margin: 4px 0 0; font: 400 15px/1.4 var(--font-body); color: var(--text-subtle); }
+.stufe__price b { font: 700 1.5rem/1.2 var(--font-display); color: var(--text-strong); margin-right: 6px; }
+.stufe__link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; align-self: flex-start; font: 600 14px/1.2 var(--font-display); color: var(--brand-accent); text-decoration: none; }
+.stufe__link svg { transition: transform var(--dur-base) var(--ease-out); }
+.stufe__link:hover svg, .stufe__link:focus-visible svg { transform: translateX(4px); }
+.stufen__note { display: flex; align-items: flex-start; gap: 12px; margin: 24px 0 0; max-width: 760px; font: 400 15px/1.6 var(--font-body); color: var(--text-body); }
+.stufen__note svg { flex: none; margin-top: 3px; color: var(--brand-accent); }
+.stufen__note b { color: var(--text-strong); font-weight: 600; }
+@media (max-width: 900px) { .stufen { grid-template-columns: minmax(0,1fr); } .stufe { padding: 26px 22px; } }
+
+/* Webdesign: Branchenkacheln */
+.branchen { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+.branchen > li { display: flex; }
+.branche { flex: 1; display: flex; flex-direction: column; gap: 10px; padding: 26px 24px; background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-card); text-decoration: none; color: inherit; transition: border-color var(--dur-base) var(--ease-out); }
+.branche__name { font: 700 var(--fs-h3)/1.25 var(--font-display); text-transform: uppercase; letter-spacing: .01em; color: var(--text-strong); overflow-wrap: anywhere; hyphens: auto; }
+.branche__text { flex: 1; font: 400 15px/1.6 var(--font-body); color: var(--text-body); }
+.branche__more { display: inline-flex; align-items: center; gap: 8px; margin-top: 6px; font: 600 14px/1.2 var(--font-display); color: var(--brand-accent); }
+.branche__more svg { transition: transform var(--dur-base) var(--ease-out); }
+.branche:hover, .branche:focus-visible { border-color: rgba(221,187,77,.6); }
+.branche:hover .branche__more svg, .branche:focus-visible .branche__more svg { transform: translateX(4px); }
+.branche--open { background: transparent; border-style: dashed; border-color: rgba(221,187,77,.45); }
+.branchen__auch { margin: 24px 0 0; font: 400 15px/1.6 var(--font-body); color: var(--text-subtle); }
+.branchen__auch b { color: var(--text-body); font-weight: 600; }
+@media (max-width: 1000px) { .branchen { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 640px) { .branchen { grid-template-columns: minmax(0,1fr); } }
+
+/* Branchenseite: Zahlen aus der Recherche und Rechenbeispiel */
+.bfacts { gap: 18px; }
+.bfacts__label { font: 700 13px/1.3 var(--font-display); text-transform: uppercase; letter-spacing: .1em; color: var(--text-subtle); }
+.bfacts__item { margin: 0; display: flex; flex-direction: column; gap: 4px; }
+.bfacts__item b { font: 800 clamp(1.9rem, 3vw, 2.4rem)/1.1 var(--font-display); color: var(--brand-accent); font-variant-numeric: tabular-nums; }
+.bfacts__item span { font: 400 15px/1.5 var(--font-body); color: var(--text-body); }
+.rechnung { align-items: center; }
+.rechnung__table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.rechnung__table th, .rechnung__table td { padding: 16px 12px; border-bottom: 1px solid var(--border-strong); text-align: right; font: var(--type-body); color: var(--text-body); }
+.rechnung__table thead th { font: 700 13px/1.3 var(--font-display); text-transform: uppercase; letter-spacing: .1em; color: var(--text-subtle); }
+.rechnung__table tbody th { text-align: left; padding-left: 0; font-weight: 500; color: var(--text-strong); }
+.rechnung__table td:last-child, .rechnung__table thead th:last-child { color: var(--brand-accent); padding-right: 0; }
+.rechnung__table .is-sum th, .rechnung__table .is-sum td { border-bottom: 0; font: 700 1.5rem/1.2 var(--font-display); }
+.rechnung__table .is-sum th { font: 600 var(--fs-body)/1.4 var(--font-body); }
+.rechnung__note { margin: 16px 0 0; font: 400 14px/1.5 var(--font-body); color: var(--text-subtle); }
+@media (max-width: 900px) { .rechnung { grid-template-columns: minmax(0,1fr); gap: 32px; } }
+@media (prefers-reduced-motion: reduce) { .stufe__link svg, .branche__more svg, .branche { transition: none; } }
+
+/* Zielgruppenseite: Karten je Gewerk bzw. Bereich */
+.gewerke { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+.gewerk { display: flex; flex-direction: column; gap: 10px; padding: 26px 24px; background: var(--surface-card); border: 1px solid var(--border-subtle); border-left: 2px solid var(--brand-accent); border-radius: var(--radius-card); }
+.gewerk__name { margin: 0; font: 700 var(--fs-h3)/1.25 var(--font-display); text-transform: uppercase; letter-spacing: .01em; color: var(--text-strong); overflow-wrap: anywhere; hyphens: auto; }
+.gewerk__text { margin: 0; font: 400 15px/1.6 var(--font-body); color: var(--text-body); }
+@media (max-width: 1000px) { .gewerke { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 640px) { .gewerke { grid-template-columns: minmax(0,1fr); } }

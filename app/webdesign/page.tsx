@@ -13,6 +13,7 @@ import { WebBriefingTeaser, WebExamples, WebFaqCheck, WebPackages, WebProblem, W
 import { ShopShowcase } from "@/components/web/ShopShowcase";
 import { LayerBuild } from "@/components/web/LayerBuild";
 import { CityLinks, WormsTeaser } from "@/components/web/WebLocal";
+import { WebBranchen, WebStufen } from "@/components/web/WebBranchen";
 
 // Allgemeine Übersicht – „Webdesign Worms“ hat eine eigene Seite (/webdesign-worms), damit sich beide nicht Konkurrenz machen
 const title = "Website erstellen lassen ab 199 €";
@@ -37,7 +38,7 @@ const serviceLd = {
   offers: [
     { "@type": "Offer", name: "Start: OnePager, bis 5 Abschnitte", price: "199", priceCurrency: "EUR", description: "Einmaliger Festpreis" },
     { "@type": "Offer", name: "Business: OnePager oder mehrseitige Website, bis 8 Seiten", price: "299", priceCurrency: "EUR", description: "Einmaliger Festpreis" },
-    ...[["Wartung", "39", "Bis 1 Std. Änderungen pro Monat"], ["Wartung Pro", "59", "Bis 2 Std. Änderungen pro Monat"], ["Wartung Premium", "99", "Bis 3 Std. Änderungen pro Monat"]].map(([name, price, description]) => ({
+    ...[["Wartung", "39", "Bis 1 Std. Änderungen pro Monat"], ["Wartung Pro", "59", "Bis 2 Std. Änderungen pro Monat"], ["Wartung Premium", "99", "Bis 3 Std. pro Monat für Google-Unternehmensprofil, Anfrageformular, Bewertungen und monatliche Auswertung"]].map(([name, price, description]) => ({
       "@type": "Offer", name, priceCurrency: "EUR", description: `${description}, monatlich kündbar`,
       priceSpecification: { "@type": "UnitPriceSpecification", price, priceCurrency: "EUR", unitText: "Monat" },
     })),
@@ -66,6 +67,8 @@ export default function WebdesignPage() {
       </PageHero>
       <WebTrust />
       <WebProblem />
+      <WebStufen />
+      <WebBranchen />
       <LayerBuild />
       <ShopShowcase />
       <WebExamples />

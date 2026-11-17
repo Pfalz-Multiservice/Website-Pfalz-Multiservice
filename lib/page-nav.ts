@@ -9,6 +9,7 @@ export type PageSection = { id: string; label: string };
 export function pageSections(pathname: string): PageSection[] | null {
   if (pathname === "/webdesign")
     return [
+      { id: "branchen", label: "Branchen" },
       { id: "beispiele", label: "Referenzen" },
       { id: "pakete", label: "Pakete" },
       { id: "ablauf", label: "Ablauf" },

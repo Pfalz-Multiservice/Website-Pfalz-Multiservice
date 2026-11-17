@@ -483,14 +483,15 @@ export const WEB_CARE: WebPackage[] = tidyDeep([
     items: ["Bis 2 Std. Änderungen pro Monat", "Premium-Hosting auf deutschen Servern inklusive", "Tägliche Backups", "Google Search Console,\u2028Bing Places u. a. einrichten, optimieren & pflegen", "Einrichtung von Domain,\u2028E-Mail und Hosting", "Eigenes Statistik-Dashboard für Ihre Website"],
   },
   {
-    name: "Wartung Premium", price: "99 €", unit: "/ Monat", priceYear: "990 €", unitYear: "/ Jahr", priceYearMonthly: "82,50 €", note: "Für große Projekte mit viel Content",
-    items: ["Bis 3 Std. Änderungen pro Monat", "Neue Inhalte mehrmals pro Monat, z. B. Blogs", "KI-Fotos & 3D-Motion-Clips", "Google Search Console,\u2028Bing Places u. a. einrichten, optimieren & pflegen", "Premium-Hosting inklusive, 99,9 % Uptime-Garantie", "Antwort innerhalb von 24 Std. (werktags)", "Eigenes Statistik-Dashboard für Ihre Website"],
+    name: "Wartung Premium", price: "99 €", unit: "/ Monat", priceYear: "990 €", unitYear: "/ Jahr", priceYearMonthly: "82,50 €", note: "Für Betriebe, die mehr Anfragen wollen",
+    items: ["Bis 3 Std. pro Monat", "Google-Unternehmensprofil pflegen", "Anfrageformular mit Vorauswahl", "Bewertungen sammeln per Link & QR-Code", "Monatliche Auswertung:\u2028Besucher & Anfragen", "Neue Inhalte, KI-Fotos & 3D-Motion-Clips", "Alles aus Wartung Pro: Hosting, Backups, Suchmaschinen-Konten, Dashboard", "Antwort innerhalb von 24 Std. (werktags)"],
   },
 ]);
 
 /** Gut zu wissen zum Wartungsprogramm (Preisliste 2026) */
 export const WEB_CARE_NOTES: { title: string; text: string }[] = tidyDeep([
   { title: "Reaktionszeit", text: "Premium 24 Std., Wartung und Pro 48 Std. (werktags). 100 % Erreichbarkeit kann niemand garantieren." },
+  { title: "Premium", text: "Alle Leistungen zählen auf die 3 Std. im Monat. Eine bestimmte Zahl an Anfragen sagen wir nicht zu." },
   { title: "Nicht enthalten", text: "Redesign, Neuentwicklung, Hack-Behebung und vom Kunden verursachte Fehler: 39 € pro Stunde." },
 ]);
 
