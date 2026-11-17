@@ -2398,7 +2398,7 @@ a.web-local__row:hover, a.web-local__row:focus-visible { color: var(--brand-acce
 .reel-live { display: inline-flex; align-items: center; gap: 8px; padding-bottom: 3px; border-bottom: 1px solid rgba(221,187,77,.45); font: 600 14px/1.2 var(--font-display); color: var(--brand-accent); text-decoration: none; transition: border-color .2s ease, color .2s ease; }
 @media (hover: hover) and (pointer: fine) { .reel-live:hover { color: #fff; border-color: #fff; } .reel-thumb:hover { opacity: 1; } }
 @keyframes reel-in { from { opacity: 0; transform: translateY(8px); } }
-.reel-strip { grid-column: 1 / -1; list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
+.reel-strip { grid-column: 1 / -1; list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 12px; }
 .reel-thumb { display: flex; flex-direction: column; gap: 8px; width: 100%; padding: 0; background: none; border: 0; cursor: pointer; text-align: left; opacity: .5; transition: opacity .25s ease; }
 .reel-thumb.is-on { opacity: 1; }
 .reel-thumb__img { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; border: 1px solid var(--border-strong); transition: border-color .25s ease; }

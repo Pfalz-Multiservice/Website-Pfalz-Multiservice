@@ -2,15 +2,16 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger, useGSAP, MOTION_OK } from "@/lib/gsap";
-import { CLASSIC_EXAMPLES, EXAMPLES } from "@/lib/data";
+import { CLASSIC_EXAMPLES, EXAMPLES, SHOP_EXAMPLE } from "@/lib/data";
 import { EXAMPLES_URL } from "@/lib/site";
 import { Icon } from "../Icon";
 
 // Reihenfolge im Filmstreifen, per Slug festgelegt
-const ORDER = ["fliesenleger", "beratungsbuero", "seifenmanufaktur", "elektriker", "weingut", "restaurant"];
+const ORDER = ["fliesenleger", "beratungsbuero", "anime-shop", "seifenmanufaktur", "elektriker", "weingut", "restaurant"];
 const ALL = [
   ...CLASSIC_EXAMPLES.map((e) => ({ ...e, kind: "Mit Unterseiten" })),
   ...EXAMPLES.map((e) => ({ ...e, kind: "One-Pager" })),
+  { ...SHOP_EXAMPLE, kind: "Online-Shop" },
 ];
 const ITEMS = ORDER.map((slug) => ALL.find((e) => e.slug === slug)).filter((e): e is (typeof ALL)[number] => !!e);
 const nn = (i: number) => String(i).padStart(2, "0");
@@ -98,7 +99,7 @@ export function ExampleReel() {
           <h4 className="reel-title">{ex.name}</h4>
           <ul className="reel-tags" aria-label="Art und Funktionen">
             <li className="reel-kind reel-kind--on">{ex.kind}</li>
-            {ex.tags.filter((t) => !/^\d+ Seiten$/.test(t)).map((t) => <li key={t} className="reel-kind">{t}</li>)}
+            {ex.tags.filter((t) => t !== ex.kind && !/^\d+ Seiten$/.test(t)).map((t) => <li key={t} className="reel-kind">{t}</li>)}
           </ul>
         </div>
         <a className="reel-live" href={href} target="_blank" rel="noopener" data-cursor>
