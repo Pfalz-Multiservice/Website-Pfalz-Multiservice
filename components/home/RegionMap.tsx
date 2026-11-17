@@ -27,8 +27,10 @@ const arcPath = (c: (typeof CITIES)[number]) => {
   const mx = (HQ[0] + c.x) / 2, my = (HQ[1] + c.y) / 2, dx = c.x - HQ[0], dy = c.y - HQ[1];
   return `M${HQ[0]} ${HQ[1]} Q${mx - dy * 0.28} ${my + dx * 0.28} ${c.x} ${c.y}`;
 };
-const DOTS: { x: number; y: number; d: number }[] = [];
-for (let y = 12; y < 600; y += 18) for (let x = -24; x < 570; x += 18) DOTS.push({ x, y, d: Math.hypot(x - HQ[0], y - HQ[1]) });
+// Punkteraster als SVG-Muster (33 × 33 Punkte, Abstand 18, erster Punkt bei -24/12) statt 1.089 einzelner Kreise:
+// spart DOM-Knoten und Rechenzeit (PageSpeed „DOM-Größe“, „Total Blocking Time“). Die Welle läuft über zwei Masken-Kreise.
+const GRID = { x: -33, y: 3, size: 594, step: 18 };
+const WAVE = 60; // Breite des goldenen Wellenrands
 
 const END = 10.2; // Sekunden bis zum Endbild
 const clamp = (v: number) => Math.max(0, Math.min(1, v));
@@ -44,15 +46,7 @@ export function RegionMap({ heading }: { heading: ReactNode }) {
     if (!el) return;
     const q = <T extends Element>(s: string) => el.querySelector(s) as T;
     const qa = <T extends Element>(s: string) => [...el.querySelectorAll(s)] as T[];
-    // Rasterpunkte erst im Browser erzeugen: spart rund 65 kB HTML (Seobility „HTML-Dokument zu groß“)
-    const dotLayer = q<SVGGElement>(".rm-dots");
-    dotLayer.replaceChildren(...DOTS.map((d) => {
-      const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-      c.setAttribute("class", "rm-dot"); c.setAttribute("cx", `${d.x}`); c.setAttribute("cy", `${d.y}`);
-      c.setAttribute("r", "1"); c.setAttribute("fill", "#0d0d0d");
-      return c;
-    }));
-    const dots = qa<SVGCircleElement>(".rm-dot");
+    const litR = q<SVGCircleElement>(".rm-lit-r"), edgeOut = q<SVGCircleElement>(".rm-edge-out"), edgeIn = q<SVGCircleElement>(".rm-edge-in");
     const radii = qa<SVGCircleElement>(".rm-radius");
     const rivers = qa<SVGPathElement>(".rm-river").map((p) => ({ p, len: p.getTotalLength() }));
     rivers.forEach(({ p, len }) => { p.style.strokeDasharray = `${len}`; });
@@ -77,11 +71,10 @@ export function RegionMap({ heading }: { heading: ReactNode }) {
     let dotsDone = false;
     const render = (t: number, clock: number) => {
       if (!dotsDone) {
+        // Punkte innerhalb des Radius grau, am Rand der Welle gold, außerhalb dunkel
         const gr = seg(t, 0, 1.6) * 700;
-        dots.forEach((d, i) => {
-          const dd = DOTS[i].d;
-          d.setAttribute("fill", dd < gr ? (dd > gr - 60 ? "#5a4a18" : "#262626") : "#0d0d0d");
-        });
+        const inner = Math.max(0, gr - WAVE).toFixed(1);
+        litR.setAttribute("r", inner); edgeIn.setAttribute("r", inner); edgeOut.setAttribute("r", gr.toFixed(1));
         if (t >= 1.7) dotsDone = true;
       }
       rivers[0].p.style.strokeDashoffset = `${rivers[0].len * (1 - ease(seg(t, 0.3, 2.2)))}`;
@@ -157,7 +150,23 @@ export function RegionMap({ heading }: { heading: ReactNode }) {
             <linearGradient id="rm-riv" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stopColor="#7a6420" /><stop offset=".5" stopColor="#D9B13A" /><stop offset="1" stopColor="#7a6420" /></linearGradient>
             <linearGradient id="rm-sweep" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stopColor="#D9B13A" stopOpacity="0" /><stop offset="1" stopColor="#D9B13A" stopOpacity=".28" /></linearGradient>
           </defs>
-          <g className="rm-dots" />
+          <defs>
+            {([["base", "#0d0d0d"], ["lit", "#262626"], ["edge", "#5a4a18"]] as const).map(([k, c]) => (
+              <pattern key={k} id={`rm-dots-${k}`} patternUnits="userSpaceOnUse" x={GRID.x} y={GRID.y} width={GRID.step} height={GRID.step}>
+                <circle cx={GRID.step / 2} cy={GRID.step / 2} r="1" fill={c} />
+              </pattern>
+            ))}
+            <mask id="rm-mask-lit" maskUnits="userSpaceOnUse"><circle className="rm-lit-r" cx={HQ[0]} cy={HQ[1]} r="0" fill="#fff" /></mask>
+            <mask id="rm-mask-edge" maskUnits="userSpaceOnUse">
+              <circle className="rm-edge-out" cx={HQ[0]} cy={HQ[1]} r="0" fill="#fff" />
+              <circle className="rm-edge-in" cx={HQ[0]} cy={HQ[1]} r="0" fill="#000" />
+            </mask>
+          </defs>
+          <g className="rm-dots">
+            <rect x={GRID.x} y={GRID.y} width={GRID.size} height={GRID.size} fill="url(#rm-dots-base)" />
+            <rect x={GRID.x} y={GRID.y} width={GRID.size} height={GRID.size} fill="url(#rm-dots-lit)" mask="url(#rm-mask-lit)" />
+            <rect x={GRID.x} y={GRID.y} width={GRID.size} height={GRID.size} fill="url(#rm-dots-edge)" mask="url(#rm-mask-edge)" />
+          </g>
           <g fill="none" stroke="#D9B13A">
             {[80, 160, 240].map((r) => <circle key={r} className="rm-radius" cx={HQ[0]} cy={HQ[1]} r={r} stroke="#2a2a2a" strokeDasharray="2 6" opacity="0" />)}
           </g>

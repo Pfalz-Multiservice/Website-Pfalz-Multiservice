@@ -1,7 +1,7 @@
 "use client";
 import { lines, tidy, tidyNode } from "@/lib/typo";
 import { useRef, type CSSProperties, type ReactNode } from "react";
-import { gsap, useGSAP, MOTION_OK, splitHeading } from "@/lib/gsap";
+import { gsap, ScrollTrigger, useGSAP, MOTION_OK, splitHeading } from "@/lib/gsap";
 import { Eyebrow } from "./Eyebrow";
 
 type Props = {
@@ -32,6 +32,11 @@ export function SectionHeading({
     const root = ref.current;
     const mm = gsap.matchMedia();
     mm.add(MOTION_OK, () => {
+      // Erst kurz bevor die Überschrift ins Bild kommt vorbereiten: Das Zerlegen in Zeilen misst den Text aus
+      // und kostete beim Laden für alle Überschriften zusammen spürbar Zeit (PageSpeed „Total Blocking Time“).
+      let split: { revert: () => void } | undefined;
+      let tl: gsap.core.Timeline | undefined;
+      const setup = () => {
       const rules = root.querySelectorAll(".eyebrow__rule");
       const eyebrowTxt = root.querySelector(".eyebrow__text");
       const titleEl = root.querySelector(".sh__title");
@@ -39,12 +44,11 @@ export function SectionHeading({
       gsap.set(root.querySelectorAll(".pm-reveal"), { visibility: "visible" });
 
       const st = { trigger: root, start: "top 86%", once: true };
-      const tl = gsap.timeline({ scrollTrigger: st });
+      tl = gsap.timeline({ scrollTrigger: st });
       if (rules.length) tl.from(rules, { scaleX: 0, duration: 0.9, ease: "power3.inOut" }, 0);
       if (eyebrowTxt) tl.from(eyebrowTxt, { opacity: 0, x: align === "center" ? 0 : -12, duration: 0.8 }, 0.15);
       if (introEl) tl.from(introEl, { opacity: 0, y: 24, duration: 1.1 }, 0.35);
 
-      let split: { revert: () => void } | undefined;
       if (titleEl) {
         split = splitHeading(titleEl, (targets) =>
           gsap.from(targets, {
@@ -54,7 +58,9 @@ export function SectionHeading({
             scrollTrigger: st,
           }));
       }
-      return () => split?.revert();
+      };
+      const lazy = ScrollTrigger.create({ trigger: root, start: "top bottom+=400", once: true, onEnter: setup });
+      return () => { lazy.kill(); tl?.scrollTrigger?.kill(); split?.revert(); };
     });
     return () => mm.revert();
   }, { scope: ref });

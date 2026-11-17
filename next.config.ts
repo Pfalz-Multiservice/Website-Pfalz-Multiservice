@@ -11,9 +11,9 @@ const nextConfig: NextConfig = {
     },
   },
 
-  // CSS direkt im HTML ausliefern: spart die blockierende Stylesheet-Anfrage (PageSpeed „Rendering blockiert“)
-  // Für KI-Agenten wird das HTML dadurch größer (CSS steht doppelt drin); sie bekommen stattdessen /index.md und /llms.txt
-  experimental: { inlineCss: true },
+  // CSS als eigene Datei (nicht ins HTML eingebettet): Mit inlineCss stand das CSS doppelt im HTML (700 statt 150 kB);
+  // gemessen am 17.11.2026 mit Lighthouse (gleiche Bedingungen) mobil 84 → 89, Desktop 87 → 94 Punkte, dazu Seobility „HTML zu groß“.
+  experimental: { inlineCss: false },
 
   // PNG-Originale bleiben im Repo; ausgeliefert werden passende AVIF/WebP-Größen
   images: { formats: ["image/avif", "image/webp"], qualities: [75], minimumCacheTTL: 2678400 },
