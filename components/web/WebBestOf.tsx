@@ -59,7 +59,7 @@ export function WebBestOf() {
               <Image className="bestof__img" src={s.img} alt={`Vorschau ${s.name}`} width={1000} height={3750}
                 sizes="(max-width: 900px) 80vw, 480px" />
             </span>
-            <span className="bestof__cap"><b>{s.name}</b>{s.label}<Icon name="external-link" size={14} /></span>
+            <span className="bestof__cap"><span className="bestof__name">{s.name}</span>{s.label}<Icon name="external-link" size={14} /></span>
           </a>
         ))}
       </div>

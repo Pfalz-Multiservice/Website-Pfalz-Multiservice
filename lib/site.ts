@@ -6,7 +6,7 @@ export const EXAMPLES_URL = "https://beispiele.pfalz-multiservice.de";
 export const EXAMPLES_HOST = "beispiele.pfalz-multiservice.de";
 export const TITLE = "Pfalz Multiservice · Web, Reselling & E-Commerce Worms";
 export const DESC =
-  "Webdesign und Website-Betreuung, Restposten-Ankauf und Online-Handel aus Worms, dazu Entrümpelung und Lösungen für Probleme jeder Art. Pfalz Multiservice: ein Ansprechpartner.";
+  "Webdesign, Restposten-Ankauf, Online-Handel und Entrümpelung aus Worms. Pfalz Multiservice: ein Ansprechpartner für alles.";
 /** Letzte inhaltliche Überarbeitung – sichtbar im Footer und in der Sitemap */
 export const UPDATED_ISO = "2026-11-16";
 export const UPDATED = "16.11.2026";

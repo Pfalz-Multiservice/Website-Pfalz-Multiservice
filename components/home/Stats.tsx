@@ -8,7 +8,7 @@ export function Stats() {
         <div className="stats__grid pm-reveal" data-reveal="stagger">
           {STATS.map((s) => (
             <div key={s.label} className="stats__item">
-              <b className="stats__value">{s.value}</b>
+              <span className="stats__value">{s.value}</span>
               <span className="stats__label">{s.label}</span>
             </div>
           ))}

@@ -44,6 +44,14 @@ export function RegionMap({ heading }: { heading: ReactNode }) {
     if (!el) return;
     const q = <T extends Element>(s: string) => el.querySelector(s) as T;
     const qa = <T extends Element>(s: string) => [...el.querySelectorAll(s)] as T[];
+    // Rasterpunkte erst im Browser erzeugen: spart rund 65 kB HTML (Seobility „HTML-Dokument zu groß“)
+    const dotLayer = q<SVGGElement>(".rm-dots");
+    dotLayer.replaceChildren(...DOTS.map((d) => {
+      const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      c.setAttribute("class", "rm-dot"); c.setAttribute("cx", `${d.x}`); c.setAttribute("cy", `${d.y}`);
+      c.setAttribute("r", "1"); c.setAttribute("fill", "#0d0d0d");
+      return c;
+    }));
     const dots = qa<SVGCircleElement>(".rm-dot");
     const radii = qa<SVGCircleElement>(".rm-radius");
     const rivers = qa<SVGPathElement>(".rm-river").map((p) => ({ p, len: p.getTotalLength() }));
@@ -57,7 +65,7 @@ export function RegionMap({ heading }: { heading: ReactNode }) {
         spark: q<SVGCircleElement>(`.rm-spark-${i}`), halo: q<SVGCircleElement>(`.rm-halo-${i}`),
         ping: q<SVGCircleElement>(`.rm-ping-${i}`), dot: q<SVGCircleElement>(`.rm-cdot-${i}`),
         lbl: q<SVGTextElement>(`.rm-lbl-${i}`), kmt: q<SVGTextElement>(`.rm-km-${i}`),
-        li: q<HTMLLIElement>(`.rm-li-${i}`), lik: q<HTMLElement>(`.rm-li-${i} b`),
+        li: q<HTMLLIElement>(`.rm-li-${i}`), lik: q<HTMLElement>(`.rm-li-${i} .rm-lkm`),
       };
     });
     const hqDot = q<SVGCircleElement>(".rm-hqdot"), hqGlow = q<SVGCircleElement>(".rm-hqglow");
@@ -149,7 +157,7 @@ export function RegionMap({ heading }: { heading: ReactNode }) {
             <linearGradient id="rm-riv" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stopColor="#7a6420" /><stop offset=".5" stopColor="#D9B13A" /><stop offset="1" stopColor="#7a6420" /></linearGradient>
             <linearGradient id="rm-sweep" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stopColor="#D9B13A" stopOpacity="0" /><stop offset="1" stopColor="#D9B13A" stopOpacity=".28" /></linearGradient>
           </defs>
-          <g>{DOTS.map((d, i) => <circle key={i} className="rm-dot" cx={d.x} cy={d.y} r="1" fill="#0d0d0d" />)}</g>
+          <g className="rm-dots" />
           <g fill="none" stroke="#D9B13A">
             {[80, 160, 240].map((r) => <circle key={r} className="rm-radius" cx={HQ[0]} cy={HQ[1]} r={r} stroke="#2a2a2a" strokeDasharray="2 6" opacity="0" />)}
           </g>
@@ -181,12 +189,12 @@ export function RegionMap({ heading }: { heading: ReactNode }) {
       </div>
       <div className="rm-facts">
         <ul className="rm-list">
-          {CITIES.map((c, i) => <li key={c.n} className={`rm-li-${i}`}>{c.n}<b>0 km</b></li>)}
+          {CITIES.map((c, i) => <li key={c.n} className={`rm-li-${i}`}>{c.n}<span className="rm-lkm">0 km</span></li>)}
         </ul>
         <div className="rm-stats">
-          <div><strong className="rm-s1">0</strong><span>Orte regional vor Ort</span></div>
-          <div><strong className="rm-s2">0 km</strong><span>Umkreis</span></div>
-          <div><strong>Bundesweit</strong><span>Online verfügbar</span></div>
+          <div><span className="rm-val rm-s1">0</span><span>Orte regional vor Ort</span></div>
+          <div><span className="rm-val rm-s2">0 km</span><span>Umkreis</span></div>
+          <div><span className="rm-val">Bundesweit</span><span>Online verfügbar</span></div>
         </div>
       </div>
       </div>

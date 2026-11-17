@@ -74,7 +74,7 @@ export function SectionHeading({
         {highlight && (
           <>
             {title ? " " : null}
-            <strong className="sh__hl">{highlight}</strong>
+            <span className="sh__hl">{highlight}</span>
           </>
         )}
       </Tag>

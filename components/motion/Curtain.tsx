@@ -44,7 +44,7 @@ export function Curtain() {
       <div className="curtain__panel curtain__panel--bottom" />
       <div className="curtain__line" />
 
-      <Image className="curtain__mark" src="/logo-mark-white.webp" alt="" width={120} height={101} priority />
+      <Image className="curtain__mark" src="/logo-mark-white.webp" alt="Pfalz Multiservice" width={120} height={101} priority />
     </div>
   );
 }
