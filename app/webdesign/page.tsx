@@ -10,7 +10,6 @@ import { Button } from "@/components/Button";
 import { Process } from "@/components/home/Process";
 import { CtaBand } from "@/components/home/HomeSections";
 import { WebBriefingTeaser, WebExamples, WebFaqCheck, WebPackages, WebProblem, WebTrust } from "@/components/web/WebSections";
-import { ShopShowcase } from "@/components/web/ShopShowcase";
 import { LayerBuild } from "@/components/web/LayerBuild";
 import { CityLinks, WormsTeaser } from "@/components/web/WebLocal";
 import { WebBranchen, WebStufen } from "@/components/web/WebBranchen";
@@ -70,7 +69,6 @@ export default function WebdesignPage() {
       <WebProblem />
       <WebStufen />
       <LayerBuild />
-      <ShopShowcase />
       <WebExamples />
       <WebPackages />
       <WebBriefingTeaser />

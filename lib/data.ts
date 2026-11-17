@@ -395,7 +395,7 @@ export const CLASSIC_EXAMPLES: ClassicExample[] = tidyDeep([
   },
 ]);
 
-/** Neues Shop-Design: wird auf /webdesign einzeln vorgestellt (eigene Sektion, nicht im Beispiel-Raster) */
+/** Shop-Design KIRA KIRA: läuft als drittes Design im Referenzen-Karussell (components/web/ExampleReel) */
 export type ShopExample = ClassicExample & {
   claim: string;
   stats: [string, string][];

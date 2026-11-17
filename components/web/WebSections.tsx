@@ -4,10 +4,9 @@ import { BriefingPreview } from "./BriefingPreview";
 import { CarePricing } from "./CarePricing";
 import Link from "next/link";
 import Image from "next/image";
-import { CLASSIC_EXAMPLES, CONTACT, REFERENCES, EXAMPLES, SHOP_EXAMPLE, WEB_ADDONS, WEB_FAQ, WEB_CARE_NOTES, WEB_PACKAGES, WEB_PROBLEMS, type WebPackage } from "@/lib/data";
+import { CLASSIC_EXAMPLES, CONTACT, REFERENCES, EXAMPLES, WEB_ADDONS, WEB_FAQ, WEB_CARE_NOTES, WEB_PACKAGES, WEB_PROBLEMS, type WebPackage } from "@/lib/data";
 import { EXAMPLES_URL } from "@/lib/site";
 import { BRANCHEN, brancheHref } from "@/lib/branchen";
-import { ExpandText } from "../ExpandText";
 import { SectionHeading } from "../SectionHeading";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
@@ -270,25 +269,6 @@ export function WebTeaser({ alt = false }: { alt?: boolean }) {
             {BRANCHEN.map((b) => <li key={b.slug}><Link href={brancheHref(b.slug)} data-cursor>Für {b.name}</Link></li>)}
           </ul>
         </nav>
-        <div className="wall-feature pm-reveal" data-reveal="up">
-          <a className="wall-feature__img" href={`${EXAMPLES_URL}/${SHOP_EXAMPLE.slug}`} target="_blank" rel="noopener" data-cursor aria-label={`${SHOP_EXAMPLE.name} live ansehen (öffnet in neuem Tab)`}>
-            <div className="sc-browser__bar" aria-hidden="true"><span className="sc-browser__dots"><i /><i /><i /></span></div>
-            <div className="wall-feature__view"><Image src={`/images/beispiele/${SHOP_EXAMPLE.slug}-start.png`} alt={`Vorschau ${SHOP_EXAMPLE.name}`} fill sizes="(max-width: 900px) 100vw, 620px" /></div>
-          </a>
-          <div className="wall-feature__copy">
-            <span className="wall-feature__badge">Neu · Shop-Design</span>
-            <h3 className="wall-feature__title">{SHOP_EXAMPLE.name}</h3>
-            <span className="sc-branch">{SHOP_EXAMPLE.branch}</span>
-            <ExpandText text={tidy("Ein Erlebnis-Shop mit Holo-Karten, Booster zum Aufreißen und 3D-Gacha. Dazu alles, was ein Shop braucht: Filter, Live-Suche, Warenkorb, Vorbestellungen und Ankauf.")} />
-            <div className="wall-feature__actions">
-              <Button variant="accent" icon="arrow-right" href="/webdesign#shop-design">Was ein Shop kann</Button>
-              <a className="btn btn--outline-light" href={`${EXAMPLES_URL}/${SHOP_EXAMPLE.slug}`} target="_blank" rel="noopener" data-cursor>
-                <span className="btn__fill" aria-hidden="true" />
-                <span className="btn__label">Live ansehen <Icon name="external-link" size={17} className="btn__icon btn__icon--right" /></span>
-              </a>
-            </div>
-          </div>
-        </div>
         <div className="wall pm-reveal" data-reveal="cards">
           {shots.map((s) => (
             <a key={s.href} className="wall__item pm-card" href={s.href} target="_blank" rel="noopener" data-cursor aria-label={`${s.name} live ansehen (öffnet in neuem Tab)`}>
