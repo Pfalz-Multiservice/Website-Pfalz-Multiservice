@@ -6,16 +6,29 @@ import { gsap, ScrollTrigger, SplitText, useGSAP, MOTION_OK } from "@/lib/gsap";
  *  data-reveal="up | stagger | pop | clip | cards | checks | lines"
  *  data-count  (Zahlen im Text zählen beim Einscrollen von 0 hoch, z. B. „36 von 94“)
  *  data-parallax="10"  (Bild bewegt sich beim Scrollen um ±10 %)
- * Wird in app/template.tsx pro Seite einmal gemountet.
+ * Wird in app/template.tsx pro Seite einmal gemountet. Beim Seitenwechsel über einen Link kommt der
+ * Inhalt oft erst kurz nach dem Einhängen an; ein MutationObserver richtet solche Bereiche nachträglich ein.
+ * Bereits eingerichtete Elemente tragen data-pm-done und werden nicht doppelt animiert.
  */
 export function Reveals() {
   useGSAP(() => {
     const main = document.getElementById("main");
     if (!main) return;
     const mm = gsap.matchMedia();
+    const SEL = "[data-reveal], [data-count], [data-parallax]";
 
-    mm.add(MOTION_OK, () => {
-      const q = <T extends Element = HTMLElement>(sel: string) => Array.from(main.querySelectorAll<T & HTMLElement>(sel));
+    const run = () => {
+      const fresh = Array.from(main.querySelectorAll<HTMLElement>(SEL)).filter((el) => !el.hasAttribute("data-pm-done"));
+      if (!fresh.length) return;
+      fresh.forEach((el) => el.setAttribute("data-pm-done", ""));
+      const batch = new Set<Element>(fresh);
+      setup(batch);
+      ScrollTrigger.refresh();
+    };
+
+    const setup = (batch: Set<Element>) => mm.add(MOTION_OK, () => {
+      const q = <T extends Element = HTMLElement>(sel: string) =>
+        Array.from(main.querySelectorAll<T & HTMLElement>(sel)).filter((el) => batch.has(el));
       const show = (el: Element) => gsap.set(el, { visibility: "visible" });
       const st = (el: Element, start = "top 88%") => ({ trigger: el, start, once: true });
 
@@ -106,7 +119,18 @@ export function Reveals() {
       };
     });
 
-    return () => mm.revert();
+    run();
+    // Später eintreffende Inhalte (Seitenwechsel per Link, Streaming) nachträglich einrichten
+    let timer = 0;
+    const mo = new MutationObserver(() => { if (!timer) timer = window.setTimeout(() => { timer = 0; run(); }, 30); });
+    mo.observe(main, { childList: true, subtree: true });
+
+    return () => {
+      mo.disconnect();
+      window.clearTimeout(timer);
+      mm.revert();
+      main.querySelectorAll("[data-pm-done]").forEach((el) => el.removeAttribute("data-pm-done"));
+    };
   });
 
   return null;
