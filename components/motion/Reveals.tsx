@@ -47,7 +47,7 @@ export function Reveals() {
         show(el);
         splits.push(SplitText.create(el, {
           type: "lines", mask: "lines", linesClass: "pm-line", autoSplit: true,
-          onSplit: (self) => gsap.from(self.lines, { yPercent: 110, opacity: 0, duration: 1, stagger: 0.07, scrollTrigger: st(el) }),
+          onSplit: (self) => gsap.from(self.lines, { yPercent: 110, opacity: 0, duration: 0.7, stagger: 0.04, ease: "power3.out", scrollTrigger: st(el, "top 96%") }),
         }));
       });
 
@@ -62,8 +62,8 @@ export function Reveals() {
         };
         const state = { p: 0 };
         draw(0);
-        gsap.to(state, { p: 1, duration: 1.8, ease: "power3.out", onUpdate: () => draw(state.p), onComplete: () => { el.textContent = text; },
-          scrollTrigger: st(el, "top 90%") });
+        gsap.to(state, { p: 1, duration: 2.8, ease: "power1.out", onUpdate: () => draw(state.p), onComplete: () => { el.textContent = text; },
+          scrollTrigger: st(el, "top 96%") });
       });
 
       q("[data-reveal='clip']").forEach((el) => {
