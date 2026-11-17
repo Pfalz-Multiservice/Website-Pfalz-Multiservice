@@ -4,7 +4,7 @@ import { BriefingPreview } from "./BriefingPreview";
 import { CarePricing } from "./CarePricing";
 import Link from "next/link";
 import Image from "next/image";
-import { CLASSIC_EXAMPLES, CONTACT, REFERENCES, EXAMPLES, SHOP_EXAMPLE, WEB_ADDONS, WEB_BASE_ITEMS, WEB_FAQ, WEB_CARE_NOTES, WEB_INCLUDED, WEB_PACKAGES, WEB_PROBLEMS, type WebPackage } from "@/lib/data";
+import { CLASSIC_EXAMPLES, CONTACT, REFERENCES, EXAMPLES, SHOP_EXAMPLE, WEB_ADDONS, WEB_FAQ, WEB_CARE_NOTES, WEB_PACKAGES, WEB_PROBLEMS, type WebPackage } from "@/lib/data";
 import { EXAMPLES_URL } from "@/lib/site";
 import { ExpandText } from "../ExpandText";
 import { SectionHeading } from "../SectionHeading";
@@ -12,7 +12,7 @@ import { Button } from "../Button";
 import { Icon } from "../Icon";
 import { ShowcaseList } from "../Showcase";
 import { ExampleReel } from "./ExampleReel";
-import { DeliverHandover } from "./DeliverHandover";
+import { EveryPackage } from "./EveryPackage";
 import { ProblemStack } from "./ProblemStack";
 
 const CHECK_TEXT = "Hallo, bitte prüfen Sie kostenlos meine Website: ";
@@ -83,28 +83,6 @@ export function WebExamples() {
   );
 }
 
-/** Ohne Aufpreis: zwei gegenläufige Laufbänder statt langer Liste (bei reduzierter Bewegung statisch umbrechend) */
-function IncludedMarquee() {
-  const n = Math.ceil(WEB_INCLUDED.length / 5);
-  const rows = [0, 1, 2, 3, 4].map((r) => WEB_INCLUDED.slice(r * n, r * n + n));
-  return (
-    <div className="marq">
-      <ul className="sr-only">{WEB_INCLUDED.map((x) => <li key={x}>{x.replace(/\n/g, " ")}</li>)}</ul>
-      {rows.map((row, r) => (
-        <div key={r} className={`marq__row ${r % 2 ? "marq__row--rev" : ""}`} aria-hidden="true">
-          <div className="marq__track">
-            {[0, 1].map((dup) => row.map((x) => (
-              <span key={`${dup}-${x}`} className={`marq__chip ${dup ? "marq__chip--dup" : ""}`}>
-                <Icon name="check" size={14} />{x.replace(/\n/g, " ")}
-              </span>
-            )))}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function Addon({ a }: { a: { icon: Parameters<typeof Icon>[0]["name"]; title: string; text: string } }) {
   return (
     <li className="addon">
@@ -125,24 +103,17 @@ export function WebPackages() {
         </div>
         <p className="care__swipe" aria-hidden="true">← wischen für weitere Pakete →</p>
 
-        <div className="pk-incl">
-          <div className="pk-box pk-box--incl pm-reveal" data-reveal="up" id="inklusive">
-            <span className="pk-box__eyebrow">In allen Paketen inklusive</span>
-            <h3 className="pk-box__title">Ohne Aufpreis</h3>
-            <p className="pk-box__intro">Damit Ihre Website von Anfang an gefunden wird und Anfragen bringt.</p>
-            <IncludedMarquee />
-          </div>
-          <div className="pk-box pk-box--sm pm-reveal" data-reveal="up" id="zusatzleistungen">
+        <EveryPackage />
+
+        <div className="pk-addons pm-reveal" data-reveal="up" id="zusatzleistungen">
+          <div className="pk-addons__head">
             <span className="pk-box__eyebrow">Optional zu jedem Paket</span>
-            <h3 className="pk-box__title">Zusatzleistungen</h3>
-            <ul className="addons addons--sm">{WEB_ADDONS.map((a) => <Addon key={a.title} a={a} />)}</ul>
-            <p className="pk-box__foot">Preise nennen wir Ihnen im Angebot.</p>
+            <span className="pk-addons__foot">Preise nennen wir Ihnen im Angebot.</span>
           </div>
+          <ul className="addons pk-addons__list">{WEB_ADDONS.map((a) => <Addon key={a.title} a={a} />)}</ul>
         </div>
 
-        <p className="pk-plain pm-reveal" data-reveal="up"><strong>Kein Abo, kein Zwang.</strong> Einmaliger Festpreis, keine versteckten Kosten, die Website gehört Ihnen. Laufende Kosten entstehen nur für Hosting und Domain: Die zahlen Sie direkt beim Anbieter Ihrer Wahl, den Betrag weisen wir im Angebot getrennt aus. In Wartung Pro und Premium ist Premium-Hosting auf deutschen Servern bei uns enthalten, die Einrichtung übernehmen wir.</p>
-
-        <DeliverHandover />
+        <p className="pk-plain pm-reveal" data-reveal="up"><strong>Kein Abo, kein Zwang.</strong> Einmaliger Festpreis ohne versteckte Kosten, die Website gehört Ihnen. Laufend zahlen Sie nur Hosting und Domain, direkt beim Anbieter Ihrer Wahl; den Betrag weisen wir im Angebot getrennt aus.</p>
 
         <div className="care" id="wartung">
           <SectionHeading eyebrow="Betreuung nach dem Livegang" title="Ihre Website bleibt" highlight="aktuell"

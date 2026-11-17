@@ -452,22 +452,23 @@ export type WebPackage = { name: string; price: string; unit?: string; note: str
   /** Preis bei Jahreszahlung (12 Monate nutzen, 10 zahlen) */
   priceYear?: string; unitYear?: string; regularYear?: string;
   /** rechnerischer Monatspreis bei Jahreszahlung */
-  priceYearMonthly?: string };
+  priceYearMonthly?: string;
+  /** Punkte sind Zusatz zum vorigen Paket („Alles aus …, plus:“) */
+  plus?: boolean };
 /** Inhalte 1:1 aus der Preisliste (Preisliste 2026, Stand 01.11.2026) */
-/** Pakete: Grundleistungen in jedem Paket, darüber die Besonderheit des Pakets */
-export const WEB_BASE_ITEMS: string[] = tidyDeep(["Individuelles Design", "Responsive für alle Geräte", "Individuelle Icons", "Ladezeit-Optimierung", "DSGVO-konform", "Impressum & Datenschutz", "Übergabe-Paket"]);
+/** Pakete: jede Karte zeigt nur, was sie mehr kann als die vorige; alles Gemeinsame steht in WEB_EVERY */
 export const WEB_PACKAGES: WebPackage[] = tidyDeep([
   {
-    name: "Start", price: "199 €", unit: "einmalig", tagline: "Für den schnellen, starken Auftritt auf einer Seite.", note: "OnePager · bis 5 Abschnitte · mehrere Bildlizenzen",
-    items: ["Alle Inhalte übersichtlich auf einer Seite", ...WEB_BASE_ITEMS],
+    name: "Start", price: "199 €", unit: "einmalig", tagline: "Für den schnellen, starken Auftritt auf einer Seite.", note: "Das Fundament:",
+    items: ["OnePager: alle Inhalte übersichtlich auf einer Seite", "Bis 5 Abschnitte", "Mehrere Bildlizenzen"],
   },
   {
-    name: "Business", price: "299 €", unit: "einmalig", badge: "Beliebt", tagline: "Für Betriebe, die mehr zeigen wollen.", note: "OnePager oder bis 8 Seiten · Bildlizenzen inklusive",
-    items: ["Mehrere Seiten mit Menü und Unterseiten", ...WEB_BASE_ITEMS],
+    name: "Business", price: "299 €", unit: "einmalig", badge: "Beliebt", tagline: "Für Betriebe, die mehr zeigen wollen.", note: "Alles aus Start, plus:", plus: true,
+    items: ["Bis 8 Seiten mit Menü und Unterseiten, oder als OnePager", "Bildlizenzen inklusive"],
   },
   {
-    name: "Shop / Premium", price: "individuell", unit: "nach Angebot", tagline: "Für Online-Shops und größere Projekte.", note: "Bis 20 Seiten · Shop oder Sonderfunktionen · Bildlizenzen inklusive",
-    items: ["Online-Shop oder besondere Funktionen", ...WEB_BASE_ITEMS],
+    name: "Shop / Premium", price: "individuell", unit: "nach Angebot", tagline: "Für Online-Shops und größere Projekte.", note: "Alles aus Business, plus:", plus: true,
+    items: ["Bis 20 Seiten", "Online-Shop oder besondere Funktionen"],
   },
 ]);
 
@@ -493,53 +494,66 @@ export const WEB_CARE_NOTES: { title: string; text: string }[] = tidyDeep([
   { title: "Nicht enthalten", text: "Redesign, Neuentwicklung, Hack-Behebung und vom Kunden verursachte Fehler: 39 € pro Stunde." },
 ]);
 
-/** In allen Paketen inklusive – ohne Aufpreis */
-export const WEB_INCLUDED = tidyDeep([
-  "Design für Smartphone und Desktop", "Menü und Navigation", "FAQ-Bereich", "Kontaktformular", "WhatsApp-Button",
-  "Anfahrt mit Link zu Google Maps", "Social-Media-Links", "Texte erstellen oder\nalte Inhalte übernehmen",
-  "Kuratierte Bildauswahl,\nBildlizenzen inklusive", "SEO: Suchbegriffe und Meta-Texte", "Vorbereitet für Google- und KI-Suche",
-  "Online-Terminbuchung", "Google-Bewertungen einbinden", "Vorher-Nachher-Galerie", "Klickbare Telefonnummer", "XML-Sitemap für Google",
-  "Strukturierte Daten für Google", "Vorschaubild für WhatsApp und Social Media", "Favicon mit Ihrem Logo", "Eigene Fehlerseite (404)",
-  "Sprechende Seitenadressen", "Barrierearme Gestaltung", "Öffnungszeiten gut sichtbar", "Dezente Scroll-Effekte", "Datenschutzfreundliche Karten und Videos",
-]);
-
-/** „Was bekomme ich?“ – der Leistungsumfang jeder Website, klar benannt */
-export const WEB_DELIVER: { icon: IconName; title: string; text: string }[] = tidyDeep([
-  { icon: "layout-template", title: "Individuelles Webdesign", text: "Eigenes Design für Ihren Betrieb, kein Baukasten, keine Vorlage von der Stange." },
-  { icon: "monitor-cog", title: "Für Handy, Tablet & PC", text: "Geprüft ab 360 px Breite, ohne seitliches Scrollen und mit großen Tippflächen." },
-  { icon: "search-check", title: "SEO-Grundlagen", text: "Seitentitel, Beschreibungen, Überschriften, Sitemap, robots.txt und strukturierte Daten für Google und KI-Suche." },
-  { icon: "gauge", title: "Ladezeit-Optimierung", text: "Bilder in modernen Formaten, schlanker Code, gemessen mit PageSpeed." },
-  { icon: "lock-keyhole", title: "DSGVO-konform", text: "Keine Tracking-Cookies, Schriften vom eigenen Server, Kontaktformular ohne Drittanbieter." },
-  { icon: "file-check", title: "Impressum & Datenschutz", text: "Wir binden Ihre rechtlichen Angaben ein und halten sie aktuell. Keine Rechtsberatung." },
-  { icon: "message-circle", title: "Kontaktwege", text: "Formular direkt in Ihr Postfach, dazu WhatsApp, Telefon und E-Mail." },
-  { icon: "external-link", title: "Fertig veröffentlicht", text: "Online unter Ihrer eigenen Domain, mit SSL-Verschlüsselung, sobald Sie freigegeben haben." },
-]);
-
-/** Übergabe-Paket – in jedem Paket gleich enthalten */
-export type HandoverItem = { icon: IconName; title: string; text: string };
+/** In jedem Paket enthalten: Leistungsumfang, „ohne Aufpreis“ und Übergabe-Paket, ohne Dopplungen in vier Gruppen */
 export const WEB_FIX_DAYS = 30;
-export const WEB_HANDOVER: { group: string; items: HandoverItem[] }[] = tidyDeep([
+export type EveryItem = { title: string; text?: string };
+export const WEB_EVERY: { id: string; icon: IconName; title: string; items: EveryItem[]; note?: string }[] = tidyDeep([
   {
-    group: "Eigentum & Unabhängigkeit",
+    id: "leistungsumfang", icon: "layout-template", title: "Design & Technik",
     items: [
-      { icon: "key-round", title: "Domain & Hosting auf Ihren Namen", text: "Der Vertrag läuft direkt zwischen Ihnen und dem Anbieter, nicht über uns." },
-      { icon: "lock-keyhole", title: "Alle Zugangsdaten gehören Ihnen", text: "Sicher bei der Übergabe überreicht, nicht im Klartext per E-Mail." },
-      { icon: "folder-code", title: "Quellcode & Dateien", text: "Als ZIP oder Git-Repository, ohne Lock-in.\nSie können jederzeit wechseln." },
-      { icon: "copyright", title: "Nutzungsrechte an Texten & Bildern", text: "Alles, was wir für Sie erstellen, dürfen Sie nach vollständiger Bezahlung unbefristet nutzen." },
+      { title: "Individuelles Webdesign", text: "Eigenes Design für Ihren Betrieb, kein Baukasten, keine Vorlage von der Stange." },
+      { title: "Für Handy, Tablet & PC", text: "Geprüft ab 360 px Breite, ohne seitliches Scrollen und mit großen Tippflächen." },
+      { title: "Ladezeit-Optimierung", text: "Bilder in modernen Formaten, schlanker Code, gemessen mit PageSpeed." },
+      { title: "DSGVO-konform", text: "Keine Tracking-Cookies, Schriften vom eigenen Server, Kontaktformular ohne Drittanbieter." },
+      { title: "Impressum & Datenschutz", text: "Wir binden Ihre rechtlichen Angaben ein und halten sie aktuell. Keine Rechtsberatung." },
+      { title: "Fertig veröffentlicht", text: "Online unter Ihrer eigenen Domain, mit SSL-Verschlüsselung, sobald Sie freigegeben haben." },
+      { title: "Individuelle Icons" },
+      { title: "Menü und Navigation" },
+      { title: "Barrierearme Gestaltung" },
+      { title: "Datenschutzfreundliche Karten und Videos" },
+      { title: "Dezente Scroll-Effekte" },
+      { title: "Favicon mit Ihrem Logo" },
+      { title: "Eigene Fehlerseite (404)" },
+      { title: "Sprechende Seitenadressen" },
     ],
   },
   {
-    group: "Dokumentation",
+    id: "inhalte", icon: "search-check", title: "Inhalte & Google",
     items: [
-      { icon: "search-check", title: "SEO- & KI-Dokumentation", text: "Prüfbericht mit 43 Punkten als PDF: wie Ihre Website für Google und die KI-Suche aufgestellt ist." },
-      { icon: "clipboard-list", title: "Übergabeblatt", text: "Domain, Hosting, E-Mail-Postfach, Ziel des Kontaktformulars und Vertragslaufzeiten auf einen Blick." },
-      { icon: "gauge", title: "PageSpeed-Messung", text: "Ladezeit auf Smartphone und Desktop, gemessen und dokumentiert zum Livegang." },
+      { title: "SEO: Suchbegriffe und Meta-Texte", text: "Seitentitel, Beschreibungen, Überschriften, XML-Sitemap, robots.txt und strukturierte Daten für Google und KI-Suche." },
+      { title: "Vorbereitet für Google- und KI-Suche" },
+      { title: "Texte erstellen oder alte Inhalte übernehmen" },
+      { title: "Kuratierte Bildauswahl" },
+      { title: "Google-Bewertungen einbinden" },
+      { title: "Vorschaubild für WhatsApp und Social Media" },
     ],
   },
   {
-    group: "Nach dem Livegang",
+    id: "funktionen", icon: "message-circle", title: "Kontakt & Funktionen",
     items: [
-      { icon: "pencil-line", title: `${WEB_FIX_DAYS} Tage kostenlose Korrekturen`, text: "Kleine Korrekturen nach dem Livegang übernehmen wir ohne Berechnung." },
+      { title: "Kontaktformular", text: "Anfragen direkt in Ihr Postfach, dazu WhatsApp, Telefon und E-Mail." },
+      { title: "WhatsApp-Button" },
+      { title: "Klickbare Telefonnummer" },
+      { title: "Anfahrt mit Link zu Google Maps" },
+      { title: "Öffnungszeiten gut sichtbar" },
+      { title: "Online-Terminbuchung" },
+      { title: "FAQ-Bereich" },
+      { title: "Vorher-Nachher-Galerie" },
+      { title: "Social-Media-Links" },
+    ],
+  },
+  {
+    id: "uebergabe", icon: "key-round", title: "Übergabe & Eigentum",
+    note: "Kein Lock-in: Nach vollständiger Bezahlung gehört Ihnen alles, was Sie für Ihre Website brauchen.",
+    items: [
+      { title: "Domain & Hosting auf Ihren Namen", text: "Der Vertrag läuft direkt zwischen Ihnen und dem Anbieter, nicht über uns." },
+      { title: "Alle Zugangsdaten gehören Ihnen", text: "Sicher bei der Übergabe überreicht, nicht im Klartext per E-Mail." },
+      { title: "Quellcode & Dateien", text: "Als ZIP oder Git-Repository, ohne Lock-in. Sie können jederzeit wechseln." },
+      { title: `${WEB_FIX_DAYS} Tage kostenlose Korrekturen`, text: "Kleine Korrekturen nach dem Livegang übernehmen wir ohne Berechnung." },
+      { title: "Nutzungsrechte an Texten & Bildern", text: "Alles, was wir für Sie erstellen, dürfen Sie nach vollständiger Bezahlung unbefristet nutzen." },
+      { title: "SEO- & KI-Dokumentation", text: "Prüfbericht mit 43 Punkten als PDF: wie Ihre Website für Google und die KI-Suche aufgestellt ist." },
+      { title: "Übergabeblatt", text: "Domain, Hosting, E-Mail-Postfach, Ziel des Kontaktformulars und Vertragslaufzeiten auf einen Blick." },
+      { title: "PageSpeed-Messung", text: "Ladezeit auf Smartphone und Desktop, gemessen und dokumentiert zum Livegang." },
     ],
   },
 ]);

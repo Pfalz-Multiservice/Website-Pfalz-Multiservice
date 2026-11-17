@@ -1,5 +1,5 @@
 import { lines, tidy } from "@/lib/typo";
-import { WEB_BASE_ITEMS, type WebPackage } from "@/lib/data";
+import type { WebPackage } from "@/lib/data";
 import { Icon } from "../Icon";
 
 /**
@@ -31,16 +31,13 @@ export function PackageCard({ p, yearly = false }: { p: WebPackage; yearly?: boo
           </>
         )}
       </p>
-      <p className="pk__note">{p.note}</p>
+      <p className={`pk__note ${p.note.endsWith(":") ? "pk__note--lead" : ""}`}>{p.note}</p>
       <ul className="pk__list">
         {p.items.map((it) => (
-          <li key={it} className={WEB_BASE_ITEMS.includes(it) ? "pk__base" : undefined}><Icon name="check" size={16} />
-            {it === "Übergabe-Paket" ? <a href="#uebergabe" className="pk__link">Übergabe-Paket inklusive</a> : <span>{lines(tidy(it))}</span>}
+          <li key={it} className={p.plus ? "pk__plus" : undefined}><Icon name={p.plus ? "circle-plus" : "check"} size={16} />
+            <span>{lines(tidy(it))}</span>
           </li>
         ))}
-        {p.items.some((it) => WEB_BASE_ITEMS.includes(it)) && (
-          <li className="pk__basesum"><Icon name="check" size={16} /><span>Inklusive: {WEB_BASE_ITEMS.join(" · ")}</span></li>
-        )}
       </ul>
     </div>
   );
