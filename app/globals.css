@@ -2581,12 +2581,14 @@ a.web-local__row:hover, a.web-local__row:focus-visible { color: var(--brand-acce
 
 @media (max-width: 900px) {
   .bestof { grid-template-columns: minmax(0, 1fr); }
-  .bestof__stage { aspect-ratio: 5 / 4; }
+  .bestof__stage { aspect-ratio: 5 / 4; order: -1; }
 }
 @media (max-width: 640px) {
   .bestof { padding: 20px 16px 24px; gap: 28px; }
   .bestof__actions, .bestof__actions .btn { width: 100%; }
-  .bestof__stage { aspect-ratio: 1 / 1; }
+  .bestof__stage { aspect-ratio: 10 / 9; }
+  .bestof__shot--fliesen .bestof__view { aspect-ratio: 1 / 1; }
+  .bestof__shot--fliesen .bestof__img { --pan: -73%; }
   .bestof__shot--schaffner { width: 84%; }
   .bestof__shot--fliesen { width: 54%; }
   .bestof__cap { font-size: 12px; }
