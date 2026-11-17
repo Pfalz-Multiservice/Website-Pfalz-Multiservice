@@ -57,11 +57,11 @@ export default async function WebdesignOrtPage({ params }: { params: Promise<{ o
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([serviceLd, faqPage(o.faq), breadcrumb([{ name: "Webdesign", path: "/webdesign" }, { name: `Webdesign ${o.name}`, path: ortHref(o.slug) }])]) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([serviceLd, faqPage(o.faq), breadcrumb([{ name: "Webdesign", path: "/webdesign" }, { name: "Leistungen", path: "/webdesign/leistungen" }, { name: `Webdesign ${o.name}`, path: ortHref(o.slug) }])]) }} />
       <PageHero
         fitTitle
         wide
-        crumbs={[{ label: "Webdesign", href: "/webdesign" }, { label: o.name }]}
+        crumbs={[{ label: "Webdesign", href: "/webdesign" }, { label: "Leistungen", href: "/webdesign/leistungen" }, { label: o.name }]}
         eyebrow={`Pfalz Multiservice · ${o.region}`}
         title={<span className="sh__line">Webdesign für {o.name}</span>}
         highlight="zum Festpreis ab 199 €"

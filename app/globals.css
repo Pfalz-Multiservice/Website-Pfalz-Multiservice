@@ -2587,3 +2587,6 @@ a.web-local__row:hover, a.web-local__row:focus-visible { color: var(--brand-acce
   .crumbs ol { font-size: 12px; letter-spacing: 0; }
   .crumbs li + li::before { margin: 0 6px; }
 }
+
+/* zwei schmale Link-Zeilen direkt untereinander (Branchen + Städte, Worms-Hinweis + Städte) */
+.section--tight + .section--tight { padding-top: 0; }

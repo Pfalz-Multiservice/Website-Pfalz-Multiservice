@@ -37,7 +37,7 @@ export function Header() {
   };
   const pageActive = (sec: PageSection) => {
     const r = resolve(sec);
-    return !r.onPage && !r.id && !current && (pathname === r.path || pathname.startsWith(r.path + "/"));
+    return !r.onPage && !r.id && !current && (pathname === r.path || pathname.startsWith(r.path + "/") || !!sec.activeOn?.test(pathname));
   };
 
   const active =

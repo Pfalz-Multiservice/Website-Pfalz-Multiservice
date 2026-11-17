@@ -36,7 +36,7 @@ export const ORTE: Ort[] = tidyDeep([
     region: "Pfalz",
     districts: ["Eppstein", "Flomersheim", "Mörsch", "Studernheim"],
     nearby: ["Bobenheim-Roxheim", "Heßheim", "Lambsheim"],
-    image: IMG + "pfalz-landschaft.png",
+    image: IMG + "webdesign-frankenthal.jpg",
     description: "Webdesign für Frankenthal: individuelle Websites zum Festpreis ab 199 €, ohne Abo. Ihr Ansprechpartner sitzt in der Nachbarstadt Worms.",
     text: [
       "Frankenthal liegt direkt neben Worms, für uns ist es die nächste Stadt in Richtung Pfalz. Wir gestalten Websites für Handwerksbetriebe, Dienstleister, Praxen und Vereine aus der Innenstadt und aus den Vororten Eppstein, Flomersheim, Mörsch und Studernheim.",
@@ -60,7 +60,7 @@ export const ORTE: Ort[] = tidyDeep([
     region: "Pfalz",
     districts: ["Oggersheim", "Friesenheim", "Mundenheim", "Oppau", "Rheingönheim"],
     nearby: ["Frankenthal", "Mutterstadt", "Limburgerhof"],
-    image: IMG + "webdesign-buero.jpg",
+    image: IMG + "webdesign-ludwigshafen.jpg",
     description: "Webdesign für Ludwigshafen: individuelle Websites zum Festpreis ab 199 €, mobil optimiert und ohne Abo. Persönlich betreut aus Worms.",
     text: [
       "Ludwigshafen ist die größte Stadt der Pfalz, mit Stadtteilen, die fast wie eigene Orte funktionieren: Oggersheim, Friesenheim, Mundenheim, Oppau oder Rheingönheim. Wer dort einen Betrieb führt, wird meist im eigenen Stadtteil gesucht und nicht in der ganzen Stadt.",
@@ -84,7 +84,7 @@ export const ORTE: Ort[] = tidyDeep([
     region: "Rhein-Neckar",
     districts: ["Neckarau", "Käfertal", "Feudenheim", "Sandhofen", "Lindenhof"],
     nearby: ["Lampertheim", "Viernheim", "Ladenburg"],
-    image: IMG + "webdesign-buero.jpg",
+    image: IMG + "webdesign-mannheim.jpg",
     description: "Webdesign für Mannheim: individuelle Websites zum Festpreis ab 199 € statt Agenturpreisen. Persönlich betreut, ohne Abo, aus Worms.",
     text: [
       "In Mannheim gibt es viele Agenturen und entsprechend viele Websites, die sich ähneln. Für kleine Betriebe, Selbstständige und Vereine ist ein Agenturprojekt oft zu groß und zu teuer. Wir bauen individuelle Websites zum Festpreis, mit einem Ansprechpartner von der Anfrage bis zum Livegang.",

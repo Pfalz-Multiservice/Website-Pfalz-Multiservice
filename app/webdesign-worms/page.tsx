@@ -54,11 +54,11 @@ const serviceLd = {
 export default function WebdesignWormsPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([serviceLd, faqPage(FAQ), breadcrumb([{ name: "Webdesign", path: "/webdesign" }, { name: "Webdesign Worms", path: "/webdesign-worms" }])]) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([serviceLd, faqPage(FAQ), breadcrumb([{ name: "Webdesign", path: "/webdesign" }, { name: "Leistungen", path: "/webdesign/leistungen" }, { name: "Webdesign Worms", path: "/webdesign-worms" }])]) }} />
       <PageHero
         fitTitle
         wide
-        crumbs={[{ label: "Webdesign", href: "/webdesign" }, { label: "Worms" }]}
+        crumbs={[{ label: "Webdesign", href: "/webdesign" }, { label: "Leistungen", href: "/webdesign/leistungen" }, { label: "Worms" }]}
         eyebrow="Pfalz Multiservice · Worms"
         title={<span className="sh__line">Webdesign in Worms</span>}
         highlight="für Betriebe aus der Region"

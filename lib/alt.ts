@@ -4,6 +4,13 @@
  * Wird in `BgImage` automatisch nachgeschlagen, wenn kein `alt` übergeben wird.
  */
 export const ALT: Record<string, string> = {
+  // Fotos von Pexels (freie Pexels-Lizenz, keine Namensnennung nötig), vom Inhaber am 17.11.2026 ausgewählt, unverändert.
+  // Beschreibung nur dessen, was zu sehen ist; Ortsnamen nur bei eindeutigem Motiv.
+  "/images/webdesign-mannheim.jpg": "Wasserturm in Mannheim mit Brunnenbecken, Rasen und blühendem Blumenbeet im Frühling",
+  "/images/webdesign-ludwigshafen.jpg": "Hölzerner Anleger am Flussufer mit Steinschüttung im Abendrot",
+  "/images/webdesign-frankenthal.jpg": "Helle Rathausfassade mit Rundbogen-Arkaden, Laternen und Blumenkästen",
+  "/images/kontakt-briefkasten.jpg": "Gelber Briefkasten an einer alten Backsteinwand",
+  "/images/briefing-schreibmaschine.jpg": "Nahaufnahme einer Schreibmaschine mit eingespanntem Papier und rot-schwarzem Farbband",
   "/images/dom-worms-gold.jpg": "Türme des Wormser Doms im goldenen Abendlicht vor dunklem Himmel",
   "/images/bruecken-turm-gold.jpg": "Brückenturm der Nibelungenbrücke in Worms im goldenen Abendlicht vor dunklem Himmel",
   "/images/transporter-halle.png": "Transporter von Pfalz Multiservice in der Lagerhalle in Worms",

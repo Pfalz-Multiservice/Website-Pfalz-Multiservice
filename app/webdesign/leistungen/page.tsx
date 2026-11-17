@@ -10,6 +10,7 @@ import { CtaBand } from "@/components/home/HomeSections";
 import { WebBriefingTeaser, WebFaqCheck, WebPackages, WebProblem, WebTrust } from "@/components/web/WebSections";
 import { LayerBuild } from "@/components/web/LayerBuild";
 import { BranchenLinks, WebStufen } from "@/components/web/WebBranchen";
+import { CityLinks } from "@/components/web/WebLocal";
 
 // Webdesign › Leistungen: alles zur Website-Erstellung mit Paketen, Betreuung und Ablauf.
 // Die Branchenseiten liegen darunter (/webdesign/leistungen/handwerker, …/unternehmen).
@@ -60,6 +61,7 @@ export default function WebdesignLeistungenPage() {
       </PageHero>
       <WebTrust />
       <BranchenLinks label="Websites für Ihre Branche" />
+      <CityLinks />
       <WebProblem />
       <WebStufen />
       <LayerBuild />

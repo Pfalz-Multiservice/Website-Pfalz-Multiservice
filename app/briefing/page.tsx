@@ -21,7 +21,7 @@ export default function BriefingPage() {
   return (
     <>
       <JsonLd data={breadcrumb([{ name: "Webdesign", path: "/webdesign" }, { name: "Website-Briefing", path: "/briefing" }])} />
-      <PageHero eyebrow="Webdesign · Schritt 1" title="Website-" highlight="Briefing" intro={BRIEFING_INTRO.subtitle} image={IMG + "webseite-laptop.png"}>
+      <PageHero eyebrow="Webdesign · Schritt 1" title="Website-" highlight="Briefing" intro={BRIEFING_INTRO.subtitle} image={IMG + "briefing-schreibmaschine.jpg"}>
         <ul className="bf-facts">
           {BRIEFING_INTRO.facts.map(([k, v]) => <li key={k}><span>{k}</span><b>{v}</b></li>)}
         </ul>
