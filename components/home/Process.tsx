@@ -5,9 +5,9 @@ import { STEPS } from "@/lib/data";
 import { SectionHeading } from "../SectionHeading";
 
 /** Ablauf 01–04: goldene Linie läuft beim Scrollen mit, Schritte leuchten nacheinander auf */
-type ProcessProps = { steps?: [string, string, string][]; eyebrow?: string; title?: string; highlight?: string; alt?: boolean };
+type ProcessProps = { steps?: [string, string, string][]; eyebrow?: string; title?: string; highlight?: string; alt?: boolean; id?: string };
 
-export function Process({ steps = STEPS, eyebrow = "Unser Ablauf", title = "Jedes Projekt folgt einem klaren", highlight = "Ablauf", alt = false }: ProcessProps = {}) {
+export function Process({ steps = STEPS, eyebrow = "Unser Ablauf", title = "Jedes Projekt folgt einem klaren", highlight = "Ablauf", alt = false, id }: ProcessProps = {}) {
   const ref = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -48,7 +48,7 @@ export function Process({ steps = STEPS, eyebrow = "Unser Ablauf", title = "Jede
   }, { scope: ref });
 
   return (
-    <section className={`section ${alt ? "section--alt" : ""}`}>
+    <section className={`section ${alt ? "section--alt" : ""}`} id={id}>
       <div className="container">
         <SectionHeading align="center" eyebrow={eyebrow} title={title} highlight={highlight} style={{ marginBottom: 64 }} />
         <div ref={ref} className="process__grid pm-reveal" style={{ ["--steps" as string]: steps.length }}>

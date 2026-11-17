@@ -176,6 +176,17 @@ html.pm-motion .sh__title--hero .sh__hl { text-decoration: none;
 .dropdown__link:hover, .dropdown__link:focus-visible { background: var(--surface-alt); color: var(--brand-primary); }
 .dropdown__link svg { color: var(--brand-accent); flex: none; transition: transform var(--dur-base) var(--ease-out); }
 .dropdown__link:hover svg { transform: scale(1.15) rotate(-6deg); }
+/* Abschnittsmenü auf Leistungsseiten */
+.nav--page { gap: 26px; }
+.nav__back { color: var(--text-body); }
+.nav__back-ico { transform: rotate(180deg); transition: transform var(--dur-base) var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .nav__back:hover .nav__back-ico { transform: rotate(180deg) translateX(3px); } }
+.nav__sep { align-self: center; width: 1px; height: 18px; background: rgba(255,255,255,.22); }
+.mobile-nav__label { font: 600 12px var(--font-display); text-transform: uppercase; letter-spacing: .12em; color: var(--brand-accent); padding-top: 4px; }
+.mobile-nav__label--gap { padding-top: 28px; }
+.mobile-nav__link--active { color: var(--brand-accent); }
+.mobile-nav__link--small { font-size: 18px; }
+@media (max-width: 1180px) { .nav--page { gap: 20px; } .nav--page .nav__link { font-size: 13px; } }
 .burger { display: none; width: 44px; height: 44px; background: none; border: 1.5px solid rgba(255,255,255,.3); color: #fff; cursor: pointer;
   align-items: center; justify-content: center; }
 .mobile-nav { position: fixed; inset: 0; z-index: 49; background: #000; display: flex; flex-direction: column;

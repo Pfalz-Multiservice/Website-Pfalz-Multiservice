@@ -67,7 +67,7 @@ export default async function ServicePage({ params }: { params: Promise<{ id: st
         crumbs={[{ label: "Leistungen", href: "/#leistungen" }, { label: s.title }]}
       />
       {s.id === "smarthome" ? <KnxSections text={s.text} legal={s.legal} /> : (
-      <section className="section">
+      <section className="section" id="ueberblick">
         <div className="container split split--detail" style={{ gridTemplateColumns: "1.3fr 1fr", alignItems: "start" }}>
           <div className="stack" style={{ gap: 28 }}>
             <SectionHeading eyebrow={s.short} title={s.title} />
@@ -109,7 +109,7 @@ export default async function ServicePage({ params }: { params: Promise<{ id: st
           </div>
         </section>
       )}
-      <section className="section">
+      <section className="section" id="weitere">
         <div className="container">
           <SectionHeading eyebrow="Kombinierbar" title="Weitere" highlight="Leistungen" style={{ marginBottom: 48 }} />
           <div className="grid-3 pm-reveal" data-reveal="cards" style={{ gap: 20 }}>

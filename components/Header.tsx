@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger, useGSAP, MOTION_OK, introDelay } from "@/lib/gsap";
 import { getLenis, scrollToHash } from "@/lib/lenis";
 import { SERVICES, serviceHref } from "@/lib/data";
+import { pageSections } from "@/lib/page-nav";
 import { Icon } from "./Icon";
 import { Logo } from "./Logo";
 
@@ -20,6 +21,10 @@ export function Header() {
   const [mobile, setMobile] = useState(false);
   const ddTl = useRef<gsap.core.Timeline | null>(null);
   const mobTl = useRef<gsap.core.Timeline | null>(null);
+
+  // Leistungsseite: Header zeigt „← Alle Leistungen“ + Abschnitte dieser Seite
+  const sections = pageSections(pathname);
+  const [current, setCurrent] = useState<string | null>(null);
 
   const active =
     pathname.startsWith("/leistungen") ? "leistungen" : pathname.startsWith("/webdesign") ? "webdesign" : pathname.startsWith("/kontakt") ? "kontakt" : null;
@@ -89,6 +94,42 @@ export function Header() {
 
   useEffect(() => { setMobile(false); setDdOpen(false); }, [pathname]);
 
+  // Aktiven Abschnitt beim Scrollen markieren (letzter Abschnitt, dessen Oberkante die obere Bildschirmhälfte erreicht hat)
+  useEffect(() => {
+    setCurrent(null);
+    if (!sections) return;
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const line = window.innerHeight * 0.4;
+      let hit: string | null = null;
+      for (const { id } of sections) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= line) hit = id;
+      }
+      // unter dem letzten Abschnitt (CTA, Footer) bleibt nichts markiert
+      const last = hit && document.getElementById(hit);
+      if (last && last.getBoundingClientRect().bottom < line) hit = null;
+      setCurrent(hit);
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onScroll); cancelAnimationFrame(raf); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
+
+  const goSection = (id: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (mobile) { setMobile(false); setTimeout(() => scrollToHash("#" + id), 80); }
+    else scrollToHash("#" + id);
+    history.replaceState(null, "", "#" + id);
+  };
+  const goLeistungen = (e: React.MouseEvent) => {
+    if (pathname === "/") { e.preventDefault(); setMobile(false); scrollToHash("#leistungen"); }
+  };
+
   const goUeber = (e: React.MouseEvent) => {
     if (pathname === "/") { e.preventDefault(); setMobile(false); scrollToHash("#ueber"); }
   };
@@ -104,7 +145,7 @@ export function Header() {
             <Logo height={48} priority />
           </Link>
 
-          <nav className="nav" aria-label="Hauptnavigation">
+          <nav className={`nav ${sections ? "nav--page" : ""}`} aria-label={sections ? "Abschnitte dieser Seite" : "Hauptnavigation"}>
             <div
               className={`nav__item ${ddOpen ? "nav__item--open" : ""}`}
               onMouseEnter={() => setDdOpen(true)}
@@ -112,17 +153,23 @@ export function Header() {
               onFocus={() => setDdOpen(true)}
               onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setDdOpen(false); }}
             >
-              <button
-                className={`nav__link ${active === "leistungen" ? "nav__link--active" : ""}`}
-                aria-expanded={ddOpen}
-                aria-haspopup="true"
-                onClick={() => (pathname === "/" ? scrollToHash("#leistungen") : router.push("/#leistungen"))}
-                data-cursor
-              >
-                Leistungen <Icon name="chevron-down" size={15} className="nav__chev" />
-              </button>
+              {sections ? (
+                <Link href="/#leistungen" className="nav__link nav__back" aria-haspopup="true" aria-expanded={ddOpen} data-cursor>
+                  <Icon name="arrow-right" size={15} className="nav__back-ico" /> Alle Leistungen
+                </Link>
+              ) : (
+                <button
+                  className={`nav__link ${active === "leistungen" ? "nav__link--active" : ""}`}
+                  aria-expanded={ddOpen}
+                  aria-haspopup="true"
+                  onClick={() => (pathname === "/" ? scrollToHash("#leistungen") : router.push("/#leistungen"))}
+                  data-cursor
+                >
+                  Leistungen <Icon name="chevron-down" size={15} className="nav__chev" />
+                </button>
+              )}
               <div className="dropdown" role="menu">
-                {MENU_SERVICES.map((s) => (
+                {MENU_SERVICES.filter((s) => serviceHref(s) !== pathname).map((s) => (
                   <Link key={s.id} href={serviceHref(s)} className="dropdown__link" role="menuitem" data-cursor
                     onClick={() => setDdOpen(false)}>
                     <Icon name={s.icon} size={18} />
@@ -131,12 +178,28 @@ export function Header() {
                 ))}
               </div>
             </div>
-            <div className="nav__item">
-              <Link href="/#ueber" className="nav__link" onClick={goUeber} data-cursor>Über uns</Link>
-            </div>
-            <div className="nav__item">
-              <Link href="/webdesign" className={`nav__link shine ${active === "webdesign" ? "nav__link--active" : ""}`} data-cursor>Webdesign</Link>
-            </div>
+            {sections ? (
+              <>
+                <span className="nav__sep" aria-hidden="true" />
+                {sections.map((sec) => (
+                  <div className="nav__item" key={sec.id}>
+                    <a href={"#" + sec.id} onClick={goSection(sec.id)} data-cursor
+                      className={`nav__link ${current === sec.id ? "nav__link--active" : ""}`}
+                      aria-current={current === sec.id ? "location" : undefined}>{sec.label}</a>
+                  </div>
+                ))}
+                <span className="nav__sep" aria-hidden="true" />
+              </>
+            ) : (
+              <>
+                <div className="nav__item">
+                  <Link href="/#ueber" className="nav__link" onClick={goUeber} data-cursor>Über uns</Link>
+                </div>
+                <div className="nav__item">
+                  <Link href="/webdesign" className={`nav__link shine ${active === "webdesign" ? "nav__link--active" : ""}`} data-cursor>Webdesign</Link>
+                </div>
+              </>
+            )}
             <div className="nav__item">
               <Link href="/kontakt" className={`nav__link ${active === "kontakt" ? "nav__link--active" : ""}`} data-cursor>Kontakt</Link>
             </div>
@@ -150,8 +213,18 @@ export function Header() {
       </header>
 
       <div className="mobile-nav" aria-hidden={!mobile}>
-        <Link href="/#leistungen" className="mobile-nav__link" onClick={(e) => { if (pathname === "/") { e.preventDefault(); setMobile(false); scrollToHash("#leistungen"); } }}>Leistungen</Link>
-        {MENU_SERVICES.map((s) => (
+        {sections && (
+          <>
+            <span className="mobile-nav__label">Auf dieser Seite</span>
+            {sections.map((sec) => (
+              <a key={sec.id} href={"#" + sec.id} onClick={goSection(sec.id)}
+                className={`mobile-nav__link ${current === sec.id ? "mobile-nav__link--active" : ""}`}>{sec.label}</a>
+            ))}
+            <span className="mobile-nav__label mobile-nav__label--gap">Andere Leistungen</span>
+          </>
+        )}
+        <Link href="/#leistungen" className={`mobile-nav__link ${sections ? "mobile-nav__link--small" : ""}`} onClick={goLeistungen}>{sections ? "Alle Leistungen" : "Leistungen"}</Link>
+        {MENU_SERVICES.filter((s) => serviceHref(s) !== pathname).map((s) => (
           <Link key={s.id} href={serviceHref(s)} className="mobile-nav__link mobile-nav__link--sub">
             <Icon name={s.icon} size={18} /> {s.title}
           </Link>

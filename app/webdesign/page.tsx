@@ -71,7 +71,7 @@ export default function WebdesignPage() {
       <WebExamples />
       <WebPackages />
       <WebBriefingTeaser />
-      <Process steps={WEB_STEPS} eyebrow="So läuft’s ab" title="In 5 Schritten zur" highlight="Website" />
+      <Process steps={WEB_STEPS} eyebrow="So läuft’s ab" title="In 5 Schritten zur" highlight="Website" id="ablauf" />
       <WebFaqCheck />
       <WormsTeaser />
       <CityLinks current="worms" />

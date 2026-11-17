@@ -128,7 +128,7 @@ export function KnxSections({ text, legal }: { text: string; legal?: string }) {
       </section>
 
       {/* Selbst ausprobieren: Taster schaltet Licht, Szene und Raffstore */}
-      <section className="section section--alt knx-play">
+      <section className="section section--alt knx-play" id="ausprobieren">
         <div className="container">
           <div className="knx-head">
             <h2 className="knx-title knx-title--sec">Probieren Sie es <span className="knx-hl">aus</span></h2>
@@ -139,7 +139,7 @@ export function KnxSections({ text, legal }: { text: string; legal?: string }) {
       </section>
 
       {/* Typische Anliegen */}
-      <section className="section">
+      <section className="section" id="anliegen">
         <div className="container">
           <div className="knx-head">
             <h2 className="knx-title knx-title--sec">Typische <span className="knx-hl">Anliegen</span></h2>
@@ -157,7 +157,7 @@ export function KnxSections({ text, legal }: { text: string; legal?: string }) {
       </section>
 
       {/* Ablauf */}
-      <section className="section section--alt">
+      <section className="section section--alt" id="ablauf">
         <div className="container">
           <div className="knx-head">
             <h2 className="knx-title knx-title--sec">So läuft&apos;s <span className="knx-hl">ab</span></h2>
