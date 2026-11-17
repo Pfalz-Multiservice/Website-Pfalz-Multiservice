@@ -33,7 +33,7 @@ export function Core() {
                   <Button variant="outline" href={serviceHref(s)} icon="arrow-right">{c.link}</Button>
                 </div>
               </div>
-              <Link href={serviceHref(s)} className="core-tile__link" aria-hidden="true" tabIndex={-1} data-cursor />
+              <Link href={serviceHref(s)} className="core-tile__link" aria-hidden="true" tabIndex={-1} data-cursor><span className="sr-only">{c.title}</span></Link>
             </article>
           );
         })}
