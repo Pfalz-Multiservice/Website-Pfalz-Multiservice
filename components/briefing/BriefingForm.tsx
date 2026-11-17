@@ -170,6 +170,7 @@ export function BriefingForm() {
       const j = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(j.error || "Senden fehlgeschlagen");
       try { window.localStorage.removeItem(STORE); } catch { /* egal */ }
+      (window as { pmTrack?: (n: string, x?: string) => void }).pmTrack?.("anfrage", "Website-Briefing");
       setPhase({ kind: "sent", rejected: j.rejected || [] });
       requestAnimationFrame(() => top.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
     } catch (err) {

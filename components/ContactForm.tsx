@@ -45,7 +45,12 @@ export function ContactForm({ initial }: { initial?: string }) {
     setStatus("");
     try {
       const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
-      if (res.ok) { setState("sent"); return; }
+      if (res.ok) {
+        // Erfolgreich gesendete Anfrage an die eigene Statistik melden (nur das Thema, keine Angaben zur Person)
+        (window as { pmTrack?: (n: string, x?: string) => void }).pmTrack?.("anfrage", data.service);
+        setState("sent");
+        return;
+      }
       const j = await res.json().catch(() => ({}));
       if (j.fallback) {
         // Kein Mail-Dienst konfiguriert: E-Mail-Programm mit vorausgefüllter Nachricht öffnen
