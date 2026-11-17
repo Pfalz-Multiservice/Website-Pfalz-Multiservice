@@ -14,6 +14,7 @@ import { ShowcaseList } from "../Showcase";
 import { ExampleReel } from "./ExampleReel";
 import { EveryPackage } from "./EveryPackage";
 import { ProblemStack } from "./ProblemStack";
+import { WebBestOf } from "./WebBestOf";
 
 const CHECK_TEXT = "Hallo, bitte prüfen Sie kostenlos meine Website: ";
 export const WHATSAPP_CHECK = `${CONTACT.whatsapp}?text=${encodeURIComponent(CHECK_TEXT)}`;
@@ -269,6 +270,7 @@ export function WebTeaser({ alt = false }: { alt?: boolean }) {
             {BRANCHEN.map((b) => <li key={b.slug}><Link href={brancheHref(b.slug)} data-cursor>Für {b.name}</Link></li>)}
           </ul>
         </nav>
+        <WebBestOf />
         <div className="wall pm-reveal" data-reveal="cards">
           {shots.map((s) => (
             <a key={s.href} className="wall__item pm-card" href={s.href} target="_blank" rel="noopener" data-cursor aria-label={`${s.name} live ansehen (öffnet in neuem Tab)`}>
