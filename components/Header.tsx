@@ -176,7 +176,7 @@ export function Header() {
             >
               {sections ? (
                 <Link href="/#leistungen" className="nav__link nav__back" aria-haspopup="true" aria-expanded={ddOpen} data-cursor>
-                  <Icon name="arrow-right" size={12} className="nav__back-ico" /> Multiservice
+                  <Icon name="arrow-right" size={15} className="nav__back-ico" /> Multiservice
                 </Link>
               ) : (
                 <button

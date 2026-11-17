@@ -178,7 +178,7 @@ html.pm-motion .sh__title--hero .sh__hl { text-decoration: none;
 .dropdown__link:hover svg { transform: scale(1.15) rotate(-6deg); }
 /* Abschnittsmenü auf Leistungsseiten */
 .nav--page { gap: 26px; }
-.nav__back { color: var(--text-body); }
+.nav__back { color: var(--text-body); font-size: 12px; letter-spacing: .06em; }
 .nav__back-ico { transform: rotate(180deg); transition: transform var(--dur-base) var(--ease-out); }
 @media (hover: hover) and (pointer: fine) { .nav__back:hover .nav__back-ico { transform: rotate(180deg) translateX(3px); } }
 .nav__sep { align-self: center; width: 1px; height: 18px; background: rgba(255,255,255,.22); }
