@@ -1,20 +1,24 @@
 import { SERVICES } from "./data";
 
-export type PageSection = { id: string; label: string };
+/** Abschnitt dieser Seite (nur id) oder Link auf eine andere Seite, auch mit Sprungziel (href, z. B. "/webdesign#faq") */
+export type PageSection = { id?: string; href?: string; label: string };
+
+/** Webdesign-Bereich: dasselbe Menü auf Übersicht, Leistungen, Branchenseiten und Referenzen */
+export const WEB_NAV: PageSection[] = [
+  { href: "/webdesign/leistungen", label: "Leistungen" },
+  { href: "/webdesign/referenzen", label: "Referenzen" },
+  { href: "/webdesign/leistungen#pakete", label: "Pakete" },
+  { href: "/webdesign#faq", label: "Fragen" },
+];
+export const isWebArea = (pathname: string) =>
+  pathname === "/webdesign" || pathname === "/webdesign/referenzen" || pathname === "/webdesign/leistungen" || pathname.startsWith("/webdesign/leistungen/");
 
 /**
  * Abschnittsmenü je Leistungsseite: Auf diesen Seiten zeigt der Header statt des Hauptmenüs
  * „← Alle Leistungen“ und die Abschnitte genau dieser Seite. Die IDs müssen auf der Seite existieren.
  */
 export function pageSections(pathname: string): PageSection[] | null {
-  if (pathname === "/webdesign")
-    return [
-      { id: "branchen", label: "Branchen" },
-      { id: "beispiele", label: "Referenzen" },
-      { id: "pakete", label: "Pakete" },
-      { id: "ablauf", label: "Ablauf" },
-      { id: "faq", label: "Fragen" },
-    ];
+  if (isWebArea(pathname)) return WEB_NAV;
   if (pathname === "/webdesign-worms")
     return [
       { id: "worms", label: "In Worms" },

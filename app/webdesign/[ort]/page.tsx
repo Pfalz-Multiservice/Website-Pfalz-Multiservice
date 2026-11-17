@@ -61,6 +61,7 @@ export default async function WebdesignOrtPage({ params }: { params: Promise<{ o
       <PageHero
         fitTitle
         wide
+        crumbs={[{ label: "Webdesign", href: "/webdesign" }, { label: o.name }]}
         eyebrow={`Pfalz Multiservice · ${o.region}`}
         title={<span className="sh__line">Webdesign für {o.name}</span>}
         highlight="zum Festpreis ab 199 €"

@@ -27,7 +27,7 @@ const i = (n: number) => ({ "--i": n }) as CSSProperties;
 
 /** Startseite, Abschnitt Webdesign: Best of der Handwerk-Seite mit zwei Website-Vorschauen, die sich selbst abfahren */
 export function WebBestOf() {
-  const href = brancheHref("handwerk");
+  const href = brancheHref("handwerker");
   return (
     <InView className="bestof" threshold={0.25}>
       <div className="bestof__copy">

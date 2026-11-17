@@ -159,7 +159,7 @@ export function LayerBuild() {
                     <p className="lay-step__text">{tidy(s.text)}</p>
                     {i === N - 1 && (
                       <div className="lay-step__actions">
-                        <a className="lay-step__more" href="#beispiele" data-cursor tabIndex={i + 1 === step ? 0 : -1}>Alle Beispiele <Icon name="arrow-right" size={14} /></a>
+                        <a className="lay-step__more" href="/webdesign/referenzen" data-cursor tabIndex={i + 1 === step ? 0 : -1}>Alle Beispiele <Icon name="arrow-right" size={14} /></a>
                         <small className="lay-step__note">Fliesen Reuter ist ein fiktiver Betrieb, ein Musterdesign von Pfalz Multiservice.</small>
                       </div>
                     )}

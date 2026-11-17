@@ -54,10 +54,11 @@ export default async function WebdesignBranchePage({ params }: { params: Promise
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([serviceLd, faqPage(b.faq), breadcrumb([{ name: "Webdesign", path: "/webdesign" }, { name: `Website für ${b.name}`, path: brancheHref(b.slug) }])]) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([serviceLd, faqPage(b.faq), breadcrumb([{ name: "Webdesign", path: "/webdesign" }, { name: "Leistungen", path: "/webdesign/leistungen" }, { name: b.tile, path: brancheHref(b.slug) }])]) }} />
       <PageHero
         fitTitle
         wide
+        crumbs={[{ label: "Webdesign", href: "/webdesign" }, { label: "Leistungen", href: "/webdesign/leistungen" }, { label: b.tile }]}
         eyebrow={`Webdesign für ${b.name}`}
         title={<span className="sh__line">Ihre Website,</span>}
         highlight="die Anfragen bringt"
@@ -72,7 +73,7 @@ export default async function WebdesignBranchePage({ params }: { params: Promise
       <BrancheGewerke b={b} />
       <WebStufen alt={false} />
       <BrancheRechnung wert={b.auftragswert} />
-      <WebExamples />
+      <WebExamples compact />
       <WebPackages />
       <Faq items={b.faq} alt />
       <BranchenLinks current={b.slug} />

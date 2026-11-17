@@ -26,6 +26,10 @@ const nextConfig: NextConfig = {
       // Musterdesigns liegen seit 11/2026 im eigenen Projekt (Repo „Beispiele“) auf der Subdomain
       { source: "/beispiele/:path+", destination: "https://beispiele.pfalz-multiservice.de/:path+", permanent: true },
       { source: "/leistungen/web", destination: "/webdesign", permanent: true },
+      // Branchenseiten seit 11/2026 unter Webdesign › Leistungen
+      { source: "/webdesign/branchen", destination: "/webdesign/leistungen", permanent: true },
+      { source: "/webdesign/branchen/handwerk", destination: "/webdesign/leistungen/handwerker", permanent: true },
+      { source: "/webdesign/branchen/firmenkunden", destination: "/webdesign/leistungen/unternehmen", permanent: true },
       // Englische Standardadressen, die KI-Agenten gern probieren
       { source: "/about", destination: "/ueber-uns", permanent: true },
       { source: "/contact", destination: "/kontakt", permanent: true },

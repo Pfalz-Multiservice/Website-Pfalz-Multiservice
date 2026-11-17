@@ -13,6 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "", priority: 1 },
     ...SERVICES.filter((s) => !s.href).map((s) => ({ path: `/leistungen/${s.id}`, priority: 0.8 })),
     { path: "/webdesign", priority: 0.9 },
+    { path: "/webdesign/leistungen", priority: 0.8 },
+    { path: "/webdesign/referenzen", priority: 0.6 },
     { path: "/webdesign-worms", priority: 0.9 },
     ...ORTE.map((o) => ({ path: ortHref(o.slug), priority: 0.7 })),
     ...BRANCHEN.map((b) => ({ path: brancheHref(b.slug), priority: 0.7 })),

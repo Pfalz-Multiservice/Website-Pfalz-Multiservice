@@ -1028,14 +1028,9 @@ a .contact-row__value { color: var(--brand-accent); }
 .bstrip__txt span { font: 400 15px/1.55 var(--font-body); color: var(--text-body); }
 .split--contact .bstrip { flex-direction: column; align-items: flex-start; }
 .split--contact .bstrip__txt { flex: none; }
-.hero-brief { flex-basis: 100%; display: inline-flex; align-items: center; gap: 10px; width: fit-content; margin-top: 4px; padding: 8px 0; color: #fff; text-decoration: none; font: 400 15px var(--font-body); }
-.hero-brief svg { color: var(--brand-accent); flex: none; }
-.hero-brief b { color: var(--brand-accent); font-weight: 600; }
-.hero-brief:hover b { text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------- Webdesign mobil kompakter ---------- */
 @media (max-width: 640px) {
-  .hero-brief b { display: block; }
   /* Überschrift so weit verkleinern, dass nur nach dem Komma umgebrochen wird */
   .page-hero--fit .sh__title { font-size: clamp(1.4rem, 6.6vw, 2.1rem); }
   /* Website-Pakete ebenfalls als Wisch-Leiste */
@@ -2577,4 +2572,18 @@ a.web-local__row:hover, a.web-local__row:focus-visible { color: var(--brand-acce
 @media (prefers-reduced-motion: reduce) {
   .bestof.is-in .bestof__img { animation: none; }
   .bestof.io-armed .bestof__in, .bestof.io-armed .bestof__shot { transition: opacity 300ms ease; transform: none; }
+}
+
+/* ---------- Wegweiser (Brotkrumen) im Seitenkopf ---------- */
+.crumbs { margin-bottom: 22px; }
+.crumbs ol { display: flex; flex-wrap: wrap; align-items: center; row-gap: 4px; margin: 0; padding: 0; list-style: none; font: 500 13px/1.4 var(--font-body); letter-spacing: .02em; }
+.crumbs li { display: inline-flex; align-items: center; }
+.crumbs li + li::before { content: "›"; margin: 0 10px; color: var(--brand-accent); font-size: 15px; line-height: 1; }
+.crumbs a { padding: 4px 0; color: rgba(255,255,255,.72); text-decoration: none; transition: color var(--dur-base) var(--ease-out); }
+.crumbs a:hover, .crumbs a:focus-visible { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.crumbs [aria-current="page"] { color: #fff; }
+@media (max-width: 640px) {
+  .crumbs { margin-bottom: 16px; }
+  .crumbs ol { font-size: 12px; letter-spacing: 0; }
+  .crumbs li + li::before { margin: 0 6px; }
 }

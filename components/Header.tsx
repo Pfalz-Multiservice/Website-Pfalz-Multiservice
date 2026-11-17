@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger, useGSAP, MOTION_OK, introDelay } from "@/lib/gsap";
 import { getLenis, scrollToHash } from "@/lib/lenis";
 import { SERVICES, serviceHref } from "@/lib/data";
-import { pageSections } from "@/lib/page-nav";
+import { isWebArea, pageSections, type PageSection } from "@/lib/page-nav";
 import { Icon } from "./Icon";
 import { Logo } from "./Logo";
 
@@ -27,6 +27,18 @@ export function Header() {
   // Leistungsseite: Header zeigt „← Alle Leistungen“ + Abschnitte dieser Seite
   const sections = pageSections(pathname);
   const [current, setCurrent] = useState<string | null>(null);
+  const webArea = isWebArea(pathname);
+  const contactHref = webArea ? "/kontakt?leistung=web" : "/kontakt";
+  // Menüpunkt auflösen: Abschnitt auf dieser Seite (Sprung + Markierung beim Scrollen) oder Link auf eine andere Seite
+  const resolve = (sec: PageSection) => {
+    if (!sec.href) return { onPage: true, id: sec.id ?? null, path: pathname };
+    const [path, hash] = sec.href.split("#");
+    return { onPage: path === pathname && !!hash, id: hash ?? null, path };
+  };
+  const pageActive = (sec: PageSection) => {
+    const r = resolve(sec);
+    return !r.onPage && !r.id && !current && (pathname === r.path || pathname.startsWith(r.path + "/"));
+  };
 
   const active =
     pathname.startsWith("/leistungen") ? "leistungen" : pathname.startsWith("/webdesign") ? "webdesign" : pathname.startsWith("/kontakt") ? "kontakt" : null;
@@ -106,7 +118,8 @@ export function Header() {
       raf = 0;
       const line = window.innerHeight * 0.4;
       let hit: string | null = null;
-      for (const { id } of sections) {
+      const ids = sections.map(resolve).filter((r) => r.onPage && r.id).map((r) => r.id as string);
+      for (const id of ids) {
         const el = document.getElementById(id);
         if (el && el.getBoundingClientRect().top <= line) hit = id;
       }
@@ -163,7 +176,7 @@ export function Header() {
             >
               {sections ? (
                 <Link href="/#leistungen" className="nav__link nav__back" aria-haspopup="true" aria-expanded={ddOpen} data-cursor>
-                  <Icon name="arrow-right" size={15} className="nav__back-ico" /> Alle Leistungen
+                  <Icon name="arrow-right" size={12} className="nav__back-ico" /> Multiservice
                 </Link>
               ) : (
                 <button
@@ -189,13 +202,21 @@ export function Header() {
             {sections ? (
               <>
                 <span className="nav__sep" aria-hidden="true" />
-                {sections.map((sec) => (
-                  <div className="nav__item" key={sec.id}>
-                    <a href={"#" + sec.id} onClick={goSection(sec.id)} data-cursor
-                      className={`nav__link ${current === sec.id ? "nav__link--active" : ""}`}
-                      aria-current={current === sec.id ? "location" : undefined}>{sec.label}</a>
-                  </div>
-                ))}
+                {sections.map((sec) => {
+                  const r = resolve(sec);
+                  return (
+                    <div className="nav__item" key={sec.href ?? sec.id}>
+                      {r.onPage && r.id ? (
+                        <a href={"#" + r.id} onClick={goSection(r.id)} data-cursor
+                          className={`nav__link ${current === r.id ? "nav__link--active" : ""}`}
+                          aria-current={current === r.id ? "location" : undefined}>{sec.label}</a>
+                      ) : (
+                        <Link href={sec.href!} data-cursor className={`nav__link ${pageActive(sec) ? "nav__link--active" : ""}`}
+                          aria-current={pathname === r.path && !r.id ? "page" : undefined}>{sec.label}</Link>
+                      )}
+                    </div>
+                  );
+                })}
                 <span className="nav__sep" aria-hidden="true" />
               </>
             ) : (
@@ -209,7 +230,7 @@ export function Header() {
               </>
             )}
             <div className="nav__item">
-              <Link href="/kontakt" className={`nav__link ${active === "kontakt" ? "nav__link--active" : ""}`} data-cursor>Kontakt</Link>
+              <Link href={contactHref} className={`nav__link ${active === "kontakt" ? "nav__link--active" : ""}`} data-cursor>Kontakt</Link>
             </div>
           </nav>
 
@@ -224,11 +245,18 @@ export function Header() {
       <div className="mobile-nav" aria-hidden={!mobile}>
         {sections ? (
           <>
-            <span className="mobile-nav__label">Auf dieser Seite</span>
-            {sections.map((sec) => (
-              <a key={sec.id} href={"#" + sec.id} onClick={goSection(sec.id)}
-                className={`mobile-nav__link ${current === sec.id ? "mobile-nav__link--active" : ""}`}>{sec.label}</a>
-            ))}
+            <span className="mobile-nav__label">{webArea ? "Webdesign" : "Auf dieser Seite"}</span>
+            {webArea && pathname !== "/webdesign" && <Link href="/webdesign" className="mobile-nav__link">Übersicht</Link>}
+            {sections.map((sec) => {
+              const r = resolve(sec);
+              return r.onPage && r.id ? (
+                <a key={sec.href ?? sec.id} href={"#" + r.id} onClick={goSection(r.id)}
+                  className={`mobile-nav__link ${current === r.id ? "mobile-nav__link--active" : ""}`}>{sec.label}</a>
+              ) : (
+                <Link key={sec.href ?? sec.id} href={sec.href!}
+                  className={`mobile-nav__link ${pageActive(sec) ? "mobile-nav__link--active" : ""}`}>{sec.label}</Link>
+              );
+            })}
           </>
         ) : (
           <>
@@ -236,10 +264,10 @@ export function Header() {
             <Link href="/#ueber" className="mobile-nav__link" onClick={goUeber}>Über uns</Link>
           </>
         )}
-        <Link href="/kontakt" className="mobile-nav__link">Kontakt</Link>
+        <Link href={contactHref} className="mobile-nav__link">Kontakt</Link>
 
         <button type="button" className="mobile-nav__toggle" aria-expanded={mobLs} aria-controls="mobile-nav-ls" onClick={() => setMobLs((v) => !v)}>
-          {sections ? "Alle Leistungen" : "Leistungen"}
+          {sections ? "Multiservice" : "Leistungen"}
           <Icon name="chevron-down" size={18} className="mobile-nav__chev" />
         </button>
         <div id="mobile-nav-ls" className={`mobile-nav__ls ${mobLs ? "is-open" : ""}`} inert={!mobLs}>

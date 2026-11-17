@@ -1,23 +1,19 @@
 import { social } from "@/lib/social";
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Icon } from "@/components/Icon";
-import { IMG, WEB_FAQ, WEB_STEPS } from "@/lib/data";
-import { SITE } from "@/lib/site";
+import { IMG, WEB_FAQ } from "@/lib/data";
 import { breadcrumb, faqPage } from "@/lib/schema";
 import { PageHero } from "@/components/PageHero";
 import { Button } from "@/components/Button";
-import { Process } from "@/components/home/Process";
 import { CtaBand } from "@/components/home/HomeSections";
-import { WebBriefingTeaser, WebExamples, WebFaqCheck, WebPackages, WebProblem, WebTrust } from "@/components/web/WebSections";
-import { LayerBuild } from "@/components/web/LayerBuild";
+import { WebBriefingTeaser, WebExamples, WebFaqCheck, WebTrust } from "@/components/web/WebSections";
 import { CityLinks, WormsTeaser } from "@/components/web/WebLocal";
 import { WebBranchen, WebStufen } from "@/components/web/WebBranchen";
 
+// Übersicht des Webdesign-Bereichs (Branchen, Referenzen, Weg, Briefing, Fragen); Details und Preise stehen auf /webdesign/leistungen.
 // Allgemeine Übersicht – „Webdesign Worms“ hat eine eigene Seite (/webdesign-worms), damit sich beide nicht Konkurrenz machen
 const title = "Website erstellen lassen ab 199 €";
 const description =
-  "Website erstellen lassen: individuelles Webdesign zum Festpreis ab 199 €, ohne Abo. Musterdesigns, Pakete, Ablauf und Wartung im Überblick.";
+  "Website erstellen lassen: individuelles Webdesign zum Festpreis ab 199 €, ohne Abo. Branchen, Referenzen und häufige Fragen im Überblick.";
 
 export const metadata: Metadata = {
   title,
@@ -27,29 +23,14 @@ export const metadata: Metadata = {
 };
 
 const faqLd = faqPage(WEB_FAQ);
-const serviceLd = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Webdesign & Website-Erstellung",
-  serviceType: "Webdesign",
-  provider: { "@id": `${SITE}/#business` },
-  areaServed: ["Worms", "Rheinhessen", "Pfalz", "Mannheim"],
-  offers: [
-    { "@type": "Offer", name: "Start: OnePager, bis 5 Abschnitte", price: "199", priceCurrency: "EUR", description: "Einmaliger Festpreis" },
-    { "@type": "Offer", name: "Business: OnePager oder mehrseitige Website, bis 8 Seiten", price: "299", priceCurrency: "EUR", description: "Einmaliger Festpreis" },
-    ...[["Wartung", "39", "Bis 1 Std. Änderungen pro Monat"], ["Wartung Pro", "59", "Bis 2 Std. Änderungen pro Monat"], ["Wartung Premium", "99", "Bis 3 Std. pro Monat für Google-Unternehmensprofil, Anfrageformular, Bewertungen und monatliche Auswertung"]].map(([name, price, description]) => ({
-      "@type": "Offer", name, priceCurrency: "EUR", description: `${description}, monatlich kündbar`,
-      priceSpecification: { "@type": "UnitPriceSpecification", price, priceCurrency: "EUR", unitText: "Monat" },
-    })),
-  ],
-};
 
 export default function WebdesignPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([faqLd, serviceLd, breadcrumb([{ name: "Webdesign", path: "/webdesign" }])]) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([faqLd, breadcrumb([{ name: "Webdesign", path: "/webdesign" }])]) }} />
       <PageHero
         fitTitle
+        crumbs={[{ label: "Webdesign" }]}
         eyebrow="Webdesign aus Worms"
         title={<span className="sh__line">Websites,</span>}
         highlight="die Anfragen bringen"
@@ -57,22 +38,13 @@ export default function WebdesignPage() {
         image={IMG + "webdesign-hero.jpg"}
       >
         <Button variant="accent" size="lg" icon="arrow-right" href="/kontakt?leistung=web">Kostenloses Angebot</Button>
-        <Button variant="outline-light" size="lg" href="#beispiele">Referenzen ansehen</Button>
-        <Link href="/briefing" className="hero-brief" data-cursor>
-          <Icon name="clipboard-list" size={18} />
-          <span>Schon entschieden? <b>Direkt zum Website-Briefing</b></span>
-          <Icon name="arrow-right" size={16} />
-        </Link>
+        <Button variant="outline-light" size="lg" href="/webdesign/leistungen">Leistungen & Pakete</Button>
       </PageHero>
       <WebTrust />
       <WebBranchen alt />
-      <WebProblem />
+      <WebExamples compact alt={false} />
       <WebStufen />
-      <LayerBuild />
-      <WebExamples />
-      <WebPackages />
-      <WebBriefingTeaser />
-      <Process steps={WEB_STEPS} eyebrow="So läuft’s ab" title="In 5 Schritten zur" highlight="Website" id="ablauf" />
+      <WebBriefingTeaser alt={false} />
       <WebFaqCheck />
       <WormsTeaser />
       <CityLinks current="worms" />

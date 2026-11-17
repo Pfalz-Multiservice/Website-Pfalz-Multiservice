@@ -57,9 +57,10 @@ export function WebProblem() {
   );
 }
 
-export function WebExamples() {
+/** Referenzen: komplett auf /webdesign/referenzen, sonst kurz (neueste Referenz und Link zur Referenzen-Seite) */
+export function WebExamples({ compact = false, alt = true }: { compact?: boolean; alt?: boolean }) {
   return (
-    <section className="section section--alt" id="beispiele">
+    <section className={`section${alt ? " section--alt" : ""}`} id="beispiele">
       <div className="container">
         <SectionHeading eyebrow="Designs" title="Unsere" highlight="Referenzen"
           intro="Aktuelle Kundenprojekte und Referenzen." />
@@ -68,6 +69,12 @@ export function WebExamples() {
           <h3 className="sc-group__title">Neueste Referenz</h3>
         </div>
         <ShowcaseList items={REFERENCES.slice(0, 1)} />
+
+        {compact ? (
+          <div style={{ marginTop: 40 }}>
+            <Button variant="accent" size="lg" icon="arrow-right" href="/webdesign/referenzen">Alle Referenzen</Button>
+          </div>
+        ) : <>
 
         <div className="sc-group sc-group--later">
           <h3 className="sc-group__title">Aktuelle Projekte <span>in Arbeit</span></h3>
@@ -79,6 +86,7 @@ export function WebExamples() {
         <div style={{ marginTop: 40 }}>
           <Button variant="outline-light" size="lg" href={EXAMPLES_URL}>Alle Designs in der Übersicht</Button>
         </div>
+        </>}
       </div>
     </section>
   );
@@ -169,9 +177,9 @@ export function BriefingStrip({ title = "Website geplant?", text = "Füllen Sie 
 }
 
 /** Hinführung zum Online-Briefing: Text links, kleine Formular-Vorschau rechts */
-export function WebBriefingTeaser() {
+export function WebBriefingTeaser({ alt = true }: { alt?: boolean }) {
   return tidyNode(
-    <section className="section section--alt" id="briefing">
+    <section className={`section${alt ? " section--alt" : ""}`} id="briefing">
       <div className="container split bft">
         <div className="stack" style={{ gap: 24 }}>
           <SectionHeading eyebrow="Schon entschieden?" title="Starten Sie mit dem" highlight="Website-Briefing"
@@ -194,7 +202,7 @@ export function WebBriefingTeaser() {
 }
 
 /** FAQ und kompakter Website-Check nebeneinander, darunter der Briefing-Streifen */
-export function WebFaqCheck() {
+export function WebFaqCheck({ alt = true }: { alt?: boolean }) {
   const points: [string, string][] = [
     ["Darstellung auf dem Smartphone", "Ist alles lesbar, passen Bilder und Tasten, muss man seitlich scrollen?"],
     ["Ladezeit", "Wie schnell lädt die Seite am Handy, und was bremst sie?"],
@@ -203,7 +211,7 @@ export function WebFaqCheck() {
     ["Kontaktwege für Anfragen", "Finden Kunden schnell Telefon, Formular oder WhatsApp?"],
   ];
   return tidyNode(
-    <section className="section section--alt" id="faq">
+    <section className={`section${alt ? " section--alt" : ""}`} id="faq">
       <div className="container faqcheck">
         <div className="faqcheck__faq">
           <SectionHeading eyebrow="Häufige Fragen" title="Kurz" highlight="beantwortet" style={{ marginBottom: 28 }} />
@@ -259,11 +267,11 @@ export function WebTeaser({ alt = false }: { alt?: boolean }) {
         <nav className="city-links teaser-ziel pm-reveal" data-reveal="up" aria-label="Websites nach Zielgruppe">
           <span className="city-links__label">Websites für Ihre Branche</span>
           <ul className="city-links__list">
-            {BRANCHEN.map((b) => <li key={b.slug}><Link href={brancheHref(b.slug)} data-cursor>Für {b.name}</Link></li>)}
+            {BRANCHEN.map((b) => <li key={b.slug}><Link href={brancheHref(b.slug)} data-cursor>Für {b.tile}</Link></li>)}
           </ul>
         </nav>
         <WebBestOf />
-        <p className="showcase-note" style={{ marginTop: 28 }}>Weitere Referenzen und Musterdesigns: <Link href="/webdesign#beispiele" style={{ color: "var(--brand-accent)" }}>Alle{"\u00A0"}Beispiele im{"\u00A0"}Detail</Link></p>
+        <p className="showcase-note" style={{ marginTop: 28 }}>Weitere Referenzen und Musterdesigns: <Link href="/webdesign/referenzen" style={{ color: "var(--brand-accent)" }}>Alle{"\u00A0"}Beispiele im{"\u00A0"}Detail</Link></p>
       </div>
     </section>
   );

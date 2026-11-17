@@ -9,9 +9,9 @@ const plain = (s: string) => s.replace(/[\u00a0\u202f\u00ad]/g, (c) => (c === "\
 export type PriceRow = { group: string; name: string; price: number | null; priceText: string; unit: string; note: string; url: string };
 
 export const PRICES: PriceRow[] = [
-  ...WEB_PACKAGES.map((p) => ({ group: "Website (einmalig)", name: `Website ${plain(p.name)}`, price: euro(p.price), priceText: plain(p.price), unit: plain(p.unit ?? ""), note: plain(p.note), url: `${SITE}/webdesign#pakete` })),
-  ...WEB_CARE.map((p) => ({ group: "Website-Betreuung (monatlich kündbar)", name: plain(p.name), price: euro(p.price), priceText: plain(p.price), unit: "pro Monat", note: `${plain(p.note)}. Jährlich ${plain(p.priceYear ?? "")} (12 Monate nutzen, 10 zahlen).`, url: `${SITE}/webdesign#wartung` })),
-  { group: "Einzelleistungen", name: "Website-Änderung ohne Paket", price: 39, priceText: "39 €", unit: "pro Stunde", note: "Einzelne Änderungen ohne Wartungspaket", url: `${SITE}/webdesign#wartung` },
+  ...WEB_PACKAGES.map((p) => ({ group: "Website (einmalig)", name: `Website ${plain(p.name)}`, price: euro(p.price), priceText: plain(p.price), unit: plain(p.unit ?? ""), note: plain(p.note), url: `${SITE}/webdesign/leistungen#pakete` })),
+  ...WEB_CARE.map((p) => ({ group: "Website-Betreuung (monatlich kündbar)", name: plain(p.name), price: euro(p.price), priceText: plain(p.price), unit: "pro Monat", note: `${plain(p.note)}. Jährlich ${plain(p.priceYear ?? "")} (12 Monate nutzen, 10 zahlen).`, url: `${SITE}/webdesign/leistungen#wartung` })),
+  { group: "Einzelleistungen", name: "Website-Änderung ohne Paket", price: 39, priceText: "39 €", unit: "pro Stunde", note: "Einzelne Änderungen ohne Wartungspaket", url: `${SITE}/webdesign/leistungen#wartung` },
   { group: "Einzelleistungen", name: "Änderung an bestehender KNX-Anlage", price: 59, priceText: "ab 59 €", unit: "Festpreis nach Einschätzung", note: "Lichtszenen, Jalousien, neue Geräte, Fehlersuche. Keine Elektroinstallation.", url: `${SITE}/leistungen/smarthome` },
   { group: "Nach Angebot", name: "Reselling, E-Commerce, Räumungen, Solutions", price: null, priceText: "nach Angebot", unit: "verbindlicher Festpreis vorab", note: "Nach kurzer Bedarfsanalyse erhalten Sie ein verbindliches Angebot.", url: `${SITE}/kontakt` },
 ];

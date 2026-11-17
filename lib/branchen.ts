@@ -2,7 +2,7 @@ import { tidyDeep } from "./typo";
 import { IMG, type Faq } from "./data";
 
 /**
- * Zielgruppenseiten unter /webdesign/branchen/<slug>: eine für Handwerker (Kunden sind Privatleute),
+ * Zielgruppenseiten unter /webdesign/leistungen/<slug> (bis 17.11.2026 /webdesign/branchen/handwerk und …/firmenkunden): eine für Handwerker (Kunden sind Privatleute),
  * eine für Dienstleister mit Firmenkunden. Bewusst nur zwei Seiten: Nach „Website für Handwerker“
  * wird gesucht, nach einzelnen Gewerken („Webdesign Dachdecker“) praktisch nicht, und viele fast
  * gleiche Seiten schaden bei Google. Die Gewerke stehen deshalb als Abschnitt auf der jeweiligen Seite.
@@ -43,9 +43,9 @@ const NO_PROMISE =
 
 export const BRANCHEN: Branche[] = tidyDeep([
   {
-    slug: "handwerk",
+    slug: "handwerker",
     name: "Handwerker",
-    tile: "Handwerk für Privatkunden",
+    tile: "Handwerker",
     short: "Fensterbau, Dachsanierung, Badsanierung, Terrassenüberdachung, Gartenbau: Betriebe, bei denen ein einzelner Auftrag viel wert ist.",
     image: IMG + "branche-handwerk.jpg",
     description: "Website für Handwerker: Webdesign zum Festpreis ab 199 € für Fensterbau, Dach, Bad und Garten. Mit Anfrageformular, persönlich betreut aus Worms.",
@@ -81,9 +81,9 @@ export const BRANCHEN: Branche[] = tidyDeep([
     ],
   },
   {
-    slug: "firmenkunden",
+    slug: "unternehmen",
     name: "Dienstleister mit Firmenkunden",
-    tile: "Dienstleister für Unternehmen",
+    tile: "Unternehmen",
     short: "Gebäudereinigung, Hausmeisterdienste, Industrieservice: Betriebe, die Firmen und Hausverwaltungen als Kunden gewinnen.",
     image: IMG + "branche-gebaeudereinigung.jpg",
     description: "Website für Dienstleister mit Firmenkunden: Gebäudereinigung, Hausmeisterdienste, Industrieservice. Individuell zum Festpreis ab 199 €, betreut aus Worms.",
@@ -118,6 +118,5 @@ export const BRANCHEN: Branche[] = tidyDeep([
 ]);
 
 /** Weitere Branchen ohne eigene Seite: zeigen, dass die Liste nicht abschließend ist */
-export const BRANCHEN_AUCH = ["Fliesenleger", "Weingüter", "Gastronomie", "Schädlingsbekämpfung", "Praxen", "Vereine", "Online-Shops"];
 
-export const brancheHref = (slug: string) => `/webdesign/branchen/${slug}`;
+export const brancheHref = (slug: string) => `/webdesign/leistungen/${slug}`;

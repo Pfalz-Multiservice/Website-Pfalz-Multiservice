@@ -1,12 +1,13 @@
 "use client";
 import { useRef } from "react";
+import Link from "next/link";
 import { gsap, useGSAP, MOTION_OK, introDelay, splitHeading } from "@/lib/gsap";
 import { BgImage } from "./BgImage";
 import { SectionHeading } from "./SectionHeading";
 
-type Props = { eyebrow: string; title: React.ReactNode; highlight: string; /** Überschrift mobil so weit verkleinern, dass jede Zeile am Stück passt */ fitTitle?: boolean; /** Breiter Kopf: Hervorhebung bleibt in einer Zeile, Einleitung läuft auf voller Breite */ wide?: boolean; intro: string; image: string; crumbs?: { label: string; href?: string }[]; children?: React.ReactNode };
+type Props = { eyebrow: string; title: React.ReactNode; highlight: string; /** Überschrift mobil so weit verkleinern, dass jede Zeile am Stück passt */ fitTitle?: boolean; /** Breiter Kopf: Hervorhebung bleibt in einer Zeile, Einleitung läuft auf voller Breite */ wide?: boolean; intro: string; image: string; /** Wegweiser über der Überschrift, ohne „Startseite“ (wird vorangestellt); der letzte Eintrag ist die aktuelle Seite */ crumbs?: { label: string; href?: string }[]; children?: React.ReactNode };
 
-export function PageHero({ eyebrow, title, highlight, intro, image, children, fitTitle, wide }: Props) {
+export function PageHero({ eyebrow, title, highlight, intro, image, children, fitTitle, wide, crumbs }: Props) {
   const ref = useRef<HTMLElement>(null);
 
   useGSAP(() => {
@@ -17,6 +18,8 @@ export function PageHero({ eyebrow, title, highlight, intro, image, children, fi
       const title = root.querySelector(".sh__title")!;
       const split = splitHeading(title);
       const whole = split.targets[0] === title;
+      const nav = root.querySelector(".crumbs");
+      if (nav) gsap.from(nav, { opacity: 0, y: -8, duration: 0.9, delay: introDelay() + 0.05 });
       gsap.timeline({ delay: introDelay() - 0.1 })
         .from(root.querySelector(".page-hero__img"), { scale: 1.25, duration: 2.2, ease: "expo.out" }, 0)
         .from(root.querySelectorAll(".eyebrow__rule"), { scaleX: 0, duration: 0.9, ease: "power3.inOut" }, 0.15)
@@ -38,6 +41,19 @@ export function PageHero({ eyebrow, title, highlight, intro, image, children, fi
       <div className="page-hero__bg"><BgImage className="page-hero__img" src={image} eager /></div>
       <div className="hero__scrim" />
       <div className="container" style={{ position: "relative" }}>
+        {crumbs && (
+          <nav className="crumbs" aria-label="Wegweiser">
+            <ol>
+              {[{ label: "Startseite", href: "/" }, ...crumbs].map((c, i, all) => (
+                <li key={c.label}>
+                  {c.href && i < all.length - 1
+                    ? <Link href={c.href} data-cursor>{c.label}</Link>
+                    : <span aria-current="page">{c.label}</span>}
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )}
         <SectionHeading dark level={1} size="h1" motion="intro" maxWidth={wide ? 1160 : 720} eyebrow={eyebrow} title={title} highlight={highlight} intro={intro} />
         {children && <div className="page-hero__extra">{children}</div>}
       </div>

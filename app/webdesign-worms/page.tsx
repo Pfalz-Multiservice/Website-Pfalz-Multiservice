@@ -58,6 +58,7 @@ export default function WebdesignWormsPage() {
       <PageHero
         fitTitle
         wide
+        crumbs={[{ label: "Webdesign", href: "/webdesign" }, { label: "Worms" }]}
         eyebrow="Pfalz Multiservice · Worms"
         title={<span className="sh__line">Webdesign in Worms</span>}
         highlight="für Betriebe aus der Region"

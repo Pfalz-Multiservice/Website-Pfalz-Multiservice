@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BRANCHEN, BRANCHEN_AUCH, BRANCHEN_STAND, brancheHref, type Branche } from "@/lib/branchen";
+import { BRANCHEN, BRANCHEN_STAND, brancheHref, type Branche } from "@/lib/branchen";
 import { tidy, tidyNode } from "@/lib/typo";
 import { SectionHeading } from "../SectionHeading";
 import { CheckList } from "../CheckList";
@@ -9,11 +9,11 @@ import { AnfragenRechner } from "./AnfragenRechner";
 /** Drei Stufen nach Ergebnis benannt. Preise und Inhalte stehen in der Preisliste (Website-Pakete, Wartung Pro, Wartung Premium). */
 const STUFEN: { step: string; name: string; text: string; pack: string; price: string; unit: string; href: string }[] = [
   { step: "01", name: "Sichtbar", text: "Ihr Betrieb wird gefunden und zeigt auf einen Blick, was er kann und wie man ihn erreicht.",
-    pack: "Website zum Festpreis", price: "ab 199 €", unit: "einmalig", href: "#pakete" },
+    pack: "Website zum Festpreis", price: "ab 199 €", unit: "einmalig", href: "/webdesign/leistungen#pakete" },
   { step: "02", name: "Messbar", text: "Ihr Statistik-Dashboard zeigt Besucher und Anfragen, ohne Cookies. Sie sehen, was die Website bringt.",
-    pack: "Wartung Pro", price: "59 €", unit: "im Monat", href: "#wartung" },
+    pack: "Wartung Pro", price: "59 €", unit: "im Monat", href: "/webdesign/leistungen#wartung" },
   { step: "03", name: "Mehr Anfragen", text: "Wir pflegen Ihr Google-Unternehmensprofil, sortieren Anfragen vor und verbessern die Seite jeden Monat.",
-    pack: "Wartung Premium", price: "99 €", unit: "im Monat", href: "#wartung" },
+    pack: "Wartung Premium", price: "99 €", unit: "im Monat", href: "/webdesign/leistungen#wartung" },
 ];
 
 export function WebStufen({ alt = true }: { alt?: boolean }) {
@@ -42,13 +42,13 @@ export function WebStufen({ alt = true }: { alt?: boolean }) {
   );
 }
 
-/** Branchenübersicht: Kacheln für die Branchen mit eigener Seite, weitere Branchen als Zeile, dazu „Ihre Branche ist nicht dabei?“ */
+/** Branchenübersicht: Kacheln für die Branchen mit eigener Seite, dazu die Kachel „Weitere Branchen“ */
 export function WebBranchen({ current, alt = false }: { current?: string; alt?: boolean }) {
   const list = BRANCHEN.filter((b) => b.slug !== current);
   return tidyNode(
     <section className={`section${alt ? " section--alt" : ""}`} id="branchen">
       <div className="container">
-        <SectionHeading eyebrow="Branchen" title="Für Handwerk und" highlight="Dienstleister"
+        <SectionHeading eyebrow="Branchen" title="Für Handwerker und" highlight="Unternehmen"
           intro={current ? "Wir bauen Websites für viele Branchen. Jede bekommt ein eigenes Design." : "Ob Ihre Kunden Privatleute oder Unternehmen sind:\nJede Website gestalten wir einzeln, keine kommt aus dem Baukasten."} style={{ marginBottom: 40 }} />
         <ul className="branchen pm-reveal" data-reveal="stagger">
           {list.map((b) => (
@@ -62,13 +62,12 @@ export function WebBranchen({ current, alt = false }: { current?: string; alt?: 
           ))}
           <li>
             <Link href="/kontakt?leistung=web" className="branche branche--open" data-cursor>
-              <span className="branche__name">Ihre Branche ist nicht dabei?</span>
-              <span className="branche__text">Kein Problem. Erzählen Sie uns kurz von Ihrem Betrieb, wir melden uns mit einem Vorschlag.</span>
+              <span className="branche__name">Weitere Branchen</span>
+              <span className="branche__text">Gastronomie und Hotellerie, Praxen und Vereine, lokale Dienstleister und Mittelstand, Industrie und Technik: individuelle Websites mit dem gleichen Anspruch.</span>
               <span className="branche__more">Unverbindlich anfragen<Icon name="arrow-right" size={16} /></span>
             </Link>
           </li>
         </ul>
-        <p className="branchen__auch pm-reveal" data-reveal="up"><b>Auch für:</b> {BRANCHEN_AUCH.join(", ")} und viele mehr.</p>
       </div>
     </section>
   );
@@ -109,16 +108,16 @@ export function BrancheRechnung({ wert }: { wert?: number }) {
   );
 }
 
-/** Verweise auf die anderen Branchenseiten */
-export function BranchenLinks({ current }: { current?: string }) {
+/** Verweise auf die Branchenseiten: auf einer Branchenseite die übrigen, auf /webdesign/leistungen alle (Auswahl wie auf der Startseite) */
+export function BranchenLinks({ current, label = "Websites für weitere Zielgruppen" }: { current?: string; label?: string }) {
   const links = BRANCHEN.filter((b) => b.slug !== current);
   return (
     <section className="section section--tight">
       <div className="container">
-        <nav className="city-links pm-reveal" data-reveal="up" aria-label="Websites für weitere Zielgruppen">
-          <span className="city-links__label">Websites für weitere Zielgruppen</span>
+        <nav className="city-links pm-reveal" data-reveal="up" aria-label={label}>
+          <span className="city-links__label">{label}</span>
           <ul className="city-links__list">
-            {links.map((b) => <li key={b.slug}><Link href={brancheHref(b.slug)} data-cursor>{b.tile}</Link></li>)}
+            {links.map((b) => <li key={b.slug}><Link href={brancheHref(b.slug)} data-cursor>Für {b.tile}</Link></li>)}
             <li><Link href="/webdesign#branchen" data-cursor>Alle Branchen</Link></li>
           </ul>
         </nav>
