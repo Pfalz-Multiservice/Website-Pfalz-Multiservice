@@ -4,6 +4,7 @@ import { tidy, tidyNode } from "@/lib/typo";
 import { SectionHeading } from "../SectionHeading";
 import { CheckList } from "../CheckList";
 import { Icon } from "../Icon";
+import { AnfragenRechner } from "./AnfragenRechner";
 
 /** Drei Stufen nach Ergebnis benannt. Preise und Inhalte stehen in der Preisliste (Website-Pakete, Wartung Pro, Wartung Premium). */
 const STUFEN: { step: string; name: string; text: string; pack: string; price: string; unit: string; href: string }[] = [
@@ -95,32 +96,14 @@ export function BrancheIntro({ b }: { b: Branche }) {
   );
 }
 
-/** Rechenbeispiel: gleiche Besucherzahl, doppelter Anteil an Anfragen. Ausdrücklich keine Zusage. */
-export function BrancheRechnung() {
-  const rows: [string, string, string][] = [
-    ["Besucher im Monat", "200", "200"],
-    ["Davon fragen an", "2 von 100", "4 von 100"],
-    ["Anfragen im Monat", "4", "8"],
-  ];
-  return tidyNode(
+/** Rechenbeispiel als Rechner: Besucher, Anteil der Anfragen und Ertrag je Auftrag sind einstellbar. Ausdrücklich keine Zusage. */
+export function BrancheRechnung({ wert }: { wert?: number }) {
+  return (
     <section className="section" id="rechnung">
-      <div className="container split rechnung">
-        <div>
-          <SectionHeading eyebrow="Rechenbeispiel" title="Was eine bessere Website" highlight="ausmachen kann"
-            intro="Oft fehlt es nicht an Besuchern, sondern daran, dass zu wenige von ihnen anfragen. Schon ein kleiner Unterschied verdoppelt die Zahl der Anfragen." />
-          <p className="web-local__text pm-reveal" data-reveal="up">Was ein zusätzlicher Auftrag wert ist, wissen Sie selbst am besten. Dem stehen 59 € oder 99 € im Monat gegenüber.</p>
-        </div>
-        <div className="pm-reveal" data-reveal="up">
-          <table className="rechnung__table">
-            <thead><tr><th scope="col"><span className="sr-only">Kennzahl</span></th><th scope="col">Heute</th><th scope="col">Danach</th></tr></thead>
-            <tbody>
-              {rows.map(([label, a, z], i) => (
-                <tr key={label} className={i === rows.length - 1 ? "is-sum" : undefined}><th scope="row">{label}</th><td>{a}</td><td>{z}</td></tr>
-              ))}
-            </tbody>
-          </table>
-          <p className="rechnung__note">Ein Rechenbeispiel mit angenommenen Zahlen, keine Zusage. Ihre echten Zahlen sehen Sie ab Wartung Pro in Ihrem Statistik-Dashboard.</p>
-        </div>
+      <div className="container">
+        <SectionHeading eyebrow="Rechenbeispiel" title="Was eine bessere Website" highlight="ausmachen kann"
+          intro={"Oft fehlt es nicht an Besuchern, sondern daran, dass zu wenige von ihnen anfragen.\nSchieben Sie die Regler auf Ihre Zahlen und sehen Sie, was das für Ihren Betrieb heißt."} style={{ marginBottom: 44 }} />
+        <AnfragenRechner wert={wert} />
       </div>
     </section>
   );

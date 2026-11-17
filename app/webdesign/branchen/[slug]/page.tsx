@@ -71,7 +71,7 @@ export default async function WebdesignBranchePage({ params }: { params: Promise
       <BrancheIntro b={b} />
       <BrancheGewerke b={b} />
       <WebStufen alt={false} />
-      <BrancheRechnung />
+      <BrancheRechnung wert={b.auftragswert} />
       <WebExamples />
       <WebPackages />
       <Faq items={b.faq} alt />

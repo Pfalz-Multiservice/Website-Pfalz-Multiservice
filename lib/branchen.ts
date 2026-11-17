@@ -29,6 +29,8 @@ export type Branche = {
   /** Überschrift und Karten des Abschnitts mit den einzelnen Gewerken bzw. Bereichen */
   gewerkeTitle: [title: string, highlight: string];
   gewerke: { name: string; text: string }[];
+  /** Startwert im Rechner: was ein Auftrag dem Betrieb im Schnitt bringt (Euro, muss eine Stufe aus dem Rechner sein) */
+  auftragswert: number;
   faq: Faq[];
 };
 
@@ -69,6 +71,7 @@ export const BRANCHEN: Branche[] = tidyDeep([
       { name: "Terrassenüberdachung", text: "Große Bilder fertiger Überdachungen und Wintergärten, dazu eine Anfrage nach Maßen, Material und Zeitraum." },
       { name: "Garten- und Landschaftsbau", text: "Bilder verkaufen: eine Projektgalerie für Gärten, Terrassen und Wege, dazu ein Abschnitt für die laufende Pflege von Wohnanlagen. 17 von 30 Betrieben hatten keine eigene Website." },
     ],
+    auftragswert: 2500,
     faq: [
       ["Was kostet eine Website für Handwerker?", PRICE_ANSWER],
       ["Für welche Gewerke bauen Sie Websites?", "Unter anderem für Fensterbauer, Dachdecker, Bad- und Heizungsbetriebe, Anbieter von Terrassenüberdachungen sowie Garten- und Landschaftsbau. Ihr Gewerk ist nicht dabei? Fragen Sie einfach an, wir gestalten jede Website einzeln."],
@@ -104,6 +107,7 @@ export const BRANCHEN: Branche[] = tidyDeep([
       { name: "Hausmeister- und Objektdienste", text: "Was Sie rund ums Gebäude übernehmen, für welche Objekte und in welchem Gebiet, dazu feste Ansprechpartner für Hausverwaltungen." },
       { name: "Service für Industrie und Gewerbe", text: "Leistungen, Nachweise und Referenzen auf einen Blick, damit Einkäufer und Betriebsleiter schnell prüfen können, ob Sie passen." },
     ],
+    auftragswert: 1500,
     faq: [
       ["Was kostet eine Website für einen Dienstleister mit Firmenkunden?", PRICE_ANSWER],
       ["Für welche Betriebe bauen Sie Websites?", "Unter anderem für Gebäudereinigung, Hausmeister- und Objektdienste sowie Dienstleister für Industrie und Gewerbe. Ihr Bereich ist nicht dabei? Fragen Sie einfach an, wir gestalten jede Website einzeln."],
