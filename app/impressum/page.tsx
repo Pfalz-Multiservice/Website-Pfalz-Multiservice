@@ -25,7 +25,7 @@ export default function ImpressumPage() {
               <p>Pfalz Multiservice ist ein Angebot von:<br />Pfalz Loadout<br />Wormser Landstraße 117, 67551 Worms, Deutschland</p>
             </div>
             <div>
-              <h2>Vertreten durch:</h2>
+              <h2>Inhaberin:</h2>
               <p>Jasmin Beer</p>
             </div>
             <div>
@@ -36,6 +36,10 @@ export default function ImpressumPage() {
               <h2>Umsatzsteuer:</h2>
               <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz: DE444410908</p>
               <p>Kleinunternehmer gemäß § 19 UStG, daher wird keine Umsatzsteuer ausgewiesen.</p>
+            </div>
+            <div>
+              <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</h2>
+              <p>Jasmin Beer<br />Wormser Landstraße 117, 67551 Worms</p>
             </div>
             <div><p>Zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle sind wir nicht verpflichtet und nicht bereit.</p></div>
           </div>)}

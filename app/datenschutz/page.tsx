@@ -42,7 +42,7 @@ export default function DatenschutzPage() {
         <div className="legal">
           <div className="stack" style={{ gap: 12 }}>
             <SectionHeading level={1} size="h1" eyebrow="Rechtliches" title="" highlight={"Datenschutz\u00ADerklärung"} />
-            <span className="legal__date">Letzte Fassung: 3. November 2026</span>
+            <span className="legal__date">Letzte Fassung: 17. November 2026</span>
           </div>
           {PRIVACY.map((s, i) => (
             <div key={i} className="legal__block pm-reveal" data-reveal="up">
