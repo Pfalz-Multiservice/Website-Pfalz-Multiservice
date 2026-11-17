@@ -1,9 +1,10 @@
 "use client";
-import { gsap, ScrollTrigger, useGSAP, MOTION_OK } from "@/lib/gsap";
+import { gsap, ScrollTrigger, SplitText, useGSAP, MOTION_OK } from "@/lib/gsap";
 
 /**
  * Deklarative Scroll-Animationen über data-Attribute.
- *  data-reveal="up | stagger | pop | clip | cards | checks"
+ *  data-reveal="up | stagger | pop | clip | cards | checks | lines"
+ *  data-count  (Zahlen im Text zählen beim Einscrollen von 0 hoch, z. B. „36 von 94“)
  *  data-parallax="10"  (Bild bewegt sich beim Scrollen um ±10 %)
  * Wird in app/template.tsx pro Seite einmal gemountet.
  */
@@ -40,6 +41,31 @@ export function Reveals() {
           .from(el.querySelectorAll(".checklist__box"), { scale: 0, rotate: -90, duration: 0.8, stagger: 0.12, ease: "back.out(2)" }, 0.1);
       });
 
+      // Fließtext zeilenweise aus einer Maske einblenden
+      const splits: { revert: () => void }[] = [];
+      q("[data-reveal='lines']").forEach((el) => {
+        show(el);
+        splits.push(SplitText.create(el, {
+          type: "lines", mask: "lines", linesClass: "pm-line", autoSplit: true,
+          onSplit: (self) => gsap.from(self.lines, { yPercent: 110, opacity: 0, duration: 1, stagger: 0.07, scrollTrigger: st(el) }),
+        }));
+      });
+
+      // Zahlen hochzählen: jede Zifferngruppe im Text läuft von 0 auf ihren Wert
+      const counted: [HTMLElement, string][] = [];
+      q("[data-count]").forEach((el) => {
+        const text = el.textContent ?? "";
+        if (!/[0-9]/.test(text)) return;
+        counted.push([el, text]);
+        const draw = (p: number) => {
+          el.textContent = text.replace(/[0-9][0-9.]*/g, (m) => Math.round(Number(m.split(".").join("")) * p).toLocaleString("de-DE"));
+        };
+        const state = { p: 0 };
+        draw(0);
+        gsap.to(state, { p: 1, duration: 1.8, ease: "power3.out", onUpdate: () => draw(state.p), onComplete: () => { el.textContent = text; },
+          scrollTrigger: st(el, "top 90%") });
+      });
+
       q("[data-reveal='clip']").forEach((el) => {
         show(el);
         const img = el.querySelector("[data-clip-img]");
@@ -73,6 +99,11 @@ export function Reveals() {
           scrollTrigger: { trigger: el.parentElement, start: "top bottom", end: "bottom top", scrub: true },
         });
       });
+
+      return () => {
+        splits.forEach((sp) => sp.revert());
+        counted.forEach(([el, text]) => { el.textContent = text; });
+      };
     });
 
     return () => mm.revert();

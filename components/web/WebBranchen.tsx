@@ -81,13 +81,13 @@ export function BrancheIntro({ b }: { b: Branche }) {
       <div className="container split web-local">
         <div>
           <SectionHeading eyebrow={`Für ${b.name}`} title="Was Ihre Website" highlight="leisten muss" />
-          {b.text.map((t) => <p key={t} className="web-local__text pm-reveal" data-reveal="up">{t}</p>)}
-          <div className="pm-reveal" data-reveal="up"><CheckList items={b.points} /></div>
+          {b.text.map((t) => <p key={t} className="web-local__text pm-reveal" data-reveal="lines">{t}</p>)}
+          <div className="pm-reveal" data-reveal="checks"><CheckList items={b.points} /></div>
         </div>
         <aside className="web-local__card bfacts pm-reveal" data-reveal="up" aria-label="Zahlen aus unserer Recherche">
           <span className="bfacts__label">Aus unserer Recherche</span>
           {b.facts.map(([value, label]) => (
-            <p key={label} className="bfacts__item"><b>{value}</b><span>{tidy(label)}</span></p>
+            <p key={label} className="bfacts__item"><b data-count>{value}</b><span>{tidy(label)}</span></p>
           ))}
           <span className="web-local__note">{tidy(`Stand ${BRANCHEN_STAND}. Suchzahlen sind eine Schätzung aus Google-Suchdaten. Stichprobe: Einträge bei Google Maps im Umkreis von rund 20 km um Worms, Mannheim und Ludwigshafen. Als „ohne eigene Website“ zählen auch Betriebe, die nur auf ein Branchenverzeichnis verlinken.`)}</span>
         </aside>
