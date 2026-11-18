@@ -47,7 +47,7 @@ export default function WebdesignPage() {
       <WebBriefingTeaser alt={false} />
       <WebFaqCheck />
       <WormsTeaser />
-      <CityLinks current="worms" />
+      <CityLinks current="worms" tiles />
       <CtaBand
         image={IMG + "lagergang.png"}
         intro={<>Erzählen Sie uns kurz von Ihrem Betrieb.<br />Wir melden uns mit einem Vorschlag und einem Festpreis, unverbindlich.</>}

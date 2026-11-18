@@ -66,14 +66,9 @@ export default function WebdesignLeistungenPage() {
       <WebPackages />
       <WebBriefingTeaser />
       <Process steps={WEB_STEPS} eyebrow="So läuft’s ab" title="In 5 Schritten zur" highlight="Website" id="ablauf" />
+      <BranchenLinks label="Websites für Ihre Branche" tiles />
       <WebFaqCheck />
-      {/* Ganz unten: links die Branchen, rechts die Städte, jeweils als Bildkacheln untereinander */}
-      <section className="section section--tight">
-        <div className="container link-tiles">
-          <BranchenLinks label="Websites für Ihre Branche" tiles bare />
-          <CityLinks tiles bare />
-        </div>
-      </section>
+      <CityLinks tiles />
       <CtaBand
         image={IMG + "lagergang.png"}
         intro={<>Erzählen Sie uns kurz von Ihrem Betrieb.<br />Wir melden uns mit einem Vorschlag und einem Festpreis, unverbindlich.</>}

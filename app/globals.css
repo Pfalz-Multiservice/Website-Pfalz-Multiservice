@@ -2598,7 +2598,9 @@ a.web-local__row:hover, a.web-local__row:focus-visible { color: var(--brand-acce
    am Computer zwei Spalten (links Branchen, rechts Region), am Handy untereinander */
 .link-tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 4vw, 56px); align-items: start; }
 @media (max-width: 760px) { .link-tiles { grid-template-columns: minmax(0, 1fr); } }
-.city-links--tiles .city-links__list { flex-direction: column; gap: 8px; }
+/* allein stehend: Kacheln nebeneinander in Spalten; im Zwei-Spalten-Raster (.link-tiles) untereinander */
+.city-links--tiles .city-links__list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 8px; }
+.link-tiles .city-links--tiles .city-links__list { grid-template-columns: minmax(0, 1fr); }
 .city-links--tiles .city-links__list li { width: 100%; }
 .city-links--tiles .city-links__list a { position: relative; isolation: isolate; overflow: hidden; display: flex; justify-content: space-between; gap: 12px;
   width: 100%; min-height: 64px; padding: 0 20px; border-color: rgba(255,255,255,.14); color: #fff; font: 700 15px/1.25 var(--font-display); }

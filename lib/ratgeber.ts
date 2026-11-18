@@ -58,7 +58,7 @@ export const GUIDES: Guide[] = [
           "Start: 199 €, einmalig. Eine Seite mit bis zu fünf Abschnitten, ideal für einen schnellen, starken Auftritt.",
           "Business: 299 €, einmalig. Eine Seite oder eine Website mit Menü und bis zu acht Unterseiten.",
           "Shop oder Premium: individuell nach Angebot. Online-Shops und größere Projekte mit bis zu 20 Seiten oder besonderen Funktionen.",
-          "In jedem Paket enthalten: individuelles Design, Darstellung für Smartphone und PC, Ladezeit-Optimierung, Umsetzung ohne Tracking-Cookies, Impressum und Datenschutz eingebunden, Bildlizenzen und ein Übergabe-Paket mit allen Zugangsdaten.",
+          "In jedem Paket enthalten: individuelles Design, Darstellung für Smartphone und PC, Ladezeit-Optimierung, Umsetzung ohne Tracking-Cookies, Impressum und Datenschutz eingebunden und ein Übergabe-Paket mit allen Zugangsdaten.",
         ],
         p: ["Alle Preise sind Festpreise und Endpreise: Als Kleinunternehmer nach § 19 UStG berechnen wir keine Umsatzsteuer. Unser Webdesign-Angebot richtet sich an Gewerbetreibende, Selbstständige und Betriebe."],
       },
@@ -76,7 +76,7 @@ export const GUIDES: Guide[] = [
         l: [
           "Ein monatlicher Betrag mit langer Mindestlaufzeit, ohne den die Website nicht weiterläuft.",
           "Domain und Hosting laufen auf den Namen des Dienstleisters statt auf Ihren.",
-          "Bildlizenzen, Kontaktformular oder die Darstellung auf dem Smartphone werden extra berechnet.",
+          "Kontaktformular oder die Darstellung auf dem Smartphone werden extra berechnet.",
           "Für die Herausgabe Ihrer Dateien oder Zugangsdaten wird eine Gebühr verlangt.",
           "Änderungen werden nach Stunden abgerechnet, ohne dass Sie vorher erfahren, was sie kosten.",
         ],

@@ -460,11 +460,11 @@ export type WebPackage = { name: string; price: string; unit?: string; note: str
 export const WEB_PACKAGES: WebPackage[] = tidyDeep([
   {
     name: "Start", price: "199 €", unit: "einmalig", tagline: "Für den schnellen, starken Auftritt auf einer Seite.", note: "Das Fundament:",
-    items: ["OnePager: alle Inhalte übersichtlich auf einer Seite", "Bis 5 Abschnitte", "Mehrere Bildlizenzen"],
+    items: ["OnePager: alle Inhalte übersichtlich auf einer Seite", "Bis 5 Abschnitte"],
   },
   {
     name: "Business", price: "299 €", unit: "einmalig", badge: "Beliebt", tagline: "Für Betriebe, die mehr zeigen wollen.", note: "Alles aus Start, plus:", plus: true,
-    items: ["Bis 8 Seiten mit Menü und Unterseiten, oder als OnePager", "Bildlizenzen inklusive"],
+    items: ["Bis 8 Seiten mit Menü und Unterseiten, oder als OnePager", "Eigene Seite je Leistung, die Google einzeln findet", "Projektseiten mit Fotos und Beschreibung", "Ratgeber-Bereich für eigene Beiträge"],
   },
   {
     name: "Shop / Premium", price: "individuell", unit: "nach Angebot", tagline: "Für Online-Shops und größere Projekte.", note: "Alles aus Business, plus:", plus: true,
@@ -577,7 +577,7 @@ export const WEB_STEPS: [string, string, string][] = tidyDeep([
 
 export const WEB_FAQ: [string, string][] = tidyDeep([
   ["Was kostet eine Website?", "Start (OnePager, bis 5 Abschnitte) kostet 199 €, Business (OnePager oder mehrseitige Website, bis 8 Seiten) kostet 299 €. Beides sind einmalige Festpreise. Online-Shops und Sonderprojekte bis 20 Seiten bieten wir individuell nach Angebot an. Versteckte Kosten gibt es nicht."],
-  ["Was ist im Preis enthalten?", "In jedem Paket: individuelles Design, responsive Umsetzung für alle Geräte, individuelle Icons, Ladezeit-Optimierung, DSGVO-konforme Umsetzung, eingebundenes Impressum und Datenschutz, Bildlizenzen und das Übergabe-Paket. Dazu ohne Aufpreis: Design für Smartphone und Desktop, Menü und Navigation, FAQ-Bereich, Kontaktformular, WhatsApp-Button, Anfahrt mit Link zu Google Maps, Social-Media-Links, Texte erstellen oder übernehmen, kuratierte Bildauswahl, SEO-Grundlagen, Vorbereitung für Google- und KI-Suche, Online-Terminbuchung, Google-Bewertungen und Vorher-Nachher-Galerie."],
+  ["Was ist im Preis enthalten?", "In jedem Paket: individuelles Design, responsive Umsetzung für alle Geräte, individuelle Icons, Ladezeit-Optimierung, DSGVO-konforme Umsetzung, eingebundenes Impressum und Datenschutz und das Übergabe-Paket. Dazu ohne Aufpreis: Design für Smartphone und Desktop, Menü und Navigation, FAQ-Bereich, Kontaktformular, WhatsApp-Button, Anfahrt mit Link zu Google Maps, Social-Media-Links, Texte erstellen oder übernehmen, kuratierte Bildauswahl, SEO-Grundlagen, Vorbereitung für Google- und KI-Suche, Online-Terminbuchung, Google-Bewertungen und Vorher-Nachher-Galerie."],
   ["Was gehört zur SEO-Grundoptimierung?", "Seitentitel und Beschreibungen für jede Seite, eine saubere Überschriften-Struktur, Bildbeschreibungen, eine XML-Sitemap, robots.txt, strukturierte Daten für Ihren Betrieb und die Anmeldung bei der Google Search Console. Platz 1 bei Google kann seriös niemand versprechen, aber Ihre Website ist technisch so aufgestellt, dass Google und KI-Suchen sie gut lesen können."],
   ["Was heißt DSGVO-konform bei Ihnen?", "Keine Tracking- oder Werbe-Cookies, keine Schriften von Google-Servern, Kontaktformular ohne Drittanbieter und verschlüsselte Verbindung per SSL. Impressum und Datenschutzerklärung binden wir ein; die Inhalte stammen von Ihnen oder einem Generator Ihrer Wahl, eine Rechtsberatung ersetzen wir nicht."],
   ["Welche laufenden Kosten kommen nach dem Livegang?", "Nur Hosting und Domain, die Sie direkt beim Anbieter Ihrer Wahl bezahlen, nicht über uns. Wie hoch sie sind, hängt von Anbieter und Tarif ab; den Betrag weisen wir in Ihrem Angebot getrennt aus. Es gibt kein verstecktes Abo. Wartung ist freiwillig und monatlich kündbar."],
