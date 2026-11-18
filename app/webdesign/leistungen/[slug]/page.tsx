@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const b = BRANCHEN.find((x) => x.slug === slug);
   if (!b) return {};
-  const title = `Website für ${b.name} | ab 199 € – Pfalz Multiservice`;
+  const title = `Website für ${b.titleName ?? b.name} ab 199 € · Pfalz Multiservice`;
   return {
     // absolute: der Markenname steht schon im Title, die Vorlage aus dem Layout würde ihn doppeln
     title: { absolute: title },

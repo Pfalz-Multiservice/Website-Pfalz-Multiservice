@@ -7,9 +7,9 @@ import { JsonLd, breadcrumb } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Datenschutzerklärung",
-  description: "Datenschutzerklärung von Pfalz Multiservice: keine Cookies, Besuchsstatistik ohne IP-Speicherung. Hosting bei Hostinger auf Servern in Deutschland, Kontaktformular über Strato, Ihre Rechte nach DSGVO.",
+  description: "Datenschutz bei Pfalz Multiservice: keine Cookies, Statistik ohne IP-Speicherung, Hosting bei Hostinger in Deutschland, Formular über Strato, Ihre Rechte.",
   alternates: { canonical: "/datenschutz" },
-  ...social({ path: "/datenschutz", title: "Datenschutzerklärung · Pfalz Multiservice", description: "Datenschutzerklärung von Pfalz Multiservice: keine Cookies, Besuchsstatistik ohne IP-Speicherung. Hosting bei Hostinger auf Servern in Deutschland, Kontaktformular über Strato, Ihre Rechte nach DSGVO." }),
+  ...social({ path: "/datenschutz", title: "Datenschutzerklärung · Pfalz Multiservice", description: "Datenschutz bei Pfalz Multiservice: keine Cookies, Statistik ohne IP-Speicherung, Hosting bei Hostinger in Deutschland, Formular über Strato, Ihre Rechte." }),
 };
 
 const PRIVACY: { h?: string; p: string[]; l?: string[]; p2?: string[] }[] = tidyDeep([

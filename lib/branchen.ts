@@ -15,6 +15,8 @@ export type Branche = {
   slug: string;
   /** Wie die Zielgruppe in Überschriften und im Seitentitel heißt, z. B. „Handwerker“ */
   name: string;
+  /** Kürzere Form nur für den Seitentitel (max. ca. 60 Zeichen gesamt), z. B. „B2B-Dienstleister“ */
+  titleName?: string;
   /** Überschrift der Kachel auf /webdesign */
   tile: string;
   /** Kurztext für die Kachel auf /webdesign */
@@ -83,6 +85,7 @@ export const BRANCHEN: Branche[] = tidyDeep([
   {
     slug: "unternehmen",
     name: "Dienstleister mit Firmenkunden",
+    titleName: "B2B-Dienstleister",
     tile: "Unternehmen",
     short: "Gebäudereinigung, Hausmeisterdienste, Industrieservice: Betriebe, die Firmen und Hausverwaltungen als Kunden gewinnen.",
     image: IMG + "branche-gebaeudereinigung.jpg",

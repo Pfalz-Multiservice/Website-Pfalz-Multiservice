@@ -86,7 +86,7 @@ export function tidyNode(node: ReactNode): ReactNode {
 }
 
 /** Wendet tidy() auf alle Texte in Inhaltsdaten an – technische Felder bleiben unverändert */
-const SKIP = new Set(["id", "slug", "href", "image", "icon", "path", "key", "url", "seo", "seoTitle", "email", "phone", "phoneHref", "whatsapp", "city"]);
+const SKIP = new Set(["id", "slug", "href", "image", "icon", "path", "key", "url", "seo", "seoTitle", "titleName", "email", "phone", "phoneHref", "whatsapp", "city"]);
 export function tidyDeep<T>(value: T, key?: string): T {
   if (key && SKIP.has(key)) return value;
   if (typeof value === "string") return tidy(value) as T;

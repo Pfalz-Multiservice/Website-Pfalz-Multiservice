@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ort: stri
   const { ort } = await params;
   const o = ORTE.find((x) => x.slug === ort);
   if (!o) return {};
-  const title = `Webdesign ${o.name} | Website ab 199 € – Pfalz Multiservice`;
+  const title = `Webdesign ${o.name} ab 199 € · Pfalz Multiservice`;
   return {
     // absolute: der Markenname steht schon im Title, die Vorlage aus dem Layout würde ihn doppeln
     title: { absolute: title },

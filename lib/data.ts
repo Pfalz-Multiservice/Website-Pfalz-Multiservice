@@ -123,7 +123,7 @@ export const SERVICES: Service[] = tidyDeep([
   },
   {
     id: "facility",
-    seoTitle: "Solutions: Probleme lösen in Worms und der Region",
+    seoTitle: "Solutions: Probleme lösen in Worms",
     faq: [
       ["Bei welchen Problemen helfen Sie?", "Bei nahezu allem, was den Betrieb oder den Alltag ausbremst: organisatorische Engpässe, festgefahrene Abläufe, Störungen oder Aufgaben ohne klaren Zuständigen. Ob wir selbst lösen oder einen spezialisierten Partner einbinden, entscheiden wir nach der Analyse."],
       ["Wie gehen Sie vor?", "Erst Analyse, dann Lösungsweg, dann Umsetzung. Wir ermitteln die eigentliche Ursache, stimmen den Weg mit Ihnen ab und setzen ihn konsequent um. Danach dokumentieren wir kurz, was getan wurde, damit das Problem nicht wiederkommt."],
@@ -131,7 +131,7 @@ export const SERVICES: Service[] = tidyDeep([
       ["Helfen Sie auch Privatkunden?", "Ja. Wir lösen Probleme für Unternehmen ebenso wie für Privatkunden, in Worms und der Region."],
       PRICE_FAQ("ein Einsatz"),
     ],
-    seo: "Solutions aus Worms: Wir lösen Probleme und Störungen jeder Art, für Unternehmen und Privatkunden. Ursachenanalyse, klarer Lösungsweg, Umsetzung mit Partnern aus der Region.",
+    seo: "Solutions aus Worms: Wir lösen Probleme und Störungen jeder Art für Unternehmen und Privatkunden. Ursachenanalyse, klarer Lösungsweg, Umsetzung mit Partnern.",
     icon: "wrench",
     title: "Solutions",
     short: "Wir lassen Probleme verschwinden. Spurlos.",
