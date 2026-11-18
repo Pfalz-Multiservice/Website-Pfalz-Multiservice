@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { CONTACT } from "@/lib/data";
+import { CONTACT, IMG } from "@/lib/data";
+import { LinkTileImg } from "./WebBranchen";
 import { SITE_NAME } from "@/lib/site";
 import { ORTE, ortHref, type Ort } from "@/lib/orte";
 import { tidy } from "@/lib/typo";
@@ -89,18 +90,20 @@ export function WebCity({ ort }: { ort: Ort }) {
 }
 
 /** Verweise auf alle Stadtseiten – verbindet /webdesign, /webdesign-worms und die Stadtseiten untereinander */
-export function CityLinks({ current }: { current?: string }) {
-  const links = [{ href: "/webdesign-worms", name: "Worms", slug: "worms" }, ...ORTE.map((o) => ({ href: ortHref(o.slug), name: o.name, slug: o.slug }))].filter((l) => l.slug !== current);
-  return (
-    <section className="section section--tight">
-      <div className="container">
-        <nav className="city-links pm-reveal" data-reveal="up" aria-label="Webdesign in der Region">
+export function CityLinks({ current, tiles = false, bare = false }: { current?: string; tiles?: boolean; bare?: boolean }) {
+  const links = [{ href: "/webdesign-worms", name: "Worms", slug: "worms", image: IMG + "dom-worms-gold.jpg" }, ...ORTE.map((o) => ({ href: ortHref(o.slug), name: o.name, slug: o.slug, image: o.image }))].filter((l) => l.slug !== current);
+  const nav = (
+        <nav className={`city-links${tiles ? " city-links--tiles" : ""} pm-reveal`} data-reveal="up" aria-label="Webdesign in der Region">
           <span className="city-links__label">Webdesign in der Region</span>
           <ul className="city-links__list">
-            {links.map((l) => <li key={l.slug}><Link href={l.href} data-cursor>Webdesign {l.name}</Link></li>)}
+            {links.map((l) => <li key={l.slug}><Link href={l.href} data-cursor>{tiles && <LinkTileImg src={l.image} />}<span>Webdesign {l.name}</span>{tiles && <Icon name="arrow-right" size={18} className="lt-arrow" />}</Link></li>)}
           </ul>
         </nav>
-      </div>
+  );
+  if (bare) return nav;
+  return (
+    <section className="section section--tight">
+      <div className="container">{nav}</div>
     </section>
   );
 }

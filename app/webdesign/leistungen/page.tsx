@@ -60,8 +60,6 @@ export default function WebdesignLeistungenPage() {
         <Button variant="outline-light" size="lg" href="#pakete">Zu den Paketen</Button>
       </PageHero>
       <WebTrust />
-      <BranchenLinks label="Websites für Ihre Branche" />
-      <CityLinks />
       <WebProblem />
       <WebStufen />
       <LayerBuild />
@@ -69,6 +67,13 @@ export default function WebdesignLeistungenPage() {
       <WebBriefingTeaser />
       <Process steps={WEB_STEPS} eyebrow="So läuft’s ab" title="In 5 Schritten zur" highlight="Website" id="ablauf" />
       <WebFaqCheck />
+      {/* Ganz unten: links die Branchen, rechts die Städte, jeweils als Bildkacheln untereinander */}
+      <section className="section section--tight">
+        <div className="container link-tiles">
+          <BranchenLinks label="Websites für Ihre Branche" tiles bare />
+          <CityLinks tiles bare />
+        </div>
+      </section>
       <CtaBand
         image={IMG + "lagergang.png"}
         intro={<>Erzählen Sie uns kurz von Ihrem Betrieb.<br />Wir melden uns mit einem Vorschlag und einem Festpreis, unverbindlich.</>}

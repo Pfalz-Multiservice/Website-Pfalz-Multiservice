@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import { IMG } from "@/lib/data";
 import { BRANCHEN, BRANCHEN_STAND, brancheHref, type Branche } from "@/lib/branchen";
 import { tidy, tidyNode } from "@/lib/typo";
 import { SectionHeading } from "../SectionHeading";
@@ -109,19 +111,21 @@ export function BrancheRechnung({ wert }: { wert?: number }) {
 }
 
 /** Verweise auf die Branchenseiten: auf einer Branchenseite die übrigen, auf /webdesign/leistungen alle (Auswahl wie auf der Startseite) */
-export function BranchenLinks({ current, label = "Websites für weitere Zielgruppen" }: { current?: string; label?: string }) {
+export function BranchenLinks({ current, label = "Websites für weitere Zielgruppen", tiles = false, bare = false }: { current?: string; label?: string; tiles?: boolean; bare?: boolean }) {
   const links = BRANCHEN.filter((b) => b.slug !== current);
-  return (
-    <section className="section section--tight">
-      <div className="container">
-        <nav className="city-links pm-reveal" data-reveal="up" aria-label={label}>
+  const nav = (
+        <nav className={`city-links${tiles ? " city-links--tiles" : ""} pm-reveal`} data-reveal="up" aria-label={label}>
           <span className="city-links__label">{label}</span>
           <ul className="city-links__list">
-            {links.map((b) => <li key={b.slug}><Link href={brancheHref(b.slug)} data-cursor>Für {b.tile}</Link></li>)}
-            <li><Link href="/webdesign#branchen" data-cursor>Alle Branchen</Link></li>
+            {links.map((b) => <li key={b.slug}><Link href={brancheHref(b.slug)} data-cursor>{tiles && <LinkTileImg src={b.image} />}<span>Für {b.tile}</span>{tiles && <Icon name="arrow-right" size={18} className="lt-arrow" />}</Link></li>)}
+            <li><Link href="/webdesign#branchen" data-cursor>{tiles && <LinkTileImg src={IMG + "webdesign-hero.jpg"} />}<span>Alle Branchen</span>{tiles && <Icon name="arrow-right" size={18} className="lt-arrow" />}</Link></li>
           </ul>
         </nav>
-      </div>
+  );
+  if (bare) return nav;
+  return (
+    <section className="section section--tight">
+      <div className="container">{nav}</div>
     </section>
   );
 }
@@ -144,4 +148,9 @@ export function BrancheGewerke({ b }: { b: Branche }) {
       </div>
     </section>
   );
+}
+
+/** Titelbild der Zielseite als Hintergrund einer Link-Kachel (siehe .city-links--tiles) */
+export function LinkTileImg({ src }: { src: string }) {
+  return <span className="lt-img" aria-hidden="true"><Image src={src} alt="" fill sizes="(max-width: 760px) 100vw, 600px" /></span>;
 }
