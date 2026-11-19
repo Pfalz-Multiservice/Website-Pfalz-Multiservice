@@ -64,6 +64,7 @@ export default async function WebdesignBranchePage({ params }: { params: Promise
         highlight="die Anfragen bringt"
         intro={`Individuell gestaltet für ${b.name}, zum Festpreis ab 199 € und ohne Abo.\nPersönlich betreut von Ihrem Ansprechpartner in Worms.`}
         image={b.image}
+        imageFocus={b.imageFocus}
       >
         <Button variant="accent" size="lg" icon="arrow-right" href="/kontakt?leistung=web">Kostenloses Angebot</Button>
         <Button variant="outline-light" size="lg" href="#beispiele">Referenzen ansehen</Button>

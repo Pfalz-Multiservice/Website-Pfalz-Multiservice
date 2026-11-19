@@ -32,6 +32,7 @@ export default function WebdesignReferenzenPage() {
         highlight="echte Betriebe"
         intro={"Kundenprojekte aus der Region und Musterdesigns für viele Branchen.\nJede Website ist einzeln gestaltet, keine kommt aus dem Baukasten."}
         image={IMG + "webdesign-hero.jpg"}
+        imageFocus="100% 50%"
       >
         <Button variant="accent" size="lg" icon="arrow-right" href="/kontakt?leistung=web">Kostenloses Angebot</Button>
         <Button variant="outline-light" size="lg" href="/webdesign/leistungen#pakete">Pakete & Preise</Button>

@@ -36,6 +36,7 @@ export default function WebdesignPage() {
         highlight="die Anfragen bringen"
         intro={"Individuell gestaltet, zum fairen Festpreis und persönlich betreut.\nFür Betriebe, Selbstständige und Vereine in Worms und der Pfalz."}
         image={IMG + "webdesign-hero.jpg"}
+        imageFocus="100% 50%"
       >
         <Button variant="accent" size="lg" icon="arrow-right" href="/kontakt?leistung=web">Kostenloses Angebot</Button>
         <Button variant="outline-light" size="lg" href="/webdesign/leistungen">Leistungen & Pakete</Button>

@@ -22,6 +22,8 @@ export type Branche = {
   /** Kurztext für die Kachel auf /webdesign */
   short: string;
   image: string;
+  /** Bildausschnitt am Handy (Hochformat) */
+  imageFocus?: string;
   /** Meta-Beschreibung (max. ca. 155 Zeichen) */
   description: string;
   text: [string, string];
@@ -50,6 +52,7 @@ export const BRANCHEN: Branche[] = tidyDeep([
     tile: "Handwerker",
     short: "Fensterbau, Dachsanierung, Badsanierung, Terrassenüberdachung, Gartenbau: Betriebe, bei denen ein einzelner Auftrag viel wert ist.",
     image: IMG + "branche-handwerk.jpg",
+    imageFocus: "45% 50%",
     description: "Website für Handwerker: Webdesign zum Festpreis ab 199 € für Fensterbau, Dach, Bad und Garten. Mit Anfrageformular, persönlich betreut aus Worms.",
     text: [
       "Neue Fenster, ein saniertes Dach, ein neues Bad oder eine Terrassenüberdachung: Solche Aufträge sind groß, und Ihre Kunden entscheiden nicht spontan. Sie informieren sich gründlich, vergleichen zwei, drei Betriebe und fragen dort an, wo sie Vertrauen fassen.",
@@ -89,6 +92,7 @@ export const BRANCHEN: Branche[] = tidyDeep([
     tile: "Unternehmen",
     short: "Gebäudereinigung, Hausmeisterdienste, Industrieservice: Betriebe, die Firmen und Hausverwaltungen als Kunden gewinnen.",
     image: IMG + "branche-gebaeudereinigung.jpg",
+    imageFocus: "53% 50%",
     description: "Website für Dienstleister mit Firmenkunden: Gebäudereinigung, Hausmeisterdienste, Industrieservice. Individuell zum Festpreis ab 199 €, betreut aus Worms.",
     text: [
       "Ihre Kunden sind Firmen, Praxen, Hausverwaltungen oder Industriebetriebe. Dort wird ein Auftrag selten spontan vergeben: Man vergleicht, fragt nach und arbeitet danach oft über Jahre zusammen. Ein einziger neuer Kunde ist deshalb viel wert.",

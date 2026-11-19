@@ -32,4 +32,5 @@ export const ALT: Record<string, string> = {
   "/images/wartung-technik.png": "Technische Betreuung und Wartung vor Ort beim Kunden",
   "/images/smarthome-knx.png": "Smart-Home-Steuerung einer KNX-Anlage auf Laptop, Tablet und Smartphone",
   "/images/pfalz-landschaft.png": "Weinberge in der Pfalz – Einzugsgebiet von Pfalz Multiservice",
+  "/images/webdesign-pfalz.jpg": "Weinberge über dem Flusstal bei Sonnenuntergang – Einzugsgebiet von Pfalz Multiservice",
 };

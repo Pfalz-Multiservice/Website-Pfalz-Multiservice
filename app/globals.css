@@ -2614,3 +2614,13 @@ a.web-local__row:hover, a.web-local__row:focus-visible { color: var(--brand-acce
   .city-links--tiles .city-links__list a:hover .lt-arrow { transform: translateX(4px); }
 }
 @media (prefers-reduced-motion: reduce) { .city-links--tiles .lt-img img, .city-links--tiles .lt-arrow { transition: none; } }
+
+/* Seitenkopf am Handy: ohne Parallax-Überstand (weniger Beschnitt = schärfer), Ausschnitt je Bild */
+@media (max-width: 900px) {
+  .page-hero__bg { inset: 0; will-change: auto; }
+  .page-hero__img .pm-img__el { object-position: var(--focus, center); }
+  /* Hinter dem Text kräftiger abdunkeln: das Foto bleibt Stimmung, der Text steht ruhig */
+  /* Webdesign-Foto: die Bildschirm-Schrift würde hinter der Überschrift stehen, daher nur den ruhigen rechten Bildteil zeigen */
+  .page-hero__img img[src*="webdesign-hero"] { transform: scale(1.65); transform-origin: 100% 62%; }
+  .page-hero .hero__scrim { background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.66) 30%, rgba(0,0,0,.72) 65%, rgba(0,0,0,.82) 100%); }
+}

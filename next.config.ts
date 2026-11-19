@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
   experimental: { inlineCss: false },
 
   // PNG-Originale bleiben im Repo; ausgeliefert werden passende AVIF/WebP-Größen
-  images: { formats: ["image/avif", "image/webp"], qualities: [75], minimumCacheTTL: 2678400 },
+  images: { formats: ["image/avif", "image/webp"], qualities: [75, 85], minimumCacheTTL: 2678400 },
 
   async redirects() {
     return [

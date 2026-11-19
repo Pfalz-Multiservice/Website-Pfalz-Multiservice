@@ -67,6 +67,7 @@ export default async function WebdesignOrtPage({ params }: { params: Promise<{ o
         highlight="zum Festpreis ab 199 €"
         intro={`Individuelle Websites für Betriebe aus ${o.name} und Umgebung, mobil optimiert und für Google vorbereitet.\nPersönlich betreut von Ihrem Ansprechpartner in Worms.`}
         image={o.image}
+        imageFocus={o.imageFocus}
       >
         <Button variant="accent" size="lg" icon="arrow-right" href="/kontakt?leistung=web">Kostenloses Angebot</Button>
         <Button variant="outline-light" size="lg" href="#beispiele">Referenzen ansehen</Button>
