@@ -7,6 +7,7 @@ import { Button } from "@/components/Button";
 import { CtaBand } from "@/components/home/HomeSections";
 import { WebExamples } from "@/components/web/WebSections";
 import { WebBestOf } from "@/components/web/WebBestOf";
+import { BeforeAfterSection } from "@/components/web/BeforeAfter";
 
 // Webdesign › Referenzen: alle Kundenprojekte und Musterdesigns (auf den anderen Webdesign-Seiten nur die neueste Referenz)
 const title = "Referenzen & Musterdesigns";
@@ -38,7 +39,8 @@ export default function WebdesignReferenzenPage() {
         <Button variant="outline-light" size="lg" href="/webdesign/leistungen#pakete">Pakete & Preise</Button>
       </PageHero>
       <WebExamples alt={false} />
-      <section className="section section--alt">
+      <BeforeAfterSection />
+      <section className="section">
         <div className="container"><WebBestOf /></div>
       </section>
       <CtaBand

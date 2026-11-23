@@ -311,8 +311,18 @@ export type ClassicExample = Example & {
   pages: { key: string; label: string; path: string }[];
 };
 
-/** Echte Kundenprojekte, stehen auf /webdesign ganz oben: zuerst die neueste Referenz (live), dann aktuelle Projekte */
+/** Echte Kundenprojekte: zuerst die fertigen (mit url, neueste zuerst), dann Projekte in Arbeit (url: null) */
 export const REFERENCES: ClassicExample[] = tidyDeep([
+  {
+    slug: "may",
+    name: "Metzgerei & Partyservice May",
+    branch: "Partyservice · Worms-Horchheim",
+    text: "",
+    tags: [],
+    host: "metzgerei-may.de",
+    url: "https://www.metzgerei-may.de", // online seit 23.11.2026
+    pages: [{ key: "start", label: "Start", path: "/" }],
+  },
   {
     slug: "schaffner",
     name: "Multimedia Service Schaffner",
@@ -340,16 +350,6 @@ export const REFERENCES: ClassicExample[] = tidyDeep([
     pages: [{ key: "start", label: "Start", path: "/" }],
   },
   {
-    slug: "may",
-    name: "Metzgerei & Partyservice May",
-    branch: "Partyservice · Worms-Horchheim",
-    text: "",
-    tags: [],
-    host: "metzgerei-may.de",
-    url: null, // noch in Arbeit; nach dem Livegang verlinken
-    pages: [{ key: "start", label: "Start", path: "/" }],
-  },
-  {
     slug: "pfalz-loadout",
     name: "Pfalz Loadout",
     branch: "Onlineshop · Taktische Ausrüstung",
@@ -360,6 +360,16 @@ export const REFERENCES: ClassicExample[] = tidyDeep([
     pages: [{ key: "start", label: "Start", path: "/" }],
   },
 ]);
+
+/** Fertige Kundenprojekte (online) und Projekte in Arbeit */
+export const LIVE_REFERENCES = REFERENCES.filter((r) => r.url);
+export const WIP_REFERENCES = REFERENCES.filter((r) => !r.url);
+
+/** Vorher-nachher-Vergleich auf /webdesign/referenzen: alte und neue Startseite im gleichen Ausschnitt (16:10) */
+export const BEFORE_AFTER = [
+  { slug: "may", name: "Metzgerei & Partyservice May", branch: "Partyservice · Worms-Horchheim", url: "https://www.metzgerei-may.de" },
+  { slug: "schaffner", name: "Multimedia Service Schaffner", branch: "Computerservice · Worms", url: "https://www.multimedia-service-schaffner.de" },
+];
 
 export const CLASSIC_EXAMPLES: ClassicExample[] = tidyDeep([
   {
@@ -593,7 +603,7 @@ export const WEB_FAQ: [string, string][] = tidyDeep([
   ["Kümmern Sie sich auch nach dem Livegang um die Website?", "Ja, wenn Sie möchten. Sie melden Ihre Änderungen, wir setzen sie um: mit Wartung (39 € im Monat, bis 1 Std.), Wartung Pro (59 € im Monat, bis 2 Std.) oder Wartung Premium (99 € im Monat, bis 3 Std.), jeweils monatlich kündbar. Einzelne Änderungen ohne Paket kosten 39 € pro Stunde. In Wartung Pro und Premium ist Premium-Hosting auf deutschen Servern enthalten, sonst zahlen Sie Hosting und Domain direkt beim Anbieter Ihrer Wahl."],
   ["Ich habe schon eine Website. Können Sie die übernehmen?", "Ja. Wir überarbeiten auch bestehende Websites und übernehmen alte Inhalte. Schicken Sie uns zuerst den Link für den kostenlosen Website-Check."],
   ["Für wen ist das Angebot?", "Unser Webdesign- und Wartungsangebot richtet sich ausschließlich an Unternehmer im Sinne von § 14 BGB, also Gewerbetreibende, Selbstständige und Betriebe. Verträge mit Verbrauchern schließen wir hierüber nicht."],
-  ["Sind die Beispiele echte Kunden?", "Teilweise. Multimedia Service Schaffner aus Worms ist ein echtes Kundenprojekt. Die übrigen Beispiele sind Musterdesigns für erfundene Betriebe und zeigen, was möglich ist. Ihre Website gestalten wir individuell für Ihren Betrieb."],
+  ["Sind die Beispiele echte Kunden?", "Teilweise. Die Metzgerei & Partyservice May und Multimedia Service Schaffner aus Worms sind echte Kundenprojekte. Die übrigen Beispiele sind Musterdesigns für erfundene Betriebe und zeigen, was möglich ist. Ihre Website gestalten wir individuell für Ihren Betrieb."],
 ]);
 
 /** Partner aus der Region (Freigabe für Name, Logo und Fotos liegt vor). Weitere Partner einfach unten anhängen. */

@@ -4,7 +4,7 @@ import { BriefingPreview } from "./BriefingPreview";
 import { CarePricing } from "./CarePricing";
 import Link from "next/link";
 import Image from "next/image";
-import { CONTACT, REFERENCES, WEB_ADDONS, WEB_FAQ, WEB_CARE_NOTES, WEB_PACKAGES, WEB_PROBLEMS, type WebPackage } from "@/lib/data";
+import { CONTACT, LIVE_REFERENCES, WIP_REFERENCES, WEB_ADDONS, WEB_FAQ, WEB_CARE_NOTES, WEB_PACKAGES, WEB_PROBLEMS, type WebPackage } from "@/lib/data";
 import { EXAMPLES_URL } from "@/lib/site";
 import { BRANCHEN, brancheHref } from "@/lib/branchen";
 import { SectionHeading } from "../SectionHeading";
@@ -66,9 +66,10 @@ export function WebExamples({ compact = false, alt = true }: { compact?: boolean
           intro="Aktuelle Kundenprojekte und Referenzen." />
 
         <div className="sc-group">
-          <h3 className="sc-group__title">Neueste Referenz</h3>
+          <h3 className="sc-group__title">{compact ? "Neueste Referenz" : "Neueste Referenzen"} <span>fertig und online</span></h3>
         </div>
-        <ShowcaseList items={REFERENCES.slice(0, 1)} />
+        {/* Kurzform: nur die neueste; auf /webdesign/referenzen alle fertigen Kundenseiten */}
+        <ShowcaseList items={compact ? LIVE_REFERENCES.slice(0, 1) : LIVE_REFERENCES} />
 
         {compact ? (
           <div style={{ marginTop: 40 }}>
@@ -79,7 +80,7 @@ export function WebExamples({ compact = false, alt = true }: { compact?: boolean
         <div className="sc-group sc-group--later">
           <h3 className="sc-group__title">Aktuelle Projekte <span>in Arbeit</span></h3>
         </div>
-        <div className="sc-three"><ShowcaseList grid items={REFERENCES.slice(1)} /></div>
+        <div className="sc-three"><ShowcaseList grid items={WIP_REFERENCES} /></div>
 
         <div style={{ marginTop: "clamp(72px, 9vw, 112px)" }}><ExampleReel /></div>
 
