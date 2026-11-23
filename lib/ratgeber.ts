@@ -32,7 +32,7 @@ export const GUIDES: Guide[] = [
         h: "Kurz gesagt",
         p: [
           "Eine Website kostet einmal für die Erstellung und danach laufend für Domain und Hosting. Eine Betreuung nach dem Livegang ist freiwillig. Wie hoch der einmalige Betrag ist, hängt vor allem davon ab, wie viele Seiten Sie brauchen, welche Funktionen dazukommen und ob Texte und Bilder schon vorhanden sind.",
-          "Bei uns beginnt eine individuelle Website bei 99 € im aktuellen Angebot (statt 199 €), eine Website mit bis zu acht Seiten kostet 299 €. Beides sind einmalige Festpreise.",
+          "Bei uns beginnt eine individuelle Website bei 199 €, eine Website mit bis zu acht Seiten kostet 299 €. Beides sind einmalige Festpreise.",
         ],
       },
       {
