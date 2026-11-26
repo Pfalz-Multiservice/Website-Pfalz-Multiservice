@@ -33,6 +33,9 @@ export function PageHero({ eyebrow, title, highlight, intro, image, children, fi
         .from(root.querySelector(".sh__intro"), { opacity: 0, y: 22, duration: 1.1 }, 0.6);
       const extra = root.querySelector(".page-hero__extra");
       if (extra) gsap.from(extra.children, { opacity: 0, y: 22, duration: 1.1, stagger: 0.1, delay: introDelay() + 0.6 });
+      // Google-Abzeichen erst, wenn die Buttons stehen
+      const badge = root.querySelector(".g-badge");
+      if (badge) gsap.from(badge, { opacity: 0, y: 16, duration: 1, delay: introDelay() + 0.6 + 0.1 * (extra?.children.length ?? 0) + 0.7 });
       if (DESKTOP()) gsap.to(root.querySelector(".page-hero__bg"), {
         yPercent: 12, ease: "none", scrollTrigger: { trigger: root, start: "top top", end: "bottom top", scrub: true },
       });
@@ -63,7 +66,7 @@ export function PageHero({ eyebrow, title, highlight, intro, image, children, fi
         )}
         <SectionHeading dark level={1} size="h1" motion="intro" maxWidth={wide ? 1160 : 720} eyebrow={eyebrow} title={title} highlight={highlight} intro={intro} />
         {children && <div className="page-hero__extra">{children}</div>}
-        {reviews && <GoogleBadge className="g-badge--below" />}
+        {reviews && <GoogleBadge className="g-badge--below pm-intro" />}
       </div>
     </section>
   );

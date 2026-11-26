@@ -30,6 +30,8 @@ export function Hero() {
       tl.from(split.targets, whole ? { y: 50, opacity: 0, duration: 1.4 } : { yPercent: 118, rotate: 2, transformOrigin: "0% 100%", duration: 1.4, stagger: 0.12, ease: "expo.out" }, 0.25)
         .to(title.querySelectorAll(".sh__hl"), { backgroundSize: "100% .07em", duration: 0.9, stagger: 0.25, ease: "power3.inOut" }, 1.05)
         .from(root.querySelectorAll(".hero__ctas > *"), { y: 30, opacity: 0, duration: 1.1, stagger: 0.1 }, 0.95)
+        // Google-Abzeichen erst nach den Buttons
+        .from(root.querySelector(".g-badge"), { y: 16, opacity: 0, duration: 1 }, 1.85)
         .from(root.querySelector(".hero__scroll"), { opacity: 0, y: -10, duration: 1 }, 1.4);
 
       // Scroll-Hinweis: laufender Goldpunkt
@@ -81,7 +83,7 @@ export function Hero() {
             <Button variant="accent" size="lg" href="/kontakt">Unverbindlich anfragen</Button>
             <Button variant="outline-light" size="lg" iconLeft="message-circle" href={CONTACT.whatsapp}>Per WhatsApp schreiben</Button>
           </div>
-          <GoogleBadge className="g-badge--below" />
+          <GoogleBadge className="g-badge--below pm-intro" />
         </div>
         <OfferTicket />
       </div>
