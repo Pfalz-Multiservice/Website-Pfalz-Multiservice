@@ -9,8 +9,8 @@ import { PageHero } from "@/components/PageHero";
 import { Button } from "@/components/Button";
 import { Faq } from "@/components/Faq";
 import { CtaBand } from "@/components/home/HomeSections";
-import { WebExamples, WebPackages, WebTrust } from "@/components/web/WebSections";
-import { CityLinks, WebCity } from "@/components/web/WebLocal";
+import { WebExamples, WebTrust } from "@/components/web/WebSections";
+import { CityLinks, PriceStrip, WebCity, WebEconomy } from "@/components/web/WebLocal";
 
 /** Stadtseiten „Webdesign <Ort>“. Inhalte je Stadt stehen in lib/orte.ts, Worms hat die eigene Seite /webdesign-worms. */
 export function generateStaticParams() {
@@ -66,7 +66,7 @@ export default async function WebdesignOrtPage({ params }: { params: Promise<{ o
         eyebrow={`Pfalz Multiservice · ${o.region}`}
         title={<span className="sh__line">Webdesign für {o.name}</span>}
         highlight="zum Festpreis ab 199 €"
-        intro={`Individuelle Websites für Betriebe aus ${o.name} und Umgebung, mobil optimiert und für Google vorbereitet.\nPersönlich betreut von Ihrem Ansprechpartner in Worms.`}
+        intro={o.intro}
         image={o.image}
         imageFocus={o.imageFocus}
       >
@@ -75,8 +75,10 @@ export default async function WebdesignOrtPage({ params }: { params: Promise<{ o
       </PageHero>
       <WebTrust />
       <WebCity ort={o} />
-      <WebExamples />
-      <WebPackages />
+      <WebEconomy ort={o} />
+      {/* Referenzen und Preise nur kurz: der Inhalt steht ausführlich auf /webdesign/referenzen und /preise */}
+      <WebExamples compact alt={false} />
+      <PriceStrip />
       <Faq items={o.faq} alt />
       <CityLinks current={o.slug} />
       <CtaBand

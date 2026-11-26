@@ -107,3 +107,46 @@ export function CityLinks({ current, tiles = false, bare = false }: { current?: 
     </section>
   );
 }
+
+/** Stadtseiten: Wirtschaft vor Ort mit Kennzahlen und dem, was eine Website dort leisten sollte (Inhalte je Stadt, keine Vorlage) */
+export function WebEconomy({ ort }: { ort: Ort }) {
+  return (
+    <section className="section section--alt" id="wirtschaft">
+      <div className="container">
+        <div className="split web-eco">
+          <div>
+            <SectionHeading eyebrow={`Wirtschaft in ${ort.name}`} title="Was Betriebe" highlight={`in ${ort.name} prägt`} />
+            {ort.economy.text.map((t) => <p key={t} className="web-local__text pm-reveal" data-reveal="up">{tidy(t)}</p>)}
+          </div>
+          <dl className="web-eco__facts pm-reveal" data-reveal="stagger">
+            {ort.economy.facts.map((f) => (
+              <div key={f.label} className="web-eco__fact"><dt>{f.value}</dt><dd>{tidy(f.label)}</dd></div>
+            ))}
+          </dl>
+        </div>
+        <h3 className="web-eco__sub">Was Ihre Website in {ort.name} leisten sollte</h3>
+        <ul className="web-eco__needs pm-reveal" data-reveal="stagger">
+          {ort.economy.needs.map((n) => (
+            <li key={n.title}><Icon name="check" size={18} /><span><b>{n.title}</b>{tidy(n.text)}</span></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+/** Kurze Preisleiste statt der vollen Paketkarten (Stadtseiten): weniger doppelter Text, Details auf /preise */
+export function PriceStrip() {
+  const items: [string, string][] = [["Start", "199 €"], ["Business", "299 €"], ["Shop / Premium", "nach Angebot"], ["Wartung", "ab 39 € / Monat"]];
+  return (
+    <section className="section section--tight" id="pakete">
+      <div className="container">
+        <div className="price-strip pm-reveal" data-reveal="up">
+          <span className="price-strip__label">Festpreise</span>
+          <ul>{items.map(([n, p]) => <li key={n}><span>{n}</span><b>{p}</b></li>)}</ul>
+          <Link href="/preise" className="price-strip__link" data-cursor>Alle Preise und Leistungen <Icon name="arrow-right" size={16} /></Link>
+        </div>
+      </div>
+    </section>
+  );
+}

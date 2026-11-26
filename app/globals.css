@@ -2687,3 +2687,28 @@ a.web-local__row:hover, a.web-local__row:focus-visible { color: var(--brand-acce
 .legal .pz__notes { margin-top: 18px; font-size: 14px; color: var(--text-subtle); }
 .pz__notes b { color: var(--text-body); }
 @media (max-width: 600px) { .pz__sum { gap: 12px; } .pz__price strong { font-size: 15px; } }
+
+/* Stadtseiten: Wirtschaft vor Ort */
+.web-eco { grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr); align-items: start; }
+.web-eco__facts { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); }
+.web-eco__fact { background: var(--surface-card); padding: 22px 20px; display: flex; flex-direction: column; gap: 8px; }
+.web-eco__fact dt { font: 800 clamp(1.15rem, 1.8vw, 1.5rem)/1.15 var(--font-display); color: var(--brand-accent); overflow-wrap: break-word; hyphens: auto; }
+@media (max-width: 480px) { .web-eco__fact dt { font-size: 1.05rem; } }
+.web-eco__fact dd { margin: 0; font: 400 14px/1.45 var(--font-body); color: var(--text-body); }
+.web-eco__sub { margin: clamp(40px, 5vw, 64px) 0 20px; font: 800 clamp(1.1rem, 1.6vw, 1.35rem)/1.25 var(--font-display); text-transform: uppercase; color: var(--text-strong); }
+.web-eco__needs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; }
+.web-eco__needs li { display: flex; gap: 12px; padding: 22px; background: var(--surface-card); border: 1px solid var(--border-subtle); border-top: 2px solid var(--brand-accent); }
+.web-eco__needs li svg { flex: none; margin-top: 2px; color: var(--brand-accent); }
+.web-eco__needs b { display: block; margin-bottom: 6px; font: 700 16px/1.3 var(--font-display); color: #fff; }
+.web-eco__needs span { font: 400 15px/1.55 var(--font-body); color: var(--text-body); }
+@media (max-width: 900px) { .web-eco { grid-template-columns: minmax(0,1fr); } .web-eco__needs { grid-template-columns: minmax(0,1fr); } }
+
+/* Stadtseiten: kurze Preisleiste */
+.price-strip { display: flex; align-items: center; flex-wrap: wrap; gap: 18px 32px; padding: 24px 28px; background: var(--surface-card); border: 1px solid var(--border-subtle); border-left: 3px solid var(--brand-accent); }
+.price-strip__label { font: 700 13px/1 var(--font-display); letter-spacing: .14em; text-transform: uppercase; color: var(--brand-accent); }
+.price-strip ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 14px 28px; flex: 1 1 auto; }
+.price-strip li { display: flex; flex-direction: column; gap: 4px; }
+.price-strip li span { font: 400 13px/1.3 var(--font-body); color: var(--text-subtle); }
+.price-strip li b { font: 700 17px/1.2 var(--font-display); color: #fff; white-space: nowrap; }
+.price-strip__link { display: inline-flex; align-items: center; gap: 8px; font: 700 12px/1 var(--font-display); letter-spacing: .12em; text-transform: uppercase; color: var(--brand-accent); text-decoration: none; }
+.price-strip__link:hover { text-decoration: underline; text-underline-offset: 4px; }
