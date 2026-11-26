@@ -2658,6 +2658,8 @@ a.web-local__row:hover, a.web-local__row:focus-visible { color: var(--brand-acce
 .g-badge__stars { display: inline-flex; gap: 2px; }
 .g-badge__stars svg { width: 15px; height: 15px; fill: var(--brand-accent); }
 .g-badge:hover .g-badge__text, .g-badge:focus-visible .g-badge__text { text-decoration: underline; text-underline-offset: 4px; }
+/* unter den Buttons */
+.g-badge--below { margin: 26px 0 0; }
 @media (max-width: 480px) { .g-badge { gap: 8px; font-size: 12px; } .g-badge__stars svg { width: 13px; height: 13px; } }
 
 /* Preise-Seite: aufklappbare Zeilen */

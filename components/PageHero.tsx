@@ -61,9 +61,9 @@ export function PageHero({ eyebrow, title, highlight, intro, image, children, fi
             </ol>
           </nav>
         )}
-        {reviews && <GoogleBadge />}
         <SectionHeading dark level={1} size="h1" motion="intro" maxWidth={wide ? 1160 : 720} eyebrow={eyebrow} title={title} highlight={highlight} intro={intro} />
         {children && <div className="page-hero__extra">{children}</div>}
+        {reviews && <GoogleBadge className="g-badge--below" />}
       </div>
     </section>
   );

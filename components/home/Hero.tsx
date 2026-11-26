@@ -71,7 +71,6 @@ export function Hero() {
       <div className="hero__glow" />
       <div className="container hero__content">
         <div className="hero__inner">
-          <GoogleBadge />
           <SectionHeading
             dark level={1} size="hero" motion="intro" maxWidth={1300}
             eyebrow="Pfalz Multiservice · Worms"
@@ -82,6 +81,7 @@ export function Hero() {
             <Button variant="accent" size="lg" href="/kontakt">Unverbindlich anfragen</Button>
             <Button variant="outline-light" size="lg" iconLeft="message-circle" href={CONTACT.whatsapp}>Per WhatsApp schreiben</Button>
           </div>
+          <GoogleBadge className="g-badge--below" />
         </div>
         <OfferTicket />
       </div>
