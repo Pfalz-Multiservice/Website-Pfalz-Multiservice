@@ -19,7 +19,6 @@ const body = [
   "Allow: /",
   "Disallow: /api/",
   "",
-  `Host: ${SITE}`,
   `Sitemap: ${SITE}/sitemap.xml`,
   "",
 ].join("\n");

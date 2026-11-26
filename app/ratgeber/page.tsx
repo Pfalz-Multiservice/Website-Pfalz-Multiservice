@@ -9,10 +9,10 @@ import { GUIDES, guideHref } from "@/lib/ratgeber";
 const DESC = "Kurze Ratgeber von Pfalz Multiservice aus Worms: Website, Wartung und Hosting, Restposten verkaufen, Räumungen und KNX-Anlagen.";
 
 export const metadata: Metadata = {
-  title: "Ratgeber",
+  title: "Ratgeber: Website, Räumung & KNX",
   description: DESC,
   alternates: { canonical: "/ratgeber" },
-  ...social({ path: "/ratgeber", title: "Ratgeber · Pfalz Multiservice", description: DESC }),
+  ...social({ path: "/ratgeber", title: "Ratgeber: Website, Räumung & KNX · Pfalz Multiservice", description: DESC }),
   robots: { index: true, follow: true },
 };
 

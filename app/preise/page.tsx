@@ -9,10 +9,10 @@ import { SITE } from "@/lib/site";
 const DESC = "Alle Preise von Pfalz Multiservice auf einen Blick: Websites ab 199 €, Website-Betreuung ab 39 € im Monat, KNX-Änderungen ab 59 €.";
 
 export const metadata: Metadata = {
-  title: "Preise",
+  title: "Preise für Webdesign & KNX in Worms",
   description: DESC,
   alternates: { canonical: "/preise" },
-  ...social({ path: "/preise", title: "Preise · Pfalz Multiservice", description: DESC }),
+  ...social({ path: "/preise", title: "Preise für Webdesign & KNX in Worms · Pfalz Multiservice", description: DESC }),
 };
 
 const groups = [...new Set(PRICES.map((p) => p.group))];

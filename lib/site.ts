@@ -8,6 +8,6 @@ export const TITLE = "Pfalz Multiservice · Web, Reselling & E-Commerce Worms";
 export const DESC =
   "Webdesign, Restposten-Ankauf, Online-Handel und Entrümpelung aus Worms. Pfalz Multiservice: ein Ansprechpartner für alles.";
 /** Letzte inhaltliche Überarbeitung – sichtbar im Footer und in der Sitemap */
-export const UPDATED_ISO = "2026-11-16";
-export const UPDATED = "16.11.2026";
+export const UPDATED_ISO = "2026-11-26";
+export const UPDATED = "26.11.2026";
 export const OG_IMAGE = { url: "/images/og.jpg", width: 1200, height: 630, alt: "Pfalz Multiservice" };

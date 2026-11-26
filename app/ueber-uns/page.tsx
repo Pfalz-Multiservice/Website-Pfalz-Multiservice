@@ -11,10 +11,10 @@ import { SITE } from "@/lib/site";
 const DESC = `Pfalz Multiservice aus Worms: inhabergeführt seit ${COMPANY.founded}, ein Ansprechpartner für Webdesign, Reselling, E-Commerce, Räumungen und KNX.`;
 
 export const metadata: Metadata = {
-  title: "Über uns",
+  title: "Über uns: Ihr Dienstleister in Worms",
   description: DESC,
   alternates: { canonical: "/ueber-uns" },
-  ...social({ path: "/ueber-uns", title: "Über uns · Pfalz Multiservice", description: DESC }),
+  ...social({ path: "/ueber-uns", title: "Über uns: Ihr Dienstleister in Worms · Pfalz Multiservice", description: DESC }),
 };
 
 const about = {

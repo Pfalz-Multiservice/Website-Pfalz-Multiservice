@@ -40,7 +40,7 @@ export default async function ServicePage({ params }: { params: Promise<{ id: st
   const { id } = await params;
   const s = SERVICES.find((x) => x.id === id);
   if (!s) notFound();
-  const words = s.title.split(" ");
+  const words = (s.h1 ?? s.title).split(" ");
   const others = SERVICES.filter((x) => x.id !== s.id);
   const guides = GUIDES.filter((g) => g.topic === s.id);
 

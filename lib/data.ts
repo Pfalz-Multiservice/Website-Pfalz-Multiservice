@@ -33,6 +33,8 @@ export type Service = {
   href?: string;
   /** Meta-Beschreibung (max. ca. 155 Zeichen) */
   seo?: string;
+  /** Hauptüberschrift (H1) der Leistungsseite mit Ort; ohne Angabe gilt title */
+  h1?: string;
   /** Seitentitel im Suchergebnis mit Ort (max. ca. 38 Zeichen, „ · Pfalz Multiservice“ kommt dazu) */
   seoTitle?: string;
   /** Häufige Fragen auf der Leistungsseite */
@@ -78,6 +80,7 @@ export const SERVICES: Service[] = tidyDeep([
   },
   {
     id: "reselling",
+    h1: "Restposten-Ankauf & Reselling in Worms",
     seoTitle: "Reselling & Restpostenankauf Worms",
     faq: [
       ["Welche Ware kaufen Sie an?", "Überbestände, Restposten und Retourenware. Schildern Sie uns kurz Art, Menge und Zustand, am besten mit ein paar Fotos."],
@@ -93,6 +96,7 @@ export const SERVICES: Service[] = tidyDeep([
   },
   {
     id: "ecommerce",
+    h1: "E-Commerce & Versand aus Worms",
     seoTitle: "E-Commerce & Fulfillment in Worms",
     faq: [
       ["Was umfasst der Bereich E-Commerce?", "Den gesamten Ablauf im Online-Handel: Beschaffung, Einstellen der Artikel, Verkauf und Versandabwicklung, also Lagerung, Verpackung und Versand."],
@@ -108,6 +112,7 @@ export const SERVICES: Service[] = tidyDeep([
   },
   {
     id: "clearance",
+    h1: "Räumung & Entrümpelung in Worms",
     seoTitle: "Räumung & Entrümpelung in Worms",
     faq: [
       ["Welche Flächen räumen Sie?", "Garagen, Lager, Hallen und Gewerbeflächen in Worms und der Pfalz, vollständig bis zur besenreinen Übergabe."],
@@ -123,6 +128,7 @@ export const SERVICES: Service[] = tidyDeep([
   },
   {
     id: "facility",
+    h1: "Solutions: Probleme lösen in Worms",
     seoTitle: "Solutions: Probleme lösen in Worms",
     faq: [
       ["Bei welchen Problemen helfen Sie?", "Bei nahezu allem, was den Betrieb oder den Alltag ausbremst: organisatorische Engpässe, festgefahrene Abläufe, Störungen oder Aufgaben ohne klaren Zuständigen. Ob wir selbst lösen oder einen spezialisierten Partner einbinden, entscheiden wir nach der Analyse."],
@@ -153,6 +159,7 @@ export const SERVICES: Service[] = tidyDeep([
 
   {
     id: "smarthome",
+    h1: "KNX-Anlage ändern & erweitern in Worms",
     seoTitle: "KNX-Anlage ändern & erweitern Worms",
     faq: [
       ["Was kostet eine Änderung an meiner KNX-Anlage?", "Änderungen gibt es ab 59 €. Nach einer kurzen, ehrlichen Einschätzung erhalten Sie vorab einen Festpreis."],
