@@ -56,6 +56,7 @@ export default function WebdesignWormsPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([serviceLd, faqPage(FAQ), breadcrumb([{ name: "Webdesign", path: "/webdesign" }, { name: "Leistungen", path: "/webdesign/leistungen" }, { name: "Webdesign Worms", path: "/webdesign-worms" }])]) }} />
       <PageHero
+        reviews
         fitTitle
         wide
         crumbs={[{ label: "Webdesign", href: "/webdesign" }, { label: "Leistungen", href: "/webdesign/leistungen" }, { label: "Worms" }]}

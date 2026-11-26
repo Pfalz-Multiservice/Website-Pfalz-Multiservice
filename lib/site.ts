@@ -11,3 +11,5 @@ export const DESC =
 export const UPDATED_ISO = "2026-11-26";
 export const UPDATED = "26.11.2026";
 export const OG_IMAGE = { url: "/images/og.jpg", width: 1200, height: 630, alt: "Pfalz Multiservice" };
+/** Google-Bewertungen von Pfalz Multiservice (Place-ID des Unternehmensprofils) */
+export const GOOGLE_REVIEWS_URL = "https://search.google.com/local/reviews?placeid=ChIJNf23D5j3_g4RmwQrNULXJ4A";

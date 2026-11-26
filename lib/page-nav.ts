@@ -10,6 +10,7 @@ export const WEB_NAV: PageSection[] = [
   { href: "/webdesign/leistungen", label: "Leistungen", activeOn: /^\/webdesign(-worms|\/(?!referenzen$)[^/]+)$/ },
   { href: "/webdesign/referenzen", label: "Referenzen" },
   { href: "/webdesign/leistungen#pakete", label: "Pakete" },
+  { href: "/preise", label: "Preise" },
   { href: "/webdesign#faq", label: "Fragen" },
 ];
 export const isWebArea = (pathname: string) =>

@@ -26,6 +26,7 @@ export default function WebdesignReferenzenPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumb([{ name: "Webdesign", path: "/webdesign" }, { name: "Referenzen", path: "/webdesign/referenzen" }])]) }} />
       <PageHero
+        reviews
         fitTitle
         crumbs={[{ label: "Webdesign", href: "/webdesign" }, { label: "Referenzen" }]}
         eyebrow="Referenzen"

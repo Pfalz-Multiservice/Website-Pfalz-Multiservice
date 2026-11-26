@@ -4,6 +4,7 @@ import { gsap, useGSAP, MOTION_OK, introDelay, splitHeading } from "@/lib/gsap";
 import { CONTACT, IMG } from "@/lib/data";
 import { BgImage } from "../BgImage";
 import { SectionHeading } from "../SectionHeading";
+import { GoogleBadge } from "../GoogleBadge";
 import { Button } from "../Button";
 import { OfferTicket } from "./OfferTicket";
 
@@ -70,6 +71,7 @@ export function Hero() {
       <div className="hero__glow" />
       <div className="container hero__content">
         <div className="hero__inner">
+          <GoogleBadge />
           <SectionHeading
             dark level={1} size="hero" motion="intro" maxWidth={1300}
             eyebrow="Pfalz Multiservice · Worms"

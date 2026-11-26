@@ -4,13 +4,14 @@ import Link from "next/link";
 import { gsap, useGSAP, MOTION_OK, introDelay, splitHeading } from "@/lib/gsap";
 import { BgImage } from "./BgImage";
 import { SectionHeading } from "./SectionHeading";
+import { GoogleBadge } from "./GoogleBadge";
 
-type Props = { eyebrow: string; title: React.ReactNode; highlight: string; /** Überschrift mobil so weit verkleinern, dass jede Zeile am Stück passt */ fitTitle?: boolean; /** Breiter Kopf: Hervorhebung bleibt in einer Zeile, Einleitung läuft auf voller Breite */ wide?: boolean; intro: string; image: string; /** Bildausschnitt am Handy (Hochformat), z. B. "35% 50%" */ imageFocus?: string; /** Wegweiser über der Überschrift, ohne „Startseite“ (wird vorangestellt); der letzte Eintrag ist die aktuelle Seite */ crumbs?: { label: string; href?: string }[]; children?: React.ReactNode };
+type Props = { eyebrow: string; title: React.ReactNode; highlight: string; /** Überschrift mobil so weit verkleinern, dass jede Zeile am Stück passt */ fitTitle?: boolean; /** Breiter Kopf: Hervorhebung bleibt in einer Zeile, Einleitung läuft auf voller Breite */ wide?: boolean; intro: string; image: string; /** Bildausschnitt am Handy (Hochformat), z. B. "35% 50%" */ imageFocus?: string; /** Google-Abzeichen mit 5 Sternen über der Überschrift */ reviews?: boolean; /** Wegweiser über der Überschrift, ohne „Startseite“ (wird vorangestellt); der letzte Eintrag ist die aktuelle Seite */ crumbs?: { label: string; href?: string }[]; children?: React.ReactNode };
 
 /** Parallaxe und Zoom nur auf breiten Bildschirmen */
 const DESKTOP = () => window.matchMedia("(min-width: 901px)").matches;
 
-export function PageHero({ eyebrow, title, highlight, intro, image, children, fitTitle, wide, crumbs, imageFocus }: Props) {
+export function PageHero({ eyebrow, title, highlight, intro, image, children, fitTitle, wide, crumbs, imageFocus, reviews }: Props) {
   const ref = useRef<HTMLElement>(null);
 
   useGSAP(() => {
@@ -60,6 +61,7 @@ export function PageHero({ eyebrow, title, highlight, intro, image, children, fi
             </ol>
           </nav>
         )}
+        {reviews && <GoogleBadge />}
         <SectionHeading dark level={1} size="h1" motion="intro" maxWidth={wide ? 1160 : 720} eyebrow={eyebrow} title={title} highlight={highlight} intro={intro} />
         {children && <div className="page-hero__extra">{children}</div>}
       </div>

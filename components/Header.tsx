@@ -9,8 +9,9 @@ import { isWebArea, pageSections, type PageSection } from "@/lib/page-nav";
 import { Icon } from "./Icon";
 import { Logo } from "./Logo";
 
-/** Menüreihenfolge: nach Titellänge, längster Titel zuerst (Startseitenkacheln behalten die Reihenfolge aus SERVICES) */
-const MENU_SERVICES = [...SERVICES].sort((a, b) => b.title.length - a.title.length);
+/** Menüreihenfolge: nach Titellänge, längster Titel zuerst (Startseitenkacheln behalten die Reihenfolge aus SERVICES).
+ *  Webdesign & Wartung steht nicht unter „Multiservice“, sondern hat einen eigenen Menüpunkt. */
+const MENU_SERVICES = SERVICES.filter((s) => s.id !== "web").sort((a, b) => b.title.length - a.title.length);
 
 export function Header() {
   const pathname = usePathname();
@@ -180,7 +181,7 @@ export function Header() {
                 </Link>
               ) : (
                 <button
-                  className={`nav__link ${active === "leistungen" ? "nav__link--active" : ""}`}
+                  className={`nav__link nav__link--small ${active === "leistungen" ? "nav__link--active" : ""}`}
                   aria-expanded={ddOpen}
                   aria-haspopup="true"
                   onClick={() => (pathname === "/" ? scrollToHash("#leistungen") : router.push("/#leistungen"))}

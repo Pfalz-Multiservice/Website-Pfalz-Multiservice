@@ -56,6 +56,7 @@ export default async function WebdesignBranchePage({ params }: { params: Promise
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([serviceLd, faqPage(b.faq), breadcrumb([{ name: "Webdesign", path: "/webdesign" }, { name: "Leistungen", path: "/webdesign/leistungen" }, { name: b.tile, path: brancheHref(b.slug) }])]) }} />
       <PageHero
+        reviews
         fitTitle
         wide
         crumbs={[{ label: "Webdesign", href: "/webdesign" }, { label: "Leistungen", href: "/webdesign/leistungen" }, { label: b.tile }]}

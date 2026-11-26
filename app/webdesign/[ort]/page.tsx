@@ -59,6 +59,7 @@ export default async function WebdesignOrtPage({ params }: { params: Promise<{ o
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([serviceLd, faqPage(o.faq), breadcrumb([{ name: "Webdesign", path: "/webdesign" }, { name: "Leistungen", path: "/webdesign/leistungen" }, { name: `Webdesign ${o.name}`, path: ortHref(o.slug) }])]) }} />
       <PageHero
+        reviews
         fitTitle
         wide
         crumbs={[{ label: "Webdesign", href: "/webdesign" }, { label: "Leistungen", href: "/webdesign/leistungen" }, { label: o.name }]}

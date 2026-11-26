@@ -48,6 +48,7 @@ export default function WebdesignLeistungenPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([serviceLd, breadcrumb([{ name: "Webdesign", path: "/webdesign" }, { name: "Leistungen", path: "/webdesign/leistungen" }])]) }} />
       <PageHero
+        reviews
         fitTitle
         crumbs={[{ label: "Webdesign", href: "/webdesign" }, { label: "Leistungen" }]}
         eyebrow="Leistungen & Pakete"
