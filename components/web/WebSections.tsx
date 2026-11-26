@@ -66,10 +66,10 @@ export function WebExamples({ compact = false, alt = true }: { compact?: boolean
           intro="Aktuelle Kundenprojekte und Referenzen." />
 
         <div className="sc-group">
-          <h3 className="sc-group__title">{compact ? "Neueste Referenz" : "Neueste Referenzen"} <span>fertig und online</span></h3>
+          <h3 className="sc-group__title">Neueste Referenzen <span>fertig und online</span></h3>
         </div>
-        {/* Kurzform: nur die neueste; auf /webdesign/referenzen alle fertigen Kundenseiten */}
-        <ShowcaseList items={compact ? LIVE_REFERENCES.slice(0, 1) : LIVE_REFERENCES} />
+        {/* Zwei nebeneinander spart Platz; Kurzform zeigt die zwei neuesten, /webdesign/referenzen alle fertigen */}
+        <ShowcaseList grid items={compact ? LIVE_REFERENCES.slice(0, 2) : LIVE_REFERENCES} />
 
         {compact ? (
           <div style={{ marginTop: 40 }}>
