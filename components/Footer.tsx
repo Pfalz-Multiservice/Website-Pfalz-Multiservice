@@ -44,7 +44,7 @@ export function Footer() {
         <div className="footer__col pm-reveal">
           <h2 className="footer__h">Kontakt</h2>
           <div className="footer__contact">
-            <span className="footer__gold"><Icon name="map-pin" size={16} />{CONTACT.city}</span>
+            <span className="footer__gold"><Icon name="map-pin" size={16} />{CONTACT.address}</span>
             <a className="footer__gold" href={CONTACT.phoneHref} data-cursor><Icon name="phone" size={16} />{CONTACT.phone}</a>
             <a className="footer__gold" href={`mailto:${CONTACT.email}`} data-cursor><Icon name="mail" size={16} />{CONTACT.email}</a>
           </div>

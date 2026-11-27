@@ -49,7 +49,7 @@ export default async function KontaktPage({ searchParams }: { searchParams: Prom
               <Row icon="phone" label="Telefon" value={CONTACT.phone} href={CONTACT.phoneHref} />
               <Row icon="message-circle" label="WhatsApp" value="Nachricht schreiben" href={CONTACT.whatsapp} />
               <Row icon="mail" label="E-Mail" value={CONTACT.email} href={`mailto:${CONTACT.email}`} />
-              <Row icon="map-pin" label="Standort" value={`${CONTACT.city} · Einsätze in Worms und Umgebung`} />
+              <Row icon="map-pin" label="Standort" value={`${CONTACT.address} · Einsätze in Worms und Umgebung`} />
               <Row icon="file-check" label="Erreichbarkeit" value={`Telefon und WhatsApp · ${COMPANY.hours}`} />
               <div><Button variant="outline-light" iconLeft="message-circle" href={CONTACT.whatsapp}>WhatsApp-Chat starten</Button></div>
             </div>

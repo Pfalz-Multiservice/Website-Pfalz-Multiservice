@@ -37,7 +37,7 @@ export function WebLocal({ alt = true }: { alt?: boolean }) {
         </div>
         <address className="web-local__card pm-reveal" data-reveal="up">
           <span className="web-local__name">{SITE_NAME}</span>
-          <span className="web-local__row"><Icon name="map-pin" size={18} />{CONTACT.city}</span>
+          <span className="web-local__row"><Icon name="map-pin" size={18} />{CONTACT.address}</span>
           <a className="web-local__row" href={CONTACT.phoneHref}><Icon name="phone" size={18} />{CONTACT.phone}</a>
           <a className="web-local__row" href={CONTACT.whatsapp}><Icon name="message-circle" size={18} />WhatsApp schreiben</a>
           <a className="web-local__row" href={`mailto:${CONTACT.email}`}><Icon name="mail" size={18} />{CONTACT.email}</a>
@@ -78,7 +78,7 @@ export function WebCity({ ort }: { ort: Ort }) {
         </div>
         <address className="web-local__card pm-reveal" data-reveal="up">
           <span className="web-local__name">{SITE_NAME}</span>
-          <span className="web-local__row"><Icon name="map-pin" size={18} />{CONTACT.city}</span>
+          <span className="web-local__row"><Icon name="map-pin" size={18} />{CONTACT.address}</span>
           <a className="web-local__row" href={CONTACT.phoneHref}><Icon name="phone" size={18} />{CONTACT.phone}</a>
           <a className="web-local__row" href={CONTACT.whatsapp}><Icon name="message-circle" size={18} />WhatsApp schreiben</a>
           <a className="web-local__row" href={`mailto:${CONTACT.email}`}><Icon name="mail" size={18} />{CONTACT.email}</a>

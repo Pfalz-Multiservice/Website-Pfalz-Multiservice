@@ -6,7 +6,9 @@ export const CONTACT = {
   phone: "+49 160 5086983",
   phoneHref: "tel:+491605086983",
   email: "kontakt@pfalz-multiservice.de",
+  street: "Wormser Landstraße 117",
   city: "67551 Worms",
+  address: "Wormser Landstraße 117, 67551 Worms",
   whatsapp: "https://wa.me/491605086983",
 };
 

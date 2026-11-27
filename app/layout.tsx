@@ -61,7 +61,7 @@ const jsonLd = {
       description: DESC,
       telephone: CONTACT.phone,
       email: CONTACT.email,
-      address: { "@type": "PostalAddress", postalCode: "67551", addressLocality: "Worms", addressRegion: "Rheinland-Pfalz", addressCountry: "DE" },
+      address: { "@type": "PostalAddress", streetAddress: CONTACT.street, postalCode: "67551", addressLocality: "Worms", addressRegion: "Rheinland-Pfalz", addressCountry: "DE" },
       geo: { "@type": "GeoCoordinates", ...COMPANY.geo },
       areaServed: AREA.map((name) => ({ "@type": "City", name })),
       foundingDate: COMPANY.founded,

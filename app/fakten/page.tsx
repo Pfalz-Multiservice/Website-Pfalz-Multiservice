@@ -51,7 +51,7 @@ export default function FaktenPage() {
     ["Art", "Inhabergeführtes Dienstleistungsunternehmen"],
     ["Gegründet", COMPANY.founded],
     [COMPANY.role, COMPANY.owner],
-    ["Sitz", `${CONTACT.city}, Rheinland-Pfalz, Deutschland`],
+    ["Sitz", `${CONTACT.address}, Rheinland-Pfalz, Deutschland`],
     ["Kunden", "Unternehmen und Privatkunden"],
     ["Einsatzgebiet", `${AREA.join(", ")} und rund 30 Kilometer Umkreis um Worms. Webdesign und Website-Betreuung bundesweit.`],
     ["Erreichbarkeit", `${COMPANY.hours}. Antwort auf Anfragen innerhalb von 24 Stunden an Werktagen.`],
